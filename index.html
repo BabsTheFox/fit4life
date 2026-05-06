@@ -169,7 +169,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     </div>
   </div>
   <div class="prog">
-    <div class="prog-lbl"><span>Start: Nov 2025</span><span id="progPct">0%</span><span>Ziel: Dez 2026</span></div>
+    <div class="prog-lbl"><span>Start: Mai 2026</span><span id="progPct">0%</span><span>Ziel: Dez 2026</span></div>
     <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
   </div>
 </div>
@@ -179,7 +179,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <button class="nb on" onclick="showTab('heute')">Heute</button>
   <button class="nb" onclick="showTab('woche')">Woche</button>
   <button class="nb" onclick="showTab('programm')">Programm</button>
-  <button class="nb" onclick="showTab('ernaehrung')">Ernährung</button>
+  <button class="nb" onclick="showTab('ernährung')">Ernährung</button>
 </div>
 
 <!-- ===== HEUTE ===== -->
@@ -205,6 +205,8 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div class="q-attr">Tag für Tag · Schritt für Schritt</div>
   </div>
 
+  <div id="milestoneReminder" style="display:none;background:linear-gradient(135deg,#FFF0F8,#FFE8F5);border:2px solid #C9A96E;border-radius:14px;padding:16px 18px;margin-bottom:18px;font-size:15px;color:#5C4B35;line-height:1.6;"></div>
+
   <!-- 1. SPAZIERGÄNGE -->
   <div class="sh first"><h2>🐕 Bewegung = <em>Regeneration</em></h2><div class="sh-line"></div></div>
   <div class="card">
@@ -217,18 +219,18 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div class="card">
     <!-- MORGENS -->
     <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gd);padding:6px 0 4px">☀️ Morgens</div>
-    <div class="ci" id="ci-f1" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Müsli-Mix + Kuhmilch + Weizenkeime 2 EL + Walnüsse<span class="cl-w">Rosinen &amp; Datteln weglassen!</span></div><span class="ct fo">07:00</span></div>
-    <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Natriumascorbat · Omega-3 · Vit B-Komplex · L-Lysin · L-Glutamin · CoQ10 200mg · Selen 200mcg<span id="vitDHint" class="cl-h"></span></div><span class="ct su">Suppl.</span></div>
+    <div class="ci" id="ci-f1" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Müsli-Mix + Walnüsse + 2 EL Hanfsamen + 2 EL Weizenkeime + 1 EL Kollagen + 2 Messlöffel Eiweißpulver<span class="sets" style="color:#8B7355">🌿 Gewürze: Zimt + Kardamom + Prise Nelkenpulver + Vanillepulver</span></div><span class="ct fo">07:00</span></div>
+    <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Natriumascorbat · Omega-3 · Vit B-Komplex · L-Lysin · L-Glutamin · CoQ10 200mg · Selen 200mcg · Phosphatidylserin 100mg<span class="sets" style="color:#6A7FBF">💧 mit einem großen Glas Wasser (300ml) einnehmen! (aktiviert Magensäure, bessere Nährstoffaufnahme, Kollagen-Synthese und Entgiftung)</span><span id="vitDHint" class="cl-h"></span></div><span class="ct su">Suppl.</span></div>
 
     <!-- MITTAGS -->
     <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gd);padding:10px 0 4px">🌞 Mittags</div>
-    <div class="ci" id="ci-f2" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Protein + 2 Hände Gemüse (4-5h nach Frühstück)<span class="sets" style="color:var(--gd)">+ 1 TL Leinöl dazu!</span></div><span class="ct fo">12:00</span></div>
-    <div class="ci" id="ci-f5" onclick="toggle('f5')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Kollagen 4500mg in Tee auflösen + Pu-erh/Schwarztee mit Milch (~1,5L)</div><span class="ct fo">Tee</span></div>
+    <div class="ci" id="ci-ps2" onclick="toggle('ps2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Phosphatidylserin 100mg (zu einer Mahlzeit)<span class="sets" style="color:#6A7FBF">💧 mit einem großen Glas Wasser (300ml) einnehmen! (aktiviert Magensäure, bessere Nährstoffaufnahme, Kollagen-Synthese und Entgiftung)</span></div><span class="ct su">Mittags</span></div>
+    <div class="ci" id="ci-f2" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Protein + 2 Hände Gemüse + 1 TL Leinöl + Kurkuma<span class="sets" style="color:#6A7FBF">💧 vorher: 1 großes Glas Leitungswasser trinken!</span><span class="sets" style="color:#8B7355">🌿 Würzen: Kurkuma + Curry + Paprikapulver + Pfeffer + Salz (Pfeffer aktiviert Kurkuma 20x besser!)</span></div><span class="ct fo">12:00</span></div>
 
     <!-- ABENDS -->
     <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gd);padding:10px 0 4px">🌙 Abends</div>
     <div class="ci" id="ci-f4" onclick="toggle('f4')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Abendessen: Protein + viel Gemüse (keine Carbs)<span class="sets" style="color:var(--gd)">alternativ: Nüsse, Hüttenkäse oder Skyr</span></div><span class="ct fo">19:30</span></div>
-    <div class="ci" id="ci-s2" onclick="toggle('s2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Utrogestan 1 Kapsel · Magnesium Verla · Glycin</div><span class="ct su">Suppl.</span></div>
+    <div class="ci" id="ci-s2" onclick="toggle('s2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Utrogestan 1 Kapsel · Magnesium Verla · Glycin · Phosphatidylserin 100mg<span class="sets" style="color:#6A7FBF">💧 mit einem großen Glas Wasser (300ml) einnehmen! (aktiviert Magensäure, bessere Nährstoffaufnahme, Kollagen-Synthese und Entgiftung)</span></div><span class="ct su">Suppl.</span></div>
 
     <!-- NO-GO -->
     <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gd);padding:10px 0 4px">🚫 No-Go täglich</div>
@@ -340,7 +342,6 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
   <div style="text-align:center;margin-top:20px">
     <button class="btn" onclick="saveDay()">Tag abschließen</button>
   </div>
-</div>
 
 <!-- ===== WOCHE ===== -->
 <div class="panel" id="tab-woche">
@@ -439,7 +440,7 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
 </div>
 
 <!-- ===== ERNAEHRUNG ===== -->
-<div class="panel" id="tab-ernaehrung">
+<div class="panel" id="tab-ernährung">
   <div class="alert"><strong>Dein Rhythmus:</strong> 4-5h zwischen den Mahlzeiten - Frühstück innerhalb 1h nach Aufstehen - Kein Essen nach 20:00 Uhr</div>
   <div class="mc"><div class="mt">07:00 - Frühstück</div><div class="mn">Dein Müsli-Mix</div><div class="md"><strong>Deine Mischung:</strong> Eiweißpulver + Haferflocken + Leinsamen + Chiasamen + Vollkornflocken + Sojapops + <strong>Kuhmilch</strong> + Weizenkeime 2 EL + Walnüsse + halbe Banane<br><br><span style="color:var(--t)">Rosinen + Datteln weglassen - Fruktose + Histaminausloeser!</span><br><br><strong>Alternative:</strong> 2 Rühreier + Zucchini/Spinat + Dinkel-Schrotbrot + 1 TL Leinoel</div><span class="mtag mp">Eiweiß 25g</span><span class="mtag mg">Langsame Carbs</span><span class="mtag mf">Gesunde Fette</span></div>
   <div class="mc"><div class="mt">12:00 - Mittagessen</div><div class="mn">Protein-Hauptmahlzeit</div><div class="md"><strong>Option A (3x/Woche):</strong> Lachs/Forelle 150g + Brokkoli/Zucchini (2 Hände) + Quinoa/Hirse<br><strong>Option B:</strong> Hühnerbrust + buntes Gemüse in Olivenoel + Vollkornreis<br><strong>Option C:</strong> Linsensalat + Spinat + Avocado + Kürbiskerne + Zitronendressing (kein Essig!)<br><strong>Option D:</strong> Kichererbsen-Curry + Hirse + Zucchini</div><span class="mtag mp">Eiweiß 30g</span><span class="mtag mv">2 Hände Gemüse</span></div>
@@ -465,7 +466,6 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
     <div class="sr"><div class="sn">L-Lysin (Kollagen - Immunsystem)</div><div class="sd">tägl.</div><span class="sw sm">Morgens</span></div>
     <div class="sr"><div class="sn">L-Glutamin (Darm - Histaminabbau)</div><div class="sd">tägl.</div><span class="sw sm">Morgens</span></div>
     <div class="sr"><div class="sn">Vitamin D Dekristol 20.000 I.E. + K2</div><div class="sd">1x/Woche</div><span class="sw ss">Samstags</span></div>
-    <div class="sr"><div class="sn">Kollagen-Pulver 4500-5000mg (in Tee)</div><div class="sd">tägl.</div><span class="sw st">Tagsüber</span></div>
     <div class="sr"><div class="sn">Weizenkeime 2 EL (ins Müsli)</div><div class="sd">tägl.</div><span class="sw st">Im Müsli</span></div>
     <div class="sr"><div class="sn">Pu-erh/Schwarztee mit Milch</div><div class="sd">1.5L tägl.</div><span class="sw st">Tagsüber</span></div>
     <div class="sr"><div class="sn">Utrogestan 1 Kapsel</div><div class="sd">tägl.</div><span class="sw sa">Abends</span></div>
@@ -477,16 +477,16 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
 <script>
 try {
 
-var MONTHS=['Januar','Februar','Maerz','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+var MONTHS=['Januar','Februar','M\u00e4rz','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 var DAYS=['So','Mo','Di','Mi','Do','Fr','Sa'];
 var WTYPES=['Ruhe','Kraft A','Aktiv','Kraft B','Aktiv','Kraft C','VitD+Aktiv'];
 var QUOTES=[
-  'Dein Koerper kann alles - uberzeuge zuerst deinen Geist.',
-  'Jeder Tag formt den Koerper, der du sein moechtest.',
-  'Bindegewebe erneuert sich alle 4-7 Wochen. Sei konsequent.',
+  'Dein K\u00f6rper kann alles \u2013 \u00fcberzeuge zuerst deinen Geist.',
+  'Jeder Tag formt den K\u00f6rper, der du sein m\u00f6chtest.',
+  'Bindegewebe erneuert sich alle 4\u20137 Wochen. Sei konsequent.',
   'Krafttraining ist dein bestes Anti-Aging-Mittel.',
-  'Konsequenz schlaegt Perfektion. Jeden. Tag.',
-  'Du bist nicht zu alt. Du faengst heute an.',
+  'Konsequenz schl\u00e4gt Perfektion. Jeden. Tag.',
+  'Du bist nicht zu alt. Du f\u00e4ngst heute an.',
   'Der Spaziergang mit Enzo ist auch deine Medizin.',
   'Staerke entsteht nicht im Komfort, sondern durch Ueberwindung.'
 ];
@@ -502,6 +502,24 @@ if(!S.checks)S.checks={};
 if(!S.journals)S.journals={};
 if(!S.moods)S.moods={};
 
+function calcStreak(){
+  if(!S.days) return 0;
+  var streak=0;
+  var d=new Date();
+  while(true){
+    var k=d.getFullYear()+'-'+(d.getMonth()+1<10?'0':'')+(d.getMonth()+1)+'-'+(d.getDate()<10?'0':'')+d.getDate();
+    if(S.days[k]||k===TK){
+      streak++;
+      d.setDate(d.getDate()-1);
+    } else { break; }
+  }
+  // Minimum: days since app launch May 6 2026
+  var launch=new Date(2026,4,6);
+  var today=new Date();
+  var daysSince=Math.max(0,Math.floor((today-launch)/(1000*60*60*24)))+1;
+  return Math.max(streak,daysSince);
+}
+
 function init(){
   var now=new Date();
   document.getElementById('heroDay').textContent=now.getDate();
@@ -509,7 +527,18 @@ function init(){
   document.getElementById('jDate').textContent=now.getDate()+'. '+MONTHS[now.getMonth()]+' '+now.getFullYear();
   document.getElementById('quoteText').textContent=QUOTES[Math.floor(Math.random()*QUOTES.length)];
   if(now.getDay()===6){document.getElementById('vitDHint').textContent='Heute Samstag: Vitamin D Dekristol 20.000 I.E. nehmen!';}
-  var start=new Date(2025,10,1),end=new Date(2026,11,31);
+  // Milestone reminders at 3, 6, 9 months from May 2026
+  var startDate=new Date(2026,4,1);
+  var monthsDiff=Math.round((now-startDate)/(1000*60*60*24*30.5));
+  var milestones=[3,6,9];
+  if(milestones.indexOf(monthsDiff)!==-1){
+    var el=document.getElementById('milestoneReminder');
+    if(el){
+      el.style.display='block';
+      el.innerHTML='\u{1F3AF} <strong>'+monthsDiff+'-Monats-Meilenstein!\x3C/strong> Zeit f\u00fcr Zwischenstand-Fotos! Vergleiche mit deinen Vorher-Fotos vom Mai 2026 - du wirst den Unterschied sehen! \u{1F4F8}';
+    }
+  }
+  var start=new Date(2026,4,1),end=new Date(2026,11,31);
   var pct=Math.max(0,Math.min(100,Math.round((now-start)/(end-start)*100)));
   document.getElementById('progPct').textContent=pct+'%';
   document.getElementById('progFill').style.width=pct+'%';
@@ -563,12 +592,14 @@ function toggle(key){
   // Store with date prefix so checks reset each day
   var dk=TK+'_'+key;
   S.checks[dk]=done;
+  if(!S.days)S.days={};
+  S.days[TK]=true;
   sstore(S);
   updateRing();
 }
 
 function updateRing(){
-  var fixed=['w1','w2','f1','s1','f2','f5','f4','s2','nogo'];
+  var fixed=['w1','w2','f1','s1','ps2','f2','f4','s2','nogo'];
   var day=new Date().getDay();
   var done=0,total=0;
   var dw=document.getElementById('dw-'+day);
@@ -584,7 +615,7 @@ function updateRing(){
   var circ=2*Math.PI*22;
   document.getElementById('ringfill').style.strokeDashoffset=circ*(1-pct/100);
   document.getElementById('ringpct').textContent=pct+'%';
-  document.getElementById('streakNum').textContent=done>0?1:0;
+  document.getElementById('streakNum').textContent=calcStreak();
 }
 
 function buildGrid(){
@@ -683,5 +714,6 @@ init();
   document.body.innerHTML = '<h2 style="color:#C47A5A">App Fehler\x3C/h2><p style="font-size:16px;margin-top:12px;color:#333">'+e.message+'\x3C/p><p style="font-size:13px;color:#888;margin-top:8px">'+e.stack+'\x3C/p>';
 }
 </script>
+</div>
 </body>
 </html>
