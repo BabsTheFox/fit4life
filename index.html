@@ -152,6 +152,37 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .vision p{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gd);margin-top:5px;}
 .btn{display:inline-flex;align-items:center;gap:7px;padding:12px 22px;border-radius:30px;border:none;cursor:pointer;font-family:'Jost',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:linear-gradient(135deg,var(--gd),var(--g));color:#fff;box-shadow:0 4px 14px rgba(201,169,110,.3);}
 .past-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:18px 0 10px;font-weight:600;}
+
+/* FOOD DIARY */
+.fd-form{background:var(--card);border-radius:14px;padding:16px;margin-bottom:16px;}
+.fd-row{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.fd-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.fd-input{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--t);font-family:inherit;outline:none;box-sizing:border-box;}
+.fd-input:focus{border-color:var(--gd);}
+.fd-select{appearance:none;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A96E' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;padding-right:32px;}
+.fd-sym{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.fd-sym-btn{padding:6px 12px;border-radius:20px;border:1.5px solid var(--border);background:var(--bg);font-size:13px;cursor:pointer;color:var(--t);transition:.2s;}
+.fd-sym-btn.on{border-color:#E8855A;background:#FFF0EC;color:#C4503A;}
+.fd-entry{background:var(--card);border-radius:12px;padding:14px;margin-bottom:10px;border-left:3px solid var(--gd);}
+.fd-entry.has-sym{border-left-color:#E8855A;}
+.fd-entry-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
+.fd-entry-date{font-size:11px;color:var(--muted);}
+.fd-entry-meal{font-size:12px;font-weight:700;color:var(--gd);text-transform:uppercase;letter-spacing:1px;}
+.fd-entry-foods{font-size:14px;color:var(--t);margin-bottom:4px;line-height:1.5;}
+.fd-entry-sym{font-size:12px;color:#C4503A;margin-top:4px;}
+.fd-entry-del{background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;padding:0;line-height:1;}
+.fd-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+.fd-filter-btn{padding:5px 12px;border-radius:20px;border:1.5px solid var(--border);background:var(--bg);font-size:12px;cursor:pointer;color:var(--muted);transition:.2s;}
+.fd-filter-btn.on{border-color:var(--gd);background:var(--card);color:var(--gd);font-weight:700;}
+
+
+/* INLINE FOOD LOG */
+.meal-log{margin:6px 0 2px;display:flex;gap:6px;align-items:center;}
+.meal-log-input{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:7px 10px;font-size:13px;color:var(--t);font-family:inherit;outline:none;}
+.meal-log-input:focus{border-color:var(--gd);}
+.meal-log-input.saved{border-color:var(--sage);background:#F2F8F2;}
+.meal-log-save{background:var(--gd);border:none;border-radius:8px;padding:7px 11px;color:#fff;font-size:15px;cursor:pointer;line-height:1;flex-shrink:0;}
+.meal-log-saved-txt{font-size:11px;color:var(--sage);margin-left:2px;display:none;}
 </style>
 </head>
 <body>
@@ -179,7 +210,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <button class="nb on" onclick="showTab('heute')">Heute</button>
   <button class="nb" onclick="showTab('woche')">Woche</button>
   <button class="nb" onclick="showTab('programm')">Programm</button>
-  <button class="nb" onclick="showTab('ernährung')">Ernährung</button>
+  <button class="nb" onclick="showTab('ernaehrung')">Ernährung</button>
 </div>
 
 <!-- ===== HEUTE ===== -->
@@ -208,38 +239,15 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div id="milestoneReminder" style="display:none;background:linear-gradient(135deg,#FFF0F8,#FFE8F5);border:2px solid #C9A96E;border-radius:14px;padding:16px 18px;margin-bottom:18px;font-size:15px;color:#5C4B35;line-height:1.6;"></div>
 
   <!-- 1. SPAZIERGÄNGE -->
-  <div class="sh first"><h2>🐕 Bewegung = <em>Regeneration</em></h2><div class="sh-line"></div></div>
-  <div class="card">
-    <div class="ci" id="ci-w1" onclick="toggle('w1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Spaziergang mit Enzo (mind. 30 Min · bewusst, ohne Handy)</div><span class="ct wk">Walk</span></div>
-    <div class="ci" id="ci-w2" onclick="toggle('w2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">2. Spaziergang (optional)</div><span class="ct wk">Walk</span></div>
-  </div>
+
 
   <!-- 2. ERNÄHRUNG + SUPPLEMENTS CHRONOLOGISCH -->
-  <div class="sh"><h2><em>Ernährung + Supplements</em></h2><div class="sh-line"></div></div>
+  <div class="sh first"><h2>🏃 Bewegung &amp; <em>Training</em></h2><div class="sh-line"></div></div>
   <div class="card">
-    <!-- MORGENS -->
-    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gd);padding:6px 0 4px">☀️ Morgens</div>
-    <div class="ci" id="ci-f1" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Müsli-Mix + Walnüsse + 2 EL Hanfsamen + 2 EL Weizenkeime + 1 EL Kollagen + 2 Messlöffel Eiweißpulver<span class="sets" style="color:#8B7355">🌿 Gewürze: Zimt + Kardamom + Prise Nelkenpulver + Vanillepulver</span></div><span class="ct fo">07:00</span></div>
-    <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Natriumascorbat · Omega-3 · Vit B-Komplex · L-Lysin · L-Glutamin · CoQ10 200mg · Selen 200mcg · Phosphatidylserin 100mg<span class="sets" style="color:#6A7FBF">💧 mit einem großen Glas Wasser (300ml) einnehmen! (aktiviert Magensäure, bessere Nährstoffaufnahme, Kollagen-Synthese und Entgiftung)</span><span id="vitDHint" class="cl-h"></span></div><span class="ct su">Suppl.</span></div>
-
-    <!-- MITTAGS -->
-    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gd);padding:10px 0 4px">🌞 Mittags</div>
-    <div class="ci" id="ci-ps2" onclick="toggle('ps2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Phosphatidylserin 100mg (zu einer Mahlzeit)<span class="sets" style="color:#6A7FBF">💧 mit einem großen Glas Wasser (300ml) einnehmen! (aktiviert Magensäure, bessere Nährstoffaufnahme, Kollagen-Synthese und Entgiftung)</span></div><span class="ct su">Mittags</span></div>
-    <div class="ci" id="ci-f2" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Protein + 2 Hände Gemüse + 1 TL Leinöl + Kurkuma<span class="sets" style="color:#6A7FBF">💧 vorher: 1 großes Glas Leitungswasser trinken!</span><span class="sets" style="color:#8B7355">🌿 Würzen: Kurkuma + Curry + Paprikapulver + Pfeffer + Salz (Pfeffer aktiviert Kurkuma 20x besser!)</span></div><span class="ct fo">12:00</span></div>
-
-    <!-- ABENDS -->
-    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gd);padding:10px 0 4px">🌙 Abends</div>
-    <div class="ci" id="ci-f4" onclick="toggle('f4')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Abendessen: Protein + viel Gemüse (keine Carbs)<span class="sets" style="color:var(--gd)">alternativ: Nüsse, Hüttenkäse oder Skyr</span></div><span class="ct fo">19:30</span></div>
-    <div class="ci" id="ci-s2" onclick="toggle('s2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Utrogestan 1 Kapsel · Magnesium Verla · Glycin · Phosphatidylserin 100mg<span class="sets" style="color:#6A7FBF">💧 mit einem großen Glas Wasser (300ml) einnehmen! (aktiviert Magensäure, bessere Nährstoffaufnahme, Kollagen-Synthese und Entgiftung)</span></div><span class="ct su">Suppl.</span></div>
-
-    <!-- NO-GO -->
-    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gd);padding:10px 0 4px">🚫 No-Go täglich</div>
-    <div class="ci" id="ci-nogo" onclick="toggle('nogo')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Keine schnellen Carbs (kein Nussbrot, keine weiße Pasta, keine Süßigkeiten)</div><span class="ct fo">No-Go</span></div>
-  </div>
-
-  <!-- 3. TRAINING -->
-  <div class="sh"><h2>💪 <em>Training</em> heute</h2><div class="sh-line"></div></div>
-  <div class="card">
+    <div class="ci" id="ci-w1" onclick="toggle('w1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Morgen-Spaziergang mit Enzo (30+ Min · bewusst, ohne Handy)</div><span class="ct wk">Früh</span></div>
+    <div class="ci" id="ci-w3" onclick="toggle('w3')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Mittags-Spaziergang (optional)</div><span class="ct wk">Optional</span></div>
+    <div class="ci" id="ci-w2" onclick="toggle('w2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Abend-Spaziergang mit Enzo (20+ Min · Abschalten)</div><span class="ct wk">Abends</span></div>
+    <div style="border-top:1px solid var(--border);margin:10px 0 8px;"></div>
     <div class="card-title" id="wTitle"></div>
     <div class="card-sub" id="wSub"></div>
     <div id="wList"></div>
@@ -313,6 +321,42 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div class="card-sub">So · Sanfte Bewegung</div>
     <div class="ci" id="ci-d0-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Spaziergang mit Enzo<span class="sets">30 Min</span></div><span class="ct wk">Walk</span></div>
   </div>
+
+  <div class="sh"><h2><em>Ernährung + Supplements</em></h2><div class="sh-line"></div></div>
+  <div class="card">
+    <!-- MORGENS -->
+    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gd);padding:6px 0 4px">☀️ Morgens</div>
+    <div class="ci" id="ci-f1" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Müsli-Mix + Walnüsse + 2 EL Hanfsamen + 2 EL Weizenkeime + 1 EL Kollagen + 2 Messlöffel Eiweißpulver<span class="sets" style="color:#8B7355">🌿 Gewürze: Zimt + Kardamom + Prise Nelkenpulver + Vanillepulver</span></div><span class="ct fo">07:00</span></div>
+    <div class="meal-log">
+      <input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="this.classList.remove('saved')">
+      <button class="meal-log-save" onclick="saveMealLog('ci-f1','Frühstück')" title="Speichern">&#x2713;</button>
+    </div>
+    <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Natriumascorbat · Omega-3 · Vit B-Komplex · L-Lysin · L-Glutamin · CoQ10 200mg · Selen 200mcg · Phosphatidylserin 100mg<span class="sets" style="color:#6A7FBF">💧 mit einem großen Glas Wasser (300ml) einnehmen! (aktiviert Magensäure, bessere Nährstoffaufnahme, Kollagen-Synthese und Entgiftung)</span><span id="vitDHint" class="cl-h"></span></div><span class="ct su">Suppl.</span></div>
+
+    <!-- MITTAGS -->
+    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gd);padding:10px 0 4px">🌞 Mittags</div>
+    <div class="ci" id="ci-ps2" onclick="toggle('ps2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Phosphatidylserin 100mg (zu einer Mahlzeit)<span class="sets" style="color:#6A7FBF">💧 mit einem großen Glas Wasser (300ml) einnehmen! (aktiviert Magensäure, bessere Nährstoffaufnahme, Kollagen-Synthese und Entgiftung)</span></div><span class="ct su">Mittags</span></div>
+    <div class="ci" id="ci-f2" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Protein + 2 Hände Gemüse + 1 TL Leinöl<span class="sets" style="color:#6A7FBF">💧 vorher: 1 großes Glas Leitungswasser trinken!</span><span class="sets" style="color:#8B7355">🌿 Würzen: Kurkuma + Curry + Paprikapulver + Pfeffer + Salz (Pfeffer aktiviert Kurkuma 20x besser!)</span></div><span class="ct fo">12:00</span></div>
+    <div class="meal-log">
+      <input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="this.classList.remove('saved')">
+      <button class="meal-log-save" onclick="saveMealLog('ci-f2','Mittagessen')" title="Speichern">&#x2713;</button>
+    </div>
+
+    <!-- ABENDS -->
+    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gd);padding:10px 0 4px">🌙 Abends</div>
+    <div class="ci" id="ci-f4" onclick="toggle('f4')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Abendessen: Protein + viel Gemüse (keine Carbs)<span class="sets" style="color:var(--gd)">alternativ: Nüsse, Hüttenkäse oder Skyr</span></div><span class="ct fo">19:30</span></div>
+    <div class="meal-log">
+      <input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="this.classList.remove('saved')">
+      <button class="meal-log-save" onclick="saveMealLog('ci-f4','Abendessen')" title="Speichern">&#x2713;</button>
+    </div>
+    <div class="ci" id="ci-s2" onclick="toggle('s2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Utrogestan 1 Kapsel · Magnesium Verla · Glycin · Phosphatidylserin 100mg<span class="sets" style="color:#6A7FBF">💧 mit einem großen Glas Wasser (300ml) einnehmen! (aktiviert Magensäure, bessere Nährstoffaufnahme, Kollagen-Synthese und Entgiftung)</span></div><span class="ct su">Suppl.</span></div>
+
+    <!-- NO-GO -->
+    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gd);padding:10px 0 4px">🚫 No-Go täglich</div>
+    <div class="ci" id="ci-nogo" onclick="toggle('nogo')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Keine schnellen Carbs (kein Nussbrot, keine weiße Pasta, keine Süßigkeiten)</div><span class="ct fo">No-Go</span></div>
+  </div>
+
+  <!-- 3. TRAINING -->
 
   <!-- JOURNAL -->
   <div class="divider"></div>
@@ -440,7 +484,7 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
 </div>
 
 <!-- ===== ERNAEHRUNG ===== -->
-<div class="panel" id="tab-ernährung">
+<div class="panel" id="tab-ernaehrung">
   <div class="alert"><strong>Dein Rhythmus:</strong> 4-5h zwischen den Mahlzeiten - Frühstück innerhalb 1h nach Aufstehen - Kein Essen nach 20:00 Uhr</div>
   <div class="mc"><div class="mt">07:00 - Frühstück</div><div class="mn">Dein Müsli-Mix</div><div class="md"><strong>Deine Mischung:</strong> Eiweißpulver + Haferflocken + Leinsamen + Chiasamen + Vollkornflocken + Sojapops + <strong>Kuhmilch</strong> + Weizenkeime 2 EL + Walnüsse + halbe Banane<br><br><span style="color:var(--t)">Rosinen + Datteln weglassen - Fruktose + Histaminausloeser!</span><br><br><strong>Alternative:</strong> 2 Rühreier + Zucchini/Spinat + Dinkel-Schrotbrot + 1 TL Leinoel</div><span class="mtag mp">Eiweiß 25g</span><span class="mtag mg">Langsame Carbs</span><span class="mtag mf">Gesunde Fette</span></div>
   <div class="mc"><div class="mt">12:00 - Mittagessen</div><div class="mn">Protein-Hauptmahlzeit</div><div class="md"><strong>Option A (3x/Woche):</strong> Lachs/Forelle 150g + Brokkoli/Zucchini (2 Hände) + Quinoa/Hirse<br><strong>Option B:</strong> Hühnerbrust + buntes Gemüse in Olivenoel + Vollkornreis<br><strong>Option C:</strong> Linsensalat + Spinat + Avocado + Kürbiskerne + Zitronendressing (kein Essig!)<br><strong>Option D:</strong> Kichererbsen-Curry + Hirse + Zucchini</div><span class="mtag mp">Eiweiß 30g</span><span class="mtag mv">2 Hände Gemüse</span></div>
@@ -472,6 +516,56 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
     <div class="sr"><div class="sn">Magnesium Verla</div><div class="sd">tägl.</div><span class="sw sa">Abends</span></div>
     <div class="sr"><div class="sn">Glycin (Schlaf - Kollagen - Entgiftung)</div><div class="sd">tägl.</div><span class="sw sa">Abends</span></div>
   </div>
+
+  <!-- FOOD DIARY -->
+  <div class="sh" style="margin-top:24px"><h2>&#x1F957; Ern&auml;hrungs<em>tagebuch</em></h2><div class="sh-line"></div></div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:14px;">Dokumentiere Mahlzeiten &amp; Histamin-Symptome um Muster zu erkennen.</p>
+
+  <div class="fd-form">
+    <div class="fd-row">
+      <div style="flex:1;min-width:120px">
+        <div class="fd-label">Mahlzeit</div>
+        <select id="fdMeal" class="fd-input fd-select">
+          <option value="Fr&uuml;hst&uuml;ck">&#x2600;&#xFE0F; Fr&uuml;hst&uuml;ck</option>
+          <option value="Mittagessen">&#x1F31E; Mittagessen</option>
+          <option value="Abendessen">&#x1F319; Abendessen</option>
+          <option value="Snack">&#x1F34E; Snack</option>
+        </select>
+      </div>
+      <div style="flex:1;min-width:120px">
+        <div class="fd-label">Datum</div>
+        <input type="date" id="fdDate" class="fd-input">
+      </div>
+    </div>
+    <div class="fd-label">Gegessene Speisen</div>
+    <textarea id="fdFoods" class="fd-input" rows="3" placeholder="z.B. Lachs, Buchweizen, Kurkuma, Curry..." style="resize:vertical;margin-bottom:10px;"></textarea>
+    <div class="fd-label" style="margin-bottom:6px">Symptome antippen falls vorhanden</div>
+    <div class="fd-sym" id="fdSymBtns">
+      <button class="fd-sym-btn" onclick="toggleSym(this)" data-sym="Kopfkratzen">Kopfkratzen</button>
+      <button class="fd-sym-btn" onclick="toggleSym(this)" data-sym="Kopfschmerzen">Kopfschmerzen</button>
+      <button class="fd-sym-btn" onclick="toggleSym(this)" data-sym="Hautreizung">Hautreizung</button>
+      <button class="fd-sym-btn" onclick="toggleSym(this)" data-sym="Muedigkeit">M&uuml;digkeit</button>
+      <button class="fd-sym-btn" onclick="toggleSym(this)" data-sym="Blaehungen">Bl&auml;hungen</button>
+      <button class="fd-sym-btn" onclick="toggleSym(this)" data-sym="Herzrasen">Herzrasen</button>
+      <button class="fd-sym-btn" onclick="toggleSym(this)" data-sym="Flush">Flush/R&ouml;tung</button>
+      <button class="fd-sym-btn" onclick="toggleSym(this)" data-sym="Keine">Keine</button>
+    </div>
+    <div style="margin-top:8px">
+      <div class="fd-label" style="margin-bottom:4px">Notiz (optional)</div>
+      <input type="text" id="fdNote" class="fd-input" placeholder="z.B. sehr m&uuml;de danach, gut vertr&auml;glich...">
+    </div>
+    <button class="btn" style="margin-top:12px;width:100%" onclick="saveFdEntry()">Eintrag speichern</button>
+    <span id="fdMsg" style="display:none;font-size:13px;color:var(--sage);margin-left:8px">Gespeichert!</span>
+  </div>
+
+  <div class="fd-filter" id="fdFilter">
+    <button class="fd-filter-btn on" onclick="filterFd('alle',this)">Alle</button>
+    <button class="fd-filter-btn" onclick="filterFd('Mittagessen',this)">Mittag</button>
+    <button class="fd-filter-btn" onclick="filterFd('Abendessen',this)">Abend</button>
+    <button class="fd-filter-btn" onclick="filterFd('symptome',this)">Mit Symptomen</button>
+  </div>
+  <div id="fdEntries"></div>
+
 </div>
 
 <script>
@@ -543,6 +637,8 @@ function init(){
   document.getElementById('progPct').textContent=pct+'%';
   document.getElementById('progFill').style.width=pct+'%';
   showWorkout();
+  initFd();
+  loadMealLogs();
   loadChecks();
   updateRing();
   buildGrid();
@@ -599,7 +695,7 @@ function toggle(key){
 }
 
 function updateRing(){
-  var fixed=['w1','w2','f1','s1','ps2','f2','f4','s2','nogo'];
+  var fixed=['w1','w3','w2','f1','s1','ps2','f2','f4','s2','nogo'];
   var day=new Date().getDay();
   var done=0,total=0;
   var dw=document.getElementById('dw-'+day);
@@ -709,6 +805,113 @@ function togglePS(h){
 
 // Call init directly - script is at bottom of body so DOM is ready
 init();
+// \u2500\u2500 FOOD DIARY \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+function initFd(){
+  var dateEl=document.getElementById('fdDate');
+  if(dateEl) dateEl.value=TK;
+  renderFd('alle');
+}
+function toggleSym(btn){
+  btn.classList.toggle('on');
+}
+function saveFdEntry(){
+  var meal=document.getElementById('fdMeal').value;
+  var date=document.getElementById('fdDate').value||TK;
+  var foods=document.getElementById('fdFoods').value.trim();
+  var note=document.getElementById('fdNote').value.trim();
+  if(!foods){document.getElementById('fdFoods').focus();return;}
+  var syms=[];
+  document.querySelectorAll('.fd-sym-btn.on').forEach(function(b){syms.push(b.getAttribute('data-sym'));});
+  var S2=lstore();
+  if(!S2.fd)S2.fd=[];
+  S2.fd.unshift({id:Date.now(),date:date,meal:meal,foods:foods,symptoms:syms,note:note});
+  // Keep max 200 entries
+  if(S2.fd.length>200)S2.fd=S2.fd.slice(0,200);
+  sstore(S2);
+  // Reset form
+  document.getElementById('fdFoods').value='';
+  document.getElementById('fdNote').value='';
+  document.querySelectorAll('.fd-sym-btn.on').forEach(function(b){b.classList.remove('on');});
+  var msg=document.getElementById('fdMsg');
+  msg.style.display='inline';
+  setTimeout(function(){msg.style.display='none';},2000);
+  renderFd('alle');
+  document.querySelectorAll('.fd-filter-btn').forEach(function(b){b.classList.remove('on');});
+  document.querySelector('.fd-filter-btn').classList.add('on');
+}
+function filterFd(type,btn){
+  document.querySelectorAll('.fd-filter-btn').forEach(function(b){b.classList.remove('on');});
+  if(btn)btn.classList.add('on');
+  renderFd(type);
+}
+function renderFd(filter){
+  var el=document.getElementById('fdEntries');
+  if(!el)return;
+  var S2=lstore();
+  var entries=S2.fd||[];
+  var filtered=entries.filter(function(e){
+    if(filter==='alle')return true;
+    if(filter==='symptome')return e.symptoms&&e.symptoms.length>0&&e.symptoms[0]!=='Keine';
+    return e.meal===filter;
+  });
+  if(filtered.length===0){
+    el.innerHTML='<div style="text-align:center;padding:24px;color:var(--muted);font-size:14px;">Noch keine Eintr\u00e4ge\x3C/div>';
+    return;
+  }
+  var html='';
+  filtered.forEach(function(e){
+    var hasSym=e.symptoms&&e.symptoms.length>0&&e.symptoms[0]!=='Keine';
+    var symText=e.symptoms&&e.symptoms.length>0?e.symptoms.join(', '):'';
+    var dateStr=e.date?e.date.split('-').reverse().join('.'):'';
+    html+='<div class="fd-entry'+(hasSym?' has-sym':'')+'" id="fde-'+e.id+'">';
+    html+='<div class="fd-entry-head"><div>';
+    html+='<span class="fd-entry-meal">'+e.meal+'\x3C/span>';
+    html+='<span class="fd-entry-date"> &middot; '+dateStr+'\x3C/span>';
+    html+='\x3C/div>';
+    html+='<button class="fd-entry-del" onclick="deleteFd('+e.id+')">&times;\x3C/button>\x3C/div>';
+    html+='<div class="fd-entry-foods">'+e.foods+'\x3C/div>';
+    if(e.note)html+='<div style="font-size:13px;color:var(--muted);margin-top:2px;">'+e.note+'\x3C/div>';
+    if(hasSym)html+='<div class="fd-entry-sym">\u26a0\ufe0f Symptome: '+symText+'\x3C/div>';
+    html+='\x3C/div>';
+  });
+  el.innerHTML=html;
+}
+function deleteFd(id){
+  var S2=lstore();
+  if(!S2.fd)return;
+  S2.fd=S2.fd.filter(function(e){return e.id!==id;});
+  sstore(S2);
+  renderFd('alle');
+}
+
+// \u2500\u2500 MEAL LOG (inline food diary) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+function saveMealLog(ciId, label){
+  var inp=document.getElementById('log-'+ciId);
+  if(!inp||!inp.value.trim())return;
+  var S2=lstore();
+  if(!S2.fd)S2.fd=[];
+  // Remove existing entry for same meal+day
+  S2.fd=S2.fd.filter(function(e){return !(e.date===TK&&e.meal===label);});
+  S2.fd.unshift({id:Date.now(),date:TK,meal:label,foods:inp.value.trim(),symptoms:[],note:''});
+  if(S2.fd.length>200)S2.fd=S2.fd.slice(0,200);
+  sstore(S2);
+  inp.classList.add('saved');
+  inp.title='Gespeichert \u2713';
+  if(typeof renderFd==='function')renderFd('alle');
+}
+function loadMealLogs(){
+  var S2=lstore();
+  var entries=S2.fd||[];
+  var meals={'ci-f1':'Fr\u00FChst\u00FCck','ci-f2':'Mittagessen','ci-f4':'Abendessen'};
+  Object.keys(meals).forEach(function(ciId){
+    var inp=document.getElementById('log-'+ciId);
+    if(!inp)return;
+    var label=meals[ciId];
+    var entry=entries.find(function(e){return e.date===TK&&e.meal===label;});
+    if(entry){inp.value=entry.foods;inp.classList.add('saved');}
+  });
+}
+
 } catch(e) {
   document.body.style.cssText = 'background:#fff;padding:30px;font-family:sans-serif;';
   document.body.innerHTML = '<h2 style="color:#C47A5A">App Fehler\x3C/h2><p style="font-size:16px;margin-top:12px;color:#333">'+e.message+'\x3C/p><p style="font-size:13px;color:#888;margin-top:8px">'+e.stack+'\x3C/p>';
