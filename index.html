@@ -191,14 +191,14 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .mx-r.warn{color:#C4503A;}
 .meal-time-inp{background:none;border:none;border-bottom:1px dashed var(--border);font-size:12px;color:var(--muted);width:60px;text-align:center;outline:none;padding:2px 4px;font-family:inherit;}
 .meal-time-inp:focus{border-bottom-color:var(--gd);}
-.sec-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:8px 0 5px;display:flex;justify-content:space-between;align-items:center;}
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 0 6px;display:flex;justify-content:space-between;align-items:center;color:var(--gd);}
 .sec-lbl .time-wrap{font-size:11px;font-weight:400;color:var(--muted);letter-spacing:0;}
 .yt-sm{display:inline-block;font-size:10px;background:rgba(201,169,110,.15);color:var(--gd);border-radius:4px;padding:2px 6px;text-decoration:none;margin-left:6px;white-space:nowrap;}
 
 /* INLINE BENEFIT FORMAT */
-.mx-inline{padding:3px 0;font-size:13.5px;line-height:1.5;color:var(--t);}
-.mx-inline strong{font-size:14px;font-weight:700;color:var(--t);display:block;margin-top:4px;}
-.mx-ben{color:var(--sage);font-size:12px;margin-left:4px;}
+.mx-inline{padding:2px 0;font-size:14px;line-height:1.6;color:var(--t);}
+.mx-inline strong{font-size:13px;font-weight:700;color:var(--gd);display:block;margin-top:6px;letter-spacing:.5px;text-transform:uppercase;}
+.mx-ben{color:var(--muted);font-size:12px;margin-left:4px;}
 .mx-ben.warn{color:#C4503A;}
 
 </style>
@@ -346,7 +346,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div class="sec-lbl" style="color:var(--gd)">&#x2600;&#xFE0F; Morgens<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-morn" type="time" onchange="saveTi('morn')" placeholder="07:00"></span></div>
 
     <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
-      <div class="mx"><div class="mx-l"><strong>Supplements</strong> (mit gro&szlig;em Glas Wasser)</div><div class="mx-r" style="color:#6A7FBF">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div></div>
+      <div class="mx"><div class="mx-l"><strong>Supplements</strong></div><div class="mx-r" style="color:#6A7FBF">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div></div>
       <div class="mx-inline">Natriumascorbat<span class="mx-ben">Immunsystem, Kollagen-Bildung, Antioxidans</span></div>
       <div class="mx-inline">Omega-3<span class="mx-ben">Entzündungen&#x2193;, Herz, Gehirn, Haut</span></div>
       <div class="mx-inline">Vit B-Komplex<span class="mx-ben">Energie, Nerven, B12 genetisch niedrig!</span></div>
@@ -371,7 +371,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div class="sec-lbl" style="color:var(--gd);margin-top:8px">&#x1F31E; Mittags<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi('noon')" placeholder="07:00"></span></div>
 
     <div class="ci" id="ci-ps2" onclick="toggle('ps2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
-      <div class="mx"><div class="mx-l"><strong>Supplements</strong> (mit gro&szlig;em Glas Wasser)</div><div class="mx-r" style="color:#6A7FBF">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div></div>
+      <div class="mx"><div class="mx-l"><strong>Supplements</strong></div><div class="mx-r" style="color:#6A7FBF">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div></div>
       <div class="mx-inline">Phosphatidylserin 1 Kapsel (100mg)<span class="mx-ben">Konzentration, Gedächtnis, Müdigkeit&#x2193;</span></div>
     </div></div>
 
@@ -388,7 +388,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div class="sec-lbl" style="color:var(--gd);margin-top:8px">&#x1F319; Abends<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-eve" type="time" onchange="saveTi('eve')" placeholder="07:00"></span></div>
 
     <div class="ci" id="ci-s2" onclick="toggle('s2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
-      <div class="mx"><div class="mx-l"><strong>Supplements</strong> (mit gro&szlig;em Glas Wasser)</div><div class="mx-r" style="color:#6A7FBF">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div></div>
+      <div class="mx"><div class="mx-l"><strong>Supplements</strong></div><div class="mx-r" style="color:#6A7FBF">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div></div>
       <div class="mx-inline">Utrogestan 1 Kapsel<span class="mx-ben">Hormonhaushalt, Schlaf, Postmenopause</span></div>
       <div class="mx-inline">Magnesium Verla<span class="mx-ben">Muskelentspannung, Schlaf, Nerven</span></div>
       <div class="mx-inline">Glycin<span class="mx-ben">Kollagen-Baustein, Schlafqualität&#x2191;</span></div>
@@ -404,7 +404,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     </div></div>
     <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="this.classList.remove('saved')"><button class="meal-log-save" onclick="saveMealLog('ci-f4','Abendessen')" title="Speichern">&#x2713;</button></div>
 
-  </div>  </div>
+  </div>  
 
   <!-- 3. TRAINING -->
 
@@ -436,6 +436,8 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
   <div style="text-align:center;margin-top:20px">
     <button class="btn" onclick="saveDay()">Tag abschließen</button>
   </div>
+
+</div>
 
 <!-- ===== WOCHE ===== -->
 <div class="panel" id="tab-woche">
@@ -576,8 +578,7 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
     <div class="mx-inline">Phosphatidylserin 1 Kapsel (100mg)<span class="mx-ben">Cortisol↓, Regeneration, Schlaf↑</span></div></div>
     <div style="margin-top:8px"><div class="mx-inline"><strong>Samstags:</strong></div>
     <div class="mx-inline">Vitamin D Dekristol 20.000 I.E. + K2<span class="mx-ben">Knochen, Immunsystem, Postmenopause</span></div></div>
-  </div>
-
+  
 </div>
 
 <script>
