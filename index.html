@@ -34,7 +34,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .panel{display:none;padding:18px 16px 80px;max-width:860px;margin:0 auto;}
 .panel.on{display:block;}
 /* SECTION HEADER */
-.sh{display:flex;align-items:baseline;gap:10px;margin:24px 0 13px;}
+.sh{display:flex;align-items:baseline;gap:10px;margin:14px 0 8px;}
 .sh.first{margin-top:0;}
 .sh h2{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;color:var(--deep);white-space:nowrap;margin:0;}
 .sh h2 em{font-style:italic;color:var(--t);}
@@ -257,54 +257,89 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div id="milestoneReminder" style="display:none;background:linear-gradient(135deg,#FFF0F8,#FFE8F5);border:2px solid #C9A96E;border-radius:14px;padding:16px 18px;margin-bottom:18px;font-size:15px;color:#5C4B35;line-height:1.6;"></div>
 
-  <!-- 1. SPAZIERGÄNGE -->
 
-
-  <!-- 2. ERNÄHRUNG + SUPPLEMENTS CHRONOLOGISCH -->
-  <div class="sh first"><h2>🏃 Bewegung &amp; <em>Training</em></h2><div class="sh-line"></div></div>
+  <div class="sh first"><h2>&#x1F3C3; Bewegung &amp; <em>Training</em></h2><div class="sh-line"></div></div>
   <div class="card">
     <div class="ci" id="ci-w1" onclick="toggle('w1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Morgen-Spaziergang mit Enzo</div><span class="ct wk">Früh</span></div>
   </div>
 
-  <!-- ERNÄHRUNG & SUPPLEMENTS -->
-  <div class="sh"><h2>Ernährung &amp; <em>Supplements</em></h2><div class="sh-line"></div></div>
+  <div class="sh"><h2>Supplements <em>Morgens</em></h2><div class="sh-line"></div></div>
   <div class="card">
-    <div class="sec-lbl">&#x2600;&#xFE0F; Morgens — sofort: Licht + Frühstück innert 60 Min!<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-suppl" type="time" onchange="saveTi('suppl')" placeholder="07:00"></span></div>
-    <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Supplements</strong> <span id="vitDHint" style="display:inline;font-size:12px;color:#C9A96E;font-weight:600;"></span></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen&#x2193;, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol&#x2193;, Brain Fog&#x2193;</div></div><div class="mx"><div class="mx-l">Estrogel 1 Hub (Unterarm/Schulter)</div><div class="mx-r" style="color:#C9A96E;font-weight:700">Östrogen&#x2191;, Energie&#x2191;, Schlaf&#x2191;, Brain Fog&#x2193;</div></div></div><span class="ct su">Suppl.</span></div>
-    <div class="sec-lbl" style="margin-top:6px">&#x2600;&#xFE0F; Frühstück<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-frueh" type="time" onchange="saveTi('frueh')" placeholder="08:00"></span></div>
-    <div class="ci" id="ci-f1" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Frühstück</strong></div><div class="mx-r" style="color:#8B7355">&#x1F33F; Zimt Kardamom Nelken Vanille</div></div><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + 2 EL Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">2 EL Weizenkeime + 1 EL Kollagen (10g)</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div></div><span class="ct fo">Früh</span></div>
+    <div class="ci" id="ci-suppl-suppl" onclick="toggle('suppl-suppl')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
+      <div style="display:flex;align-items:center;justify-content:space-between"><div style="color:#6A7FBF;font-size:13px;font-weight:600;flex:1">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><input class="meal-time-inp" id="ti-suppl" type="time" onchange="saveTi('suppl')" placeholder="07:00"></div>
+      <div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div>
+      <div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen&#x2193;, Herz, Gehirn, Haut</div></div>
+      <div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div>
+      <div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div>
+      <div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div>
+      <div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div>
+      <div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div>
+      <div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol&#x2193;, Brain Fog&#x2193;</div></div>
+      <div class="mx"><div class="mx-l">Estrogel 1 Hub (Unterarm/Schulter)</div><div class="mx-r"><span style="color:#C9A96E;font-weight:700">Östrogen&#x2191;, Energie&#x2191;, Schlaf&#x2191;, Brain Fog&#x2193;</span></div></div>
+      <div id="vitDHint" style="display:none" class="mx"><div class="mx-l">Vitamin D Dekristol 20.000 I.E.</div><div class="mx-r">Knochen, Immunsystem, Postmenopause</div></div>
+    </div><span class="ct su">Suppl.</span></div>
+  </div>
+
+  <div class="sh"><h2>&#x2600;&#xFE0F; <em>Frühstück</em></h2><div class="sh-line"></div></div>
+  <div class="card">
+    <div class="ci" id="ci-f1" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
+      <div style="display:flex;align-items:center;justify-content:space-between"><div style="color:#8B7355;font-size:13px;flex:1">&#x1F33F; Zimt · Kardamom · Nelken · Vanille</div><input class="meal-time-inp" id="ti-frueh" type="time" onchange="saveTi('frueh')" placeholder="07:30"></div>
+      <div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + 2 EL Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div>
+      <div class="mx"><div class="mx-l">2 EL Weizenkeime + 1 EL Kollagen (10g)</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div>
+    </div><span class="ct fo">Früh</span></div>
     <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="this.classList.remove('saved')"><button class="meal-log-save" onclick="saveMealLog('ci-f1','Frühstück')" title="Speichern">&#x2713;</button></div>
-    <div class="sec-lbl" style="margin-top:8px">&#x1F31E; Mittags<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi('noon')" placeholder="12:00"></span></div>
-    <div class="ci" id="ci-ps2" onclick="toggle('ps2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Supplements</strong></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Konzentration, Gedächtnis, Müdigkeit&#x2193;</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 2. Kapsel (Tagesdosis)</div><div class="mx-r">Statt abends — schont Cortisol-Aufwachreaktion</div></div></div><span class="ct su">Suppl.</span></div>
-    <div class="ci" id="ci-f2" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Mittagessen</strong></div><div class="mx-r" style="color:#8B7355">&#x1F33F; Kurkuma Curry Paprika Pfeffer Salz</div></div><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Fast Carbs! <span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie&#x2193;</span></div></div></div><span class="ct fo">Mittag</span></div>
+  </div>
+
+  <div class="sh"><h2>Supplements <em>Mittags</em></h2><div class="sh-line"></div></div>
+  <div class="card">
+    <div class="ci" id="ci-suppl-noon" onclick="toggle('suppl-noon')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
+      <div style="display:flex;align-items:center;justify-content:space-between"><div style="color:#6A7FBF;font-size:13px;font-weight:600;flex:1">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi('noon')" placeholder="12:00"></div>
+      <div class="mx"><div class="mx-l">Phosphatidylserin 2 Kapseln (Tagesdosis)</div><div class="mx-r">Konzentration, Gedächtnis, Müdigkeit&#x2193; — statt abends: schont Cortisol-Aufwachreaktion</div></div>
+    </div><span class="ct su">Suppl.</span></div>
+  </div>
+
+  <div class="sh"><h2>&#x1F31E; <em>Mittagessen</em></h2><div class="sh-line"></div></div>
+  <div class="card">
+    <div class="ci" id="ci-f2" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
+      <div style="display:flex;align-items:center;justify-content:space-between"><div style="color:#8B7355;font-size:13px;flex:1">&#x1F33F; Kurkuma · Curry · Paprika · Pfeffer · Salz</div><input class="meal-time-inp" id="ti-noon-eat" type="time" onchange="saveTi('noon-eat')" placeholder="12:30"></div>
+      <div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div>
+      <div class="mx warn"><div class="mx-l" style="font-size:14px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Fast Carbs! <span style="color:#C4503A;font-size:12px">Glycation: zerstört Kollagen, Energie&#x2193;</span></div></div>
+    </div><span class="ct fo">Mittag</span></div>
     <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="this.classList.remove('saved')"><button class="meal-log-save" onclick="saveMealLog('ci-f2','Mittagessen')" title="Speichern">&#x2713;</button></div>
   </div>
 
+
+  <div class="sh"><h2>&#x1F3C3; Bewegung &amp; <em>Training</em></h2><div class="sh-line"></div></div>
   <div class="card">
     <div class="ci" id="ci-w3" onclick="toggle('w3')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Mittags-Spaziergang mit Enzo (nach dem Mittagessen)</div><span class="ct wk">Mittag</span></div>
   </div>
 
 
-
+  <div class="sh"><h2>&#x1F319; <em>Abendessen</em></h2><div class="sh-line"></div></div>
   <div class="card">
-    <div class="ci" id="ci-w2" onclick="toggle('w2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Abend-Spaziergang mit Enzo (vor dem Abendessen)</div><span class="ct wk">Abends</span></div>
-  </div>
-
-  <div class="card">
-    <div class="sec-lbl" style="margin-top:0">&#x1F319; Abends<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-eve" type="time" onchange="saveTi('eve')" placeholder="19:30"></span></div>
-    <div class="ci" id="ci-f4" onclick="toggle('f4')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Abendessen</strong></div></div><div class="mx"><div class="mx-l">Protein + viel Gemüse</div><div class="mx-r">Muskelregeneration, Vitamine</div></div><div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Topfen oder Naturjoghurt</div><div class="mx-r">Protein, gesunde Fette</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Carbs abends! <span style="color:#C4503A;font-size:13px">Fettspeicherung&#x2191;, Schlaf&#x2193;</span></div></div></div><span class="ct fo">Abends</span></div>
+    <div class="ci" id="ci-f4" onclick="toggle('f4')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0"><div style="font-size:15px;color:var(--deep);font-weight:500;flex:1">Protein + viel Gemüse<span style="color:var(--gd);font-size:12px;font-weight:600;margin-left:6px">Muskelregeneration, Vitamine</span></div><input class="meal-time-inp" id="ti-eve-eat" type="time" onchange="saveTi('eve-eat')" placeholder="19:00"></div>
+      <div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Buttermilch, Acidophilusmilch oder Kefir</div><div class="mx-r">Protein, Probiotika, Histaminarm</div></div>
+      <div class="mx warn"><div class="mx-l" style="font-size:14px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Carbs abends! <span style="color:#C4503A;font-size:12px">Fettspeicherung&#x2191;, Schlaf&#x2193;</span></div></div>
+    </div><span class="ct fo">Abends</span></div>
     <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="this.classList.remove('saved')"><button class="meal-log-save" onclick="saveMealLog('ci-f4','Abendessen')" title="Speichern">&#x2713;</button></div>
-    <div class="ci" id="ci-s2" onclick="toggle('s2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Abend-Supplements</strong></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität&#x2191;</div></div></div><span class="ct su">Suppl.</span></div>
   </div>
 
+  <div class="sh"><h2>&#x1F3C3; Bewegung &amp; <em>Training</em></h2><div class="sh-line"></div></div>
   <div class="card">
-    <div style="border-top:1px solid var(--border);margin:10px 0 8px;"></div>
-    <div class="card-title" id="wTitle"></div>
-    <div class="card-sub" id="wSub"></div>
-    <div id="wList"></div>
+    <div class="ci" id="ci-w2" onclick="toggle('w2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Abend-Spaziergang mit Enzo</div><span class="ct wk">Abends</span></div>
   </div>
 
-  <!-- Tagesworkouts (hidden, shown by JS) -->
+  <div class="sh"><h2>Supplements <em>Abends</em></h2><div class="sh-line"></div></div>
+  <div class="card">
+    <div class="ci" id="ci-suppl-eve" onclick="toggle('suppl-eve')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
+      <div style="display:flex;align-items:center;justify-content:space-between"><div style="color:#6A7FBF;font-size:13px;font-weight:600;flex:1">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><input class="meal-time-inp" id="ti-eve" type="time" onchange="saveTi('eve')" placeholder="20:00"></div>
+      <div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div>
+      <div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div>
+      <div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität&#x2191;</div></div>
+    </div><span class="ct su">Suppl.</span></div>
+  </div>
+
 
   <!-- Montag Kraft A -->
   <div class="card dw" id="dw-1">
@@ -539,7 +574,7 @@ var QUOTES=[
   'Konsequenz schl\u00e4gt Perfektion. Jeden. Tag.',
   'Du bist nicht zu alt. Du f\u00e4ngst heute an.',
   'Der Spaziergang mit Enzo ist auch deine Medizin.',
-  'Staerke entsteht nicht im Komfort, sondern durch Ueberwindung.'
+  'St\u00e4rke entsteht nicht im Komfort, sondern durch \u00dcberwindung.'
 ];
 
 function tkey(){var d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1<10?'0':'')+(d.getMonth()+1)+'-'+(d.getDate()<10?'0':'')+d.getDate();}
@@ -577,7 +612,7 @@ function init(){
   document.getElementById('heroMonth').textContent=MONTHS[now.getMonth()]+' '+now.getFullYear();
   document.getElementById('jDate').textContent=now.getDate()+'. '+MONTHS[now.getMonth()]+' '+now.getFullYear();
   document.getElementById('quoteText').textContent=QUOTES[Math.floor(Math.random()*QUOTES.length)];
-  if(now.getDay()===6){document.getElementById('vitDHint').textContent='Vitamin D Dekristol 20.000 I.E.';}
+  if(now.getDay()===6){document.getElementById('vitDHint').style.display='flex';}
   // Milestone reminders at 3, 6, 9 months from May 2026
   var startDate=new Date(2026,3,27);
   var monthsDiff=Math.round((now-startDate)/(1000*60*60*24*30.5));
@@ -653,7 +688,7 @@ function toggle(key){
 }
 
 function updateRing(){
-  var fixed=['w1','w3','w2','s1','f1','ps2','f2','f4','s2'];
+  var fixed=['w1','suppl-suppl','f1','w3','suppl-noon','f2','f4','w2','suppl-eve'];
   var day=new Date().getDay();
   var done=0,total=0;
   var dw=document.getElementById('dw-'+day);
@@ -883,7 +918,7 @@ function saveTi(id){
 function loadTimes(){
   var S2=lstore();
   var t=(S2.times&&S2.times[TK])||{};
-  ['suppl','frueh','noon','eve'].forEach(function(id){
+  ['suppl','frueh','noon','noon-eat','eve-eat','eve'].forEach(function(id){
     var inp=document.getElementById('ti-'+id);
     if(inp&&t[id])inp.value=t[id];
   });
