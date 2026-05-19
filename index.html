@@ -187,9 +187,10 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 /* COMPACT MEAL/SUPPL LAYOUT */
 .mx{padding:3px 0;}
 .mx-l{font-size:15px;color:var(--deep);font-weight:500;display:block;}
+.meal-ci .mx-l{font-size:14px;}
 .mx-r{font-size:13px;color:var(--gd);font-weight:600;line-height:1.4;}
 .mx-r.warn{color:#C4503A;}
-.meal-time-inp{background:none;border:none;border-bottom:1px dashed var(--border);font-size:12px;color:var(--muted);width:72px;text-align:center;min-width:72px;outline:none;padding:2px 4px;font-family:inherit;}
+.meal-time-inp{background:none;border:none;border-bottom:1px dashed var(--border);font-size:12px;color:var(--muted);width:56px;text-align:center;min-width:56px;outline:none;padding:2px 4px;font-family:inherit;}
 .meal-time-inp:focus{border-bottom-color:var(--gd);}
 .sec-lbl{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 0 6px;display:flex;justify-content:space-between;align-items:center;color:var(--gd);}
 .sec-lbl .time-wrap{font-size:11px;font-weight:400;color:var(--muted);letter-spacing:0;}
@@ -282,10 +283,10 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div class="sh"><h2>&#x2600;&#xFE0F; <em>Frühstück</em></h2><div class="sh-line"></div></div>
   <div class="card">
-    <div class="ci" id="ci-f1" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
-      <div style="display:flex;align-items:center;justify-content:space-between"><div style="color:#8B7355;font-size:13px;flex:1">&#x1F33F; Zimt · Kardamom · Nelken · Vanille</div><input class="meal-time-inp" id="ti-frueh" type="time" onchange="saveTi('frueh')" placeholder="07:30"></div>
-      <div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + 2 EL Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div>
-      <div class="mx"><div class="mx-l">2 EL Weizenkeime + 1 EL Kollagen (10g)</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div>
+    <div class="ci" id="ci-f1" class="meal-ci" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
+      <div style="display:flex;align-items:center;justify-content:space-between"><div style="color:#8B7355;font-size:12px;flex:1">&#x1F33F; Zimt · Kardamom · Nelken · Vanille</div><input class="meal-time-inp" id="ti-frueh" type="time" onchange="saveTi('frueh')" placeholder="07:30"></div>
+      <div class="mx"><div class="mx-l">Müsli, Walnüsse, 2 EL Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div>
+      <div class="mx"><div class="mx-l">2 EL Weizenkeime, 1 EL Kollagen</div><div class="mx-r">Vit E, Zink, Kollagen</div></div>
     </div></div>
     <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="this.classList.remove('saved')"><button class="meal-log-save" onclick="saveMealLog('ci-f1','Frühstück')" title="Speichern">&#x2713;</button></div>
   </div>
@@ -300,10 +301,10 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div class="sh"><h2>&#x1F31E; <em>Mittagessen</em></h2><div class="sh-line"></div></div>
   <div class="card">
-    <div class="ci" id="ci-f2" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
-      <div style="display:flex;align-items:center;justify-content:space-between"><div style="color:#8B7355;font-size:13px;flex:1">&#x1F33F; Kurkuma · Curry · Paprika · Pfeffer · Salz</div><input class="meal-time-inp" id="ti-noon-eat" type="time" onchange="saveTi('noon-eat')" placeholder="12:30"></div>
-      <div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div>
-      <div class="mx warn"><div class="mx-l" style="font-size:14px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Fast Carbs! <span style="color:#C4503A;font-size:12px">Glycation: zerstört Kollagen, Energie&#x2193;</span></div></div>
+    <div class="ci" id="ci-f2" class="meal-ci" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
+      <div style="display:flex;align-items:center;justify-content:space-between"><div style="color:#8B7355;font-size:12px;flex:1">&#x1F33F; Kurkuma · Curry · Paprika · Pfeffer · Salz</div><input class="meal-time-inp" id="ti-noon-eat" type="time" onchange="saveTi('noon-eat')" placeholder="12:30"></div>
+      <div class="mx"><div class="mx-l">Protein, Gemüse, 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3</div></div>
+      <div class="mx warn"><div class="mx-l" style="font-size:14px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Fast Carbs! zerstört Kollagen, Energie&#x2193;</div></div>
     </div></div>
     <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="this.classList.remove('saved')"><button class="meal-log-save" onclick="saveMealLog('ci-f2','Mittagessen')" title="Speichern">&#x2713;</button></div>
   </div>
@@ -317,10 +318,10 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div class="sh"><h2>&#x1F319; <em>Abendessen</em></h2><div class="sh-line"></div></div>
   <div class="card">
-    <div class="ci" id="ci-f4" onclick="toggle('f4')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0"><div style="font-size:15px;color:var(--deep);font-weight:500;flex:1">Protein + viel Gemüse<span style="color:var(--gd);font-size:12px;font-weight:600;margin-left:6px">Muskelregeneration, Vitamine</span></div><input class="meal-time-inp" id="ti-eve-eat" type="time" onchange="saveTi('eve-eat')" placeholder="19:00"></div>
-      <div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Buttermilch, Acidophilusmilch oder Kefir</div><div class="mx-r">Protein, Probiotika, Histaminarm</div></div>
-      <div class="mx warn"><div class="mx-l" style="font-size:14px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Carbs abends! <span style="color:#C4503A;font-size:12px">Fettspeicherung&#x2191;, Schlaf&#x2193;</span></div></div>
+    <div class="ci" id="ci-f4" class="meal-ci" onclick="toggle('f4')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0"><div style="font-size:15px;color:var(--deep);font-weight:500;flex:1">Protein, viel Gemüse<br><span style="color:var(--gd);font-size:12px;font-weight:600;">Muskelregeneration, Vitamine</span></div><input class="meal-time-inp" id="ti-eve-eat" type="time" onchange="saveTi('eve-eat')" placeholder="19:00"></div>
+      <div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Buttermilch, Kefir oder Acidophilus</div><div class="mx-r">Protein, Probiotika, Histaminarm</div></div>
+      <div class="mx warn"><div class="mx-l" style="font-size:14px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Carbs abends! Fettspeicherung&#x2191;, Schlaf&#x2193;</div></div>
     </div></div>
     <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="this.classList.remove('saved')"><button class="meal-log-save" onclick="saveMealLog('ci-f4','Abendessen')" title="Speichern">&#x2713;</button></div>
   </div>
@@ -341,15 +342,15 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   </div>
 
 
-  <div class="sh"><h2>&#x1F3C3; Bewegung &amp; <em>Training</em></h2><div class="sh-line"></div></div>
+  <div class="sh" id="trainingHeader"><h2>&#x1F3C3; Bewegung &amp; <em>Training</em></h2><div class="sh-line"></div></div>
 
   <!-- Montag Kraft A -->
   <div class="card dw" id="dw-1">
     <div class="card-title">Kraft A - Oberkörper + Core</div>
     <div class="card-sub">Mo · 35 Min · 4 Sätze</div>
     <div class="ci" id="ci-d1-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Liegestütze (Wand → Knie → Voll steigern)<span class="sets">4 x 12-15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=push+up+beginner+technique" target="_blank">&#x25B6; YT</a></span></div></div>
-    <div class="ci" id="ci-d1-ex1"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Tischrudern (Untergriff)<span class="sets">4 x 12-15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=table+row+back+exercise+home" target="_blank">&#x25B6; YT</a></span></div></div>
-    <div class="ci" id="ci-d1-ex2"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Schulterpress mit Widerstandsband<span class="sets">3 x 15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=resistance+band+shoulder+press" target="_blank">&#x25B6; YT</a></span></div></div>
+    <div class="ci" id="ci-d1-ex1"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Hantel-Rudern vorgebeugt (1,5kg)<span class="sets">4 x 12-15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=dumbbell+bent+over+row+beginner" target="_blank">&#x25B6; YT</a></span></div></div>
+    <div class="ci" id="ci-d1-ex2"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Schulterpress mit Hanteln (1,5kg)<span class="sets">3 x 15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=dumbbell+shoulder+press+beginner" target="_blank">&#x25B6; YT</a></span></div></div>
     <div class="ci" id="ci-d1-ex3"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Bizepscurls + Trizeps-Dips am Stuhl<span class="sets">3 x 15+12 <a class="yt-sm" href="https://www.youtube.com/results?search_query=bicep+curl+tricep+dip+exercise" target="_blank">&#x25B6; YT</a></span></div></div>
     <div class="ci" id="ci-d1-ex4"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Plank halten (20 → 40 Sek)<span class="sets">3 x 30-45s <a class="yt-sm" href="https://www.youtube.com/results?search_query=plank+core+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div></div>
     <div class="ci" id="ci-d1-ex5"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Dead Bug<span class="sets">3 x 10/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=dead+bug+exercise+core+back" target="_blank">&#x25B6; YT</a></span></div></div>
@@ -386,7 +387,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div class="card dw" id="dw-5">
     <div class="card-title">Kraft C - Ganzkörper-Power</div>
     <div class="card-sub">Fr · 35 Min · 3-4 Sätze</div>
-    <div class="ci" id="ci-d5-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Squat to Overhead Press<span class="sets">4 x 15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+to+overhead+press+band" target="_blank">&#x25B6; YT</a></span></div></div>
+    <div class="ci" id="ci-d5-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Squat to Overhead Press mit Hanteln (1,5kg)<span class="sets">4 x 15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+to+overhead+press+band" target="_blank">&#x25B6; YT</a></span></div></div>
     <div class="ci" id="ci-d5-ex1"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Romanian Deadlift einbeinig<span class="sets">3 x 12/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=single+leg+romanian+deadlift" target="_blank">&#x25B6; YT</a></span></div></div>
     <div class="ci" id="ci-d5-ex2"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Push-up + T-Rotation<span class="sets">3 x 10/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=push+up+t+rotation+exercise" target="_blank">&#x25B6; YT</a></span></div></div>
     <div class="ci" id="ci-d5-ex3"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Reverse Lunge + Knieheben<span class="sets">3 x 12/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=reverse+lunge+knee+raise" target="_blank">&#x25B6; YT</a></span></div></div>
@@ -648,8 +649,9 @@ function showWorkout(){
   for(var i=0;i<divs.length;i++){
     divs[i].style.display='none';
   }
+  var walkDaysCheck=[0,2,4];
   var el=document.getElementById('dw-'+day);
-  if(el){
+  if(el&&walkDaysCheck.indexOf(day)===-1){
     el.style.display='block';
     var cis=el.querySelectorAll('.ci');
     for(var j=0;j<cis.length;j++){
@@ -661,6 +663,8 @@ function showWorkout(){
       })(cis[j]);
     }
   }
+  var hdr=document.getElementById('trainingHeader');
+  if(hdr)hdr.style.display=(walkDaysCheck.indexOf(day)!==-1?'none':'block');
 }
 
 function loadChecks(){
