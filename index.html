@@ -44,10 +44,10 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .card-title{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--mid);margin-bottom:2px;}
 .card-sub{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
 /* CHECKLIST */
-.ci{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--sand);flex-wrap:nowrap;cursor:pointer;user-select:none;}
+.ci{display:flex;align-items:flex-start;gap:8px;padding:10px 0;border-bottom:1px solid var(--sand);flex-wrap:nowrap;cursor:pointer;user-select:none;}
 .ci:last-child{border-bottom:none;}
 .ci.done{opacity:.42;}
-.cb{width:25px;height:25px;border-radius:7px;border:2px solid var(--g);background:transparent;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s;}
+.cb{width:20px;height:20px;border-radius:6px;border:2px solid var(--g);background:transparent;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s;}
 .ci.done .cb{background:var(--g);border-color:var(--g);}
 .ck{display:none;}
 .ci.done .ck{display:block;}
@@ -295,7 +295,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div class="card">
     <div class="ci" id="ci-suppl-noon" onclick="toggle('suppl-noon')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">
       <div style="display:flex;align-items:center;justify-content:space-between"><div style="color:#6A7FBF;font-size:13px;font-weight:600;flex:1">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi('noon')" placeholder="12:00"></div>
-      <div class="mx"><div class="mx-l">Phosphatidylserin 2 Kapseln (Tagesdosis)</div><div class="mx-r">Konzentration, Gedächtnis, Müdigkeit&#x2193; — statt abends: schont Cortisol-Aufwachreaktion</div></div>
+      <div class="mx"><div class="mx-l">Phosphatidylserin 2 Kapseln</div><div class="mx-r">Konzentration, Gedächtnis, Müdigkeit&#x2193; — statt abends: schont Cortisol-Aufwachreaktion</div></div>
     </div></div>
   </div>
 
@@ -312,7 +312,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div class="sh"><h2>&#x1F3C3; Bewegung &amp; <em>Training</em></h2><div class="sh-line"></div></div>
   <div class="card">
-    <div class="ci" id="ci-w3" onclick="toggle('w3')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Mittags-Spaziergang mit Enzo (nach dem Mittagessen)</div></div>
+    <div class="ci" id="ci-w3" onclick="toggle('w3')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Mittags-Spaziergang mit Enzo</div></div>
   </div>
 
 
