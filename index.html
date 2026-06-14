@@ -272,12 +272,11 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div class="sh"><h2>Ernährung &amp; <em>Supplements</em></h2><div class="sh-line"></div></div>
   <div class="card">
     <div class="sec-lbl">&#x2600;&#xFE0F; Morgens<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-suppl" type="time" onchange="saveTi('suppl')" placeholder="07:00"></span></div>
-    <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Supplements</strong> <span id="vitDHint" style="display:inline;font-size:12px;color:#C9A96E;font-weight:600;"></span></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen&#x2193;, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol&#x2193;, Brain Fog&#x2193;</div></div></div><span class="ct su">Suppl.</span></div>
+    <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Supplements</strong> <span id="vitDHint" style="display:inline;font-size:12px;color:#C9A96E;font-weight:600;"></span></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen&#x2193;, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 3 Kapseln</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol&#x2193;, Brain Fog&#x2193;</div></div></div><span class="ct su">Suppl.</span></div>
     <div class="sec-lbl" style="margin-top:6px">&#x2600;&#xFE0F; Frühstück<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-frueh" type="time" onchange="saveTi('frueh')" placeholder="08:00"></span></div>
     <div class="ci" id="ci-f1" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Frühstück</strong></div><div class="mx-r" style="color:#8B7355">&#x1F33F; Zimt Kardamom Nelken Vanille</div></div><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + 2 EL Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">2 EL Weizenkeime + 1 EL Kollagen (10g)</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div></div><span class="ct fo">Früh</span></div>
     <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="this.classList.remove('saved')"><button class="meal-log-save" onclick="saveMealLog('ci-f1','Frühstück')" title="Speichern">&#x2713;</button></div>
     <div class="sec-lbl" style="margin-top:8px">&#x1F31E; Mittags<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi('noon')" placeholder="12:00"></span></div>
-    <div class="ci" id="ci-ps2" onclick="toggle('ps2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Supplements</strong></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Konzentration, Gedächtnis, Müdigkeit&#x2193;</div></div></div><span class="ct su">Suppl.</span></div>
     <div class="ci" id="ci-f2" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Mittagessen</strong></div><div class="mx-r" style="color:#8B7355">&#x1F33F; Kurkuma Curry Paprika Pfeffer Salz</div></div><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Fast Carbs! <span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie&#x2193;</span></div></div></div><span class="ct fo">Mittag</span></div>
     <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="this.classList.remove('saved')"><button class="meal-log-save" onclick="saveMealLog('ci-f2','Mittagessen')" title="Speichern">&#x2713;</button></div>
     <div class="sec-lbl" style="margin-top:8px">&#x1F319; Abends<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-eve" type="time" onchange="saveTi('eve')" placeholder="19:30"></span></div>
@@ -654,7 +653,7 @@ function toggle(key){
 }
 
 function updateRing(){
-  var fixed=['w1','w3','w2','s1','f1','ps2','f2','f4','s2'];
+  var fixed=['w1','w3','w2','s1','f1','f2','f4','s2'];
   var day=new Date().getDay();
   var done=0,total=0;
   var dw=document.getElementById('dw-'+day);
@@ -845,54 +844,104 @@ function deleteFd(id){
 
 function exportMeals(format){
   var S2=lstore();
-  var entries=(S2.fd||[]).slice().sort(function(a,b){return a.date<b.date?-1:a.date>b.date?1:0;});
   var preview=document.getElementById('exportPreview');
   var msg=document.getElementById('exportMsg');
   var empty=document.getElementById('exportEmpty');
   msg.style.display='none';
-  if(!entries.length){
-    preview.style.display='none';
-    empty.style.display='block';
-    return;
-  }
+  var fdEntries=(S2.fd||[]).slice();
+  var checks=S2.checks||{};
+  // times stored as S.times[dateStr][key]
+  var times=S2.times||{};
+  // Build set of all dates
+  var allDates={};
+  fdEntries.forEach(function(e){if(e.date)allDates[e.date]=true;});
+  // checks keys: "YYYY-MM-DD_s1", "YYYY-MM-DD_f1", "YYYY-MM-DD_f2", "YYYY-MM-DD_f4", "YYYY-MM-DD_s2"
+  Object.keys(checks).forEach(function(k){
+    var p=k.indexOf('_');
+    if(p===10){var ds=k.substring(0,10);if(/^\d{4}-\d{2}-\d{2}$/.test(ds))allDates[ds]=true;}
+  });
+  var sortedDates=Object.keys(allDates).sort();
+  if(!sortedDates.length){preview.style.display='none';empty.style.display='block';return;}
   empty.style.display='none';
-  if(format==='text'){
-    var lines=[];
-    var lastDate='';
-    entries.forEach(function(e){
-      var d=e.date?e.date.split('-').reverse().join('.'):'';
-      if(e.date!==lastDate){lines.push('\n=== '+d+' ===');lastDate=e.date;}
-      var sym=e.symptoms&&e.symptoms.length&&e.symptoms[0]!=='Keine'?' ['+e.symptoms.join(', ')+']':'';
-      lines.push(e.meal+': '+e.foods+(e.note?' ('+e.note+')':'')+sym);
+  // Helper: get time for a date+key
+  function gt(ds,key){return(times[ds]&&times[ds][key])||'';}
+  // Helper: get fd entry for date+meal
+  function fe(ds,meal){return fdEntries.filter(function(e){return e.date===ds&&e.meal===meal;})[0];}
+  // Helper: check if a key is checked for a date (key WITHOUT ci- prefix)
+  function ck(ds,key){return !!(checks[ds+'_'+key]);}
+  var MUESLI='Standard-Müsli (Haferflocken, Walnüsse, Hanfsamen, Weizenkeime, Kollagen, Banane, Zimt/Kardamom)';
+  function buildDay(ds){
+    var d=ds.split('-').reverse().join('.');
+    var lines=['=== '+d+' ==='];
+    var t;
+    // Morgen-Supplements (key: s1)
+    if(ck(ds,'s1')){
+      t=gt(ds,'suppl');
+      lines.push('\u2713 Morgen-Supplements'+(t?' ('+t+')':''));
+    }
+    // Frühstück (key: f1)
+    var frueh=fe(ds,'Frühstück');
+    if(ck(ds,'f1')||frueh){
+      t=gt(ds,'frueh');
+      var foods=(frueh&&frueh.foods)?frueh.foods:MUESLI;
+      lines.push('Frühstück'+(t?' ('+t+')':'')+': '+foods);
+    }
+    // Mittagessen (key: f2)
+    var noon=fe(ds,'Mittagessen');
+    if(noon){
+      t=gt(ds,'noon');
+      lines.push('Mittagessen'+(t?' ('+t+')':'')+': '+noon.foods+(noon.note?' ('+noon.note+')':''));
+    }
+    // Abendessen (key: f4)
+    var eve=fe(ds,'Abendessen');
+    if(eve){
+      t=gt(ds,'eve');
+      lines.push('Abendessen'+(t?' ('+t+')':'')+': '+eve.foods+(eve.note?' ('+eve.note+')':''));
+    }
+    // Abend-Supplements (key: s2)
+    if(ck(ds,'s2')){
+      lines.push('\u2713 Abend-Supplements (Utrogestan, Magnesium, Glycin)');
+    }
+    // Sonstige fd-Einträge
+    fdEntries.filter(function(e){
+      return e.date===ds&&['Frühstück','Mittagessen','Abendessen'].indexOf(e.meal)===-1;
+    }).forEach(function(e){
+      lines.push(e.meal+': '+e.foods+(e.note?' ('+e.note+')':''));
     });
-    var text=lines.join('\n').trim();
-    preview.textContent=text;
+    return lines.join('\n');
+  }
+  var allText=sortedDates.map(buildDay).join('\n\n');
+  if(format==='text'){
+    preview.textContent=allText;
     preview.style.display='block';
-    navigator.clipboard.writeText(text).then(function(){
+    navigator.clipboard.writeText(allText).then(function(){
       msg.style.display='block';
       setTimeout(function(){msg.style.display='none';},3000);
     }).catch(function(){});
   } else {
-    var rows=['\uFEFF"Datum","Mahlzeit","Was gegessen","Notiz","Symptome"'];
-    entries.forEach(function(e){
-      var d=e.date?e.date.split('-').reverse().join('.'):'';
-      var sym=e.symptoms&&e.symptoms.length&&e.symptoms[0]!=='Keine'?e.symptoms.join('; '):'';
-      rows.push('"'+d+'","'+e.meal+'","'+(e.foods||'').replace(/"/g,'""')+'","'+(e.note||'').replace(/"/g,'""')+'","'+sym+'"');
+    var rows=['\uFEFF"Datum","Uhrzeit","Kategorie","Inhalt","Notiz"'];
+    sortedDates.forEach(function(ds){
+      var d=ds.split('-').reverse().join('.');
+      function r(t,kat,foods,note){
+        rows.push('"'+d+'","'+(t||'')+'","'+kat+'","'+(foods||'').replace(/"/g,'""')+'","'+(note||'').replace(/"/g,'""')+'"');
+      }
+      if(ck(ds,'s1'))r(gt(ds,'suppl'),'Morgen-Supplements','\u2713 genommen','');
+      var fr=fe(ds,'Frühstück');
+      if(ck(ds,'f1')||fr)r(gt(ds,'frueh'),'Frühstück',(fr&&fr.foods)?fr.foods:MUESLI,'');
+      var nn=fe(ds,'Mittagessen');if(nn)r(gt(ds,'noon'),'Mittagessen',nn.foods||'',nn.note||'');
+      var ev=fe(ds,'Abendessen');if(ev)r(gt(ds,'eve'),'Abendessen',ev.foods||'',ev.note||'');
+      if(ck(ds,'s2'))r('','Abend-Supplements','\u2713 genommen','');
     });
     var csv=rows.join('\n');
     var blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
     var url=URL.createObjectURL(blob);
-    var a=document.createElement('a');
-    a.href=url;a.download='ernaehrung_export.csv';
-    document.body.appendChild(a);a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    preview.textContent=csv;
-    preview.style.display='block';
+    var a=document.createElement('a');a.href=url;a.download='ernaehrung_export.csv';
+    document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+    preview.textContent=csv;preview.style.display='block';
   }
 }
 
-// \u2500\u2500 MEAL LOG (inline food diary) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+
 function saveMealLog(ciId, label){
   var inp=document.getElementById('log-'+ciId);
   if(!inp||!inp.value.trim())return;
