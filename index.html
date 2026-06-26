@@ -49,6 +49,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .ci.done{opacity:.42;}
 .cb{width:25px;height:25px;border-radius:7px;border:2px solid var(--g);background:transparent;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s;}
 .ci.done .cb{background:var(--g);border-color:var(--g);}
+.ci.has-sets>.cb{display:none;}
 .ck{display:none;}
 .ci.done .ck{display:block;}
 .cl{flex:1;font-size:15px;color:var(--deep);line-height:1.45;}
@@ -56,10 +57,19 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .cl-w{display:block;font-size:12px;color:var(--t);margin-top:2px;}
 .cl-h{display:block;font-size:12px;color:var(--gd);margin-top:2px;}
 .sets{display:block;font-size:12px;color:var(--gd);margin-top:2px;font-weight:600;}
+.timer-btn{display:inline-flex;align-items:center;gap:5px;margin-left:6px;padding:2px 8px;border-radius:12px;border:none;background:rgba(196,122,90,0.18);color:var(--t);font-size:11px;font-weight:700;cursor:pointer;vertical-align:middle;transition:background 0.2s;}
+.timer-btn:hover{background:rgba(196,122,90,0.35);}
+.timer-btn.running{background:rgba(90,180,90,0.25);color:#2d7a2d;}
+.timer-btn.done{background:rgba(90,180,90,0.45);color:#1a5c1a;}
+.timer-display{font-variant-numeric:tabular-nums;min-width:28px;display:inline-block;text-align:center;}
 /* YouTube button */
 .yt{display:inline-block;margin-top:6px;font-size:12px;font-weight:700;color:#FF0000;background:#FFF0F0;padding:4px 11px;border-radius:20px;text-decoration:none;white-space:nowrap;}
 /* Tag badges */
 .ct{font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:20px;font-weight:700;white-space:nowrap;align-self:center;flex-shrink:0;}
+.set-checks{display:flex;flex-direction:column;gap:3px;align-items:center;flex-shrink:0;margin-top:2px;}
+.set-cb{width:16px;height:16px;border-radius:4px;border:2px solid var(--gd);background:transparent;cursor:pointer;appearance:none;-webkit-appearance:none;position:relative;transition:background 0.15s;}
+.set-cb:checked{background:var(--gd);}
+.set-cb:checked::after{content:'';position:absolute;left:3px;top:0px;width:5px;height:9px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(40deg);}
 .sp{background:#EFF5EC;color:var(--sage);}
 .fo{background:#FDF0E8;color:var(--t);}
 .su{background:#F8F4EC;color:var(--gd);}
@@ -272,16 +282,17 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div class="sh"><h2>Ernährung &amp; <em>Supplements</em></h2><div class="sh-line"></div></div>
   <div class="card">
     <div class="sec-lbl">&#x2600;&#xFE0F; Morgens<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-suppl" type="time" onchange="saveTi('suppl')" placeholder="07:00"></span></div>
-    <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Supplements</strong> <span id="vitDHint" style="display:inline;font-size:12px;color:#C9A96E;font-weight:600;"></span></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen&#x2193;, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 3 Kapseln</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol&#x2193;, Brain Fog&#x2193;</div></div></div><span class="ct su">Suppl.</span></div>
+    <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Supplements</strong> <span id="vitDHint" style="display:inline;font-size:12px;color:#C9A96E;font-weight:600;"></span></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen&#x2193;, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol&#x2193;, Brain Fog&#x2193;</div></div></div><span class="ct su">Suppl.</span></div>
     <div class="sec-lbl" style="margin-top:6px">&#x2600;&#xFE0F; Frühstück<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-frueh" type="time" onchange="saveTi('frueh')" placeholder="08:00"></span></div>
     <div class="ci" id="ci-f1" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Frühstück</strong></div><div class="mx-r" style="color:#8B7355">&#x1F33F; Zimt Kardamom Nelken Vanille</div></div><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + 2 EL Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">2 EL Weizenkeime + 1 EL Kollagen (10g)</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div></div><span class="ct fo">Früh</span></div>
-    <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="this.classList.remove('saved')"><button class="meal-log-save" onclick="saveMealLog('ci-f1','Frühstück')" title="Speichern">&#x2713;</button></div>
+    <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="this.classList.remove('saved');autoSaveMeal(this,'ci-f1','Fr\u00FChst\u00FCck')" onblur="saveMealLog('ci-f1','Fr\u00FChst\u00FCck')"><button class="meal-log-save" onclick="saveMealLog('ci-f1','Frühstück')" title="Speichern">&#x2713;</button></div>
     <div class="sec-lbl" style="margin-top:8px">&#x1F31E; Mittags<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi('noon')" placeholder="12:00"></span></div>
+    <div class="ci" id="ci-ps2" onclick="toggle('ps2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Supplements</strong></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Konzentration, Gedächtnis, Müdigkeit&#x2193;</div></div></div><span class="ct su">Suppl.</span></div>
     <div class="ci" id="ci-f2" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Mittagessen</strong></div><div class="mx-r" style="color:#8B7355">&#x1F33F; Kurkuma Curry Paprika Pfeffer Salz</div></div><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Fast Carbs! <span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie&#x2193;</span></div></div></div><span class="ct fo">Mittag</span></div>
-    <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="this.classList.remove('saved')"><button class="meal-log-save" onclick="saveMealLog('ci-f2','Mittagessen')" title="Speichern">&#x2713;</button></div>
+    <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="this.classList.remove('saved');autoSaveMeal(this,'ci-f2','Mittagessen')" onblur="saveMealLog('ci-f2','Mittagessen')"><button class="meal-log-save" onclick="saveMealLog('ci-f2','Mittagessen')" title="Speichern">&#x2713;</button></div>
     <div class="sec-lbl" style="margin-top:8px">&#x1F319; Abends<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-eve" type="time" onchange="saveTi('eve')" placeholder="19:30"></span></div>
     <div class="ci" id="ci-f4" onclick="toggle('f4')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Abendessen</strong></div></div><div class="mx"><div class="mx-l">Protein + viel Gemüse</div><div class="mx-r">Muskelregeneration, Vitamine</div></div><div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Topfen oder Naturjoghurt</div><div class="mx-r">Protein, gesunde Fette</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Carbs abends! <span style="color:#C4503A;font-size:13px">Fettspeicherung&#x2191;, Schlaf&#x2193;</span></div></div></div><span class="ct fo">Abends</span></div>
-    <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="this.classList.remove('saved')"><button class="meal-log-save" onclick="saveMealLog('ci-f4','Abendessen')" title="Speichern">&#x2713;</button></div>
+    <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="this.classList.remove('saved');autoSaveMeal(this,'ci-f4','Abendessen')" onblur="saveMealLog('ci-f4','Abendessen')"><button class="meal-log-save" onclick="saveMealLog('ci-f4','Abendessen')" title="Speichern">&#x2713;</button></div>
     <div class="ci" id="ci-s2" onclick="toggle('s2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Abend-Supplements</strong></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität&#x2191;</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Cortisol&#x2193;, Regeneration, Schlaf&#x2191;</div></div></div><span class="ct su">Suppl.</span></div>
   </div>
 
@@ -298,51 +309,51 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div class="card dw" id="dw-1">
     <div class="card-title">Kraft A - Oberkörper + Core</div>
     <div class="card-sub">Mo · 35 Min · 4 Sätze</div>
-    <div class="ci" id="ci-d1-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Liegestütze (Wand → Knie → Voll steigern)<span class="sets">4 x 12-15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=push+up+beginner+technique" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d1-ex1"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Tischrudern (Untergriff)<span class="sets">4 x 12-15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=table+row+back+exercise+home" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d1-ex2"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Schulterpress mit Widerstandsband<span class="sets">3 x 15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=resistance+band+shoulder+press" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d1-ex3"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Bizepscurls + Trizeps-Dips am Stuhl<span class="sets">3 x 15+12 <a class="yt-sm" href="https://www.youtube.com/results?search_query=bicep+curl+tricep+dip+exercise" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d1-ex4"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Plank halten (20 → 40 Sek)<span class="sets">3 x 30-45s <a class="yt-sm" href="https://www.youtube.com/results?search_query=plank+core+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d1-ex5"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Dead Bug<span class="sets">3 x 10/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=dead+bug+exercise+core+back" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d1-ex0"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d1-ex0-1" onchange="saveSetCheck('d1-ex0',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d1-ex0-2" onchange="saveSetCheck('d1-ex0',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d1-ex0-3" onchange="saveSetCheck('d1-ex0',3,this.checked)" title="Satz 3"></div><div class="cl">Liegestütze (Wand → Knie → Voll steigern)<span class="sets">3 x 15-20 <a class="yt-sm" href="https://www.youtube.com/results?search_query=push+up+beginner+technique" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d1-ex1"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d1-ex1-1" onchange="saveSetCheck('d1-ex1',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d1-ex1-2" onchange="saveSetCheck('d1-ex1',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d1-ex1-3" onchange="saveSetCheck('d1-ex1',3,this.checked)" title="Satz 3"></div><div class="cl">Hantelrudern vorgebeugt<span class="sets">3 x 15-20 <a class="yt-sm" href="https://www.youtube.com/results?search_query=dumbbell+bent+over+row+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d1-ex2"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d1-ex2-1" onchange="saveSetCheck('d1-ex2',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d1-ex2-2" onchange="saveSetCheck('d1-ex2',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d1-ex2-3" onchange="saveSetCheck('d1-ex2',3,this.checked)" title="Satz 3"></div><div class="cl">Schulterpress mit Kurzhanteln<span class="sets">3 x 15-20 <a class="yt-sm" href="https://www.youtube.com/results?search_query=dumbbell+shoulder+press+seated+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d1-ex3"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d1-ex3-1" onchange="saveSetCheck('d1-ex3',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d1-ex3-2" onchange="saveSetCheck('d1-ex3',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d1-ex3-3" onchange="saveSetCheck('d1-ex3',3,this.checked)" title="Satz 3"></div><div class="cl">Bizepscurls + Trizeps-Dips am Stuhl<span class="sets">3 x 15-20 + 15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=bicep+curl+tricep+dip+exercise" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d1-ex4"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d1-ex4-1" onchange="saveSetCheck('d1-ex4',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d1-ex4-2" onchange="saveSetCheck('d1-ex4',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d1-ex4-3" onchange="saveSetCheck('d1-ex4',3,this.checked)" title="Satz 3"></div><div class="cl">Plank halten (20 → 40 Sek)<span class="sets">3 x 30-45s <button class="timer-btn" data-tid="plank1" onclick="startTimer(this,45)">⏱ <span class="timer-display">0:47</span></button> <a class="yt-sm" href="https://www.youtube.com/results?search_query=plank+core+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d1-ex5"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d1-ex5-1" onchange="saveSetCheck('d1-ex5',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d1-ex5-2" onchange="saveSetCheck('d1-ex5',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d1-ex5-3" onchange="saveSetCheck('d1-ex5',3,this.checked)" title="Satz 3"></div><div class="cl">Dead Bug<span class="sets">3 x 15/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=dead+bug+exercise+core+back" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
   </div>
 
   <!-- Dienstag -->
   <div class="card dw" id="dw-2">
     <div class="card-title">Spaziergang = Regeneration</div>
     <div class="card-sub">Di · Deine Erholung!</div>
-    <div class="ci" id="ci-d2-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Spaziergang mit Enzo — bewusst, tief atmen, ohne Handy<span class="sets">30-60 Min</span></div><span class="ct wk">Walk</span></div>
+    <div class="ci has-sets" id="ci-d2-ex0"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d2-ex0-1" onchange="saveSetCheck('d2-ex0',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d2-ex0-2" onchange="saveSetCheck('d2-ex0',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d2-ex0-3" onchange="saveSetCheck('d2-ex0',3,this.checked)" title="Satz 3"></div><div class="cl">Spaziergang mit Enzo — bewusst, tief atmen, ohne Handy<span class="sets">30-60 Min</span></div><span class="ct wk">Walk</span></div>
   </div>
 
   <!-- Mittwoch Kraft B -->
   <div class="card dw" id="dw-3">
     <div class="card-title">Kraft B - Unterkörper + Glutes</div>
     <div class="card-sub">Mi · 35 Min · 4 Sätze</div>
-    <div class="ci" id="ci-d3-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Kniebeugen (tief, Fersen am Boden)<span class="sets">4 x 15-20 <a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+proper+form+beginner" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d3-ex1"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Ausfallschritte abwechselnd<span class="sets">4 x 12/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=lunges+proper+form+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d3-ex2"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Glute Bridge / Hüftheben<span class="sets">4 x 20-25 <a class="yt-sm" href="https://www.youtube.com/results?search_query=glute+bridge+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d3-ex3"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Fire Hydrant (Vierfüßler)<span class="sets">3 x 20/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=fire+hydrant+exercise+glutes" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d3-ex4"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Seitliches Beinheben liegend<span class="sets">3 x 20/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=side+lying+leg+raise+exercise" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d3-ex5"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Wadenheben an Treppenstufe<span class="sets">4 x 25 <a class="yt-sm" href="https://www.youtube.com/results?search_query=calf+raise+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d3-ex6"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Side Plank<span class="sets">3 x 25-35s/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=side+plank+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d3-ex0"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d3-ex0-1" onchange="saveSetCheck('d3-ex0',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d3-ex0-2" onchange="saveSetCheck('d3-ex0',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d3-ex0-3" onchange="saveSetCheck('d3-ex0',3,this.checked)" title="Satz 3"></div><div class="cl">Kniebeugen (tief, Fersen am Boden)<span class="sets">3 x 20-25 <a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+proper+form+beginner" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d3-ex1"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d3-ex1-1" onchange="saveSetCheck('d3-ex1',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d3-ex1-2" onchange="saveSetCheck('d3-ex1',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d3-ex1-3" onchange="saveSetCheck('d3-ex1',3,this.checked)" title="Satz 3"></div><div class="cl">Ausfallschritte abwechselnd<span class="sets">3 x 15-20/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=lunges+proper+form+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d3-ex2"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d3-ex2-1" onchange="saveSetCheck('d3-ex2',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d3-ex2-2" onchange="saveSetCheck('d3-ex2',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d3-ex2-3" onchange="saveSetCheck('d3-ex2',3,this.checked)" title="Satz 3"></div><div class="cl">Glute Bridge / Hüftheben<span class="sets">3 x 25-30 <a class="yt-sm" href="https://www.youtube.com/results?search_query=glute+bridge+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d3-ex3"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d3-ex3-1" onchange="saveSetCheck('d3-ex3',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d3-ex3-2" onchange="saveSetCheck('d3-ex3',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d3-ex3-3" onchange="saveSetCheck('d3-ex3',3,this.checked)" title="Satz 3"></div><div class="cl">Fire Hydrant (Vierfüßler)<span class="sets">3 x 20-25/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=fire+hydrant+exercise+glutes" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d3-ex4"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d3-ex4-1" onchange="saveSetCheck('d3-ex4',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d3-ex4-2" onchange="saveSetCheck('d3-ex4',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d3-ex4-3" onchange="saveSetCheck('d3-ex4',3,this.checked)" title="Satz 3"></div><div class="cl">Seitliches Beinheben liegend<span class="sets">3 x 20-25/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=side+lying+leg+raise+exercise" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d3-ex5"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d3-ex5-1" onchange="saveSetCheck('d3-ex5',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d3-ex5-2" onchange="saveSetCheck('d3-ex5',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d3-ex5-3" onchange="saveSetCheck('d3-ex5',3,this.checked)" title="Satz 3"></div><div class="cl">Wadenheben an Treppenstufe<span class="sets">3 x 25-30 <a class="yt-sm" href="https://www.youtube.com/results?search_query=calf+raise+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d3-ex6"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d3-ex6-1" onchange="saveSetCheck('d3-ex6',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d3-ex6-2" onchange="saveSetCheck('d3-ex6',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d3-ex6-3" onchange="saveSetCheck('d3-ex6',3,this.checked)" title="Satz 3"></div><div class="cl">Side Plank<span class="sets">3 x 25-35s/Seite <button class="timer-btn" data-tid="sideplank1" onclick="startTimer(this,35)">⏱ <span class="timer-display">0:37</span></button> <a class="yt-sm" href="https://www.youtube.com/results?search_query=side+plank+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
   </div>
 
   <!-- Donnerstag -->
   <div class="card dw" id="dw-4">
     <div class="card-title">Spaziergang = Regeneration</div>
     <div class="card-sub">Do · Deine Erholung!</div>
-    <div class="ci" id="ci-d4-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Spaziergang mit Enzo — Natur genießen<span class="sets">30-60 Min</span></div><span class="ct wk">Walk</span></div>
+    <div class="ci has-sets" id="ci-d4-ex0"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d4-ex0-1" onchange="saveSetCheck('d4-ex0',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d4-ex0-2" onchange="saveSetCheck('d4-ex0',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d4-ex0-3" onchange="saveSetCheck('d4-ex0',3,this.checked)" title="Satz 3"></div><div class="cl">Spaziergang mit Enzo — Natur genießen<span class="sets">30-60 Min</span></div><span class="ct wk">Walk</span></div>
   </div>
 
   <!-- Freitag Kraft C -->
   <div class="card dw" id="dw-5">
     <div class="card-title">Kraft C - Ganzkörper-Power</div>
     <div class="card-sub">Fr · 35 Min · 3-4 Sätze</div>
-    <div class="ci" id="ci-d5-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Squat to Overhead Press<span class="sets">4 x 15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+to+overhead+press+band" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d5-ex1"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Romanian Deadlift einbeinig<span class="sets">3 x 12/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=single+leg+romanian+deadlift" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d5-ex2"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Push-up + T-Rotation<span class="sets">3 x 10/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=push+up+t+rotation+exercise" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d5-ex3"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Reverse Lunge + Knieheben<span class="sets">3 x 12/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=reverse+lunge+knee+raise" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d5-ex4"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Superman / Rückenstrecker<span class="sets">4 x 15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=superman+back+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
-    <div class="ci" id="ci-d5-ex5"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Mountain Climbers langsam<span class="sets">3 x 20/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=slow+mountain+climbers+core" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d5-ex0"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d5-ex0-1" onchange="saveSetCheck('d5-ex0',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d5-ex0-2" onchange="saveSetCheck('d5-ex0',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d5-ex0-3" onchange="saveSetCheck('d5-ex0',3,this.checked)" title="Satz 3"></div><div class="cl">Squat to Overhead Press<span class="sets">3 x 15-20 <a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+to+overhead+press+dumbbell" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d5-ex1"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d5-ex1-1" onchange="saveSetCheck('d5-ex1',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d5-ex1-2" onchange="saveSetCheck('d5-ex1',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d5-ex1-3" onchange="saveSetCheck('d5-ex1',3,this.checked)" title="Satz 3"></div><div class="cl">Romanian Deadlift einbeinig<span class="sets">3 x 15/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=single+leg+romanian+deadlift" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d5-ex2"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d5-ex2-1" onchange="saveSetCheck('d5-ex2',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d5-ex2-2" onchange="saveSetCheck('d5-ex2',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d5-ex2-3" onchange="saveSetCheck('d5-ex2',3,this.checked)" title="Satz 3"></div><div class="cl">Push-up + T-Rotation<span class="sets">3 x 12/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=push+up+t+rotation+exercise" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d5-ex3"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d5-ex3-1" onchange="saveSetCheck('d5-ex3',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d5-ex3-2" onchange="saveSetCheck('d5-ex3',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d5-ex3-3" onchange="saveSetCheck('d5-ex3',3,this.checked)" title="Satz 3"></div><div class="cl">Reverse Lunge + Knieheben<span class="sets">3 x 15/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=reverse+lunge+knee+raise" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d5-ex4"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d5-ex4-1" onchange="saveSetCheck('d5-ex4',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d5-ex4-2" onchange="saveSetCheck('d5-ex4',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d5-ex4-3" onchange="saveSetCheck('d5-ex4',3,this.checked)" title="Satz 3"></div><div class="cl">Superman / Rückenstrecker<span class="sets">3 x 15-20 <a class="yt-sm" href="https://www.youtube.com/results?search_query=superman+back+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="ci has-sets" id="ci-d5-ex5"><div class="set-checks"><input type="checkbox" class="set-cb" id="sc-d5-ex5-1" onchange="saveSetCheck('d5-ex5',1,this.checked)" title="Satz 1"><input type="checkbox" class="set-cb" id="sc-d5-ex5-2" onchange="saveSetCheck('d5-ex5',2,this.checked)" title="Satz 2"><input type="checkbox" class="set-cb" id="sc-d5-ex5-3" onchange="saveSetCheck('d5-ex5',3,this.checked)" title="Satz 3"></div><div class="cl">Mountain Climbers langsam<span class="sets">3 x 20-25/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=slow+mountain+climbers+core" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
   </div>
 
 
@@ -388,32 +399,32 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
   <div class="sh"><h2>Trainingsplan <em>kompakt</em></h2><div class="sh-line"></div></div>
   <div class="wb">
     <div class="wb-day">Montag - Kraft A</div><div class="wb-name">Oberkörper + Core - 35 Min</div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Liegestuetze (Wand - Knie - Voll)</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=push+up+beginner+technique" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">4x12-15</span></div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Tischrudern (Untergriff)</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=table+row+back+exercise+home" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">4x12-15</span></div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Schulterpress mit Widerstandsband</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=resistance+band+shoulder+press" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x15</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Liegestuetze (Wand - Knie - Voll)</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=push+up+beginner+technique" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x12-15</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Hantelrudern vorgebeugt</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=dumbbell+bent+over+row+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x15</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Schulterpress mit Kurzhanteln</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=dumbbell+shoulder+press+seated+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x15</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Bizepscurls + Trizeps-Dips</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=bicep+curl+tricep+dip+exercise" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x15+12</span></div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Plank halten</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=plank+core+exercise+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x30-45s</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Plank halten</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=plank+core+exercise+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x30-45s <button class="timer-btn" data-tid="plank2" onclick="startTimer(this,45)">⏱ <span class="timer-display">0:47</span></button></span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Dead Bug</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=dead+bug+exercise+core+back" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x10/Seite</span></div>
   </div>
   <div class="wb" style="border-left-color:var(--sage)"><div class="wb-day">Dienstag</div><div class="wb-name">Spaziergang = Regeneration</div><div class="ei"><div class="ei-info"><div class="ei-name">Spaziergang mit Enzo - bewusst, tief atmen</div></div><span class="ei-sets">30-60 Min</span></div></div>
   <div class="wb">
     <div class="wb-day">Mittwoch - Kraft B</div><div class="wb-name">Unterkörper + Glutes - 35 Min</div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Kniebeugen (tief, Fersen am Boden)</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+proper+form+beginner" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">4x15-20</span></div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Ausfallschritte abwechselnd</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=lunges+proper+form+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">4x12/Seite</span></div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Glute Bridge / Hüftheben</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=glute+bridge+exercise+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">4x20-25</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Kniebeugen (tief, Fersen am Boden)</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+proper+form+beginner" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x15-20</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Ausfallschritte abwechselnd</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=lunges+proper+form+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x12/Seite</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Glute Bridge / Hüftheben</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=glute+bridge+exercise+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x20-25</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Fire Hydrant (Vierfüßler)</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=fire+hydrant+exercise+glutes" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x20/Seite</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Seitliches Beinheben liegend</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=side+lying+leg+raise+exercise" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x20/Seite</span></div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Wadenheben an Treppenstufe</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=calf+raise+exercise+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">4x25</span></div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Side Plank</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=side+plank+exercise+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x25-35s</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Wadenheben an Treppenstufe</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=calf+raise+exercise+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x25</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Side Plank</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=side+plank+exercise+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x25-35s <button class="timer-btn" data-tid="sideplank2" onclick="startTimer(this,35)">⏱ <span class="timer-display">0:37</span></button></span></div>
   </div>
   <div class="wb" style="border-left-color:var(--sage)"><div class="wb-day">Donnerstag</div><div class="wb-name">Spaziergang = Regeneration</div><div class="ei"><div class="ei-info"><div class="ei-name">Spaziergang mit Enzo - Natur genießen</div></div><span class="ei-sets">30-60 Min</span></div></div>
   <div class="wb">
     <div class="wb-day">Freitag - Kraft C</div><div class="wb-name">Ganzkörper-Power - 35 Min</div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Squat to Overhead Press</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+to+overhead+press+band" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">4x15</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Squat to Overhead Press</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+to+overhead+press+dumbbell" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x15</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Romanian Deadlift einbeinig</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=single+leg+romanian+deadlift" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x12/Seite</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Push-up plus T-Rotation</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=push+up+t+rotation+exercise" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x10/Seite</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Reverse Lunge plus Knieheben</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=reverse+lunge+knee+raise" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x12/Seite</span></div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Superman / Rückenstrecker</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=superman+back+exercise+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">4x15</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Superman / Rückenstrecker</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=superman+back+exercise+tutorial" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x15</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Mountain Climbers langsam</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=slow+mountain+climbers+core" target="_blank">&#x25B6; YT</a></div><span class="ei-sets">3x20/Seite</span></div>
   </div>
 </div>
@@ -451,7 +462,7 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
   </ul></div></div>
   <div class="ps"><div class="psh" onclick="togglePS(this)"><div class="psi" style="background:#EEF0FF">🦴</div><div class="pst">Rücken + Nacken stärken</div><div class="psa">▼</div></div><div class="psb"><ul class="il">
     <li><strong>Core-Stabilisierung Priorität 1</strong> - Plank + Dead Bug bei jedem Training</li>
-    <li><strong>Tischrudern</strong> staerkt Rhomboiden - verhindert Rundrücken</li>
+    <li><strong>Hantelrudern</strong> stärkt Rhomboiden - verhindert Rundrücken</li>
     <li><strong>Beim Heben:</strong> Knie beugen, gerader Rücken, Core anspannen!</li>
     <li><strong>Mini-Dehnen täglich:</strong> Katze-Kuh 10x - Brustöffner an Wand 1 Min</li>
     <li><strong>Ergonomie:</strong> Bildschirm auf Augenhoehe - Rücken gerade beim Arbeiten</li>
@@ -511,18 +522,6 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
     <div class="mx-inline">Vitamin D Dekristol 20.000 I.E. + K2<span class="mx-ben">Knochen, Immunsystem, Postmenopause</span></div></div>
   
 
-  </div>
-
-  <div class="sh" style="margin-top:24px"><h2>Ernährungs<em>export</em></h2><div class="sh-line"></div></div>
-  <div class="card" style="padding:14px 16px">
-    <div style="font-size:13px;color:var(--muted);margin-bottom:12px">Alle gespeicherten Mahlzeiten aus der App — zum Kopieren &amp; Analysieren.</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
-      <button class="btn" onclick="exportMeals('text')" style="font-size:13px;padding:8px 14px">📋 Text kopieren</button>
-      <button class="btn" onclick="exportMeals('csv')" style="font-size:13px;padding:8px 14px">⬇️ CSV herunterladen</button>
-    </div>
-    <div id="exportPreview" style="background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:12px;font-size:12px;font-family:monospace;color:var(--t);white-space:pre-wrap;max-height:320px;overflow-y:auto;display:none"></div>
-    <div id="exportMsg" style="font-size:13px;color:var(--sage);margin-top:8px;display:none">✓ In die Zwischenablage kopiert!</div>
-    <div id="exportEmpty" style="font-size:13px;color:var(--muted);display:none">Noch keine Mahlzeiten gespeichert.</div>
   </div>
 </div>
 <script>
@@ -597,6 +596,7 @@ function init(){
   initFd();
   loadMealLogs();
   loadTimes();
+  loadSetChecks();
   loadChecks();
   updateRing();
   buildGrid();
@@ -653,7 +653,7 @@ function toggle(key){
 }
 
 function updateRing(){
-  var fixed=['w1','w3','w2','s1','f1','f2','f4','s2'];
+  var fixed=['w1','w3','w2','s1','f1','ps2','f2','f4','s2'];
   var day=new Date().getDay();
   var done=0,total=0;
   var dw=document.getElementById('dw-'+day);
@@ -842,106 +842,12 @@ function deleteFd(id){
   renderFd('alle');
 }
 
-function exportMeals(format){
-  var S2=lstore();
-  var preview=document.getElementById('exportPreview');
-  var msg=document.getElementById('exportMsg');
-  var empty=document.getElementById('exportEmpty');
-  msg.style.display='none';
-  var fdEntries=(S2.fd||[]).slice();
-  var checks=S2.checks||{};
-  // times stored as S.times[dateStr][key]
-  var times=S2.times||{};
-  // Build set of all dates
-  var allDates={};
-  fdEntries.forEach(function(e){if(e.date)allDates[e.date]=true;});
-  // checks keys: "YYYY-MM-DD_s1", "YYYY-MM-DD_f1", "YYYY-MM-DD_f2", "YYYY-MM-DD_f4", "YYYY-MM-DD_s2"
-  Object.keys(checks).forEach(function(k){
-    var p=k.indexOf('_');
-    if(p===10){var ds=k.substring(0,10);if(/^\d{4}-\d{2}-\d{2}$/.test(ds))allDates[ds]=true;}
-  });
-  var sortedDates=Object.keys(allDates).sort();
-  if(!sortedDates.length){preview.style.display='none';empty.style.display='block';return;}
-  empty.style.display='none';
-  // Helper: get time for a date+key
-  function gt(ds,key){return(times[ds]&&times[ds][key])||'';}
-  // Helper: get fd entry for date+meal
-  function fe(ds,meal){return fdEntries.filter(function(e){return e.date===ds&&e.meal===meal;})[0];}
-  // Helper: check if a key is checked for a date (key WITHOUT ci- prefix)
-  function ck(ds,key){return !!(checks[ds+'_'+key]);}
-  var MUESLI='Standard-Müsli (Haferflocken, Walnüsse, Hanfsamen, Weizenkeime, Kollagen, Banane, Zimt/Kardamom)';
-  function buildDay(ds){
-    var d=ds.split('-').reverse().join('.');
-    var lines=['=== '+d+' ==='];
-    var t;
-    // Morgen-Supplements (key: s1)
-    if(ck(ds,'s1')){
-      t=gt(ds,'suppl');
-      lines.push('\u2713 Morgen-Supplements'+(t?' ('+t+')':''));
-    }
-    // Frühstück (key: f1)
-    var frueh=fe(ds,'Frühstück');
-    if(ck(ds,'f1')||frueh){
-      t=gt(ds,'frueh');
-      var foods=(frueh&&frueh.foods)?frueh.foods:MUESLI;
-      lines.push('Frühstück'+(t?' ('+t+')':'')+': '+foods);
-    }
-    // Mittagessen (key: f2)
-    var noon=fe(ds,'Mittagessen');
-    if(noon){
-      t=gt(ds,'noon');
-      lines.push('Mittagessen'+(t?' ('+t+')':'')+': '+noon.foods+(noon.note?' ('+noon.note+')':''));
-    }
-    // Abendessen (key: f4)
-    var eve=fe(ds,'Abendessen');
-    if(eve){
-      t=gt(ds,'eve');
-      lines.push('Abendessen'+(t?' ('+t+')':'')+': '+eve.foods+(eve.note?' ('+eve.note+')':''));
-    }
-    // Abend-Supplements (key: s2)
-    if(ck(ds,'s2')){
-      lines.push('\u2713 Abend-Supplements (Utrogestan, Magnesium, Glycin)');
-    }
-    // Sonstige fd-Einträge
-    fdEntries.filter(function(e){
-      return e.date===ds&&['Frühstück','Mittagessen','Abendessen'].indexOf(e.meal)===-1;
-    }).forEach(function(e){
-      lines.push(e.meal+': '+e.foods+(e.note?' ('+e.note+')':''));
-    });
-    return lines.join('\n');
-  }
-  var allText=sortedDates.map(buildDay).join('\n\n');
-  if(format==='text'){
-    preview.textContent=allText;
-    preview.style.display='block';
-    navigator.clipboard.writeText(allText).then(function(){
-      msg.style.display='block';
-      setTimeout(function(){msg.style.display='none';},3000);
-    }).catch(function(){});
-  } else {
-    var rows=['\uFEFF"Datum","Uhrzeit","Kategorie","Inhalt","Notiz"'];
-    sortedDates.forEach(function(ds){
-      var d=ds.split('-').reverse().join('.');
-      function r(t,kat,foods,note){
-        rows.push('"'+d+'","'+(t||'')+'","'+kat+'","'+(foods||'').replace(/"/g,'""')+'","'+(note||'').replace(/"/g,'""')+'"');
-      }
-      if(ck(ds,'s1'))r(gt(ds,'suppl'),'Morgen-Supplements','\u2713 genommen','');
-      var fr=fe(ds,'Frühstück');
-      if(ck(ds,'f1')||fr)r(gt(ds,'frueh'),'Frühstück',(fr&&fr.foods)?fr.foods:MUESLI,'');
-      var nn=fe(ds,'Mittagessen');if(nn)r(gt(ds,'noon'),'Mittagessen',nn.foods||'',nn.note||'');
-      var ev=fe(ds,'Abendessen');if(ev)r(gt(ds,'eve'),'Abendessen',ev.foods||'',ev.note||'');
-      if(ck(ds,'s2'))r('','Abend-Supplements','\u2713 genommen','');
-    });
-    var csv=rows.join('\n');
-    var blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
-    var url=URL.createObjectURL(blob);
-    var a=document.createElement('a');a.href=url;a.download='ernaehrung_export.csv';
-    document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
-    preview.textContent=csv;preview.style.display='block';
-  }
+// \u2500\u2500 MEAL LOG (inline food diary) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+var _mealTimers={};
+function autoSaveMeal(inp,ciId,label){
+  clearTimeout(_mealTimers[ciId]);
+  _mealTimers[ciId]=setTimeout(function(){saveMealLog(ciId,label);},1200);
 }
-
-
 function saveMealLog(ciId, label){
   var inp=document.getElementById('log-'+ciId);
   if(!inp||!inp.value.trim())return;
@@ -992,6 +898,59 @@ function loadTimes(){
   document.body.style.cssText = 'background:#fff;padding:30px;font-family:sans-serif;';
   document.body.innerHTML = '<h2 style="color:#C47A5A">App Fehler\x3C/h2><p style="font-size:16px;margin-top:12px;color:#333">'+e.message+'\x3C/p><p style="font-size:13px;color:#888;margin-top:8px">'+e.stack+'\x3C/p>';
 }
+
+var _timers={};
+function startTimer(btn,seconds){
+  var id=btn.getAttribute('data-tid');
+  if(_timers[id]){clearInterval(_timers[id]);_timers[id]=null;btn.classList.remove('running','done');btn.querySelector('.timer-display').textContent=formatT(seconds+2);return;}
+  var total=seconds+2;var remaining=total;
+  btn.querySelector('.timer-display').textContent=formatT(remaining);
+  btn.classList.add('running');btn.classList.remove('done');
+  _timers[id]=setInterval(function(){
+    remaining--;
+    btn.querySelector('.timer-display').textContent=formatT(remaining);
+    if(remaining<=0){clearInterval(_timers[id]);_timers[id]=null;btn.classList.remove('running');btn.classList.add('done');btn.querySelector('.timer-display').textContent='✓';timerBeep();}
+  },1000);
+}
+
+function saveSetCheck(exId, setNum, checked){
+  var S2=lstore();
+  if(!S2.setChecks)S2.setChecks={};
+  var key=TK+'_'+exId;
+  if(!S2.setChecks[key])S2.setChecks[key]={};
+  S2.setChecks[key][setNum]=checked;
+  sstore(S2);
+}
+function loadSetChecks(){
+  var S2=lstore();
+  var sc=S2.setChecks||{};
+  Object.keys(sc).forEach(function(key){
+    if(!key.startsWith(TK))return;
+    var exId=key.slice(TK.length+1);
+    var sets=sc[key];
+    Object.keys(sets).forEach(function(n){
+      var el=document.getElementById('sc-'+exId+'-'+n);
+      if(el)el.checked=sets[n];
+    });
+  });
+}
+
+function timerBeep(){
+  try{
+    var ctx=new(window.AudioContext||window.webkitAudioContext)();
+    [0, 0.25, 0.5].forEach(function(delay){
+      var o=ctx.createOscillator();
+      var g=ctx.createGain();
+      o.connect(g);g.connect(ctx.destination);
+      o.type='sine';o.frequency.value=880;
+      g.gain.setValueAtTime(0.4,ctx.currentTime+delay);
+      g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+delay+0.2);
+      o.start(ctx.currentTime+delay);
+      o.stop(ctx.currentTime+delay+0.2);
+    });
+  }catch(e){}
+}
+function formatT(s){if(s<0)s=0;return Math.floor(s/60)+':'+(s%60<10?'0':'')+s%60;}
 </script>
 </body>
 </html>
