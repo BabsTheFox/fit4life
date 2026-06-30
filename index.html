@@ -281,19 +281,19 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <!-- ERNÄHRUNG & SUPPLEMENTS -->
   <div class="sh"><h2>Ernährung &amp; <em>Supplements</em></h2><div class="sh-line"></div></div>
   <div class="card">
-    <div class="sec-lbl">&#x2600;&#xFE0F; Morgens<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-suppl" type="time" onchange="saveTi('suppl')" placeholder="07:00"></span></div>
-    <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Supplements</strong> <span id="vitDHint" style="display:inline;font-size:12px;color:#C9A96E;font-weight:600;"></span></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen&#x2193;, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol&#x2193;, Brain Fog&#x2193;</div></div></div><span class="ct su">Suppl.</span></div>
-    <div class="sec-lbl" style="margin-top:6px">&#x2600;&#xFE0F; Frühstück<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-frueh" type="time" onchange="saveTi('frueh')" placeholder="08:00"></span></div>
+    <div class="sec-lbl">&#x2600;&#xFE0F; Morgens<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-suppl" type="time" onchange="saveTi('suppl')" onblur="saveTi('suppl')" oninput="saveTi('suppl')" placeholder="07:00"></span></div>
+    <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Supplements</strong> <span id="vitDHint" style="display:inline;font-size:12px;color:#C9A96E;font-weight:600;"></span></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen&#x2193;, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 3 Kapseln</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol&#x2193;, Brain Fog&#x2193;</div></div></div><span class="ct su">Suppl.</span></div>
+    <div class="sec-lbl" style="margin-top:6px">&#x2600;&#xFE0F; Frühstück<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-frueh" type="time" onchange="saveTi('frueh')" onblur="saveTi('frueh')" oninput="saveTi('frueh')" placeholder="08:00"></span></div>
     <div class="ci" id="ci-f1" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Frühstück</strong></div><div class="mx-r" style="color:#8B7355">&#x1F33F; Zimt Kardamom Nelken Vanille</div></div><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + 2 EL Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">2 EL Weizenkeime + 1 EL Kollagen (10g)</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div></div><span class="ct fo">Früh</span></div>
-    <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="this.classList.remove('saved');autoSaveMeal(this,'ci-f1','Fr\u00FChst\u00FCck')" onblur="saveMealLog('ci-f1','Fr\u00FChst\u00FCck')"><button class="meal-log-save" onclick="saveMealLog('ci-f1','Frühstück')" title="Speichern">&#x2713;</button></div>
-    <div class="sec-lbl" style="margin-top:8px">&#x1F31E; Mittags<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi('noon')" placeholder="12:00"></span></div>
-    <div class="ci" id="ci-ps2" onclick="toggle('ps2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Supplements</strong></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Konzentration, Gedächtnis, Müdigkeit&#x2193;</div></div></div><span class="ct su">Suppl.</span></div>
+    <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="autoSaveMeal(this,'ci-f1','Frühstück')" onblur="saveMealLog('ci-f1','Fr\u00FChst\u00FCck')"><button class="meal-log-save" onclick="saveMealLog('ci-f1','Frühstück')" title="Speichern">&#x2713;</button></div>
+    <div class="sec-lbl" style="margin-top:8px">&#x1F31E; Mittags<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi('noon')" onblur="saveTi('noon')" oninput="saveTi('noon')" placeholder="12:00"></span></div>
+
     <div class="ci" id="ci-f2" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Mittagessen</strong></div><div class="mx-r" style="color:#8B7355">&#x1F33F; Kurkuma Curry Paprika Pfeffer Salz</div></div><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Fast Carbs! <span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie&#x2193;</span></div></div></div><span class="ct fo">Mittag</span></div>
-    <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="this.classList.remove('saved');autoSaveMeal(this,'ci-f2','Mittagessen')" onblur="saveMealLog('ci-f2','Mittagessen')"><button class="meal-log-save" onclick="saveMealLog('ci-f2','Mittagessen')" title="Speichern">&#x2713;</button></div>
-    <div class="sec-lbl" style="margin-top:8px">&#x1F319; Abends<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-eve" type="time" onchange="saveTi('eve')" placeholder="19:30"></span></div>
+    <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="autoSaveMeal(this,'ci-f2','Mittagessen')" onblur="saveMealLog('ci-f2','Mittagessen')"><button class="meal-log-save" onclick="saveMealLog('ci-f2','Mittagessen')" title="Speichern">&#x2713;</button></div>
+    <div class="sec-lbl" style="margin-top:8px">&#x1F319; Abends<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-eve" type="time" onchange="saveTi('eve')" onblur="saveTi('eve')" oninput="saveTi('eve')" placeholder="19:30"></span></div>
     <div class="ci" id="ci-f4" onclick="toggle('f4')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Abendessen</strong></div></div><div class="mx"><div class="mx-l">Protein + viel Gemüse</div><div class="mx-r">Muskelregeneration, Vitamine</div></div><div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Topfen oder Naturjoghurt</div><div class="mx-r">Protein, gesunde Fette</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Carbs abends! <span style="color:#C4503A;font-size:13px">Fettspeicherung&#x2191;, Schlaf&#x2193;</span></div></div></div><span class="ct fo">Abends</span></div>
-    <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="this.classList.remove('saved');autoSaveMeal(this,'ci-f4','Abendessen')" onblur="saveMealLog('ci-f4','Abendessen')"><button class="meal-log-save" onclick="saveMealLog('ci-f4','Abendessen')" title="Speichern">&#x2713;</button></div>
-    <div class="ci" id="ci-s2" onclick="toggle('s2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Abend-Supplements</strong></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität&#x2191;</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Cortisol&#x2193;, Regeneration, Schlaf&#x2191;</div></div></div><span class="ct su">Suppl.</span></div>
+    <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="autoSaveMeal(this,'ci-f4','Abendessen')" onblur="saveMealLog('ci-f4','Abendessen')"><button class="meal-log-save" onclick="saveMealLog('ci-f4','Abendessen')" title="Speichern">&#x2713;</button></div>
+    <div class="ci" id="ci-s2" onclick="toggle('s2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Abend-Supplements</strong></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität&#x2191;</div></div></div><span class="ct su">Suppl.</span></div>
   </div>
 
   <div class="card">
@@ -510,14 +510,13 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
     <div class="mx-inline">L-Glutamin<span class="mx-ben">Darmschleimhaut, Muskeln, Immunsystem</span></div>
     <div class="mx-inline">CoQ10 200mg<span class="mx-ben">Zellenergie, Herz, Anti-Aging, Mitochondrien</span></div>
     <div class="mx-inline">Selen 200mcg<span class="mx-ben">Schilddrüse, Immunsystem, Antioxidans</span></div>
-    <div class="mx-inline">Phosphatidylserin 1 Kapsel (100mg)<span class="mx-ben">Gehirn, Gedächtnis, Cortisol↓, Brain Fog↓</span></div>
-    <div style="margin-top:8px"><div class="mx-inline"><strong>Mittags:</strong></div>
-    <div class="mx-inline">Phosphatidylserin 1 Kapsel (100mg)<span class="mx-ben">Konzentration, Gedächtnis, Müdigkeit↓</span></div></div>
+    <div class="mx-inline">Phosphatidylserin 3 Kapseln (300mg)<span class="mx-ben">Gehirn, Gedächtnis, Cortisol↓, Brain Fog↓</span></div>
+    
     <div style="margin-top:8px"><div class="mx-inline"><strong>Abends:</strong></div>
     <div class="mx-inline">Utrogestan 1 Kapsel<span class="mx-ben">Hormonhaushalt, Schlaf, Postmenopause</span></div>
     <div class="mx-inline">Magnesium Verla<span class="mx-ben">Muskelentspannung, Schlaf, Nerven</span></div>
     <div class="mx-inline">Glycin<span class="mx-ben">Kollagen-Baustein, Schlafqualität↑</span></div>
-    <div class="mx-inline">Phosphatidylserin 1 Kapsel (100mg)<span class="mx-ben">Cortisol↓, Regeneration, Schlaf↑</span></div></div>
+    </div>
     <div style="margin-top:8px"><div class="mx-inline"><strong>Samstags:</strong></div>
     <div class="mx-inline">Vitamin D Dekristol 20.000 I.E. + K2<span class="mx-ben">Knochen, Immunsystem, Postmenopause</span></div></div>
   
@@ -846,20 +845,24 @@ function deleteFd(id){
 var _mealTimers={};
 function autoSaveMeal(inp,ciId,label){
   clearTimeout(_mealTimers[ciId]);
-  _mealTimers[ciId]=setTimeout(function(){saveMealLog(ciId,label);},1200);
+  _mealTimers[ciId]=setTimeout(function(){saveMealLog(ciId,label);},400);
 }
 function saveMealLog(ciId, label){
   var inp=document.getElementById('log-'+ciId);
-  if(!inp||!inp.value.trim())return;
+  if(!inp)return;
+  var val=inp.value.trim();
   var S2=lstore();
   if(!S2.fd)S2.fd=[];
-  // Remove existing entry for same meal+day
   S2.fd=S2.fd.filter(function(e){return !(e.date===TK&&e.meal===label);});
-  S2.fd.unshift({id:Date.now(),date:TK,meal:label,foods:inp.value.trim(),symptoms:[],note:''});
-  if(S2.fd.length>200)S2.fd=S2.fd.slice(0,200);
+  if(val){
+    S2.fd.unshift({id:Date.now(),date:TK,meal:label,foods:val,symptoms:[],note:''});
+    if(S2.fd.length>200)S2.fd=S2.fd.slice(0,200);
+    inp.classList.add('saved');
+    inp.title='Gespeichert \u2713';
+  } else {
+    inp.classList.remove('saved');
+  }
   sstore(S2);
-  inp.classList.add('saved');
-  inp.title='Gespeichert \u2713';
   if(typeof renderFd==='function')renderFd('alle');
 }
 function loadMealLogs(){
