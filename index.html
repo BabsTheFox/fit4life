@@ -524,6 +524,12 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
   <div class="sh first"><h2>Ernährung &amp; <em>Grundprinzipien</em></h2><div class="sh-line"></div></div>
   <div class="alert"><strong>Dein Rhythmus:</strong> 4-5h zwischen Mahlzeiten &middot; Frühstück 1h nach Aufstehen &middot; Kein Essen nach 20:00</div>
 
+  <div class="card" style="text-align:center">
+    <div class="mx-inline" style="margin-bottom:8px"><strong>Ernährungs-Feedback von Claude</strong></div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.5">Kopiert deine dokumentierten Mahlzeiten (Frühstück/Mittag/Abend). Füg den Text einfach in einen Chat mit Claude ein für eine Analyse und Verbesserungsvorschläge.</div>
+    <button class="btn" id="copyNutritionBtn" onclick="copyNutritionLog()" style="width:100%;justify-content:center">&#x1F4CB; Ernährungsdaten kopieren</button>
+  </div>
+
   <div class="card">
     <div class="mx-inline"><strong>Erlaubte langsame Carbs:</strong></div>
     <div class="mx-inline">Linsen, Buchweizen, Hirse, Bulgur, Quinoa, Vollkornreis, Polenta<span class="mx-ben">niedrig glykämisch, kein Blutzucker-Spike</span></div>
@@ -1028,6 +1034,50 @@ function startVoiceInput(inputId, btn){
     micRecognition=null;
     micActiveBtn=null;
   }
+}
+
+// ── ERNÄHRUNGSDATEN KOPIEREN (für Claude-Feedback) ──
+function copyNutritionLog(){
+  var S2=lstore();
+  var entries=(S2.fd||[]).slice();
+  if(entries.length===0){
+    alert('Noch keine Mahlzeiten dokumentiert. Erst im Heute-Tab Frühstück/Mittag/Abend eintragen und speichern.');
+    return;
+  }
+  entries.sort(function(a,b){return a.date<b.date?-1:(a.date>b.date?1:(a.id-b.id));});
+  var lines=entries.map(function(e){
+    var d=e.date?e.date.split('-').reverse().join('.'):'';
+    var line=d+' – '+e.meal+': '+e.foods;
+    if(e.symptoms&&e.symptoms.length>0&&e.symptoms[0]!=='Keine')line+=' [Symptome: '+e.symptoms.join(', ')+']';
+    return line;
+  });
+  var text='Meine dokumentierten Mahlzeiten:\n\n'+lines.join('\n');
+  function showCopied(){
+    var btn=document.getElementById('copyNutritionBtn');
+    if(btn){
+      var orig=btn.textContent;
+      btn.textContent='✓ Kopiert!';
+      btn.style.background='var(--sage)';
+      setTimeout(function(){btn.textContent=orig;btn.style.background='';},2200);
+    }
+  }
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(showCopied).catch(function(){
+      fallbackCopy(text,showCopied);
+    });
+  }else{
+    fallbackCopy(text,showCopied);
+  }
+}
+function fallbackCopy(text,cb){
+  var ta=document.createElement('textarea');
+  ta.value=text;
+  ta.style.position='fixed';
+  ta.style.opacity='0';
+  document.body.appendChild(ta);
+  ta.select();
+  try{document.execCommand('copy');if(cb)cb();}catch(e){alert('Kopieren nicht möglich. Bitte Text manuell markieren.');}
+  document.body.removeChild(ta);
 }
 
 function saveMealLog(ciId, label){
