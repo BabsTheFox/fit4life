@@ -1040,6 +1040,19 @@ function startVoiceInput(inputId, btn){
 function copyNutritionLog(){
   var S2=lstore();
   var entries=(S2.fd||[]).slice();
+  var checks=S2.checks||{};
+  var DEFAULT_FRUEH='Standard-Müsli (Haferflocken, Walnüsse, Hanfsamen, Weizenkeime, Kollagen, Banane, Zimt/Kardamom/Nelken/Vanille)';
+  var haveFrueh={};
+  entries.forEach(function(e){if(e.meal==='Frühstück')haveFrueh[e.date]=true;});
+  Object.keys(checks).forEach(function(k){
+    if(checks[k]&&k.slice(-3)==='_f1'){
+      var date=k.slice(0,-3);
+      if(!haveFrueh[date]){
+        entries.push({id:0,date:date,meal:'Frühstück',foods:DEFAULT_FRUEH,symptoms:[],note:'(Standard, kein Text eingegeben)'});
+        haveFrueh[date]=true;
+      }
+    }
+  });
   if(entries.length===0){
     alert('Noch keine Mahlzeiten dokumentiert. Erst im Heute-Tab Frühstück/Mittag/Abend eintragen und speichern.');
     return;
@@ -1048,6 +1061,7 @@ function copyNutritionLog(){
   var lines=entries.map(function(e){
     var d=e.date?e.date.split('-').reverse().join('.'):'';
     var line=d+' – '+e.meal+': '+e.foods;
+    if(e.note)line+=' '+e.note;
     if(e.symptoms&&e.symptoms.length>0&&e.symptoms[0]!=='Keine')line+=' [Symptome: '+e.symptoms.join(', ')+']';
     return line;
   });
