@@ -257,28 +257,23 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div id="milestoneReminder" style="display:none;background:linear-gradient(135deg,#FFF0F8,#FFE8F5);border:2px solid #C9A96E;border-radius:14px;padding:16px 18px;margin-bottom:18px;font-size:15px;color:#5C4B35;line-height:1.6;"></div>
 
-  <!-- 1. SPAZIERGÄNGE -->
+  <!-- 1. SPAZIERGÄNGE (jetzt einzeln im Tagesablauf verteilt) -->
 
 
   <!-- 2. ERNÄHRUNG + SUPPLEMENTS CHRONOLOGISCH -->
-  <div class="sh first"><h2>🏃 Bewegung &amp; <em>Training</em></h2><div class="sh-line"></div></div>
   <div class="card">
-    <div class="ci" id="ci-w1" onclick="toggle('w1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Morgen-Spaziergang mit Enzo</div><span class="ct wk">Früh</span></div>
-    <div class="ci" id="ci-w3" onclick="toggle('w3')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Mittags-Spaziergang</div><span class="ct wk">Mittag</span></div>
-    <div class="ci" id="ci-w2" onclick="toggle('w2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Abend-Spaziergang mit Enzo</div><span class="ct wk">Abends</span></div>
+      <div class="sec-lbl" style="margin-top:0">&#x2600;&#xFE0F; Morgen-Supplements <span id="vitDHint" style="display:inline;font-size:11px;color:#C9A96E;font-weight:600;text-transform:none;letter-spacing:0"></span><span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-suppl" type="time" onchange="saveTi('suppl')" oninput="onTimeInput('suppl')" onblur="saveTi('suppl')" placeholder="07:00"></span></div>
+      <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen&#x2193;, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 3 Kapseln</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol&#x2193;, Brain Fog&#x2193;</div></div></div><span class="ct su">Suppl.</span></div>
+      <div class="ci" id="ci-w1" onclick="toggle('w1')" style="margin-top:6px"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">&#x1F415; Morgen-Spaziergang mit Enzo</div><span class="ct wk">Früh</span></div>
+      <div class="sec-lbl" style="margin-top:6px">&#x2600;&#xFE0F; Frühstück<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-frueh" type="time" onchange="saveTi('frueh')" oninput="onTimeInput('frueh')" onblur="saveTi('frueh')" placeholder="08:00"></span></div>
+      <div class="ci" id="ci-f1" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + 2 EL Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">2 EL Weizenkeime + 1 EL Kollagen (10g)</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">&#x1F33F; Zimt Kardamom Nelken Vanille</div></div><span class="ct fo">Früh</span></div>
+      <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="onMealInput('ci-f1','Frühstück')" onblur="saveMealLog('ci-f1','Frühstück')"><button class="meal-log-save" onclick="saveMealLog('ci-f1','Frühstück')" title="Speichern">&#x2713;</button></div>
   </div>
-
-  <!-- ERNÄHRUNG & SUPPLEMENTS -->
-  <div class="sh"><h2>Ernährung &amp; <em>Supplements</em></h2><div class="sh-line"></div></div>
-  <div class="card">
-    <div class="sec-lbl">&#x2600;&#xFE0F; Morgens<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-suppl" type="time" onchange="saveTi('suppl')" oninput="onTimeInput('suppl')" onblur="saveTi('suppl')" placeholder="07:00"></span></div>
-    <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Supplements</strong> <span id="vitDHint" style="display:inline;font-size:12px;color:#C9A96E;font-weight:600;"></span></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen&#x2193;, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 3 Kapseln</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol&#x2193;, Brain Fog&#x2193;</div></div></div><span class="ct su">Suppl.</span></div>
-    <div class="sec-lbl" style="margin-top:6px">&#x2600;&#xFE0F; Frühstück<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-frueh" type="time" onchange="saveTi('frueh')" oninput="onTimeInput('frueh')" onblur="saveTi('frueh')" placeholder="08:00"></span></div>
-    <div class="ci" id="ci-f1" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Frühstück</strong></div><div class="mx-r" style="color:#8B7355">&#x1F33F; Zimt Kardamom Nelken Vanille</div></div><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + 2 EL Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">2 EL Weizenkeime + 1 EL Kollagen (10g)</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div></div><span class="ct fo">Früh</span></div>
-    <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="onMealInput('ci-f1','Frühstück')" onblur="saveMealLog('ci-f1','Frühstück')"><button class="meal-log-save" onclick="saveMealLog('ci-f1','Frühstück')" title="Speichern">&#x2713;</button></div>
-    <div class="sec-lbl" style="margin-top:8px">&#x1F31E; Mittags<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi('noon')" oninput="onTimeInput('noon')" onblur="saveTi('noon')" placeholder="12:00"></span></div>
-    <div class="ci" id="ci-f2" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Mittagessen</strong></div><div class="mx-r" style="color:#8B7355">&#x1F33F; Kurkuma Curry Paprika Pfeffer Salz</div></div><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Fast Carbs! <span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie&#x2193;</span></div></div></div><span class="ct fo">Mittag</span></div>
-    <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="onMealInput('ci-f2','Mittagessen')" onblur="saveMealLog('ci-f2','Mittagessen')"><button class="meal-log-save" onclick="saveMealLog('ci-f2','Mittagessen')" title="Speichern">&#x2713;</button></div>
+  <div class="card" id="mittagsBox">
+      <div class="sec-lbl" style="margin-top:0">&#x1F31E; Mittagessen<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi('noon')" oninput="onTimeInput('noon')" onblur="saveTi('noon')" placeholder="12:00"></span></div>
+      <div class="ci" id="ci-f2" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">&#x1F33F; Kurkuma Curry Paprika Pfeffer Salz</div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Fast Carbs! <span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie&#x2193;</span></div></div></div><span class="ct fo">Mittag</span></div>
+      <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="onMealInput('ci-f2','Mittagessen')" onblur="saveMealLog('ci-f2','Mittagessen')"><button class="meal-log-save" onclick="saveMealLog('ci-f2','Mittagessen')" title="Speichern">&#x2713;</button></div>
+      <div class="ci" id="ci-w3" onclick="toggle('w3')" style="margin-top:6px"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">&#x1F415; Mittags-Spaziergang</div><span class="ct wk">Mittag</span></div>
   </div>
 
   <!-- Tagesworkouts Mo/Mi/Fr (hidden, shown by JS) -->
@@ -291,6 +286,19 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div class="ci" id="ci-d1-ex3"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Bizepscurls + Trizeps-Dips am Stuhl<span class="sets">3 x 15+12 <a class="yt-sm" href="https://www.youtube.com/results?search_query=bicep+curl+tricep+dip+exercise" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
     <div class="ci" id="ci-d1-ex4"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Plank halten (20 → 40 Sek)<span class="sets">3 x 30-45s <a class="yt-sm" href="https://www.youtube.com/results?search_query=plank+core+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
     <div class="ci" id="ci-d1-ex5"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Dead Bug<span class="sets">3 x 10/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=dead+bug+exercise+core+back" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="dw-move" id="dwmove-1" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)">
+      <div class="dw-move-toggle" onclick="toggleMovePicker('1')" style="font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;display:inline-block">&#x1F4C5; Auf anderen Tag verschieben</div>
+      <div class="dw-move-picker" id="dwpicker-1" style="display:none;gap:6px;margin-top:8px;flex-wrap:wrap">
+        <button onclick="moveWorkout('1',1)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Mo</button>
+        <button onclick="moveWorkout('1',2)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Di</button>
+        <button onclick="moveWorkout('1',3)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Mi</button>
+        <button onclick="moveWorkout('1',4)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Do</button>
+        <button onclick="moveWorkout('1',5)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Fr</button>
+        <button onclick="moveWorkout('1',6)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Sa</button>
+        <button onclick="moveWorkout('1',0)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">So</button>
+      </div>
+      <div class="dw-move-status" id="dwstatus-1" style="display:none;font-size:12px;color:var(--muted);margin-top:6px"></div>
+    </div>
   </div>
 
   <div class="card dw" id="dw-3">
@@ -303,6 +311,19 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div class="ci" id="ci-d3-ex4"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Seitliches Beinheben liegend<span class="sets">3 x 20/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=side+lying+leg+raise+exercise" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
     <div class="ci" id="ci-d3-ex5"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Wadenheben an Treppenstufe<span class="sets">4 x 25 <a class="yt-sm" href="https://www.youtube.com/results?search_query=calf+raise+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
     <div class="ci" id="ci-d3-ex6"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Side Plank<span class="sets">3 x 25-35s/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=side+plank+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="dw-move" id="dwmove-3" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)">
+      <div class="dw-move-toggle" onclick="toggleMovePicker('3')" style="font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;display:inline-block">&#x1F4C5; Auf anderen Tag verschieben</div>
+      <div class="dw-move-picker" id="dwpicker-3" style="display:none;gap:6px;margin-top:8px;flex-wrap:wrap">
+        <button onclick="moveWorkout('3',1)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Mo</button>
+        <button onclick="moveWorkout('3',2)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Di</button>
+        <button onclick="moveWorkout('3',3)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Mi</button>
+        <button onclick="moveWorkout('3',4)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Do</button>
+        <button onclick="moveWorkout('3',5)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Fr</button>
+        <button onclick="moveWorkout('3',6)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Sa</button>
+        <button onclick="moveWorkout('3',0)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">So</button>
+      </div>
+      <div class="dw-move-status" id="dwstatus-3" style="display:none;font-size:12px;color:var(--muted);margin-top:6px"></div>
+    </div>
   </div>
 
   <div class="card dw" id="dw-5">
@@ -314,13 +335,28 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div class="ci" id="ci-d5-ex3"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Reverse Lunge + Knieheben<span class="sets">3 x 12/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=reverse+lunge+knee+raise" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
     <div class="ci" id="ci-d5-ex4"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Superman / Rückenstrecker<span class="sets">4 x 15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=superman+back+exercise+tutorial" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
     <div class="ci" id="ci-d5-ex5"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">Mountain Climbers langsam<span class="sets">3 x 20/Seite <a class="yt-sm" href="https://www.youtube.com/results?search_query=slow+mountain+climbers+core" target="_blank">&#x25B6; YT</a></span></div><span class="ct sp">Sport</span></div>
+    <div class="dw-move" id="dwmove-5" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)">
+      <div class="dw-move-toggle" onclick="toggleMovePicker('5')" style="font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;display:inline-block">&#x1F4C5; Auf anderen Tag verschieben</div>
+      <div class="dw-move-picker" id="dwpicker-5" style="display:none;gap:6px;margin-top:8px;flex-wrap:wrap">
+        <button onclick="moveWorkout('5',1)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Mo</button>
+        <button onclick="moveWorkout('5',2)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Di</button>
+        <button onclick="moveWorkout('5',3)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Mi</button>
+        <button onclick="moveWorkout('5',4)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Do</button>
+        <button onclick="moveWorkout('5',5)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Fr</button>
+        <button onclick="moveWorkout('5',6)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">Sa</button>
+        <button onclick="moveWorkout('5',0)" style="flex:1;min-width:36px;padding:6px 0;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;cursor:pointer">So</button>
+      </div>
+      <div class="dw-move-status" id="dwstatus-5" style="display:none;font-size:12px;color:var(--muted);margin-top:6px"></div>
+    </div>
   </div>
 
   <div class="card">
-    <div class="sec-lbl" style="margin-top:8px">&#x1F319; Abends<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-eve" type="time" onchange="saveTi('eve')" oninput="onTimeInput('eve')" onblur="saveTi('eve')" placeholder="19:30"></span></div>
-    <div class="ci" id="ci-f4" onclick="toggle('f4')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Abendessen</strong></div></div><div class="mx"><div class="mx-l">Protein + viel Gemüse</div><div class="mx-r">Muskelregeneration, Vitamine</div></div><div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Topfen oder Naturjoghurt</div><div class="mx-r">Protein, gesunde Fette</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Carbs abends! <span style="color:#C4503A;font-size:13px">Fettspeicherung&#x2191;, Schlaf&#x2193;</span></div></div></div><span class="ct fo">Abends</span></div>
+    <div class="sec-lbl" style="margin-top:8px">&#x1F319; Abendessen<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-eve" type="time" onchange="saveTi('eve')" oninput="onTimeInput('eve')" onblur="saveTi('eve')" placeholder="19:30"></span></div>
+    <div class="ci" id="ci-f4" onclick="toggle('f4')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l">Protein + viel Gemüse</div><div class="mx-r">Muskelregeneration, Vitamine</div></div><div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Topfen oder Naturjoghurt</div><div class="mx-r">Protein, gesunde Fette</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Carbs abends! <span style="color:#C4503A;font-size:13px">Fettspeicherung&#x2191;, Schlaf&#x2193;</span></div></div></div><span class="ct fo">Abends</span></div>
     <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="onMealInput('ci-f4','Abendessen')" onblur="saveMealLog('ci-f4','Abendessen')"><button class="meal-log-save" onclick="saveMealLog('ci-f4','Abendessen')" title="Speichern">&#x2713;</button></div>
-    <div class="ci" id="ci-s2" onclick="toggle('s2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l"><strong>Abend-Supplements</strong></div></div><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität&#x2191;</div></div></div><span class="ct su">Suppl.</span></div>
+    <div class="ci" id="ci-w2" onclick="toggle('w2')" style="margin-top:6px"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">&#x1F415; Abend-Spaziergang mit Enzo</div><span class="ct wk">Abends</span></div>
+    <div class="sec-lbl" style="margin-top:8px">&#x1F31B; Abend-Supplements</div>
+    <div class="ci" id="ci-s2" onclick="toggle('s2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität&#x2191;</div></div></div><span class="ct su">Suppl.</span></div>
   </div>
 
   <div class="card" style="border-left:4px solid var(--sage)">
@@ -590,26 +626,108 @@ function init(){
   renderAlc();
 };
 
-function showWorkout(){
+var DAY_NAMES=['So','Mo','Di','Mi','Do','Fr','Sa'];
+
+function weekKey(){
+  var d=new Date();
+  var diff=(d.getDay()+6)%7; // Tage seit Montag
+  d.setDate(d.getDate()-diff);
+  return d.getFullYear()+'-'+(d.getMonth()+1<10?'0':'')+(d.getMonth()+1)+'-'+(d.getDate()<10?'0':'')+d.getDate();
+}
+
+function getActiveDwId(){
   var day=new Date().getDay();
+  var S2=lstore();
+  var wk=weekKey();
+  var moves=(S2.dwMove&&S2.dwMove[wk])||{};
+  var found=null;
+  ['1','3','5'].forEach(function(orig){
+    var origNum=parseInt(orig,10);
+    var targetDay=(moves[orig]!==undefined)?moves[orig]:origNum;
+    if(targetDay===day)found=orig;
+  });
+  return found;
+}
+
+function toggleMovePicker(orig){
+  var el=document.getElementById('dwpicker-'+orig);
+  if(!el)return;
+  el.style.display=(el.style.display==='flex')?'none':'flex';
+}
+
+function moveWorkout(orig,targetDay){
+  var S2=lstore();
+  if(!S2.dwMove)S2.dwMove={};
+  var wk=weekKey();
+  if(!S2.dwMove[wk])S2.dwMove[wk]={};
+  var origNum=parseInt(orig,10);
+  if(targetDay===origNum){
+    delete S2.dwMove[wk][orig];
+  } else {
+    S2.dwMove[wk][orig]=targetDay;
+  }
+  sstore(S2);
+  var picker=document.getElementById('dwpicker-'+orig);
+  if(picker)picker.style.display='none';
+  showWorkout();
+  updateRing();
+}
+
+function resetWorkoutMove(orig){
+  var S2=lstore();
+  var wk=weekKey();
+  if(S2.dwMove&&S2.dwMove[wk])delete S2.dwMove[wk][orig];
+  sstore(S2);
+  showWorkout();
+  updateRing();
+}
+
+function renderMoveStatus(){
+  var S2=lstore();
+  var wk=weekKey();
+  var moves=(S2.dwMove&&S2.dwMove[wk])||{};
+  ['1','3','5'].forEach(function(orig){
+    var statusEl=document.getElementById('dwstatus-'+orig);
+    var toggleEl=document.getElementById('dwmove-'+orig)?document.getElementById('dwmove-'+orig).querySelector('.dw-move-toggle'):null;
+    if(!statusEl)return;
+    var origNum=parseInt(orig,10);
+    if(moves[orig]!==undefined && moves[orig]!==origNum){
+      statusEl.style.display='block';
+      statusEl.innerHTML='Verschoben auf '+DAY_NAMES[moves[orig]]+' &middot; <span onclick="resetWorkoutMove(\''+orig+'\')" style="text-decoration:underline;cursor:pointer">zurücksetzen</span>';
+      if(toggleEl)toggleEl.style.display='none';
+    } else {
+      statusEl.style.display='none';
+      if(toggleEl)toggleEl.style.display='inline-block';
+    }
+  });
+}
+
+function showWorkout(){
   // Use inline style - overrides everything reliably on Samsung
   var divs=document.querySelectorAll('.dw');
   for(var i=0;i<divs.length;i++){
     divs[i].style.display='none';
   }
-  var el=document.getElementById('dw-'+day);
-  if(el){
-    el.style.display='block';
-    var cis=el.querySelectorAll('.ci');
-    for(var j=0;j<cis.length;j++){
-      (function(ci){
-        ci.addEventListener('click',function(e){
-          if(e.target.tagName==='A'||e.target.parentElement.tagName==='A')return;
-          toggle(ci.id.replace('ci-',''));
-        });
-      })(cis[j]);
+  var toShow=getActiveDwId();
+  if(toShow){
+    var el=document.getElementById('dw-'+toShow);
+    if(el){
+      el.style.display='block';
+      if(!el.dataset.bound){
+        el.dataset.bound='1';
+        var cis=el.querySelectorAll('.ci');
+        for(var j=0;j<cis.length;j++){
+          (function(ci){
+            ci.addEventListener('click',function(e){
+              if(e.target.tagName==='A'||e.target.parentElement.tagName==='A')return;
+              toggle(ci.id.replace('ci-',''));
+            });
+          })(cis[j]);
+        }
+      }
     }
   }
+  renderMoveStatus();
 }
 
 function loadChecks(){
@@ -640,9 +758,9 @@ function toggle(key){
 
 function updateRing(){
   var fixed=['w1','w3','w2','s1','f1','f2','f4','s2'];
-  var day=new Date().getDay();
   var done=0,total=0;
-  var dw=document.getElementById('dw-'+day);
+  var activeDw=getActiveDwId();
+  var dw=activeDw?document.getElementById('dw-'+activeDw):null;
   if(dw){
     var cis=dw.querySelectorAll('.ci');
     total+=cis.length;
