@@ -183,6 +183,9 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .meal-log-input.saved{border-color:var(--sage);background:#F2F8F2;}
 .meal-log-save{background:var(--gd);border:none;border-radius:8px;padding:7px 11px;color:#fff;font-size:15px;cursor:pointer;line-height:1;flex-shrink:0;}
 .meal-log-saved-txt{font-size:11px;color:var(--sage);margin-left:2px;display:none;}
+.meal-log-mic{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:6px 10px;color:var(--gd);font-size:15px;cursor:pointer;line-height:1;flex-shrink:0;}
+.meal-log-mic.listening{background:#C4503A;border-color:#C4503A;color:#fff;animation:micPulse 1s infinite;}
+@keyframes micPulse{0%,100%{opacity:1;}50%{opacity:.55;}}
 
 /* COMPACT MEAL/SUPPL LAYOUT */
 .mx{padding:3px 0;}
@@ -255,6 +258,10 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div class="q-attr">Tag für Tag · Schritt für Schritt</div>
   </div>
 
+  <div class="card" style="padding:14px 16px;margin-bottom:14px">
+    <div class="sec-lbl" style="margin-top:0">&#x1F305; Aufgestanden<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-wake" type="time" onchange="saveTi('wake')" oninput="onTimeInput('wake')" onblur="saveTi('wake')" placeholder="07:00"></span></div>
+  </div>
+
   <div id="milestoneReminder" style="display:none;background:linear-gradient(135deg,#FFF0F8,#FFE8F5);border:2px solid #C9A96E;border-radius:14px;padding:16px 18px;margin-bottom:18px;font-size:15px;color:#5C4B35;line-height:1.6;"></div>
 
   <!-- 1. SPAZIERGÄNGE (jetzt einzeln im Tagesablauf verteilt) -->
@@ -262,17 +269,17 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <!-- 2. ERNÄHRUNG + SUPPLEMENTS CHRONOLOGISCH -->
   <div class="card">
-      <div class="sec-lbl" style="margin-top:0">&#x2600;&#xFE0F; Morgen-Supplements <span id="vitDHint" style="display:inline;font-size:11px;color:#C9A96E;font-weight:600;text-transform:none;letter-spacing:0"></span><span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-suppl" type="time" onchange="saveTi('suppl')" oninput="onTimeInput('suppl')" onblur="saveTi('suppl')" placeholder="07:00"></span></div>
+      <div class="sec-lbl" style="margin-top:0">&#x2600;&#xFE0F; Morgen-Supplements <span id="vitDHint" style="display:inline;font-size:11px;color:#C9A96E;font-weight:600;text-transform:none;letter-spacing:0"></span></div>
       <div class="ci" id="ci-s1" onclick="toggle('s1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen&#x2193;, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 3 Kapseln</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol&#x2193;, Brain Fog&#x2193;</div></div></div></div>
       <div class="ci" id="ci-w1" onclick="toggle('w1')" style="margin-top:6px"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">&#x1F415; Morgen-Spaziergang mit Enzo</div></div>
       <div class="sec-lbl" style="margin-top:6px">&#x2600;&#xFE0F; Frühstück<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-frueh" type="time" onchange="saveTi('frueh')" oninput="onTimeInput('frueh')" onblur="saveTi('frueh')" placeholder="08:00"></span></div>
       <div class="ci" id="ci-f1" onclick="toggle('f1')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">Weizenkeime + Kollagen</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">&#x1F33F; Zimt Kardamom Nelken Vanille</div></div></div>
-      <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="onMealInput('ci-f1','Frühstück')" onblur="saveMealLog('ci-f1','Frühstück')"><button class="meal-log-save" onclick="saveMealLog('ci-f1','Frühstück')" title="Speichern">&#x2713;</button></div>
+      <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="onMealInput('ci-f1','Frühstück')" onblur="saveMealLog('ci-f1','Frühstück')"><button class="meal-log-mic" onclick="startVoiceInput('log-ci-f1',this)" title="Spracheingabe">&#x1F3A4;</button><button class="meal-log-save" onclick="saveMealLog('ci-f1','Frühstück')" title="Speichern">&#x2713;</button></div>
   </div>
   <div class="card" id="mittagsBox">
       <div class="sec-lbl" style="margin-top:0">&#x1F31E; Mittagessen<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi('noon')" oninput="onTimeInput('noon')" onblur="saveTi('noon')" placeholder="12:00"></span></div>
       <div class="ci" id="ci-f2" onclick="toggle('f2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">&#x1F33F; Kurkuma Curry Paprika Pfeffer Salz</div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Fast Carbs!<br><span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie&#x2193;</span></div></div></div></div>
-      <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="onMealInput('ci-f2','Mittagessen')" onblur="saveMealLog('ci-f2','Mittagessen')"><button class="meal-log-save" onclick="saveMealLog('ci-f2','Mittagessen')" title="Speichern">&#x2713;</button></div>
+      <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="onMealInput('ci-f2','Mittagessen')" onblur="saveMealLog('ci-f2','Mittagessen')"><button class="meal-log-mic" onclick="startVoiceInput('log-ci-f2',this)" title="Spracheingabe">&#x1F3A4;</button><button class="meal-log-save" onclick="saveMealLog('ci-f2','Mittagessen')" title="Speichern">&#x2713;</button></div>
       <div class="ci" id="ci-w3" onclick="toggle('w3')" style="margin-top:6px"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">&#x1F415; Mittags-Spaziergang</div></div>
   </div>
 
@@ -353,7 +360,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div class="card">
     <div class="sec-lbl" style="margin-top:8px">&#x1F319; Abendessen<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-eve" type="time" onchange="saveTi('eve')" oninput="onTimeInput('eve')" onblur="saveTi('eve')" placeholder="19:30"></span></div>
     <div class="ci" id="ci-f4" onclick="toggle('f4')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx"><div class="mx-l">Protein + viel Gemüse</div><div class="mx-r">Muskelregeneration, Vitamine</div></div><div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Buttermilch oder hartgekochte Eier</div><div class="mx-r">Protein, gesunde Fette</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">&#x26A0;&#xFE0F; Keine Carbs abends! <span style="color:#C4503A;font-size:13px">Fettspeicherung&#x2191;, Schlaf&#x2193;</span></div></div></div></div>
-    <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="onMealInput('ci-f4','Abendessen')" onblur="saveMealLog('ci-f4','Abendessen')"><button class="meal-log-save" onclick="saveMealLog('ci-f4','Abendessen')" title="Speichern">&#x2713;</button></div>
+    <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="onMealInput('ci-f4','Abendessen')" onblur="saveMealLog('ci-f4','Abendessen')"><button class="meal-log-mic" onclick="startVoiceInput('log-ci-f4',this)" title="Spracheingabe">&#x1F3A4;</button><button class="meal-log-save" onclick="saveMealLog('ci-f4','Abendessen')" title="Speichern">&#x2713;</button></div>
     <div class="ci" id="ci-w2" onclick="toggle('w2')" style="margin-top:6px"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl">&#x1F415; Abend-Spaziergang mit Enzo</div></div>
     <div class="sec-lbl" style="margin-top:8px">&#x1F31B; Abend-Supplements</div>
     <div class="ci" id="ci-s2" onclick="toggle('s2')"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cl"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">&#x1F4A7; Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität&#x2191;</div></div></div></div>
@@ -385,6 +392,10 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div style="text-align:center;margin-top:9px">
       <span id="alcSlipLink" onclick="markAlcSlip()" style="display:none;font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer"></span>
     </div>
+  </div>
+
+  <div class="card" style="padding:14px 16px;margin-top:14px">
+    <div class="sec-lbl" style="margin-top:0">&#x1F319; Schlafen gegangen<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-sleep" type="time" onchange="saveTi('sleep')" oninput="onTimeInput('sleep')" onblur="saveTi('sleep')" placeholder="22:30"></span></div>
   </div>
 
   <!-- JOURNAL -->
@@ -966,11 +977,58 @@ function flushInputs(){
   // Sichert alle offenen Uhrzeit- und Mahlzeit-Felder sofort, egal ob getippt oder nicht
   var mealMap={'ci-f1':'Frühstück','ci-f2':'Mittagessen','ci-f4':'Abendessen'};
   Object.keys(mealMap).forEach(function(ciId){saveMealLog(ciId,mealMap[ciId]);});
-  ['suppl','frueh','noon','eve'].forEach(function(id){saveTi(id);});
+  ['suppl','frueh','noon','eve','wake','sleep'].forEach(function(id){saveTi(id);});
 }
 document.addEventListener('visibilitychange',function(){if(document.hidden)flushInputs();});
 window.addEventListener('pagehide',flushInputs);
 window.addEventListener('beforeunload',flushInputs);
+
+// ── SPRACHEINGABE (Web Speech API) ──
+var micRecognition=null;
+var micActiveBtn=null;
+function startVoiceInput(inputId, btn){
+  var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){
+    alert('Spracheingabe wird von diesem Browser leider nicht unterstützt.');
+    return;
+  }
+  if(micRecognition){
+    micRecognition.stop();
+    return;
+  }
+  var inp=document.getElementById(inputId);
+  if(!inp)return;
+  micRecognition=new SR();
+  micRecognition.lang='de-AT';
+  micRecognition.interimResults=false;
+  micRecognition.maxAlternatives=1;
+  micActiveBtn=btn;
+  btn.classList.add('listening');
+  micRecognition.onresult=function(e){
+    var transcript=e.results[0][0].transcript;
+    var existing=inp.value.trim();
+    inp.value=existing?(existing+' '+transcript):transcript;
+    inp.classList.remove('saved');
+    inp.dispatchEvent(new Event('input',{bubbles:true}));
+  };
+  micRecognition.onerror=function(e){
+    if(e.error!=='no-speech'&&e.error!=='aborted'){
+      alert('Spracheingabe-Fehler: '+e.error);
+    }
+  };
+  micRecognition.onend=function(){
+    if(micActiveBtn)micActiveBtn.classList.remove('listening');
+    micRecognition=null;
+    micActiveBtn=null;
+  };
+  try{
+    micRecognition.start();
+  }catch(err){
+    btn.classList.remove('listening');
+    micRecognition=null;
+    micActiveBtn=null;
+  }
+}
 
 function saveMealLog(ciId, label){
   var inp=document.getElementById('log-'+ciId);
@@ -1012,7 +1070,7 @@ function saveTi(id){
 function loadTimes(){
   var S2=lstore();
   var t=(S2.times&&S2.times[TK])||{};
-  ['suppl','frueh','noon','eve'].forEach(function(id){
+  ['suppl','frueh','noon','eve','wake','sleep'].forEach(function(id){
     var inp=document.getElementById('ti-'+id);
     if(inp&&t[id])inp.value=t[id];
   });
