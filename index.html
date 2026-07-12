@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0063)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_15.html -->
+<!-- saved from url=(0063)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_16.html -->
 <html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -252,7 +252,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   </div>
 
   <div class="quote">
-    <div class="q-text" id="quoteText">Du bist nicht zu alt. Du fängst heute an.</div>
+    <div class="q-text" id="quoteText">Konsequenz schlägt Perfektion. Jeden. Tag.</div>
     <div class="q-attr">Tag für Tag · Schritt für Schritt</div>
   </div>
 
@@ -308,6 +308,14 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   </div>
 
   <!-- Tagesworkouts Mo/Mi/Fr (hidden, shown by JS) -->
+  <div class="card" style="padding:10px 16px;margin-bottom:10px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Training anzeigen</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button type="button" id="dwSwBtn-1" onclick="showDwManual(&#39;1&#39;)" style="flex: 1 1 0%; min-width: 90px; padding: 8px 4px; border-color: var(--border); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 8px; background: var(--bg); font-size: 12px; cursor: pointer; color: var(--t);">Kraft A · Mo</button>
+      <button type="button" id="dwSwBtn-3" onclick="showDwManual(&#39;3&#39;)" style="flex: 1 1 0%; min-width: 90px; padding: 8px 4px; border-color: var(--border); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 8px; background: var(--bg); font-size: 12px; cursor: pointer; color: var(--t);">Kraft B · Mi</button>
+      <button type="button" id="dwSwBtn-5" onclick="showDwManual(&#39;5&#39;)" style="flex: 1 1 0%; min-width: 90px; padding: 8px 4px; border-color: var(--border); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 8px; background: var(--bg); font-size: 12px; cursor: pointer; color: var(--t);">Kraft C · Fr</button>
+    </div>
+  </div>
   <div class="card dw" id="dw-1" style="display: none;">
     <div class="card-title">Kraft A - Oberkörper + Core</div>
     <div class="card-sub">Mo · 35 Min · 4 Sätze</div>
@@ -748,32 +756,64 @@ function renderMoveStatus(){
   });
 }
 
+var manualDw=null;
+
+function getShownDwId(){
+  return manualDw||getActiveDwId();
+}
+
+function bindDw(id){
+  var el=document.getElementById('dw-'+id);
+  if(!el||el.dataset.bound)return;
+  el.dataset.bound='1';
+  var cis=el.querySelectorAll('.ci');
+  for(var j=0;j<cis.length;j++){
+    (function(ci){
+      ci.addEventListener('click',function(e){
+        if(e.target.tagName==='A'||e.target.parentElement.tagName==='A')return;
+        toggle(ci.id.replace('ci-',''));
+      });
+    })(cis[j]);
+  }
+}
+
+function showDwManual(id){
+  manualDw=id;
+  showWorkout();
+  updateRing();
+}
+
+function updateDwSwitcher(){
+  var shown=getShownDwId();
+  var active=getActiveDwId();
+  ['1','3','5'].forEach(function(id){
+    var btn=document.getElementById('dwSwBtn-'+id);
+    if(!btn)return;
+    var isShown=(id===shown);
+    btn.style.background=isShown?'var(--gd)':'var(--bg)';
+    btn.style.color=isShown?'#fff':'var(--t)';
+    btn.style.borderColor=isShown?'var(--gd)':'var(--border)';
+    btn.textContent=btn.textContent.replace(' (heute)','');
+    if(id===active)btn.textContent=btn.textContent+' (heute)';
+  });
+}
+
 function showWorkout(){
   // Use inline style - overrides everything reliably on Samsung
   var divs=document.querySelectorAll('.dw');
   for(var i=0;i<divs.length;i++){
     divs[i].style.display='none';
   }
-  var toShow=getActiveDwId();
+  var toShow=getShownDwId();
   if(toShow){
     var el=document.getElementById('dw-'+toShow);
     if(el){
       el.style.display='block';
-      if(!el.dataset.bound){
-        el.dataset.bound='1';
-        var cis=el.querySelectorAll('.ci');
-        for(var j=0;j<cis.length;j++){
-          (function(ci){
-            ci.addEventListener('click',function(e){
-              if(e.target.tagName==='A'||e.target.parentElement.tagName==='A')return;
-              toggle(ci.id.replace('ci-',''));
-            });
-          })(cis[j]);
-        }
-      }
+      bindDw(toShow);
     }
   }
   renderMoveStatus();
+  updateDwSwitcher();
 }
 
 function loadChecks(){
@@ -805,7 +845,7 @@ function toggle(key){
 function updateRing(){
   var fixed=['w1','w3','w2','s1','f1','f2','f4','s2'];
   var done=0,total=0;
-  var activeDw=getActiveDwId();
+  var activeDw=getShownDwId();
   var dw=activeDw?document.getElementById('dw-'+activeDw):null;
   if(dw){
     var cis=dw.querySelectorAll('.ci');
