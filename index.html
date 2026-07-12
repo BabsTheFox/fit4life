@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0063)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_16.html -->
+<!-- saved from url=(0063)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_17.html -->
 <html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -252,12 +252,24 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   </div>
 
   <div class="quote">
-    <div class="q-text" id="quoteText">Konsequenz schlägt Perfektion. Jeden. Tag.</div>
+    <div class="q-text" id="quoteText">Staerke entsteht nicht im Komfort, sondern durch Ueberwindung.</div>
     <div class="q-attr">Tag für Tag · Schritt für Schritt</div>
   </div>
 
   <div class="card" style="padding:14px 16px;margin-bottom:14px">
     <div class="sec-lbl" style="margin-top:0">🌅 Aufgestanden<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-wake" type="time" onchange="saveTi(&#39;wake&#39;)" oninput="onTimeInput(&#39;wake&#39;)" onblur="saveTi(&#39;wake&#39;)" placeholder="07:00"></span></div>
+  </div>
+
+  <div class="card" style="padding:14px 16px;margin-bottom:14px">
+    <div class="sec-lbl" style="margin-top:0">⚖️ Gewicht &amp; Körperanalyse</div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;font-size:13px">
+      <div>Gewicht<br><input type="number" step="0.1" min="30" max="200" id="weightInput" class="meal-time-inp" placeholder="68.4" onblur="saveWeight()" style="width:90px"> kg</div>
+      <div>Fett<br><input type="number" step="0.1" min="0" max="100" id="weightFat" class="meal-time-inp" placeholder="28.5" onblur="saveWeight()" style="width:80px"> %</div>
+      <div>Muskel<br><input type="number" step="0.1" min="0" max="100" id="weightMuscle" class="meal-time-inp" placeholder="32.0" onblur="saveWeight()" style="width:80px"> %</div>
+      <div>Wasser<br><input type="number" step="0.1" min="0" max="100" id="weightWater" class="meal-time-inp" placeholder="50.0" onblur="saveWeight()" style="width:80px"> %</div>
+      <div>Knochen<br><input type="number" step="0.1" min="0" max="100" id="weightBone" class="meal-time-inp" placeholder="3.2" onblur="saveWeight()" style="width:80px"> %</div>
+    </div>
+    <div id="weightStatus" style="display:none;font-size:12px;color:var(--muted);margin-top:6px">Gespeichert ✓</div>
   </div>
 
   <div class="card" style="padding:14px 16px;margin-bottom:14px">
@@ -270,6 +282,11 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
         <div>🌞 Mittag<br><input type="time" id="bl-noon" class="meal-time-inp"></div>
         <div>🌙 Abend<br><input type="time" id="bl-eve" class="meal-time-inp"></div>
         <div>🌙 Schlafen<br><input type="time" id="bl-sleep" class="meal-time-inp"></div>
+        <div>⚖️ Gewicht<br><input type="number" step="0.1" min="30" max="200" id="bl-weight" class="meal-time-inp" style="width:70px" placeholder="kg"></div>
+        <div>Fett %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-fat" class="meal-time-inp" style="width:70px" placeholder="%"></div>
+        <div>Muskel %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-muscle" class="meal-time-inp" style="width:70px" placeholder="%"></div>
+        <div>Wasser %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-water" class="meal-time-inp" style="width:70px" placeholder="%"></div>
+        <div>Knochen %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-bone" class="meal-time-inp" style="width:70px" placeholder="%"></div>
       </div>
       <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Mahlzeiten</div>
       <div style="margin-bottom:8px">☀️ Frühstück<br><input type="text" id="bl-frueh-txt" class="meal-log-input" style="width:100%;box-sizing:border-box" placeholder="Was hast du gefrühstückt?"></div>
@@ -672,6 +689,7 @@ function init(){
   initFd();
   loadMealLogs();
   loadTimes();
+  loadWeight();
   loadChecks();
   updateRing();
   buildGrid();
@@ -1200,6 +1218,33 @@ function saveTi(id){
   S2.times[TK][id]=inp.value;
   sstore(S2);
 }
+function saveWeight(){
+  var fields={kg:'weightInput',fat:'weightFat',muscle:'weightMuscle',water:'weightWater',bone:'weightBone'};
+  var entry={};
+  var any=false;
+  Object.keys(fields).forEach(function(key){
+    var inp=document.getElementById(fields[key]);
+    if(!inp)return;
+    var val=parseFloat(inp.value);
+    if(!isNaN(val)){entry[key]=val;any=true;}
+  });
+  if(!any)return;
+  if(!S.weights)S.weights={};
+  S.weights[TK]=entry;
+  saveS();
+  var st=document.getElementById('weightStatus');
+  if(st){st.style.display='block';setTimeout(function(){st.style.display='none';},2000);}
+}
+function loadWeight(){
+  if(!S.weights||S.weights[TK]===undefined)return;
+  var w=S.weights[TK];
+  if(typeof w==='number')w={kg:w}; // alte Einträge (nur Gewicht)
+  var fields={kg:'weightInput',fat:'weightFat',muscle:'weightMuscle',water:'weightWater',bone:'weightBone'};
+  Object.keys(fields).forEach(function(key){
+    var inp=document.getElementById(fields[key]);
+    if(inp&&w[key]!==undefined)inp.value=w[key];
+  });
+}
 function loadTimes(){
   var S2=lstore();
   var t=(S2.times&&S2.times[TK])||{};
@@ -1238,6 +1283,13 @@ function loadBacklogTimes(){
   ['wake','frueh','noon','eve','sleep'].forEach(function(id){
     var inp=document.getElementById('bl-'+id);
     if(inp)inp.value=t[id]||'';
+  });
+  var wEntry=(S2.weights&&S2.weights[dateInp.value])||{};
+  if(typeof wEntry==='number')wEntry={kg:wEntry};
+  var wFields={kg:'bl-weight',fat:'bl-weight-fat',muscle:'bl-weight-muscle',water:'bl-weight-water',bone:'bl-weight-bone'};
+  Object.keys(wFields).forEach(function(key){
+    var inp=document.getElementById(wFields[key]);
+    if(inp)inp.value=(wEntry[key]!==undefined)?wEntry[key]:'';
   });
   var entries=S2.fd||[];
   var mealMap={'frueh-txt':'Frühstück','noon-txt':'Mittagessen','eve-txt':'Abendessen'};
@@ -1284,6 +1336,19 @@ function saveBacklog(){
     var inp=document.getElementById('bl-'+id);
     if(inp&&inp.value)S2.times[dateInp.value][id]=inp.value;
   });
+  var wFieldsSave={kg:'bl-weight',fat:'bl-weight-fat',muscle:'bl-weight-muscle',water:'bl-weight-water',bone:'bl-weight-bone'};
+  var wEntrySave={};
+  var wAny=false;
+  Object.keys(wFieldsSave).forEach(function(key){
+    var inp=document.getElementById(wFieldsSave[key]);
+    if(!inp||!inp.value)return;
+    var wv=parseFloat(inp.value);
+    if(!isNaN(wv)){wEntrySave[key]=wv;wAny=true;}
+  });
+  if(wAny){
+    if(!S2.weights)S2.weights={};
+    S2.weights[dateInp.value]=wEntrySave;
+  }
   if(!S2.fd)S2.fd=[];
   var mealMap={'frueh-txt':'Frühstück','noon-txt':'Mittagessen','eve-txt':'Abendessen'};
   Object.keys(mealMap).forEach(function(id){
