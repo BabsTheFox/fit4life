@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0063)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_13.html -->
+<!-- saved from url=(0063)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_14.html -->
 <html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#2C2418">
 <title>fit4life</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 100 100&#39;%3E%3Crect width=&#39;100&#39; height=&#39;100&#39; rx=&#39;20&#39; fill=&#39;%232C2418&#39;/%3E%3Ctext x=&#39;50&#39; y=&#39;68&#39; font-size=&#39;50&#39; text-anchor=&#39;middle&#39; fill=&#39;%23C9A96E&#39;%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
-<link href="./index_files/css2" rel="stylesheet">
+<link href="file:///C:/Users/Babs/Downloads/index_files/css2" rel="stylesheet">
 <style>
 :root{--g:#C9A96E;--gl:#E8D5B0;--gd:#9A7A45;--cream:#FAF7F2;--sand:#E8DFD0;--t:#C47A5A;--sage:#8B9E7B;--deep:#2C2418;--mid:#5C4B35;--muted:#8A7A65;}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -217,13 +217,13 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
       <div class="hero-title">fit4<em>life</em></div>
     </div>
     <div style="text-align:right;flex-shrink:0">
-      <span class="hero-day" id="heroDay">10</span>
+      <span class="hero-day" id="heroDay">12</span>
       <span class="hero-month" id="heroMonth">Juli 2026</span>
     </div>
   </div>
   <div class="prog">
-    <div class="prog-lbl"><span>Start: Mai 2026</span><span id="progPct">30%</span><span>Ziel: Dez 2026</span></div>
-    <div class="prog-bar"><div class="prog-fill" id="progFill" style="width: 30%;"></div></div>
+    <div class="prog-lbl"><span>Start: Mai 2026</span><span id="progPct">31%</span><span>Ziel: Dez 2026</span></div>
+    <div class="prog-bar"><div class="prog-fill" id="progFill" style="width: 31%;"></div></div>
   </div>
 </div>
 
@@ -252,7 +252,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   </div>
 
   <div class="quote">
-    <div class="q-text" id="quoteText">Der Spaziergang mit Enzo ist auch deine Medizin.</div>
+    <div class="q-text" id="quoteText">Dein Körper kann alles – überzeuge zuerst deinen Geist.</div>
     <div class="q-attr">Tag für Tag · Schritt für Schritt</div>
   </div>
 
@@ -260,7 +260,27 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div class="sec-lbl" style="margin-top:0">🌅 Aufgestanden<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-wake" type="time" onchange="saveTi(&#39;wake&#39;)" oninput="onTimeInput(&#39;wake&#39;)" onblur="saveTi(&#39;wake&#39;)" placeholder="07:00"></span></div>
   </div>
 
-  <div id="milestoneReminder" style="display:none;background:linear-gradient(135deg,#FFF0F8,#FFE8F5);border:2px solid #C9A96E;border-radius:14px;padding:16px 18px;margin-bottom:18px;font-size:15px;color:#5C4B35;line-height:1.6;"></div>
+  <div class="card" style="padding:14px 16px;margin-bottom:14px">
+    <div class="dw-move-toggle" onclick="toggleBacklog()" style="font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;display:inline-block">🕒 Vergessene Uhrzeit / Mahlzeit nachtragen</div>
+    <div id="backlogPanel" style="display:none;margin-top:10px">
+      <div style="margin-bottom:8px">Datum: <input type="date" id="blDate" onchange="loadBacklogTimes()" style="border:1px solid var(--border);border-radius:8px;padding:4px 8px;font-size:13px"></div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;font-size:13px;margin-bottom:10px">
+        <div>🌅 Aufgestanden<br><input type="time" id="bl-wake" class="meal-time-inp"></div>
+        <div>☀️ Frühstück<br><input type="time" id="bl-frueh" class="meal-time-inp"></div>
+        <div>🌞 Mittag<br><input type="time" id="bl-noon" class="meal-time-inp"></div>
+        <div>🌙 Abend<br><input type="time" id="bl-eve" class="meal-time-inp"></div>
+        <div>🌙 Schlafen<br><input type="time" id="bl-sleep" class="meal-time-inp"></div>
+      </div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Mahlzeiten</div>
+      <div style="margin-bottom:8px">☀️ Frühstück<br><input type="text" id="bl-frueh-txt" class="meal-log-input" style="width:100%;box-sizing:border-box" placeholder="Was hast du gefrühstückt?"></div>
+      <div style="margin-bottom:8px">🌞 Mittag<br><input type="text" id="bl-noon-txt" class="meal-log-input" style="width:100%;box-sizing:border-box" placeholder="Was hast du zu Mittag gegessen?"></div>
+      <div style="margin-bottom:8px">🌙 Abend<br><input type="text" id="bl-eve-txt" class="meal-log-input" style="width:100%;box-sizing:border-box" placeholder="Was hast du zu Abend gegessen?"></div>
+      <button onclick="saveBacklog()" style="margin-top:4px;padding:8px 16px;border:none;border-radius:8px;background:var(--terra,#C4503A);color:#fff;font-size:13px;cursor:pointer">Speichern</button>
+      <div id="blStatus" style="display:none;font-size:12px;color:var(--muted);margin-top:6px">Gespeichert ✓</div>
+    </div>
+  </div>
+
+  <div id="milestoneReminder" style="display: block; background: linear-gradient(135deg, rgb(255, 240, 248), rgb(255, 232, 245)); border: 2px solid rgb(201, 169, 110); border-radius: 14px; padding: 16px 18px; margin-bottom: 18px; font-size: 15px; color: rgb(92, 75, 53); line-height: 1.6;">🎯 <strong>3-Monats-Meilenstein!</strong> Zeit für Zwischenstand-Fotos! Vergleiche mit deinen Vorher-Fotos vom Mai 2026 - du wirst den Unterschied sehen! 📸</div>
 
   <!-- 1. SPAZIERGÄNGE (jetzt einzeln im Tagesablauf verteilt) -->
 
@@ -331,7 +351,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     </div>
   </div>
 
-  <div class="card dw" id="dw-5" style="display: block;" data-bound="1">
+  <div class="card dw" id="dw-5" style="display: none;" data-bound="1">
     <div class="card-title">Kraft C - Ganzkörper-Power</div>
     <div class="card-sub">Fr · 35 Min · 3-4 Sätze</div>
     <div class="ci" id="ci-d5-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl">Squat to Overhead Press<span class="sets">4 x 15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+to+overhead+press+band" target="_blank">▶ YT</a></span></div></div>
@@ -400,7 +420,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div style="margin-top:8px"></div>
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
     <h2 style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:24px;font-weight:400;margin:0">Journal <em style="font-style:italic;color:var(--t)">heute</em></h2>
-    <span id="jDate" style="font-size:12px;color:var(--muted)">10. Juli 2026</span>
+    <span id="jDate" style="font-size:12px;color:var(--muted)">12. Juli 2026</span>
   </div>
   <div class="mood-grid">
     <div class="mood-tile"><div class="em">⚡</div><div class="ml">Energie</div><div class="dots" id="md-e"><button type="button" class="dot"></button><button type="button" class="dot"></button><button type="button" class="dot"></button><button type="button" class="dot"></button><button type="button" class="dot"></button></div></div>
@@ -430,7 +450,7 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
 <!-- ===== WOCHE ===== -->
 <div class="panel" id="tab-woche">
   <div class="sh first"><h2>Deine <em>Woche</em></h2><div class="sh-line"></div></div>
-  <div class="wg" id="weekGrid"><div class="wd"><div class="wd-l">So</div><div class="wd-n">5</div><div class="wd-t">Ruhe</div></div><div class="wd"><div class="wd-l">Mo</div><div class="wd-n">6</div><div class="wd-t">Kraft A</div></div><div class="wd"><div class="wd-l">Di</div><div class="wd-n">7</div><div class="wd-t">Aktiv</div></div><div class="wd"><div class="wd-l">Mi</div><div class="wd-n">8</div><div class="wd-t">Kraft B</div></div><div class="wd"><div class="wd-l">Do</div><div class="wd-n">9</div><div class="wd-t">Aktiv</div></div><div class="wd today"><div class="wd-l">Fr</div><div class="wd-n">10</div><div class="wd-t">Kraft C</div></div><div class="wd"><div class="wd-l">Sa</div><div class="wd-n">11</div><div class="wd-t">VitD+Aktiv</div></div></div>
+  <div class="wg" id="weekGrid"><div class="wd today"><div class="wd-l">So</div><div class="wd-n">12</div><div class="wd-t">Ruhe</div></div><div class="wd"><div class="wd-l">Mo</div><div class="wd-n">13</div><div class="wd-t">Kraft A</div></div><div class="wd"><div class="wd-l">Di</div><div class="wd-n">14</div><div class="wd-t">Aktiv</div></div><div class="wd"><div class="wd-l">Mi</div><div class="wd-n">15</div><div class="wd-t">Kraft B</div></div><div class="wd"><div class="wd-l">Do</div><div class="wd-n">16</div><div class="wd-t">Aktiv</div></div><div class="wd"><div class="wd-l">Fr</div><div class="wd-n">17</div><div class="wd-t">Kraft C</div></div><div class="wd"><div class="wd-l">Sa</div><div class="wd-n">18</div><div class="wd-t">VitD+Aktiv</div></div></div>
   <div class="alert">Dein Prinzip: 3x Krafttraining a 30-40 Min - die Hundespaziergaenge sind deine Regeneration!</div>
   <div class="sh"><h2>Trainingsplan <em>kompakt</em></h2><div class="sh-line"></div></div>
   <div class="wb">
@@ -583,6 +603,11 @@ var TK=tkey();
 
 function lstore(){try{var r=localStorage.getItem('bfv6');return r?JSON.parse(r):{}}catch(e){return{};}}
 function sstore(d){try{localStorage.setItem('bfv6',JSON.stringify(d));}catch(e){}}
+function saveS(){
+  var fresh=lstore();
+  if(fresh.dwMove)S.dwMove=fresh.dwMove;
+  sstore(S);
+}
 
 var S=lstore();
 if(!S.checks)S.checks={};
@@ -767,7 +792,7 @@ function toggle(key){
   S.checks[dk]=done;
   if(!S.days)S.days={};
   S.days[TK]=true;
-  sstore(S);
+  saveS();
   updateRing();
 }
 
@@ -826,7 +851,7 @@ function buildMoods(){
 
 function setMood(sh,val){
   if(!S.moods[TK])S.moods[TK]={};
-  S.moods[TK][sh]=val;sstore(S);buildMoods();
+  S.moods[TK][sh]=val;saveS();buildMoods();
 }
 
 function loadJournal(){
@@ -838,7 +863,7 @@ function loadJournal(){
 function saveJ(){
   var ta=document.getElementById('jInput');
   if(!ta)return;
-  S.journals[TK]=ta.value;sstore(S);renderPast();
+  S.journals[TK]=ta.value;saveS();renderPast();
   var m=document.getElementById('jMsg');m.style.display='inline';
   setTimeout(function(){m.style.display='none';},2000);
 }
@@ -857,7 +882,7 @@ function renderPast(){
 }
 
 function saveDay(){
-  if(!S.days)S.days={};S.days[TK]=true;sstore(S);
+  if(!S.days)S.days={};S.days[TK]=true;saveS();
   var b=event.target;b.textContent='Tag abgeschlossen!';
   b.style.background='linear-gradient(135deg,#8B9E7B,#6A8A60)';
   setTimeout(function(){b.textContent='Tag abschliessen';b.style.background='';},2500);
@@ -1136,6 +1161,74 @@ function loadTimes(){
     var inp=document.getElementById('ti-'+id);
     if(inp&&t[id])inp.value=t[id];
   });
+}
+
+// ── NACHTRAG (vergangene Uhrzeiten korrigieren) ──────────
+function todayKey(){
+  var d=new Date();
+  return d.getFullYear()+'-'+(d.getMonth()+1<10?'0':'')+(d.getMonth()+1)+'-'+(d.getDate()<10?'0':'')+d.getDate();
+}
+function toggleBacklog(){
+  var el=document.getElementById('backlogPanel');
+  if(!el)return;
+  if(el.style.display==='none'||!el.style.display){
+    el.style.display='block';
+    var dateInp=document.getElementById('blDate');
+    if(dateInp&&!dateInp.value){
+      var y=new Date();y.setDate(y.getDate()-1);
+      dateInp.value=y.getFullYear()+'-'+(y.getMonth()+1<10?'0':'')+(y.getMonth()+1)+'-'+(y.getDate()<10?'0':'')+y.getDate();
+    }
+    dateInp.max=todayKey();
+    loadBacklogTimes();
+  } else {
+    el.style.display='none';
+  }
+}
+function loadBacklogTimes(){
+  var dateInp=document.getElementById('blDate');
+  if(!dateInp||!dateInp.value)return;
+  var S2=lstore();
+  var t=(S2.times&&S2.times[dateInp.value])||{};
+  ['wake','frueh','noon','eve','sleep'].forEach(function(id){
+    var inp=document.getElementById('bl-'+id);
+    if(inp)inp.value=t[id]||'';
+  });
+  var entries=S2.fd||[];
+  var mealMap={'frueh-txt':'Frühstück','noon-txt':'Mittagessen','eve-txt':'Abendessen'};
+  Object.keys(mealMap).forEach(function(id){
+    var inp=document.getElementById('bl-'+id);
+    if(!inp)return;
+    var entry=entries.find(function(e){return e.date===dateInp.value&&e.meal===mealMap[id];});
+    inp.value=entry?entry.foods:'';
+  });
+}
+function saveBacklog(){
+  var dateInp=document.getElementById('blDate');
+  if(!dateInp||!dateInp.value)return;
+  var S2=lstore();
+  if(!S2.times)S2.times={};
+  if(!S2.times[dateInp.value])S2.times[dateInp.value]={};
+  ['wake','frueh','noon','eve','sleep'].forEach(function(id){
+    var inp=document.getElementById('bl-'+id);
+    if(inp&&inp.value)S2.times[dateInp.value][id]=inp.value;
+  });
+  if(!S2.fd)S2.fd=[];
+  var mealMap={'frueh-txt':'Frühstück','noon-txt':'Mittagessen','eve-txt':'Abendessen'};
+  Object.keys(mealMap).forEach(function(id){
+    var inp=document.getElementById('bl-'+id);
+    if(!inp||!inp.value.trim())return;
+    var label=mealMap[id];
+    S2.fd=S2.fd.filter(function(e){return !(e.date===dateInp.value&&e.meal===label);});
+    S2.fd.unshift({id:Date.now()+Math.random(),date:dateInp.value,meal:label,foods:inp.value.trim(),symptoms:[],note:''});
+  });
+  if(S2.fd.length>200)S2.fd=S2.fd.slice(0,200);
+  sstore(S2);
+  if(typeof renderFd==='function')renderFd('alle');
+  var st=document.getElementById('blStatus');
+  if(st){
+    st.style.display='block';
+    setTimeout(function(){st.style.display='none';},2000);
+  }
 }
 
 // ── KEIN-ALKOHOL CHALLENGE ──────────────────────────────
