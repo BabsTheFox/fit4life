@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0063)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_17.html -->
+<!-- saved from url=(0063)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_13.html -->
 <html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#2C2418">
 <title>fit4life</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 100 100&#39;%3E%3Crect width=&#39;100&#39; height=&#39;100&#39; rx=&#39;20&#39; fill=&#39;%232C2418&#39;/%3E%3Ctext x=&#39;50&#39; y=&#39;68&#39; font-size=&#39;50&#39; text-anchor=&#39;middle&#39; fill=&#39;%23C9A96E&#39;%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
-<link href="file:///C:/Users/Babs/Downloads/index_files/css2" rel="stylesheet">
+<link href="./index_files/css2" rel="stylesheet">
 <style>
 :root{--g:#C9A96E;--gl:#E8D5B0;--gd:#9A7A45;--cream:#FAF7F2;--sand:#E8DFD0;--t:#C47A5A;--sage:#8B9E7B;--deep:#2C2418;--mid:#5C4B35;--muted:#8A7A65;}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -217,13 +217,13 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
       <div class="hero-title">fit4<em>life</em></div>
     </div>
     <div style="text-align:right;flex-shrink:0">
-      <span class="hero-day" id="heroDay">12</span>
+      <span class="hero-day" id="heroDay">10</span>
       <span class="hero-month" id="heroMonth">Juli 2026</span>
     </div>
   </div>
   <div class="prog">
-    <div class="prog-lbl"><span>Start: Mai 2026</span><span id="progPct">31%</span><span>Ziel: Dez 2026</span></div>
-    <div class="prog-bar"><div class="prog-fill" id="progFill" style="width: 31%;"></div></div>
+    <div class="prog-lbl"><span>Start: Mai 2026</span><span id="progPct">30%</span><span>Ziel: Dez 2026</span></div>
+    <div class="prog-bar"><div class="prog-fill" id="progFill" style="width: 30%;"></div></div>
   </div>
 </div>
 
@@ -252,12 +252,12 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   </div>
 
   <div class="quote">
-    <div class="q-text" id="quoteText">Staerke entsteht nicht im Komfort, sondern durch Ueberwindung.</div>
+    <div class="q-text" id="quoteText">Der Spaziergang mit Enzo ist auch deine Medizin.</div>
     <div class="q-attr">Tag für Tag · Schritt für Schritt</div>
   </div>
 
   <div class="card" style="padding:14px 16px;margin-bottom:14px">
-    <div class="sec-lbl" style="margin-top:0">🌅 Aufgestanden<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-wake" type="time" onchange="saveTi(&#39;wake&#39;)" oninput="onTimeInput(&#39;wake&#39;)" onblur="saveTi(&#39;wake&#39;)" placeholder="07:00"></span></div>
+    <div class="sec-lbl" style="margin-top:0">🌅 Aufgestanden<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-wake" type="time" onchange="saveTi('wake')" oninput="onTimeInput('wake')" onblur="saveTi('wake')" placeholder="07:00"></span></div>
   </div>
 
   <div class="card" style="padding:14px 16px;margin-bottom:14px">
@@ -270,6 +270,11 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
       <div>Knochen<br><input type="number" step="0.1" min="0" max="100" id="weightBone" class="meal-time-inp" placeholder="3.2" onblur="saveWeight()" style="width:80px"> %</div>
     </div>
     <div id="weightStatus" style="display:none;font-size:12px;color:var(--muted);margin-top:6px">Gespeichert ✓</div>
+    <div style="margin-top:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <input type="file" accept="image/*" capture="environment" id="scaleFileInput" style="display:none" onchange="handleScalePhoto(this)">
+      <button type="button" onclick="document.getElementById('scaleFileInput').click()" style="padding:8px 14px;border:none;border-radius:8px;background:var(--terra,#C4503A);color:#fff;font-size:13px;cursor:pointer">📷 Foto der Waage</button>
+      <span id="scaleStatus" style="font-size:12px;color:var(--muted)"></span>
+    </div>
   </div>
 
   <div class="card" style="padding:14px 16px;margin-bottom:14px">
@@ -303,7 +308,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     </div>
   </div>
 
-  <div id="milestoneReminder" style="display: block; background: linear-gradient(135deg, rgb(255, 240, 248), rgb(255, 232, 245)); border: 2px solid rgb(201, 169, 110); border-radius: 14px; padding: 16px 18px; margin-bottom: 18px; font-size: 15px; color: rgb(92, 75, 53); line-height: 1.6;">🎯 <strong>3-Monats-Meilenstein!</strong> Zeit für Zwischenstand-Fotos! Vergleiche mit deinen Vorher-Fotos vom Mai 2026 - du wirst den Unterschied sehen! 📸</div>
+  <div id="milestoneReminder" style="display:none;background:linear-gradient(135deg,#FFF0F8,#FFE8F5);border:2px solid #C9A96E;border-radius:14px;padding:16px 18px;margin-bottom:18px;font-size:15px;color:#5C4B35;line-height:1.6;"></div>
 
   <!-- 1. SPAZIERGÄNGE (jetzt einzeln im Tagesablauf verteilt) -->
 
@@ -328,9 +333,9 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div class="card" style="padding:10px 16px;margin-bottom:10px">
     <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Training anzeigen</div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button type="button" id="dwSwBtn-1" onclick="showDwManual(&#39;1&#39;)" style="flex: 1 1 0%; min-width: 90px; padding: 8px 4px; border-color: var(--border); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 8px; background: var(--bg); font-size: 12px; cursor: pointer; color: var(--t);">Kraft A · Mo</button>
-      <button type="button" id="dwSwBtn-3" onclick="showDwManual(&#39;3&#39;)" style="flex: 1 1 0%; min-width: 90px; padding: 8px 4px; border-color: var(--border); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 8px; background: var(--bg); font-size: 12px; cursor: pointer; color: var(--t);">Kraft B · Mi</button>
-      <button type="button" id="dwSwBtn-5" onclick="showDwManual(&#39;5&#39;)" style="flex: 1 1 0%; min-width: 90px; padding: 8px 4px; border-color: var(--border); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 8px; background: var(--bg); font-size: 12px; cursor: pointer; color: var(--t);">Kraft C · Fr</button>
+      <button type="button" id="dwSwBtn-1" onclick="showDwManual('1')" style="flex:1;min-width:90px;padding:8px 4px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);font-size:12px;cursor:pointer">Kraft A · Mo</button>
+      <button type="button" id="dwSwBtn-3" onclick="showDwManual('3')" style="flex:1;min-width:90px;padding:8px 4px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);font-size:12px;cursor:pointer">Kraft B · Mi</button>
+      <button type="button" id="dwSwBtn-5" onclick="showDwManual('5')" style="flex:1;min-width:90px;padding:8px 4px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);font-size:12px;cursor:pointer">Kraft C · Fr</button>
     </div>
   </div>
   <div class="card dw" id="dw-1" style="display: none;">
@@ -382,7 +387,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     </div>
   </div>
 
-  <div class="card dw" id="dw-5" style="display: none;" data-bound="1">
+  <div class="card dw" id="dw-5" style="display: block;" data-bound="1">
     <div class="card-title">Kraft C - Ganzkörper-Power</div>
     <div class="card-sub">Fr · 35 Min · 3-4 Sätze</div>
     <div class="ci" id="ci-d5-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl">Squat to Overhead Press<span class="sets">4 x 15 <a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+to+overhead+press+band" target="_blank">▶ YT</a></span></div></div>
@@ -451,7 +456,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div style="margin-top:8px"></div>
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
     <h2 style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:24px;font-weight:400;margin:0">Journal <em style="font-style:italic;color:var(--t)">heute</em></h2>
-    <span id="jDate" style="font-size:12px;color:var(--muted)">12. Juli 2026</span>
+    <span id="jDate" style="font-size:12px;color:var(--muted)">10. Juli 2026</span>
   </div>
   <div class="mood-grid">
     <div class="mood-tile"><div class="em">⚡</div><div class="ml">Energie</div><div class="dots" id="md-e"><button type="button" class="dot"></button><button type="button" class="dot"></button><button type="button" class="dot"></button><button type="button" class="dot"></button><button type="button" class="dot"></button></div></div>
@@ -481,7 +486,7 @@ Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
 <!-- ===== WOCHE ===== -->
 <div class="panel" id="tab-woche">
   <div class="sh first"><h2>Deine <em>Woche</em></h2><div class="sh-line"></div></div>
-  <div class="wg" id="weekGrid"><div class="wd today"><div class="wd-l">So</div><div class="wd-n">12</div><div class="wd-t">Ruhe</div></div><div class="wd"><div class="wd-l">Mo</div><div class="wd-n">13</div><div class="wd-t">Kraft A</div></div><div class="wd"><div class="wd-l">Di</div><div class="wd-n">14</div><div class="wd-t">Aktiv</div></div><div class="wd"><div class="wd-l">Mi</div><div class="wd-n">15</div><div class="wd-t">Kraft B</div></div><div class="wd"><div class="wd-l">Do</div><div class="wd-n">16</div><div class="wd-t">Aktiv</div></div><div class="wd"><div class="wd-l">Fr</div><div class="wd-n">17</div><div class="wd-t">Kraft C</div></div><div class="wd"><div class="wd-l">Sa</div><div class="wd-n">18</div><div class="wd-t">VitD+Aktiv</div></div></div>
+  <div class="wg" id="weekGrid"><div class="wd"><div class="wd-l">So</div><div class="wd-n">5</div><div class="wd-t">Ruhe</div></div><div class="wd"><div class="wd-l">Mo</div><div class="wd-n">6</div><div class="wd-t">Kraft A</div></div><div class="wd"><div class="wd-l">Di</div><div class="wd-n">7</div><div class="wd-t">Aktiv</div></div><div class="wd"><div class="wd-l">Mi</div><div class="wd-n">8</div><div class="wd-t">Kraft B</div></div><div class="wd"><div class="wd-l">Do</div><div class="wd-n">9</div><div class="wd-t">Aktiv</div></div><div class="wd today"><div class="wd-l">Fr</div><div class="wd-n">10</div><div class="wd-t">Kraft C</div></div><div class="wd"><div class="wd-l">Sa</div><div class="wd-n">11</div><div class="wd-t">VitD+Aktiv</div></div></div>
   <div class="alert">Dein Prinzip: 3x Krafttraining a 30-40 Min - die Hundespaziergaenge sind deine Regeneration!</div>
   <div class="sh"><h2>Trainingsplan <em>kompakt</em></h2><div class="sh-line"></div></div>
   <div class="wb">
@@ -686,6 +691,7 @@ function init(){
   document.getElementById('progPct').textContent=pct+'%';
   document.getElementById('progFill').style.width=pct+'%';
   showWorkout();
+  bindDwDelegation();
   initFd();
   loadMealLogs();
   loadTimes();
@@ -780,19 +786,14 @@ function getShownDwId(){
   return manualDw||getActiveDwId();
 }
 
-function bindDw(id){
-  var el=document.getElementById('dw-'+id);
-  if(!el||el.dataset.bound)return;
-  el.dataset.bound='1';
-  var cis=el.querySelectorAll('.ci');
-  for(var j=0;j<cis.length;j++){
-    (function(ci){
-      ci.addEventListener('click',function(e){
-        if(e.target.tagName==='A'||e.target.parentElement.tagName==='A')return;
-        toggle(ci.id.replace('ci-',''));
-      });
-    })(cis[j]);
-  }
+function bindDwDelegation(){
+  document.addEventListener('click',function(e){
+    var t=e.target;
+    if(t.tagName==='A'||(t.parentElement&&t.parentElement.tagName==='A'))return;
+    var ciEl=t.closest?t.closest('.dw .ci'):null;
+    if(!ciEl)return;
+    toggle(ciEl.id.replace('ci-',''));
+  });
 }
 
 function showDwManual(id){
@@ -827,7 +828,6 @@ function showWorkout(){
     var el=document.getElementById('dw-'+toShow);
     if(el){
       el.style.display='block';
-      bindDw(toShow);
     }
   }
   renderMoveStatus();
@@ -1217,6 +1217,58 @@ function saveTi(id){
   if(!S2.times[TK])S2.times[TK]={};
   S2.times[TK][id]=inp.value;
   sstore(S2);
+}
+function handleScalePhoto(input){
+  var file=input.files&&input.files[0];
+  if(!file)return;
+  var status=document.getElementById('scaleStatus');
+  if(status)status.textContent='Lese Werte...';
+  var reader=new FileReader();
+  reader.onload=function(){
+    var base64=reader.result.split(',')[1];
+    var mediaType=file.type||'image/jpeg';
+    fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-6',
+        max_tokens:1000,
+        messages:[{
+          role:'user',
+          content:[
+            {type:'image',source:{type:'base64',media_type:mediaType,data:base64}},
+            {type:'text',text:'Lies die Anzeige dieser Körperanalyse-Waage ab. Antworte AUSSCHLIESSLICH mit einem JSON-Objekt ohne Markdown-Codeblock und ohne Erklärtext, mit den Schlüsseln kg, fat, muscle, water, bone (jeweils als Zahl, fat/muscle/water/bone in Prozent). Lass Schlüssel weg, deren Wert auf der Anzeige nicht zu erkennen ist. Beispiel: {"kg":68.4,"fat":28.5,"muscle":32.0,"water":50.0,"bone":3.2}'}
+          ]
+        }]
+      })
+    }).then(function(r){return r.json();}).then(function(data){
+      var textBlock=(data.content||[]).filter(function(b){return b.type==='text';})[0];
+      var raw=textBlock?textBlock.text:'';
+      var clean=raw.replace(/```json|```/g,'').trim();
+      var parsed=JSON.parse(clean);
+      var fields={kg:'weightInput',fat:'weightFat',muscle:'weightMuscle',water:'weightWater',bone:'weightBone'};
+      var summary=[];
+      Object.keys(fields).forEach(function(key){
+        if(parsed[key]!==undefined&&parsed[key]!==null){
+          var el=document.getElementById(fields[key]);
+          if(el)el.value=parsed[key];
+          summary.push(key+': '+parsed[key]);
+        }
+      });
+      if(summary.length){
+        saveWeight();
+        if(status)status.textContent='Erkannt: '+summary.join(', ')+' — bitte prüfen';
+      } else if(status){
+        status.textContent='Keine Werte erkannt, bitte manuell eintragen.';
+      }
+    }).catch(function(){
+      if(status)status.textContent='Konnte Werte nicht lesen, bitte manuell eintragen.';
+    });
+  };
+  reader.onerror=function(){
+    if(status)status.textContent='Fehler beim Lesen des Fotos.';
+  };
+  reader.readAsDataURL(file);
 }
 function saveWeight(){
   var fields={kg:'weightInput',fat:'weightFat',muscle:'weightMuscle',water:'weightWater',bone:'weightBone'};
