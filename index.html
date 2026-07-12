@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0063)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_14.html -->
+<!-- saved from url=(0063)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_15.html -->
 <html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -252,7 +252,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   </div>
 
   <div class="quote">
-    <div class="q-text" id="quoteText">Dein Körper kann alles – überzeuge zuerst deinen Geist.</div>
+    <div class="q-text" id="quoteText">Du bist nicht zu alt. Du fängst heute an.</div>
     <div class="q-attr">Tag für Tag · Schritt für Schritt</div>
   </div>
 
@@ -275,6 +275,12 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
       <div style="margin-bottom:8px">☀️ Frühstück<br><input type="text" id="bl-frueh-txt" class="meal-log-input" style="width:100%;box-sizing:border-box" placeholder="Was hast du gefrühstückt?"></div>
       <div style="margin-bottom:8px">🌞 Mittag<br><input type="text" id="bl-noon-txt" class="meal-log-input" style="width:100%;box-sizing:border-box" placeholder="Was hast du zu Mittag gegessen?"></div>
       <div style="margin-bottom:8px">🌙 Abend<br><input type="text" id="bl-eve-txt" class="meal-log-input" style="width:100%;box-sizing:border-box" placeholder="Was hast du zu Abend gegessen?"></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Alkohol</div>
+      <div style="display:flex;gap:8px;margin-bottom:4px">
+        <button type="button" id="blAlcFreeBtn" onclick="setBacklogAlc(true)" style="flex:1;padding:8px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);font-size:12px;cursor:pointer">Alkoholfrei ✓</button>
+        <button type="button" id="blAlcSlipBtn" onclick="setBacklogAlc(false)" style="flex:1;padding:8px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);font-size:12px;cursor:pointer">Doch Alkohol</button>
+      </div>
+      <div id="blAlcStatus" style="font-size:12px;color:var(--muted);margin-bottom:4px"></div>
       <button onclick="saveBacklog()" style="margin-top:4px;padding:8px 16px;border:none;border-radius:8px;background:var(--terra,#C4503A);color:#fff;font-size:13px;cursor:pointer">Speichern</button>
       <div id="blStatus" style="display:none;font-size:12px;color:var(--muted);margin-top:6px">Gespeichert ✓</div>
     </div>
@@ -1201,6 +1207,32 @@ function loadBacklogTimes(){
     var entry=entries.find(function(e){return e.date===dateInp.value&&e.meal===mealMap[id];});
     inp.value=entry?entry.foods:'';
   });
+  updateBacklogAlcUI();
+}
+function setBacklogAlc(val){
+  var dateInp=document.getElementById('blDate');
+  if(!dateInp||!dateInp.value)return;
+  var S2=lstore();
+  if(!S2.alc)S2.alc={days:{},best:0};
+  if(S2.alc.days[dateInp.value]===val){delete S2.alc.days[dateInp.value];}
+  else{S2.alc.days[dateInp.value]=val;}
+  var streak=(typeof computeAlcStreakFrom==='function')?computeAlcStreakFrom(S2):0;
+  if(streak>(S2.alc.best||0))S2.alc.best=streak;
+  sstore(S2);
+  updateBacklogAlcUI();
+  if(typeof renderAlc==='function')renderAlc();
+}
+function updateBacklogAlcUI(){
+  var dateInp=document.getElementById('blDate');
+  var st=document.getElementById('blAlcStatus');
+  var freeBtn=document.getElementById('blAlcFreeBtn');
+  var slipBtn=document.getElementById('blAlcSlipBtn');
+  if(!dateInp||!st)return;
+  var S2=lstore();
+  var v=(S2.alc&&S2.alc.days)?S2.alc.days[dateInp.value]:undefined;
+  if(freeBtn){freeBtn.style.background=(v===true)?'#6E8A5E':'var(--bg)';freeBtn.style.color=(v===true)?'#fff':'var(--t)';freeBtn.style.borderColor=(v===true)?'#6E8A5E':'var(--border)';}
+  if(slipBtn){slipBtn.style.background=(v===false)?'#C4503A':'var(--bg)';slipBtn.style.color=(v===false)?'#fff':'var(--t)';slipBtn.style.borderColor=(v===false)?'#C4503A':'var(--border)';}
+  st.textContent=v===true?'Als alkoholfrei markiert':(v===false?'Als Alkohol-Tag markiert':'Noch nicht markiert');
 }
 function saveBacklog(){
   var dateInp=document.getElementById('blDate');
