@@ -460,7 +460,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div class="ci" id="ci-f4" onclick="toggle(&#39;f4&#39;)"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl"><div class="mx"><div class="mx-l">Protein + viel Gemüse</div><div class="mx-r">Muskelregeneration, Vitamine</div></div><div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Buttermilch oder hartgekochte Eier</div><div class="mx-r">Protein, gesunde Fette</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">⚠️ Keine Carbs abends! <span style="color:#C4503A;font-size:13px">Fettspeicherung↑, Schlaf↓</span></div></div></div></div>
     <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="onMealInput(&#39;ci-f4&#39;,&#39;Abendessen&#39;)" onblur="saveMealLog(&#39;ci-f4&#39;,&#39;Abendessen&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f4&#39;,this)" title="Spracheingabe">🎤</button><button class="meal-log-save" onclick="saveMealLog(&#39;ci-f4&#39;,&#39;Abendessen&#39;)" title="Speichern">✓</button></div>
     <div class="ci" id="ci-w2" onclick="toggle(&#39;w2&#39;)" style="margin-top:6px"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl">🐕 Abend-Spaziergang mit Enzo</div></div>
-    <div class="sec-lbl" style="margin-top:8px">🍎 4. Mahlzeit <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(falls gegessen)</span></div>
+    <div class="sec-lbl" style="margin-top:8px">🍎 4. Mahlzeit <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(falls gegessen)</span><span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-zwischen" type="time" onchange="saveTi('zwischen')" oninput="onTimeInput('zwischen')" onblur="saveTi('zwischen')" placeholder="16:00"></span></div>
     <div class="meal-log"><input class="meal-log-input" id="log-ci-f3" type="text" placeholder="Was hast du zusätzlich gegessen?" oninput="onMealInput(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)" onblur="saveMealLog(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f3&#39;,this)" title="Spracheingabe">🎤</button><button class="meal-log-save" onclick="saveMealLog(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)" title="Speichern">✓</button></div>
     <div class="sec-lbl" style="margin-top:8px">🌛 Abend-Supplements</div>
     <div class="ci" id="ci-s2" onclick="toggle(&#39;s2&#39;)"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">💧 Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität↑</div></div></div></div>
@@ -1168,7 +1168,7 @@ function flushInputs(){
   // Sichert alle offenen Uhrzeit- und Mahlzeit-Felder sofort, egal ob getippt oder nicht
   var mealMap={'ci-f1':'Frühstück','ci-f2':'Mittagessen','ci-f3':'Zwischenmahlzeit','ci-f4':'Abendessen'};
   Object.keys(mealMap).forEach(function(ciId){saveMealLog(ciId,mealMap[ciId]);});
-  ['suppl','frueh','noon','eve','wake','sleep'].forEach(function(id){saveTi(id);});
+  ['suppl','frueh','noon','zwischen','eve','wake','sleep'].forEach(function(id){saveTi(id);});
 }
 document.addEventListener('visibilitychange',function(){if(document.hidden)flushInputs();});
 window.addEventListener('pagehide',flushInputs);
@@ -1361,7 +1361,7 @@ function loadWeight(){
 function loadTimes(){
   var S2=lstore();
   var t=(S2.times&&S2.times[TK])||{};
-  ['suppl','frueh','noon','eve','wake','sleep'].forEach(function(id){
+  ['suppl','frueh','noon','zwischen','eve','wake','sleep'].forEach(function(id){
     var inp=document.getElementById('ti-'+id);
     if(inp&&t[id])inp.value=t[id];
   });
