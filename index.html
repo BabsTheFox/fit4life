@@ -64,6 +64,19 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .ex-timer-line{display:block;margin-top:4px;}
 .ex-timer-btn{font-size:12px;font-weight:700;color:var(--gd);background:rgba(201,169,110,.15);border:none;padding:5px 13px;border-radius:20px;cursor:pointer;font-family:'Jost',sans-serif;}
 .ex-timer-btn.running{background:#C4503A;color:#fff;}
+.dualbox{flex:1;min-width:0;background:#fff;border-radius:14px;padding:12px 12px 11px;box-shadow:0 4px 14px rgba(44,36,24,.08);border:1px solid rgba(201,169,110,.14);border-left:4px solid var(--g);}
+.dualbox-head{display:flex;align-items:center;gap:7px;margin-bottom:8px;}
+.dualbox-title{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--mid);line-height:1.15;}
+.dualbox-count{font-size:10px;color:var(--muted);}
+.dualbox-list{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;min-height:6px;}
+.dualbox-chip{display:inline-flex;align-items:center;gap:5px;border-radius:14px;padding:4px 9px;font-size:11px;max-width:100%;}
+.dualbox-chip .txt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px;}
+.dualbox-chip .del{cursor:pointer;color:var(--muted);font-weight:700;padding:0 2px;flex-shrink:0;}
+.dualbox-empty{font-size:11px;color:var(--muted);}
+.dualbox-btn{flex:1;min-width:0;padding:7px 2px;border:none;border-radius:8px;color:#fff;font-size:11px;font-weight:700;cursor:pointer;font-family:'Jost',sans-serif;}
+.dualbox-time{width:56px;flex-shrink:0;border:1.5px solid var(--border);border-radius:8px;font-size:11px;padding:5px 2px;text-align:center;font-family:inherit;}
+.dualbox-plus{flex-shrink:0;padding:7px 9px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);font-size:13px;cursor:pointer;}
+.dualbox-input{flex:1;min-width:0;border:1.5px solid var(--border);border-radius:8px;font-size:12px;padding:5px 7px;font-family:inherit;}
 /* YouTube button */
 .yt{display:inline-block;margin-top:6px;font-size:12px;font-weight:700;color:#FF0000;background:#FFF0F0;padding:4px 11px;border-radius:20px;text-decoration:none;white-space:nowrap;}
 /* Tag badges */
@@ -497,6 +510,40 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     </div>
   </div>
 
+  <div style="display:flex;gap:10px;margin-top:14px;align-items:stretch">
+    <div class="dualbox" style="border-left-color:#E8855A">
+      <div class="dualbox-head">
+        <div style="font-size:18px">🌡️</div>
+        <div style="flex:1;min-width:0">
+          <div class="dualbox-title">Hitzewallungen</div>
+          <div class="dualbox-count" id="hitzeCount"></div>
+        </div>
+      </div>
+      <div id="hitzeList" class="dualbox-list"></div>
+      <div style="display:flex;gap:5px">
+        <button type="button" onclick="addHitzeNow()" class="dualbox-btn" style="background:#E8855A">+ Jetzt</button>
+        <input type="time" id="hitzeManualTime" class="dualbox-time">
+        <button type="button" onclick="addHitzeManual()" class="dualbox-plus">+</button>
+      </div>
+    </div>
+    <div class="dualbox" style="border-left-color:#6A7FBF">
+      <div class="dualbox-head">
+        <div style="font-size:18px">🤧</div>
+        <div style="flex:1;min-width:0">
+          <div class="dualbox-title">Histamin-Symptome</div>
+          <div class="dualbox-count" id="histCount"></div>
+        </div>
+      </div>
+      <div id="histList" class="dualbox-list"></div>
+      <div style="display:flex;gap:5px;margin-bottom:5px">
+        <input type="time" id="histManualTime" class="dualbox-time">
+        <input type="text" id="histSymptomInput" placeholder="z.B. Kopfhautjucken" class="dualbox-input">
+        <button type="button" class="meal-log-mic" style="flex-shrink:0;padding:5px 8px;font-size:12px" onclick="startVoiceInput('histSymptomInput',this)">🎤</button>
+      </div>
+      <button type="button" onclick="addHistEntry()" class="dualbox-btn" style="background:#6A7FBF;width:100%">+ Eintragen</button>
+    </div>
+  </div>
+
   <div class="card" style="padding:14px 16px;margin-top:14px">
     <div class="sec-lbl" style="margin-top:0">🌙 Schlafen gegangen<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-sleep" type="time" onchange="saveTi(&#39;sleep&#39;)" oninput="onTimeInput(&#39;sleep&#39;)" onblur="saveTi(&#39;sleep&#39;)" placeholder="22:30"></span></div>
   </div>
@@ -506,15 +553,6 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
     <h2 style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:24px;font-weight:400;margin:0">Journal <em style="font-style:italic;color:var(--t)">heute</em></h2>
     <span id="jDate" style="font-size:12px;color:var(--muted)">10. Juli 2026</span>
-  </div>
-  <div class="card" style="padding:14px 16px;margin-bottom:14px">
-    <div class="sec-lbl" style="margin-top:0">🌡️ Hitzewallungen heute <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0" id="hitzeCount"></span></div>
-    <div id="hitzeList" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px"></div>
-    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-      <button type="button" class="btn" style="padding:9px 16px;font-size:11px" onclick="addHitzeNow()">+ Jetzt erfasst</button>
-      <input type="time" id="hitzeManualTime" class="meal-time-inp" style="width:80px;border:1px solid var(--border);border-radius:8px;padding:6px 8px">
-      <button type="button" onclick="addHitzeManual()" style="padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);font-size:12px;cursor:pointer">+ Uhrzeit eintragen</button>
-    </div>
   </div>
   <div class="j-card">
     <div class="j-head"><div class="j-head-lbl">Tagesrückblick</div></div>
@@ -762,6 +800,7 @@ function init(){
   loadJournal();
   renderAlc();
   renderHitze();
+  renderHist();
 };
 
 var DAY_NAMES=['So','Mo','Di','Mi','Do','Fr','Sa'];
@@ -1557,25 +1596,27 @@ function renderHitze(){
   c.innerHTML='';
   if(arr.length===0){
     var e=document.createElement('div');
-    e.style.cssText='font-size:12px;color:var(--muted)';
-    e.textContent='Heute noch keine erfasst.';
+    e.className='dualbox-empty';
+    e.textContent='Noch keine erfasst.';
     c.appendChild(e);
   }
   arr.forEach(function(t){
     var chip=document.createElement('span');
-    chip.style.cssText='display:inline-flex;align-items:center;gap:5px;background:#FFF4E0;border:1px solid var(--gl);border-radius:16px;padding:5px 10px;font-size:12px;color:var(--mid)';
+    chip.className='dualbox-chip';
+    chip.style.cssText='background:#FFF4E0;border:1px solid var(--gl);color:var(--mid)';
     var txt=document.createElement('span');
-    txt.textContent='🌡️ '+t;
+    txt.className='txt';
+    txt.textContent=t;
     chip.appendChild(txt);
     var del=document.createElement('span');
+    del.className='del';
     del.textContent='×';
-    del.style.cssText='cursor:pointer;color:var(--muted);font-weight:700;padding:0 2px';
     del.onclick=function(){removeHitze(t);};
     chip.appendChild(del);
     c.appendChild(chip);
   });
   var countEl=document.getElementById('hitzeCount');
-  if(countEl)countEl.textContent=arr.length?('· '+arr.length+'x heute'):'';
+  if(countEl)countEl.textContent=arr.length?(arr.length+'x heute'):'';
 }
 function addHitzeTime(t){
   var S2=lstore();
@@ -1602,6 +1643,69 @@ function removeHitze(t){
   if(idx>-1)arr.splice(idx,1);
   sstore(S2);
   renderHitze();
+}
+
+// ── HISTAMIN-SYMPTOME (mit Uhrzeit) ───────────────────────
+function getHistArr(S2){
+  if(!S2.hist)S2.hist={};
+  if(!S2.hist[TK])S2.hist[TK]=[];
+  return S2.hist[TK];
+}
+function renderHist(){
+  var S2=lstore();
+  var arr=getHistArr(S2).slice().sort(function(a,b){return a.t<b.t?-1:(a.t>b.t?1:0);});
+  var c=document.getElementById('histList');
+  if(!c)return;
+  c.innerHTML='';
+  if(arr.length===0){
+    var e=document.createElement('div');
+    e.className='dualbox-empty';
+    e.textContent='Noch keine erfasst.';
+    c.appendChild(e);
+  }
+  arr.forEach(function(entry){
+    var chip=document.createElement('span');
+    chip.className='dualbox-chip';
+    chip.style.cssText='background:#EEF0FF;border:1px solid #C8D0F5;color:var(--mid)';
+    var txt=document.createElement('span');
+    txt.className='txt';
+    txt.title=entry.t+' · '+entry.s;
+    txt.textContent=entry.t+' · '+entry.s;
+    chip.appendChild(txt);
+    var del=document.createElement('span');
+    del.className='del';
+    del.textContent='×';
+    del.onclick=function(){removeHist(entry.id);};
+    chip.appendChild(del);
+    c.appendChild(chip);
+  });
+  var countEl=document.getElementById('histCount');
+  if(countEl)countEl.textContent=arr.length?(arr.length+'x heute'):'';
+}
+function addHistEntry(){
+  var timeInp=document.getElementById('histManualTime');
+  var textInp=document.getElementById('histSymptomInput');
+  if(!textInp||!textInp.value.trim())return;
+  var t=(timeInp&&timeInp.value)?timeInp.value:(function(){
+    var now=new Date();
+    return (now.getHours()<10?'0':'')+now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+  })();
+  var S2=lstore();
+  var arr=getHistArr(S2);
+  arr.push({id:Date.now()+'-'+Math.random(),t:t,s:textInp.value.trim()});
+  sstore(S2);
+  textInp.value='';
+  if(timeInp)timeInp.value='';
+  renderHist();
+}
+function removeHist(id){
+  var S2=lstore();
+  var arr=getHistArr(S2);
+  var idx=-1;
+  for(var i=0;i<arr.length;i++){if(arr[i].id===id){idx=i;break;}}
+  if(idx>-1)arr.splice(idx,1);
+  sstore(S2);
+  renderHist();
 }
 
 // ── KEIN-ALKOHOL CHALLENGE ──────────────────────────────
