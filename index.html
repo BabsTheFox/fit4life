@@ -113,7 +113,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .j-head{background:linear-gradient(135deg,#2C2418,#3D2E1C);padding:13px 18px;border-radius:14px 14px 0 0;}
 .j-head-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gl);font-weight:600;}
 .j-body{padding:17px;}
-#jInput{display:block;width:100%;min-height:180px;padding:14px 15px;font-family:'Jost',sans-serif;font-size:13px;color:var(--deep);background:var(--cream);border:2px solid var(--sand);border-radius:10px;resize:vertical;outline:none;line-height:1.7;}
+#jInput{display:block;width:100%;min-height:180px;padding:14px 15px;font-family:'Jost',sans-serif;font-size:13px;color:var(--deep);background:var(--cream);border:2px solid var(--sand);border-radius:10px;resize:vertical;outline:none;line-height:1.7;box-sizing:border-box;}
 #jInput:focus{border-color:var(--g);background:#fff;}
 #steinInput{display:block;width:100%;min-height:110px;padding:14px 15px;font-family:'Jost',sans-serif;font-size:13px;color:var(--deep);background:var(--cream);border:2px solid var(--sand);border-radius:10px;resize:vertical;outline:none;line-height:1.7;box-sizing:border-box;}
 #steinInput:focus{border-color:var(--g);background:#fff;}
@@ -279,7 +279,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   </div>
 
   <div class="card" style="padding:14px 16px;margin-bottom:14px">
-    <div class="dw-move-toggle" onclick="toggleBacklog()" style="font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;display:inline-block">🕒 Nachträge</div>
+    <div class="sec-lbl" style="margin-top:0;cursor:pointer" onclick="toggleBacklog()">🔄 Nachträge &amp; Rückblick</div>
     <div id="backlogPanel" style="display:none;margin-top:10px">
       <div style="margin-bottom:8px">Datum: <input type="date" id="blDate" onchange="loadBacklogTimes()" style="border:1px solid var(--border);border-radius:8px;padding:4px 8px;font-size:13px"></div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;font-size:13px;margin-bottom:10px">
@@ -861,7 +861,9 @@ function lstore(){try{var r=localStorage.getItem('bfv6');return r?JSON.parse(r):
 function sstore(d){try{localStorage.setItem('bfv6',JSON.stringify(d));}catch(e){}}
 function saveS(){
   var fresh=lstore();
-  if(fresh.dwMove)S.dwMove=fresh.dwMove;
+  ['dwMove','alc','fd','hist','hitze','times','weights'].forEach(function(k){
+    if(fresh[k]!==undefined)S[k]=fresh[k];
+  });
   sstore(S);
 }
 
