@@ -47,6 +47,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .ci{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--sand);flex-wrap:nowrap;cursor:pointer;user-select:none;}
 .ci:last-child{border-bottom:none;}
 .ci.done{opacity:.42;}
+.supp-linked.done{opacity:.42;}
 .cb{width:25px;height:25px;border-radius:7px;border:2px solid var(--g);background:transparent;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s;}
 .ci.done .cb{background:var(--g);border-color:var(--g);}
 .ci.has-sets>.cb{display:none;}
@@ -383,7 +384,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   <!-- 2. ERNÄHRUNG + SUPPLEMENTS CHRONOLOGISCH -->
   <div class="card">
       <div class="sec-lbl" style="margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:8px"><span>☀️ Morgen-Supplements <span id="vitDHint" style="display:inline;font-size:11px;color:#C9A96E;font-weight:600;text-transform:none;letter-spacing:0"></span></span><div class="ci" id="ci-s1" onclick="toggle(&#39;s1&#39;)" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div></div>
-      <div class="cl" style="padding-top:6px"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">💧 Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen↓, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol↓, Brain Fog↓</div></div></div>
+      <div class="cl supp-linked" id="content-s1" style="padding-top:6px"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">💧 Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen↓, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol↓, Brain Fog↓</div></div></div>
   </div>
 
   <div class="card" style="border-left:4px solid var(--g);background:rgba(201,169,110,.06)">
@@ -529,7 +530,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
 
   <div class="card">
     <div class="sec-lbl" style="margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:8px"><span>🌛 Abend-Supplements</span><div class="ci" id="ci-s2" onclick="toggle(&#39;s2&#39;)" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div></div>
-    <div class="cl" style="padding-top:6px"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">💧 Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität↑</div></div></div>
+    <div class="cl supp-linked" id="content-s2" style="padding-top:6px"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">💧 Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität↑</div></div></div>
   </div>
 
   <div class="card" style="border-left:4px solid var(--g)">
@@ -1084,6 +1085,8 @@ function loadChecks(){
       } else {
         var el=document.getElementById('ci-'+shortKey);
         if(el)el.classList.add('done');
+        var linked=document.getElementById('content-'+shortKey);
+        if(linked)linked.classList.add('done');
       }
     }
   }
@@ -1119,6 +1122,8 @@ function toggle(key){
   var el=document.getElementById('ci-'+key);
   if(!el)return;
   var done=el.classList.toggle('done');
+  var linked=document.getElementById('content-'+key);
+  if(linked)linked.classList.toggle('done',done);
   // Store with date prefix so checks reset each day
   var dk=TK+'_'+key;
   S.checks[dk]=done;
@@ -1894,6 +1899,14 @@ function formatDateDe(k){
   var d=new Date(parseInt(p[0],10),parseInt(p[1],10)-1,parseInt(p[2],10));
   return d.getDate()+'. '+MONTHS[d.getMonth()]+' '+d.getFullYear();
 }
+function dateKeyToDate(k){
+  var p=k.split('-');
+  return new Date(parseInt(p[0],10),parseInt(p[1],10)-1,parseInt(p[2],10));
+}
+function daysBetweenInclusive(startKey,endKey){
+  var s=dateKeyToDate(startKey),e=dateKeyToDate(endKey);
+  return Math.round((e-s)/86400000)+1;
+}
 function renderAlc(){
   var btn=document.getElementById('alcTodayBtn');
   if(!btn)return;
@@ -1902,9 +1915,9 @@ function renderAlc(){
   var startKey=getAlcStartDate(S2);
   var startEl=document.getElementById('alcStartDate');
   if(startEl)startEl.textContent=formatDateDe(startKey);
-  var total=0,free=0;
+  var total=daysBetweenInclusive(startKey,TK);
+  var free=0;
   Object.keys(S2.alc.days).forEach(function(k){
-    total++;
     if(S2.alc.days[k]===true)free++;
   });
   var elF=document.getElementById('alcFreeNum');if(elF)elF.textContent=free;
