@@ -92,7 +92,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 /* QUOTE */
 .quote{background:linear-gradient(135deg,#2C2418,#5C3D28);border-radius:14px;padding:20px 22px 16px;margin-bottom:20px;position:relative;overflow:hidden;}
 .quote::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:200px;position:absolute;top:-50px;left:5px;color:rgba(201,169,110,.06);line-height:1;pointer-events:none;}
-.q-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--gl);line-height:1.55;position:relative;z-index:1;}
+.q-text{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--gl);line-height:1.5;position:relative;z-index:1;}
 .q-attr{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-top:8px;opacity:.8;}
 /* DAY WORKOUTS - hidden by default, shown by JS */
 .dw{display:none;}
@@ -210,7 +210,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
 /* COMPACT MEAL/SUPPL LAYOUT */
 .mx{padding:3px 0;}
-.mx-l{font-size:15px;color:var(--deep);font-weight:500;display:block;}
+.mx-l{font-size:13px;color:var(--deep);font-weight:500;display:block;}
 .mx-r{font-size:13px;color:var(--gd);font-weight:600;line-height:1.4;}
 .mx-r.warn{color:#C4503A;}
 .meal-time-inp{background:none;border:none;border-bottom:1px dashed var(--border);font-size:12px;color:var(--muted);width:72px;text-align:center;min-width:72px;outline:none;padding:2px 4px;font-family:inherit;}
@@ -381,8 +381,8 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
       <div class="ci" id="ci-s1" onclick="toggle(&#39;s1&#39;)"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">💧 Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen↓, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol↓, Brain Fog↓</div></div></div></div>
       <div class="ci" id="ci-w1" onclick="toggle(&#39;w1&#39;)" style="margin-top:6px"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl">🐕 Morgen-Spaziergang mit Enzo</div></div>
       <div class="sec-lbl" style="margin-top:6px">☀️ Frühstück<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-frueh" type="time" onchange="saveTi(&#39;frueh&#39;)" oninput="onTimeInput(&#39;frueh&#39;)" onblur="saveTi(&#39;frueh&#39;)" placeholder="08:00"></span></div>
-      <div class="ci" id="ci-f1" onclick="toggle(&#39;f1&#39;)"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl"><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">Weizenkeime + Kollagen</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Zimt Kardamom Nelken Vanille</div></div></div>
-      <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="onMealInput(&#39;ci-f1&#39;,&#39;Frühstück&#39;)" onblur="saveMealLog(&#39;ci-f1&#39;,&#39;Frühstück&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f1&#39;,this)" title="Spracheingabe">🎤</button><button class="meal-log-save" onclick="saveMealLog(&#39;ci-f1&#39;,&#39;Frühstück&#39;)" title="Speichern">✓</button></div>
+      <div class="ci" id="ci-f1" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">Weizenkeime + Kollagen</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Zimt Kardamom Nelken Vanille</div></div></div>
+      <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="onMealInput(&#39;ci-f1&#39;,&#39;Frühstück&#39;)" onblur="saveMealLog(&#39;ci-f1&#39;,&#39;Frühstück&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f1&#39;,this)" title="Spracheingabe">🎤</button></div>
   </div>
 
   <div class="quote" style="margin-bottom:10px">
@@ -391,7 +391,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   </div>
 
   <div class="quote" style="margin-bottom:14px">
-    <div class="q-text" id="stilleText" style="font-size:16px"></div>
+    <div class="q-text" id="stilleText"></div>
     <div class="q-attr" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:0">
       <span style="display:inline-flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🧘</span><span>Stille · 5 Minuten täglich</span></span>
       <div class="ci" id="ci-stille" onclick="toggle('stille')" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
@@ -401,8 +401,8 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div class="card" id="mittagsBox">
       <div class="sec-lbl" style="margin-top:0">🌞 Mittagessen<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi(&#39;noon&#39;)" oninput="onTimeInput(&#39;noon&#39;)" onblur="saveTi(&#39;noon&#39;)" placeholder="12:00"></span></div>
-      <div class="ci" id="ci-f2" onclick="toggle(&#39;f2&#39;)"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl"><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Kurkuma Curry Paprika Pfeffer Salz</div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">⚠️ Keine Fast Carbs!<br><span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie↓</span></div></div></div></div>
-      <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="onMealInput(&#39;ci-f2&#39;,&#39;Mittagessen&#39;)" onblur="saveMealLog(&#39;ci-f2&#39;,&#39;Mittagessen&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f2&#39;,this)" title="Spracheingabe">🎤</button><button class="meal-log-save" onclick="saveMealLog(&#39;ci-f2&#39;,&#39;Mittagessen&#39;)" title="Speichern">✓</button></div>
+      <div class="ci" id="ci-f2" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Kurkuma Curry Paprika Pfeffer Salz</div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">⚠️ Keine Fast Carbs!<br><span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie↓</span></div></div></div></div>
+      <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="onMealInput(&#39;ci-f2&#39;,&#39;Mittagessen&#39;)" onblur="saveMealLog(&#39;ci-f2&#39;,&#39;Mittagessen&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f2&#39;,this)" title="Spracheingabe">🎤</button></div>
       <div class="ci" id="ci-w3" onclick="toggle(&#39;w3&#39;)" style="margin-top:6px"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl">🐕 Mittags-Spaziergang</div></div>
   </div>
 
@@ -495,15 +495,15 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div class="card">
     <div class="sec-lbl" style="margin-top:8px">🌙 Abendessen<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-eve" type="time" onchange="saveTi(&#39;eve&#39;)" oninput="onTimeInput(&#39;eve&#39;)" onblur="saveTi(&#39;eve&#39;)" placeholder="19:30"></span></div>
-    <div class="ci" id="ci-f4" onclick="toggle(&#39;f4&#39;)"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl"><div class="mx"><div class="mx-l">Protein + viel Gemüse</div><div class="mx-r">Muskelregeneration, Vitamine</div></div><div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Buttermilch oder hartgekochte Eier</div><div class="mx-r">Protein, gesunde Fette</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">⚠️ Keine Carbs abends! <span style="color:#C4503A;font-size:13px">Fettspeicherung↑, Schlaf↓</span></div></div></div></div>
-    <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="onMealInput(&#39;ci-f4&#39;,&#39;Abendessen&#39;)" onblur="saveMealLog(&#39;ci-f4&#39;,&#39;Abendessen&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f4&#39;,this)" title="Spracheingabe">🎤</button><button class="meal-log-save" onclick="saveMealLog(&#39;ci-f4&#39;,&#39;Abendessen&#39;)" title="Speichern">✓</button></div>
+    <div class="ci" id="ci-f4" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Protein + viel Gemüse</div><div class="mx-r">Muskelregeneration, Vitamine</div></div><div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Buttermilch oder hartgekochte Eier</div><div class="mx-r">Protein, gesunde Fette</div></div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">⚠️ Keine Carbs abends! <span style="color:#C4503A;font-size:13px">Fettspeicherung↑, Schlaf↓</span></div></div></div></div>
+    <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="onMealInput(&#39;ci-f4&#39;,&#39;Abendessen&#39;)" onblur="saveMealLog(&#39;ci-f4&#39;,&#39;Abendessen&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f4&#39;,this)" title="Spracheingabe">🎤</button></div>
     <div class="ci" id="ci-w2" onclick="toggle(&#39;w2&#39;)" style="margin-top:6px"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl">🐕 Abend-Spaziergang mit Enzo</div></div>
     <div class="quote" style="margin:12px 0">
       <div class="q-text" id="meerText"></div>
       <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🌊</span><span>Meer</span></div>
     </div>
     <div class="sec-lbl" style="margin-top:8px">🍎 4. Mahlzeit <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(falls gegessen)</span><span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-zwischen" type="time" onchange="saveTi('zwischen')" oninput="onTimeInput('zwischen')" onblur="saveTi('zwischen')" placeholder="16:00"></span></div>
-    <div class="meal-log"><input class="meal-log-input" id="log-ci-f3" type="text" placeholder="Was hast du zusätzlich gegessen?" oninput="onMealInput(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)" onblur="saveMealLog(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f3&#39;,this)" title="Spracheingabe">🎤</button><button class="meal-log-save" onclick="saveMealLog(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)" title="Speichern">✓</button></div>
+    <div class="meal-log"><input class="meal-log-input" id="log-ci-f3" type="text" placeholder="Was hast du zusätzlich gegessen?" oninput="onMealInput(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)" onblur="saveMealLog(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f3&#39;,this)" title="Spracheingabe">🎤</button></div>
     <div class="sec-lbl" style="margin-top:8px">🌛 Abend-Supplements</div>
     <div class="ci" id="ci-s2" onclick="toggle(&#39;s2&#39;)"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">💧 Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität↑</div></div></div></div>
   </div>
@@ -535,7 +535,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
       <span id="alcSlipLink" onclick="markAlcSlip()" style="display: inline; font-size: 12px; color: var(--muted); text-decoration: underline; cursor: pointer;">Doch Alkohol getrunken? Hier markieren</span>
     </div>
     <div id="alcNoteWrap" style="display:none;margin-top:10px">
-      <div class="meal-log"><input class="meal-log-input" id="alcNoteInput" type="text" placeholder="Was hast du getrunken?" oninput="onAlcNoteInput()" onblur="saveAlcNote()"><button class="meal-log-mic" onclick="startVoiceInput('alcNoteInput',this)" title="Spracheingabe">🎤</button><button class="meal-log-save" onclick="saveAlcNote()" title="Speichern">✓</button></div>
+      <div class="meal-log"><input class="meal-log-input" id="alcNoteInput" type="text" placeholder="Was hast du getrunken?" oninput="onAlcNoteInput()" onblur="saveAlcNote()"><button class="meal-log-mic" onclick="startVoiceInput('alcNoteInput',this)" title="Spracheingabe">🎤</button></div>
     </div>
   </div>
 
@@ -574,7 +574,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   </div>
 
   <div class="quote" style="margin-top:14px;margin-bottom:0;border-radius:14px 14px 0 0">
-    <div class="q-text" id="steinText" style="font-size:16px"></div>
+    <div class="q-text" id="steinText"></div>
     <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🪨</span><span>Aufschreiben & Loslassen</span></div>
   </div>
   <div class="card" style="padding:14px 16px;border-radius:0 0 14px 14px;margin-top:0">
@@ -586,18 +586,10 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     </div>
   </div>
 
-  <div class="card" style="padding:14px 16px;margin-top:14px">
-    <div class="sec-lbl" style="margin-top:0">🌙 Schlafen gegangen<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-sleep" type="time" onchange="saveTi(&#39;sleep&#39;)" oninput="onTimeInput(&#39;sleep&#39;)" onblur="saveTi(&#39;sleep&#39;)" placeholder="22:30"></span></div>
-  </div>
-
   <!-- JOURNAL -->
   <div style="margin-top:8px"></div>
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-    <h2 style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:24px;font-weight:400;margin:0">Journal <em style="font-style:italic;color:var(--t)">heute</em></h2>
-    <span id="jDate" style="font-size:12px;color:var(--muted)">10. Juli 2026</span>
-  </div>
   <div class="quote" style="margin-bottom:0;border-radius:14px 14px 0 0">
-    <div class="q-text" id="resetText" style="font-size:16px"></div>
+    <div class="q-text" id="resetText"></div>
     <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🔄</span><span>Tagesrückblick | Reset</span></div>
   </div>
   <div class="j-card" style="border-radius:0 0 14px 14px;margin-top:0">
@@ -614,7 +606,11 @@ Was habe ich gelernt?"></textarea>
       </div>
     </div>
   </div>
-  
+
+  <div class="card" style="padding:14px 16px;margin-top:14px">
+    <div class="sec-lbl" style="margin-top:0">🌙 Schlafen gegangen<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-sleep" type="time" onchange="saveTi(&#39;sleep&#39;)" oninput="onTimeInput(&#39;sleep&#39;)" onblur="saveTi(&#39;sleep&#39;)" placeholder="22:30"></span></div>
+  </div>
+
   <div style="text-align:center;margin-top:20px">
     <button class="btn" onclick="saveDay()">Tag abschließen</button>
   </div>
@@ -883,7 +879,8 @@ function init(){
   var now=new Date();
   document.getElementById('heroDay').textContent=now.getDate();
   document.getElementById('heroMonth').textContent=MONTHS[now.getMonth()]+' '+now.getFullYear();
-  document.getElementById('jDate').textContent=now.getDate()+'. '+MONTHS[now.getMonth()]+' '+now.getFullYear();
+  var jDateEl=document.getElementById('jDate');
+  if(jDateEl)jDateEl.textContent=now.getDate()+'. '+MONTHS[now.getMonth()]+' '+now.getFullYear();
   document.getElementById('quoteText').textContent=pickDaily(QUOTES);
   if(now.getDay()===6){document.getElementById('vitDHint').textContent='Vitamin D Dekristol 20.000 I.E.';}
   // Milestone reminders bei exakt 3, 6, 9 Kalendermonaten ab Start (nur ein paar Tage sichtbar)
@@ -1483,6 +1480,20 @@ function loadMealLogs(){
 }
 
 // \u2500\u2500 TIME INPUTS \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+var TIME_MEAL_MAP={frueh:'f1',noon:'f2',eve:'f4'};
+function syncMealDoneFromTime(id){
+  var mealKey=TIME_MEAL_MAP[id];
+  if(!mealKey)return;
+  var inp=document.getElementById('ti-'+id);
+  var el=document.getElementById('ci-'+mealKey);
+  if(!el)return;
+  var done=!!(inp&&inp.value);
+  el.classList.toggle('done',done);
+  if(!S.checks)S.checks={};
+  S.checks[TK+'_'+mealKey]=done;
+  saveS();
+  updateRing();
+}
 function saveTi(id){
   var inp=document.getElementById('ti-'+id);
   if(!inp)return;
@@ -1491,6 +1502,7 @@ function saveTi(id){
   if(!S2.times[TK])S2.times[TK]={};
   S2.times[TK][id]=inp.value;
   sstore(S2);
+  syncMealDoneFromTime(id);
 }
 function stepWeight(id,delta){
   var inp=document.getElementById(id);
@@ -1541,6 +1553,7 @@ function loadTimes(){
     var inp=document.getElementById('ti-'+id);
     if(inp&&t[id])inp.value=t[id];
   });
+  Object.keys(TIME_MEAL_MAP).forEach(function(id){syncMealDoneFromTime(id);});
 }
 
 // ── NACHTRAG (vergangene Uhrzeiten korrigieren) ──────────
