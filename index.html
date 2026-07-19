@@ -47,6 +47,8 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .ci{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--sand);flex-wrap:nowrap;cursor:pointer;user-select:none;}
 .ci:last-child{border-bottom:none;}
 .ci.done{opacity:.42;}
+#ci-f1.done,#ci-f2.done,#ci-f4.done{opacity:1;}
+#ci-f1.done .cl,#ci-f2.done .cl,#ci-f4.done .cl{text-decoration:none;color:var(--deep);}
 .cb{width:25px;height:25px;border-radius:7px;border:2px solid var(--g);background:transparent;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s;}
 .ci.done .cb{background:var(--g);border-color:var(--g);}
 .ci.has-sets>.cb{display:none;}
@@ -757,6 +759,7 @@ try {
 var MONTHS=['Januar','Februar','M\u00e4rz','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 var DAYS=['So','Mo','Di','Mi','Do','Fr','Sa'];
 var WTYPES=['Ruhe','Kraft A','Aktiv','Kraft B','Aktiv','Kraft C','VitD+Aktiv'];
+var TIME_MEAL_MAP={frueh:'f1',noon:'f2',eve:'f4'};
 var QUOTES=[
   'Dein K\u00f6rper kann alles \u2013 \u00fcberzeuge zuerst deinen Geist.',
   'Jeder Tag formt den K\u00f6rper, der du sein m\u00f6chtest.',
@@ -1480,7 +1483,6 @@ function loadMealLogs(){
 }
 
 // \u2500\u2500 TIME INPUTS \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
-var TIME_MEAL_MAP={frueh:'f1',noon:'f2',eve:'f4'};
 function syncMealDoneFromTime(id){
   var mealKey=TIME_MEAL_MAP[id];
   if(!mealKey)return;
