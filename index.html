@@ -110,7 +110,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .j-head{background:linear-gradient(135deg,#2C2418,#3D2E1C);padding:13px 18px;border-radius:14px 14px 0 0;}
 .j-head-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gl);font-weight:600;}
 .j-body{padding:17px;}
-#jInput{display:block;width:100%;min-height:180px;padding:14px 15px;font-family:'Jost',sans-serif;font-size:16px;color:var(--deep);background:var(--cream);border:2px solid var(--sand);border-radius:10px;resize:vertical;outline:none;line-height:1.7;}
+#jInput{display:block;width:100%;min-height:180px;padding:14px 15px;font-family:'Jost',sans-serif;font-size:13px;color:var(--deep);background:var(--cream);border:2px solid var(--sand);border-radius:10px;resize:vertical;outline:none;line-height:1.7;}
 #jInput:focus{border-color:var(--g);background:#fff;}
 .j-entry{background:#fff;border-radius:12px;margin-bottom:9px;border-left:4px solid var(--sage);box-shadow:0 2px 8px rgba(44,36,24,.06);}
 .j-entry.today{border-left-color:var(--g);}
@@ -596,12 +596,17 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <h2 style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:24px;font-weight:400;margin:0">Journal <em style="font-style:italic;color:var(--t)">heute</em></h2>
     <span id="jDate" style="font-size:12px;color:var(--muted)">10. Juli 2026</span>
   </div>
-  <div class="j-card">
-    <div class="j-head"><div class="j-head-lbl">Tagesrückblick</div></div>
+  <div class="quote" style="margin-bottom:0;border-radius:14px 14px 0 0">
+    <div class="q-text" id="resetText" style="font-size:16px"></div>
+    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🔄</span><span>Tagesrückblick | Reset</span></div>
+  </div>
+  <div class="j-card" style="border-radius:0 0 14px 14px;margin-top:0">
     <div class="j-body">
-      <textarea id="jInput" placeholder="Wie war mein Tag? Was hat mich überrascht? Worauf bin ich stolz?
-
-Energie _/10  Stimmung _/10  Schmerzen _/10"></textarea>
+      <textarea id="jInput" placeholder="Wie war mein Tag?
+Was habe ich gut oder falsch gemacht?
+Was kann ich morgen verbessern?
+Habe ich gewonnen oder verloren?
+Was habe ich gelernt?"></textarea>
       <div style="margin-top:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
         <button class="btn" onclick="saveJ()">Eintrag speichern</button>
         <button type="button" class="meal-log-mic" onclick="startVoiceInput('jInput',this)" title="Spracheingabe">🎤</button>
@@ -817,6 +822,17 @@ var STEIN_QUOTES=[
   'Das Problem wechselt den Ort – von mir auf das Blatt.',
   'Jedes Blatt ist wie ein Stein, den ich in den Fluss werfe.'
 ];
+var RESET_QUOTES=[
+  'Der Geist braucht ständige Reinigung, die verhindert, dass meine Fehler von gestern mich morgen verfolgen. Starte den Geist täglich neu.',
+  'Der Reset ist ein absichtlicher Schnitt mit der unmittelbaren Vergangenheit!',
+  'Ich kann jeden Abend Zyklen schließen, um frei aufzuwachen!',
+  'Suche nicht nach Perfektion, suche nach Klarheit.',
+  'Meine Erfolge zu erkennen ist keine Eitelkeit, es ist Treibstoff, um weiter voranzukommen.',
+  'Zu erkennen, was ich falsch gemacht habe, ist keine Strafe, es ist der Neustart, der verhindert, dass ich die gleichen Fehler wiederhole!',
+  'Der Reset beinhaltet das Loslassen dessen, was ich nicht ändern kann!',
+  'Beginne jeden Tag neu, ohne die emotionale Last der letzten Wochen oder Monate.',
+  'Wer den Tag mit Klarheit abschließen kann, wacht mit Macht auf! Diese Macht unterscheidet zwischen dem, der frei vorankommt, und dem, der in der gleichen endlosen Schleife von Lasten im Geist gefangen bleibt.'
+];
 
 function renderMantras(){
   setText('amorfatiText',pickDaily(AMORFATI_QUOTES));
@@ -825,6 +841,7 @@ function renderMantras(){
   setText('energieText',pickDaily(ENERGIE_QUOTES,3));
   setText('stilleText',pickDaily(STILLE_QUOTES,4));
   setText('steinText',pickDaily(STEIN_QUOTES,5));
+  setText('resetText',pickDaily(RESET_QUOTES,6));
 }
 
 
