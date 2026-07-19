@@ -92,7 +92,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 /* QUOTE */
 .quote{background:linear-gradient(135deg,#2C2418,#5C3D28);border-radius:14px;padding:20px 22px 16px;margin-bottom:20px;position:relative;overflow:hidden;}
 .quote::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:200px;position:absolute;top:-50px;left:5px;color:rgba(201,169,110,.06);line-height:1;pointer-events:none;}
-.q-text{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--gl);line-height:1.55;position:relative;z-index:1;}
+.q-text{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--gl);line-height:1.55;position:relative;z-index:1;}
 .q-attr{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-top:8px;opacity:.8;}
 /* DAY WORKOUTS - hidden by default, shown by JS */
 .dw{display:none;}
@@ -274,7 +274,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div class="quote">
     <div class="q-text" id="quoteText">Der Spaziergang mit Enzo ist auch deine Medizin.</div>
-    <div class="q-attr">Tag für Tag · Schritt für Schritt</div>
+    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">💪🏻</span><span>Tag für Tag · Schritt für Schritt</span></div>
   </div>
 
   <div class="card" style="padding:14px 16px;margin-bottom:14px">
@@ -283,7 +283,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div class="quote" style="margin-bottom:14px">
     <div class="q-text" id="amorfatiText"></div>
-    <div class="q-attr">Amor Fati · Am Morgen</div>
+    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">☀️</span><span>Amor Fati</span></div>
   </div>
 
   <div class="card" style="padding:14px 16px;margin-bottom:14px">
@@ -387,13 +387,15 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div class="quote" style="margin-bottom:10px">
     <div class="q-text" id="pauseText"></div>
-    <div class="q-attr">Pause · Zu Mittag</div>
+    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">⏸️</span><span>Pause</span></div>
   </div>
 
   <div class="quote" style="margin-bottom:14px">
     <div class="q-text" id="stilleText" style="font-size:16px"></div>
-    <div class="q-attr" style="margin-bottom:10px">Stille · 5 Minuten täglich</div>
-    <div class="ci" id="ci-stille" onclick="toggle('stille')" style="position:relative;z-index:1;border-bottom:none;padding-top:2px"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl" style="color:var(--gl)">🧘 Stille — 5 Minuten abgehakt</div></div>
+    <div class="q-attr" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:0">
+      <span style="display:inline-flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🧘</span><span>Stille · 5 Minuten täglich</span></span>
+      <div class="ci" id="ci-stille" onclick="toggle('stille')" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
+    </div>
   </div>
 
 
@@ -406,7 +408,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div class="quote" style="margin-bottom:14px">
     <div class="q-text" id="energieText"></div>
-    <div class="q-attr">Energie · Am Nachmittag</div>
+    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🔥</span><span>Energie</span></div>
   </div>
 
   <!-- Tagesworkouts Mo/Mi/Fr (hidden, shown by JS) -->
@@ -498,7 +500,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div class="ci" id="ci-w2" onclick="toggle(&#39;w2&#39;)" style="margin-top:6px"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl">🐕 Abend-Spaziergang mit Enzo</div></div>
     <div class="quote" style="margin:12px 0">
       <div class="q-text" id="meerText"></div>
-      <div class="q-attr">Meer · Am Abend</div>
+      <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🌊</span><span>Meer</span></div>
     </div>
     <div class="sec-lbl" style="margin-top:8px">🍎 4. Mahlzeit <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(falls gegessen)</span><span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-zwischen" type="time" onchange="saveTi('zwischen')" oninput="onTimeInput('zwischen')" onblur="saveTi('zwischen')" placeholder="16:00"></span></div>
     <div class="meal-log"><input class="meal-log-input" id="log-ci-f3" type="text" placeholder="Was hast du zusätzlich gegessen?" oninput="onMealInput(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)" onblur="saveMealLog(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f3&#39;,this)" title="Spracheingabe">🎤</button><button class="meal-log-save" onclick="saveMealLog(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)" title="Speichern">✓</button></div>
@@ -573,11 +575,10 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div class="quote" style="margin-top:14px;margin-bottom:0;border-radius:14px 14px 0 0">
     <div class="q-text" id="steinText" style="font-size:16px"></div>
-    <div class="q-attr">Aufschreiben & Loslassen</div>
+    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🪨</span><span>Aufschreiben & Loslassen</span></div>
   </div>
   <div class="card" style="padding:14px 16px;border-radius:0 0 14px 14px;margin-top:0">
-    <div class="sec-lbl" style="margin-top:0">🪨 Was mich belastet</div>
-    <textarea id="steinInput" placeholder="Was liegt heute schwer..." style="width:100%;min-height:80px;border:1.5px solid var(--border);border-radius:10px;padding:10px;font-family:inherit;font-size:13px;resize:vertical;box-sizing:border-box"></textarea>
+    <textarea id="steinInput" placeholder="Steinrucksack leeren..." style="width:100%;min-height:80px;border:1.5px solid var(--border);border-radius:10px;padding:10px;font-family:inherit;font-size:13px;resize:vertical;box-sizing:border-box"></textarea>
     <div style="margin-top:10px;display:flex;align-items:center;gap:10px">
       <button class="btn" onclick="saveStein()">Ablegen</button>
       <button type="button" class="meal-log-mic" onclick="startVoiceInput('steinInput',this)" title="Spracheingabe">🎤</button>
