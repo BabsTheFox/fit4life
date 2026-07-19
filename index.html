@@ -52,12 +52,14 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .cb{width:25px;height:25px;border-radius:7px;border:2px solid var(--g);background:transparent;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s;}
 .ci.done .cb{background:var(--g);border-color:var(--g);}
 .ci.has-sets>.cb{display:none;}
+.ci.has-sets{align-items:stretch;}
+.ci.has-sets .cl{display:flex;flex-direction:column;justify-content:space-between;}
 .set-checks{display:flex;flex-direction:column;gap:7px;flex-shrink:0;margin-top:1px;}
 .set-chk{width:23px;height:23px;border-radius:6px;border:2px solid var(--g);background:transparent;transition:background .15s,border-color .15s;cursor:pointer;}
 .set-chk.done{background:var(--g);border-color:var(--g);}
 .ck{display:none;}
 .ci.done .ck{display:block;}
-.cl{flex:1;font-size:15px;color:var(--deep);line-height:1.45;}
+.cl{flex:1;font-size:13px;color:var(--deep);line-height:1.45;}
 .ci.done .cl{text-decoration:line-through;color:var(--muted);}
 .cl-w{display:block;font-size:12px;color:var(--t);margin-top:2px;}
 .cl-h{display:block;font-size:12px;color:var(--gd);margin-top:2px;}
@@ -114,7 +116,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .j-body{padding:17px;}
 #jInput{display:block;width:100%;min-height:180px;padding:14px 15px;font-family:'Jost',sans-serif;font-size:13px;color:var(--deep);background:var(--cream);border:2px solid var(--sand);border-radius:10px;resize:vertical;outline:none;line-height:1.7;}
 #jInput:focus{border-color:var(--g);background:#fff;}
-#steinInput{display:block;width:100%;min-height:80px;padding:14px 15px;font-family:'Jost',sans-serif;font-size:13px;color:var(--deep);background:var(--cream);border:2px solid var(--sand);border-radius:10px;resize:vertical;outline:none;line-height:1.7;box-sizing:border-box;}
+#steinInput{display:block;width:100%;min-height:110px;padding:14px 15px;font-family:'Jost',sans-serif;font-size:13px;color:var(--deep);background:var(--cream);border:2px solid var(--sand);border-radius:10px;resize:vertical;outline:none;line-height:1.7;box-sizing:border-box;}
 #steinInput:focus{border-color:var(--g);background:#fff;}
 .j-entry{background:#fff;border-radius:12px;margin-bottom:9px;border-left:4px solid var(--sage);box-shadow:0 2px 8px rgba(44,36,24,.06);}
 .j-entry.today{border-left-color:var(--g);}
@@ -202,8 +204,9 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
 
 /* INLINE FOOD LOG */
-.meal-log{margin:6px 0 2px;display:flex;gap:6px;align-items:center;}
+.meal-log{margin:6px 0 2px;display:flex;gap:6px;align-items:flex-start;}
 .meal-log-input{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:7px 10px;font-size:13px;color:var(--t);font-family:inherit;outline:none;}
+textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
 .meal-log-input:focus{border-color:var(--gd);}
 .meal-log-input.saved{border-color:var(--sage);background:#F2F8F2;}
 .meal-log-save{background:var(--gd);border:none;border-radius:8px;padding:7px 11px;color:#fff;font-size:15px;cursor:pointer;line-height:1;flex-shrink:0;}
@@ -277,7 +280,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   </div>
 
   <div class="card" style="padding:14px 16px;margin-bottom:14px">
-    <div class="dw-move-toggle" onclick="toggleBacklog()" style="font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;display:inline-block">🕒 Vergessene Uhrzeit / Mahlzeit nachtragen</div>
+    <div class="dw-move-toggle" onclick="toggleBacklog()" style="font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;display:inline-block">🕒 Nachträge</div>
     <div id="backlogPanel" style="display:none;margin-top:10px">
       <div style="margin-bottom:8px">Datum: <input type="date" id="blDate" onchange="loadBacklogTimes()" style="border:1px solid var(--border);border-radius:8px;padding:4px 8px;font-size:13px"></div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;font-size:13px;margin-bottom:10px">
@@ -326,7 +329,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     <div class="sec-lbl" style="margin-top:0">⚖️ Gewicht &amp; Körperanalyse</div>
     <div style="display:flex;flex-direction:column;gap:2px">
       <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sand)">
-        <span style="font-size:14px;color:var(--mid);min-width:70px">Gewicht</span>
+        <span style="font-size:13px;color:var(--mid);min-width:70px">Gewicht</span>
         <div style="display:flex;align-items:center;gap:6px">
           <button type="button" onclick="stepWeight('weightInput',-0.1)" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">−</button>
           <input type="number" inputmode="decimal" step="0.1" min="30" max="200" id="weightInput" class="meal-time-inp" placeholder="68.4" onblur="saveWeight()" style="width:58px;text-align:center;font-weight:600">
@@ -335,7 +338,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
         </div>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sand)">
-        <span style="font-size:14px;color:var(--mid);min-width:70px">Fett</span>
+        <span style="font-size:13px;color:var(--mid);min-width:70px">Fett</span>
         <div style="display:flex;align-items:center;gap:6px">
           <button type="button" onclick="stepWeight('weightFat',-0.1)" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">−</button>
           <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightFat" class="meal-time-inp" placeholder="28.5" onblur="saveWeight()" style="width:58px;text-align:center;font-weight:600">
@@ -344,7 +347,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
         </div>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sand)">
-        <span style="font-size:14px;color:var(--mid);min-width:70px">Wasser</span>
+        <span style="font-size:13px;color:var(--mid);min-width:70px">Wasser</span>
         <div style="display:flex;align-items:center;gap:6px">
           <button type="button" onclick="stepWeight('weightWater',-0.1)" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">−</button>
           <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightWater" class="meal-time-inp" placeholder="50.0" onblur="saveWeight()" style="width:58px;text-align:center;font-weight:600">
@@ -353,7 +356,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
         </div>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sand)">
-        <span style="font-size:14px;color:var(--mid);min-width:70px">Muskel</span>
+        <span style="font-size:13px;color:var(--mid);min-width:70px">Muskel</span>
         <div style="display:flex;align-items:center;gap:6px">
           <button type="button" onclick="stepWeight('weightMuscle',-0.1)" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">−</button>
           <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightMuscle" class="meal-time-inp" placeholder="32.0" onblur="saveWeight()" style="width:58px;text-align:center;font-weight:600">
@@ -362,7 +365,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
         </div>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0">
-        <span style="font-size:14px;color:var(--mid);min-width:70px">Knochen</span>
+        <span style="font-size:13px;color:var(--mid);min-width:70px">Knochen</span>
         <div style="display:flex;align-items:center;gap:6px">
           <button type="button" onclick="stepWeight('weightBone',-0.1)" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">−</button>
           <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightBone" class="meal-time-inp" placeholder="3.2" onblur="saveWeight()" style="width:58px;text-align:center;font-weight:600">
@@ -383,10 +386,16 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div class="card">
       <div class="sec-lbl" style="margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:8px"><span>☀️ Morgen-Supplements <span id="vitDHint" style="display:inline;font-size:11px;color:#C9A96E;font-weight:600;text-transform:none;letter-spacing:0"></span></span><div class="ci" id="ci-s1" onclick="toggle(&#39;s1&#39;)" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div></div>
       <div class="cl" style="padding-top:6px"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">💧 Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen↓, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol↓, Brain Fog↓</div></div></div>
-      <div class="ci" id="ci-w1" onclick="toggle(&#39;w1&#39;)" style="margin-top:6px;background:var(--bg);border-radius:10px;padding:10px 12px;border-bottom:none"><div class="cl" style="flex:1;font-size:13px">🐕 Morgen-Spaziergang mit Enzo</div><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--g);background:rgba(201,169,110,.06)">
+    <div class="ci" id="ci-w1" onclick="toggle(&#39;w1&#39;)" style="border-bottom:none;padding:0"><div class="cl" style="flex:1;font-size:13px">🐕 Morgen-Spaziergang mit Enzo</div><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
+  </div>
+
+  <div class="card">
       <div class="sec-lbl" style="margin-top:6px">☀️ Frühstück<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-frueh" type="time" onchange="saveTi(&#39;frueh&#39;)" oninput="onTimeInput(&#39;frueh&#39;)" onblur="saveTi(&#39;frueh&#39;)" placeholder="08:00"></span></div>
       <div class="ci" id="ci-f1" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">Weizenkeime + Kollagen</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Zimt Kardamom Nelken Vanille</div></div></div>
-      <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="onMealInput(&#39;ci-f1&#39;,&#39;Frühstück&#39;)" onblur="saveMealLog(&#39;ci-f1&#39;,&#39;Frühstück&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f1&#39;,this)" title="Spracheingabe">🎤</button></div>
+      <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f1" placeholder="Was hast du gefrühstückt?" oninput="onMealInput(&#39;ci-f1&#39;,&#39;Frühstück&#39;)" onblur="saveMealLog(&#39;ci-f1&#39;,&#39;Frühstück&#39;)"></textarea><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f1&#39;,this)" title="Spracheingabe">🎤</button></div>
   </div>
 
   <div class="quote" style="margin-bottom:10px">
@@ -406,8 +415,11 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div class="card" id="mittagsBox">
       <div class="sec-lbl" style="margin-top:0">🌞 Mittagessen<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi(&#39;noon&#39;)" oninput="onTimeInput(&#39;noon&#39;)" onblur="saveTi(&#39;noon&#39;)" placeholder="12:00"></span></div>
       <div class="ci" id="ci-f2" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Kurkuma Curry Paprika Pfeffer Salz</div><div class="mx warn"><div class="mx-l" style="font-size:13px;color:#C4503A;font-weight:600">⚠️ Keine Fast Carbs!<br><span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie↓</span></div></div></div></div>
-      <div class="meal-log"><input class="meal-log-input" id="log-ci-f2" type="text" placeholder="Was hast du zu Mittag gegessen?" oninput="onMealInput(&#39;ci-f2&#39;,&#39;Mittagessen&#39;)" onblur="saveMealLog(&#39;ci-f2&#39;,&#39;Mittagessen&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f2&#39;,this)" title="Spracheingabe">🎤</button></div>
-      <div class="ci" id="ci-w3" onclick="toggle(&#39;w3&#39;)" style="margin-top:6px;background:var(--bg);border-radius:10px;padding:10px 12px;border-bottom:none"><div class="cl" style="flex:1;font-size:13px">🐕 Mittags-Spaziergang</div><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
+      <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f2" placeholder="Was hast du zu Mittag gegessen?" oninput="onMealInput(&#39;ci-f2&#39;,&#39;Mittagessen&#39;)" onblur="saveMealLog(&#39;ci-f2&#39;,&#39;Mittagessen&#39;)"></textarea><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f2&#39;,this)" title="Spracheingabe">🎤</button></div>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--g);background:rgba(201,169,110,.06)">
+    <div class="ci" id="ci-w3" onclick="toggle(&#39;w3&#39;)" style="border-bottom:none;padding:0"><div class="cl" style="flex:1;font-size:13px">🐕 Mittags-Spaziergang</div><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
   </div>
 
   <div class="quote" style="margin-bottom:14px">
@@ -425,7 +437,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
     </div>
   </div>
   <div class="card dw" id="dw-1" style="display: none;">
-    <div class="card-title">Kraft A - Oberkörper + Core</div>
+    <div class="card-title" style="font-size:16px">Kraft A - Oberkörper + Core</div>
     <div class="card-sub">Mo · 35 Min · 4 Sätze</div>
     <div class="ci has-sets" id="ci-d1-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d1-ex0" data-set="0"></div><div class="set-chk" data-ex="d1-ex0" data-set="1"></div><div class="set-chk" data-ex="d1-ex0" data-set="2"></div></div><div class="cl">Liegestütze<span class="sets">3 x 10-15</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=push+up+beginner+technique" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d1-ex1"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d1-ex1" data-set="0"></div><div class="set-chk" data-ex="d1-ex1" data-set="1"></div><div class="set-chk" data-ex="d1-ex1" data-set="2"></div></div><div class="cl">Rudern vorgebeugt mit Kurzhanteln<span class="sets">3 x 15-18</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=bent+over+row+dumbbell+exercise" target="_blank">▶ YT</a></span></div></div>
@@ -449,7 +461,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   </div>
 
   <div class="card dw" id="dw-3" style="display: none;">
-    <div class="card-title">Kraft B - Unterkörper + Glutes</div>
+    <div class="card-title" style="font-size:16px">Kraft B - Unterkörper + Glutes</div>
     <div class="card-sub">Mi · 35 Min · 4 Sätze</div>
     <div class="ci has-sets" id="ci-d3-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex0" data-set="0"></div><div class="set-chk" data-ex="d3-ex0" data-set="1"></div><div class="set-chk" data-ex="d3-ex0" data-set="2"></div></div><div class="cl">Kniebeugen (tief, Fersen am Boden)<span class="sets">3 x 20-25</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+proper+form+beginner" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d3-ex1"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex1" data-set="0"></div><div class="set-chk" data-ex="d3-ex1" data-set="1"></div><div class="set-chk" data-ex="d3-ex1" data-set="2"></div></div><div class="cl">Ausfallschritte abwechselnd<span class="sets">3 x 15/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=lunges+proper+form+tutorial" target="_blank">▶ YT</a></span></div></div>
@@ -474,7 +486,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   </div>
 
   <div class="card dw" id="dw-5" style="display: block;" data-bound="1">
-    <div class="card-title">Kraft C - Ganzkörper-Power</div>
+    <div class="card-title" style="font-size:16px">Kraft C - Ganzkörper-Power</div>
     <div class="card-sub">Fr · 35 Min · 3-4 Sätze</div>
     <div class="ci has-sets" id="ci-d5-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d5-ex0" data-set="0"></div><div class="set-chk" data-ex="d5-ex0" data-set="1"></div><div class="set-chk" data-ex="d5-ex0" data-set="2"></div></div><div class="cl">Squat to Overhead Press<span class="sets">3 x 20</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+to+overhead+press+band" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d5-ex1"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d5-ex1" data-set="0"></div><div class="set-chk" data-ex="d5-ex1" data-set="1"></div><div class="set-chk" data-ex="d5-ex1" data-set="2"></div></div><div class="cl">Romanian Deadlift einbeinig<span class="sets">3 x 15/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=single+leg+romanian+deadlift" target="_blank">▶ YT</a></span></div></div>
@@ -500,38 +512,45 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
   <div class="card">
     <div class="sec-lbl" style="margin-top:8px">🌙 Abendessen<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-eve" type="time" onchange="saveTi(&#39;eve&#39;)" oninput="onTimeInput(&#39;eve&#39;)" onblur="saveTi(&#39;eve&#39;)" placeholder="19:30"></span></div>
     <div class="ci" id="ci-f4" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Protein + viel Gemüse</div><div class="mx-r">Muskelregeneration, Vitamine</div></div><div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Buttermilch oder hartgekochte Eier</div><div class="mx-r">Protein, gesunde Fette</div></div><div class="mx warn"><div class="mx-l" style="font-size:13px;color:#C4503A;font-weight:600">⚠️ Keine Carbs abends! <span style="color:#C4503A;font-size:13px">Fettspeicherung↑, Schlaf↓</span></div></div></div></div>
-    <div class="meal-log"><input class="meal-log-input" id="log-ci-f4" type="text" placeholder="Was hast du zu Abend gegessen?" oninput="onMealInput(&#39;ci-f4&#39;,&#39;Abendessen&#39;)" onblur="saveMealLog(&#39;ci-f4&#39;,&#39;Abendessen&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f4&#39;,this)" title="Spracheingabe">🎤</button></div>
-    <div class="ci" id="ci-w2" onclick="toggle(&#39;w2&#39;)" style="margin-top:6px;background:var(--bg);border-radius:10px;padding:10px 12px;border-bottom:none"><div class="cl" style="flex:1;font-size:13px">🐕 Abend-Spaziergang mit Enzo</div><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
-    <div class="quote" style="margin:12px 0">
-      <div class="q-text" id="meerText"></div>
-      <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🌊</span><span>Meer</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=stoizismus+gelassenheit+gef%C3%BChle+beobachten" target="_blank">▶ YT</a></div>
-    </div>
-    <div class="sec-lbl" style="margin-top:8px">🍎 4. Mahlzeit <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(falls gegessen)</span><span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-zwischen" type="time" onchange="saveTi('zwischen')" oninput="onTimeInput('zwischen')" onblur="saveTi('zwischen')" placeholder="16:00"></span></div>
-    <div class="meal-log"><input class="meal-log-input" id="log-ci-f3" type="text" placeholder="Was hast du zusätzlich gegessen?" oninput="onMealInput(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)" onblur="saveMealLog(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f3&#39;,this)" title="Spracheingabe">🎤</button></div>
-    <div class="sec-lbl" style="margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px"><span>🌛 Abend-Supplements</span><div class="ci" id="ci-s2" onclick="toggle(&#39;s2&#39;)" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div></div>
+    <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f4" placeholder="Was hast du zu Abend gegessen?" oninput="onMealInput(&#39;ci-f4&#39;,&#39;Abendessen&#39;)" onblur="saveMealLog(&#39;ci-f4&#39;,&#39;Abendessen&#39;)"></textarea><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f4&#39;,this)" title="Spracheingabe">🎤</button></div>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--g);background:rgba(201,169,110,.06)">
+    <div class="ci" id="ci-w2" onclick="toggle(&#39;w2&#39;)" style="border-bottom:none;padding:0"><div class="cl" style="flex:1;font-size:13px">🐕 Abend-Spaziergang mit Enzo</div><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
+  </div>
+
+  <div class="quote">
+    <div class="q-text" id="meerText"></div>
+    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🌊</span><span>Meer</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=stoizismus+gelassenheit+gef%C3%BChle+beobachten" target="_blank">▶ YT</a></div>
+  </div>
+
+  <div class="card">
+    <div class="sec-lbl" style="margin-top:0">🍽️ 4. Mahlzeit <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(falls gegessen)</span><span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-zwischen" type="time" onchange="saveTi('zwischen')" oninput="onTimeInput('zwischen')" onblur="saveTi('zwischen')" placeholder="16:00"></span></div>
+    <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f3" placeholder="Was hast du zusätzlich gegessen?" oninput="onMealInput(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)" onblur="saveMealLog(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)"></textarea><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f3&#39;,this)" title="Spracheingabe">🎤</button></div>
+  </div>
+
+  <div class="card">
+    <div class="sec-lbl" style="margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:8px"><span>🌛 Abend-Supplements</span><div class="ci" id="ci-s2" onclick="toggle(&#39;s2&#39;)" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div></div>
     <div class="cl" style="padding-top:6px"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">💧 Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität↑</div></div></div>
   </div>
 
   <div class="card" style="border-left:4px solid var(--g)">
-    <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px">
-      <div style="font-size:30px">🌿</div>
-      <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:18px">Alkoholfreie Tage</div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+      <div style="font-size:16px">🍷</div>
+      <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:11px;font-family:'Jost',sans-serif;font-weight:700;color:var(--gd)">Alkoholfreie Tage</div>
     </div>
     <div style="font-size:11px;color:var(--muted);margin-bottom:14px">Gestartet am <span id="alcStartDate">–</span></div>
     <div style="display:flex;gap:10px;margin-bottom:14px">
       <div style="flex:1;text-align:center;background:rgba(201,169,110,.12);border-radius:10px;padding:10px 4px">
-        <div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:30px;color:var(--gd)" id="alcFreeNum">0</div>
+        <div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:22px;color:var(--gd)" id="alcFreeNum">0</div>
         <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)">Alkoholfrei</div>
       </div>
       <div style="flex:1;text-align:center;background:rgba(201,169,110,.12);border-radius:10px;padding:10px 4px">
-        <div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:30px;color:var(--gd)" id="alcTotalNum">0</div>
+        <div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:22px;color:var(--gd)" id="alcTotalNum">0</div>
         <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)">Tage betrachtet</div>
       </div>
     </div>
     <button class="btn" id="alcTodayBtn" onclick="toggleAlcFree()" style="width: 100%; justify-content: center; background: linear-gradient(135deg,var(--gd),var(--g)); opacity: 1;">Heute alkoholfrei ✓</button>
-    <div style="text-align:center;margin-top:9px">
-      <span id="alcSlipLink" onclick="markAlcSlip()" style="display: inline; font-size: 12px; color: var(--muted); text-decoration: underline; cursor: pointer;">Doch Alkohol getrunken? Hier markieren</span>
-    </div>
     <div id="alcNoteWrap" style="display:none;margin-top:10px">
       <div class="meal-log"><input class="meal-log-input" id="alcNoteInput" type="text" placeholder="Was hast du getrunken?" oninput="onAlcNoteInput()" onblur="saveAlcNote()"><button class="meal-log-mic" onclick="startVoiceInput('alcNoteInput',this)" title="Spracheingabe">🎤</button></div>
     </div>
@@ -539,9 +558,9 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 
   <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
     <div class="card" style="border-left:4px solid var(--t)">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px">
-        <div style="font-size:30px">🌡️</div>
-        <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:18px;flex:1">Hitzewallungen</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+        <div style="font-size:16px">🌡️</div>
+        <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:11px;flex:1;font-family:'Jost',sans-serif;font-weight:700;color:var(--t)">Hitzewallungen</div>
         <div style="font-size:11px;color:var(--muted)" id="hitzeCount"></div>
       </div>
       <div id="hitzeList" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px"></div>
@@ -552,9 +571,9 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
       </div>
     </div>
     <div class="card" style="border-left:4px solid var(--mid)">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px">
-        <div style="font-size:30px">🤧</div>
-        <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:18px;flex:1">Histamin-Symptome</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+        <div style="font-size:16px">🤧</div>
+        <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:11px;flex:1;font-family:'Jost',sans-serif;font-weight:700;color:var(--mid)">Histamin-Symptome</div>
         <div style="font-size:11px;color:var(--muted)" id="histCount"></div>
       </div>
       <div id="histList" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px"></div>
@@ -1879,8 +1898,7 @@ function formatDateDe(k){
 }
 function renderAlc(){
   var btn=document.getElementById('alcTodayBtn');
-  var slip=document.getElementById('alcSlipLink');
-  if(!btn||!slip)return;
+  if(!btn)return;
   var S2=lstore();
   if(!S2.alc)S2.alc={days:{},best:0};
   var startKey=getAlcStartDate(S2);
@@ -1905,17 +1923,12 @@ function renderAlc(){
   if(todayStatus===true){
     btn.innerHTML='✓ Alkoholfrei &ndash; super!';
     btn.style.opacity='0.75';
-    slip.style.display='none';
   } else if(todayStatus===false){
     btn.innerHTML='Heute alkoholfrei ✓';
     btn.style.opacity='1';
-    slip.style.display='inline';
-    slip.textContent='Als "getrunken" markiert · zurücksetzen';
   } else {
     btn.innerHTML='Heute alkoholfrei ✓';
     btn.style.opacity='1';
-    slip.style.display='inline';
-    slip.textContent='Doch Alkohol getrunken? Hier markieren';
   }
 }
 function onAlcNoteInput(){
