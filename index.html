@@ -303,20 +303,20 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
         </div>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sand)">
-        <span style="font-size:14px;color:var(--mid);min-width:70px">Muskel</span>
-        <div style="display:flex;align-items:center;gap:6px">
-          <button type="button" onclick="stepWeight('weightMuscle',-0.1)" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">−</button>
-          <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightMuscle" class="meal-time-inp" placeholder="32.0" onblur="saveWeight()" style="width:58px;text-align:center;font-weight:600">
-          <button type="button" onclick="stepWeight('weightMuscle',0.1)" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">+</button>
-          <span style="font-size:13px;color:var(--muted);min-width:20px">%</span>
-        </div>
-      </div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sand)">
         <span style="font-size:14px;color:var(--mid);min-width:70px">Wasser</span>
         <div style="display:flex;align-items:center;gap:6px">
           <button type="button" onclick="stepWeight('weightWater',-0.1)" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">−</button>
           <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightWater" class="meal-time-inp" placeholder="50.0" onblur="saveWeight()" style="width:58px;text-align:center;font-weight:600">
           <button type="button" onclick="stepWeight('weightWater',0.1)" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">+</button>
+          <span style="font-size:13px;color:var(--muted);min-width:20px">%</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sand)">
+        <span style="font-size:14px;color:var(--mid);min-width:70px">Muskel</span>
+        <div style="display:flex;align-items:center;gap:6px">
+          <button type="button" onclick="stepWeight('weightMuscle',-0.1)" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">−</button>
+          <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightMuscle" class="meal-time-inp" placeholder="32.0" onblur="saveWeight()" style="width:58px;text-align:center;font-weight:600">
+          <button type="button" onclick="stepWeight('weightMuscle',0.1)" style="width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">+</button>
           <span style="font-size:13px;color:var(--muted);min-width:20px">%</span>
         </div>
       </div>
@@ -345,8 +345,8 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
         <div>🌙 Schlafen<br><input type="time" id="bl-sleep" class="meal-time-inp"></div>
         <div>⚖️ Gewicht<br><input type="number" step="0.1" min="30" max="200" id="bl-weight" class="meal-time-inp" style="width:70px" placeholder="kg"></div>
         <div>Fett %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-fat" class="meal-time-inp" style="width:70px" placeholder="%"></div>
-        <div>Muskel %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-muscle" class="meal-time-inp" style="width:70px" placeholder="%"></div>
         <div>Wasser %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-water" class="meal-time-inp" style="width:70px" placeholder="%"></div>
+        <div>Muskel %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-muscle" class="meal-time-inp" style="width:70px" placeholder="%"></div>
         <div>Knochen %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-bone" class="meal-time-inp" style="width:70px" placeholder="%"></div>
       </div>
       <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Mahlzeiten</div>
@@ -379,6 +379,16 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
       <div class="ci" id="ci-f1" onclick="toggle(&#39;f1&#39;)"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl"><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">Weizenkeime + Kollagen</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Zimt Kardamom Nelken Vanille</div></div></div>
       <div class="meal-log"><input class="meal-log-input" id="log-ci-f1" type="text" placeholder="Was hast du gefrühstückt?" oninput="onMealInput(&#39;ci-f1&#39;,&#39;Frühstück&#39;)" onblur="saveMealLog(&#39;ci-f1&#39;,&#39;Frühstück&#39;)"><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f1&#39;,this)" title="Spracheingabe">🎤</button><button class="meal-log-save" onclick="saveMealLog(&#39;ci-f1&#39;,&#39;Frühstück&#39;)" title="Speichern">✓</button></div>
   </div>
+
+  <div class="card" style="padding:14px 16px;margin-bottom:14px;border-left:4px solid #8B6F47" id="stoicTool">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+      <div class="stoic-icon" style="font-size:22px"></div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Stoisches Werkzeug · <span class="stoic-label"></span></div>
+    </div>
+    <div class="stoic-text" style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--mid);line-height:1.5;font-style:italic;margin-bottom:12px"></div>
+    <div class="ci" id="ci-stille" onclick="toggle('stille')" style="padding-top:12px;border-top:1px solid var(--sand)"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl">🧘 Stille — 5 Minuten</div></div>
+  </div>
+
   <div class="card" id="mittagsBox">
       <div class="sec-lbl" style="margin-top:0">🌞 Mittagessen<span class="time-wrap">Uhrzeit: <input class="meal-time-inp" id="ti-noon" type="time" onchange="saveTi(&#39;noon&#39;)" oninput="onTimeInput(&#39;noon&#39;)" onblur="saveTi(&#39;noon&#39;)" placeholder="12:00"></span></div>
       <div class="ci" id="ci-f2" onclick="toggle(&#39;f2&#39;)"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="cl"><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Kurkuma Curry Paprika Pfeffer Salz</div><div class="mx warn"><div class="mx-l" style="font-size:15px;color:#C4503A;font-weight:600">⚠️ Keine Fast Carbs!<br><span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie↓</span></div></div></div></div>
@@ -541,6 +551,17 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
         <button type="button" class="meal-log-mic" style="flex-shrink:0;padding:5px 8px;font-size:12px" onclick="startVoiceInput('histSymptomInput',this)">🎤</button>
       </div>
       <button type="button" onclick="addHistEntry()" class="dualbox-btn" style="background:#6A7FBF;width:100%">+ Eintragen</button>
+    </div>
+  </div>
+
+  <div class="card" style="padding:14px 16px;margin-top:14px">
+    <div class="sec-lbl" style="margin-top:0">🪨 Was mich belastet</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px">Schreib es auf und leg es ab, bevor der Tag endet. Jedes Blatt ist wie ein Stein aus dem Rucksack.</div>
+    <textarea id="steinInput" placeholder="Was liegt heute schwer..." style="width:100%;min-height:80px;border:1.5px solid var(--border);border-radius:10px;padding:10px;font-family:inherit;font-size:13px;resize:vertical;box-sizing:border-box"></textarea>
+    <div style="margin-top:10px;display:flex;align-items:center;gap:10px">
+      <button class="btn" onclick="saveStein()">Ablegen</button>
+      <button type="button" class="meal-log-mic" onclick="startVoiceInput('steinInput',this)" title="Spracheingabe">🎤</button>
+      <span id="steinMsg" style="font-size:13px;color:var(--sage);display:none">Abgelegt.</span>
     </div>
   </div>
 
@@ -725,6 +746,23 @@ var QUOTES=[
   'Stärke entsteht nicht im Komfort, sondern durch Überwindung.'
 ];
 
+var STOIC_TOOLS=[
+  {icon:'⏸️',label:'PAUSE',text:'Ich bin nicht Sklave meiner Impulse. Vor jeder Reaktion: atmen, innehalten, dann bewusst statt impulsiv entscheiden.'},
+  {icon:'🌊',label:'MEER',text:'Ich bin nicht die Welle, sondern das ruhige Meer darunter. Ich beobachte meine Gefühle, ohne sie zu sein.'},
+  {icon:'🧍',label:'KÖRPER',text:'Der Körper stellt immer die Rechnung. Ich höre auf seine Signale und begegne ihnen mit Respekt und Bewegung.'},
+  {icon:'🔥',label:'ENERGIE',text:'Ich schütze meine Energie wie eine Flamme. Ich entscheide bewusst, wem und was ich sie schenke.'}
+];
+function dayOfYear(d){var start=new Date(d.getFullYear(),0,0);return Math.floor((d-start)/86400000);}
+function renderStoicTool(){
+  var el=document.getElementById('stoicTool');
+  if(!el)return;
+  var idx=dayOfYear(new Date())%STOIC_TOOLS.length;
+  var t=STOIC_TOOLS[idx];
+  el.querySelector('.stoic-icon').textContent=t.icon;
+  el.querySelector('.stoic-label').textContent=t.label;
+  el.querySelector('.stoic-text').textContent=t.text;
+}
+
 function tkey(){var d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1<10?'0':'')+(d.getMonth()+1)+'-'+(d.getDate()<10?'0':'')+d.getDate();}
 var TK=tkey();
 
@@ -801,6 +839,8 @@ function init(){
   renderAlc();
   renderHitze();
   renderHist();
+  renderStoicTool();
+  loadStein();
 };
 
 var DAY_NAMES=['So','Mo','Di','Mi','Do','Fr','Sa'];
@@ -998,7 +1038,7 @@ function toggle(key){
 }
 
 function updateRing(){
-  var fixed=['w1','w3','w2','s1','f1','f2','f4','s2'];
+  var fixed=['w1','w3','w2','s1','f1','f2','f4','s2','stille'];
   var done=0,total=0;
   var activeDw=getShownDwId();
   var dw=activeDw?document.getElementById('dw-'+activeDw):null;
@@ -1067,6 +1107,21 @@ function saveJ(){
   S.journals[TK]=ta.value;saveS();renderPast();
   var m=document.getElementById('jMsg');m.style.display='inline';
   setTimeout(function(){m.style.display='none';},2000);
+}
+
+function loadStein(){
+  var ta=document.getElementById('steinInput');
+  if(!S.stein)S.stein={};
+  if(ta&&S.stein[TK])ta.value=S.stein[TK];
+}
+function saveStein(){
+  var ta=document.getElementById('steinInput');
+  if(!ta)return;
+  if(!S.stein)S.stein={};
+  S.stein[TK]=ta.value;
+  saveS();
+  var m=document.getElementById('steinMsg');
+  if(m){m.style.display='inline';setTimeout(function(){m.style.display='none';},2000);}
 }
 
 function renderPast(){
