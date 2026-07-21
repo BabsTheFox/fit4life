@@ -1157,13 +1157,22 @@ function toggle(key){
 function updateRing(){
   var fixed=['w1','w3','w2','s1','f1','f2','f4','s2','stille'];
   var done=0,total=0;
-  var activeDw=getShownDwId();
-  var dw=activeDw?document.getElementById('dw-'+activeDw):null;
-  if(dw){
+  var shownId=getShownDwId();
+  var activeId=getActiveDwId();
+  // Zähle jedes Training mit, das heute angezeigt wird, planmäßig für heute ist,
+  // ODER bei dem bereits Übungen nachgeholt/abgehakt wurden (Catch-up)
+  ['1','3','5'].forEach(function(dwId){
+    var dw=document.getElementById('dw-'+dwId);
+    if(!dw)return;
     var cis=dw.querySelectorAll('.ci');
-    total+=cis.length;
-    for(var i=0;i<cis.length;i++){if(cis[i].classList.contains('done'))done++;}
-  }
+    var dwDone=0;
+    for(var i=0;i<cis.length;i++){if(cis[i].classList.contains('done'))dwDone++;}
+    var include=(dwId===shownId)||(dwId===activeId)||(dwDone>0);
+    if(include){
+      total+=cis.length;
+      done+=dwDone;
+    }
+  });
   total+=fixed.length;
   // Use date-prefixed keys for fixed daily items
   for(var i=0;i<fixed.length;i++){if(S.checks[TK+'_'+fixed[i]])done++;}
