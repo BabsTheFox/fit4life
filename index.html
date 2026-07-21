@@ -281,30 +281,49 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   <div class="card" style="padding:14px 16px;margin-bottom:14px">
     <div class="sec-lbl" style="margin-top:0;cursor:pointer" onclick="toggleBacklog()">🔄 Nachträge &amp; Rückblick</div>
     <div id="backlogPanel" style="display:none;margin-top:10px">
-      <div style="margin-bottom:8px">Datum: <input type="date" id="blDate" onchange="loadBacklogTimes()" style="border:1px solid var(--border);border-radius:8px;padding:4px 8px;font-size:13px"></div>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;font-size:13px;margin-bottom:10px">
-        <div>🌅 Aufgestanden<br><input type="time" id="bl-wake" class="meal-time-inp"></div>
-        <div>☀️ Frühstück<br><input type="time" id="bl-frueh" class="meal-time-inp"></div>
-        <div>🌞 Mittag<br><input type="time" id="bl-noon" class="meal-time-inp"></div>
-        <div>🌙 Abend<br><input type="time" id="bl-eve" class="meal-time-inp"></div>
-        <div>🌙 Schlafen<br><input type="time" id="bl-sleep" class="meal-time-inp"></div>
-        <div>⚖️ Gewicht<br><input type="number" step="0.1" min="30" max="200" id="bl-weight" class="meal-time-inp" style="width:70px" placeholder="kg"></div>
+      <div style="margin-bottom:12px">Datum: <input type="date" id="blDate" onchange="loadBacklogTimes()" style="border:1px solid var(--border);border-radius:8px;padding:4px 8px;font-size:13px"></div>
+
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">🌅 Aufgestanden</div>
+      <div style="margin-bottom:14px"><input type="time" id="bl-wake" class="meal-time-inp"></div>
+
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">⚖️ Gewicht &amp; Körperanalyse</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;font-size:13px;margin-bottom:14px">
+        <div>Gewicht<br><input type="number" step="0.1" min="30" max="200" id="bl-weight" class="meal-time-inp" style="width:70px" placeholder="kg"></div>
         <div>Fett %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-fat" class="meal-time-inp" style="width:70px" placeholder="%"></div>
         <div>Wasser %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-water" class="meal-time-inp" style="width:70px" placeholder="%"></div>
         <div>Muskel %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-muscle" class="meal-time-inp" style="width:70px" placeholder="%"></div>
         <div>Knochen %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-bone" class="meal-time-inp" style="width:70px" placeholder="%"></div>
       </div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Mahlzeiten</div>
-      <div style="margin-bottom:8px">☀️ Frühstück<br><input type="text" id="bl-frueh-txt" class="meal-log-input" style="width:100%;box-sizing:border-box" placeholder="Was hast du gefrühstückt?"></div>
-      <div style="margin-bottom:8px">🌞 Mittag<br><input type="text" id="bl-noon-txt" class="meal-log-input" style="width:100%;box-sizing:border-box" placeholder="Was hast du zu Mittag gegessen?"></div>
-      <div style="margin-bottom:8px">🌙 Abend<br><input type="text" id="bl-eve-txt" class="meal-log-input" style="width:100%;box-sizing:border-box" placeholder="Was hast du zu Abend gegessen?"></div>
+
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">☀️ Frühstück</div>
+      <div style="display:flex;gap:10px;align-items:flex-end;margin-bottom:14px;flex-wrap:wrap">
+        <div>Uhrzeit<br><input type="time" id="bl-frueh" class="meal-time-inp"></div>
+        <input type="text" id="bl-frueh-txt" class="meal-log-input" style="flex:1;min-width:160px;box-sizing:border-box" placeholder="Was hast du gefrühstückt?">
+      </div>
+
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">🌞 Mittagessen</div>
+      <div style="display:flex;gap:10px;align-items:flex-end;margin-bottom:14px;flex-wrap:wrap">
+        <div>Uhrzeit<br><input type="time" id="bl-noon" class="meal-time-inp"></div>
+        <input type="text" id="bl-noon-txt" class="meal-log-input" style="flex:1;min-width:160px;box-sizing:border-box" placeholder="Was hast du zu Mittag gegessen?">
+      </div>
+
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">🌙 Abendessen</div>
+      <div style="display:flex;gap:10px;align-items:flex-end;margin-bottom:14px;flex-wrap:wrap">
+        <div>Uhrzeit<br><input type="time" id="bl-eve" class="meal-time-inp"></div>
+        <input type="text" id="bl-eve-txt" class="meal-log-input" style="flex:1;min-width:160px;box-sizing:border-box" placeholder="Was hast du zu Abend gegessen?">
+      </div>
+
       <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Alkohol</div>
       <div style="display:flex;gap:8px;margin-bottom:4px">
         <button type="button" id="blAlcFreeBtn" onclick="setBacklogAlc(true)" style="flex:1;padding:8px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);font-size:12px;cursor:pointer">Alkoholfrei ✓</button>
         <button type="button" id="blAlcSlipBtn" onclick="setBacklogAlc(false)" style="flex:1;padding:8px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);font-size:12px;cursor:pointer">Doch Alkohol</button>
       </div>
       <div id="blAlcStatus" style="font-size:12px;color:var(--muted);margin-bottom:4px"></div>
-      <input type="text" id="bl-alc-note" class="meal-log-input" style="width:100%;box-sizing:border-box;margin-bottom:8px" placeholder="Was hast du getrunken? (optional)">
+      <input type="text" id="bl-alc-note" class="meal-log-input" style="width:100%;box-sizing:border-box;margin-bottom:14px" placeholder="Was hast du getrunken? (optional)">
+
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">🌙 Schlafen</div>
+      <div style="margin-bottom:14px"><input type="time" id="bl-sleep" class="meal-time-inp"></div>
+
       <button onclick="saveBacklog()" style="margin-top:4px;padding:8px 16px;border:none;border-radius:8px;background:var(--terra,#C4503A);color:#fff;font-size:13px;cursor:pointer">Speichern</button>
       <div id="blStatus" style="display:none;font-size:12px;color:var(--muted);margin-top:6px">Gespeichert ✓</div>
     </div>
