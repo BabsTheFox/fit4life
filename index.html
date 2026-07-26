@@ -53,8 +53,9 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .ci.has-sets>.cb{display:none;}
 .ci.has-sets{align-items:stretch;}
 .ci.has-sets .cl{display:flex;flex-direction:column;justify-content:space-between;}
-.set-checks{display:flex;flex-direction:column;gap:7px;flex-shrink:0;margin-top:1px;}
-.set-chk{width:23px;height:23px;border-radius:6px;border:2px solid var(--g);background:transparent;transition:background .15s,border-color .15s;cursor:pointer;}
+.set-checks{display:flex;flex-direction:column;gap:11px;flex-shrink:0;margin-top:1px;}
+.set-chk{width:28px;height:28px;border-radius:7px;border:2px solid var(--g);background:transparent;transition:background .15s,border-color .15s;cursor:pointer;position:relative;}
+.set-chk::before{content:'';position:absolute;top:-6px;left:-6px;right:-6px;bottom:-6px;}
 .set-chk.done{background:var(--g);border-color:var(--g);}
 .ck{display:none;}
 .ci.done .ck{display:block;}
@@ -281,49 +282,30 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   <div class="card" style="padding:14px 16px;margin-bottom:14px">
     <div class="sec-lbl" style="margin-top:0;cursor:pointer" onclick="toggleBacklog()">🔄 Nachträge &amp; Rückblick</div>
     <div id="backlogPanel" style="display:none;margin-top:10px">
-      <div style="margin-bottom:12px">Datum: <input type="date" id="blDate" onchange="loadBacklogTimes()" style="border:1px solid var(--border);border-radius:8px;padding:4px 8px;font-size:13px"></div>
-
-      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">🌅 Aufgestanden</div>
-      <div style="margin-bottom:14px"><input type="time" id="bl-wake" class="meal-time-inp"></div>
-
-      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">⚖️ Gewicht &amp; Körperanalyse</div>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;font-size:13px;margin-bottom:14px">
-        <div>Gewicht<br><input type="number" step="0.1" min="30" max="200" id="bl-weight" class="meal-time-inp" style="width:70px" placeholder="kg"></div>
+      <div style="margin-bottom:8px">Datum: <input type="date" id="blDate" onchange="loadBacklogTimes()" style="border:1px solid var(--border);border-radius:8px;padding:4px 8px;font-size:13px"></div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;font-size:13px;margin-bottom:10px">
+        <div>🌅 Aufgestanden<br><input type="time" id="bl-wake" class="meal-time-inp"></div>
+        <div>☀️ Frühstück<br><input type="time" id="bl-frueh" class="meal-time-inp"></div>
+        <div>🌞 Mittag<br><input type="time" id="bl-noon" class="meal-time-inp"></div>
+        <div>🌙 Abend<br><input type="time" id="bl-eve" class="meal-time-inp"></div>
+        <div>🌙 Schlafen<br><input type="time" id="bl-sleep" class="meal-time-inp"></div>
+        <div>⚖️ Gewicht<br><input type="number" step="0.1" min="30" max="200" id="bl-weight" class="meal-time-inp" style="width:70px" placeholder="kg"></div>
         <div>Fett %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-fat" class="meal-time-inp" style="width:70px" placeholder="%"></div>
         <div>Wasser %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-water" class="meal-time-inp" style="width:70px" placeholder="%"></div>
         <div>Muskel %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-muscle" class="meal-time-inp" style="width:70px" placeholder="%"></div>
         <div>Knochen %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-bone" class="meal-time-inp" style="width:70px" placeholder="%"></div>
       </div>
-
-      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">☀️ Frühstück</div>
-      <div style="display:flex;gap:10px;align-items:flex-end;margin-bottom:14px;flex-wrap:wrap">
-        <div>Uhrzeit<br><input type="time" id="bl-frueh" class="meal-time-inp"></div>
-        <input type="text" id="bl-frueh-txt" class="meal-log-input" style="flex:1;min-width:160px;box-sizing:border-box" placeholder="Was hast du gefrühstückt?">
-      </div>
-
-      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">🌞 Mittagessen</div>
-      <div style="display:flex;gap:10px;align-items:flex-end;margin-bottom:14px;flex-wrap:wrap">
-        <div>Uhrzeit<br><input type="time" id="bl-noon" class="meal-time-inp"></div>
-        <input type="text" id="bl-noon-txt" class="meal-log-input" style="flex:1;min-width:160px;box-sizing:border-box" placeholder="Was hast du zu Mittag gegessen?">
-      </div>
-
-      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">🌙 Abendessen</div>
-      <div style="display:flex;gap:10px;align-items:flex-end;margin-bottom:14px;flex-wrap:wrap">
-        <div>Uhrzeit<br><input type="time" id="bl-eve" class="meal-time-inp"></div>
-        <input type="text" id="bl-eve-txt" class="meal-log-input" style="flex:1;min-width:160px;box-sizing:border-box" placeholder="Was hast du zu Abend gegessen?">
-      </div>
-
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Mahlzeiten</div>
+      <div style="margin-bottom:8px">☀️ Frühstück<br><input type="text" id="bl-frueh-txt" class="meal-log-input" style="width:100%;box-sizing:border-box" placeholder="Was hast du gefrühstückt?"></div>
+      <div style="margin-bottom:8px">🌞 Mittag<br><input type="text" id="bl-noon-txt" class="meal-log-input" style="width:100%;box-sizing:border-box" placeholder="Was hast du zu Mittag gegessen?"></div>
+      <div style="margin-bottom:8px">🌙 Abend<br><input type="text" id="bl-eve-txt" class="meal-log-input" style="width:100%;box-sizing:border-box" placeholder="Was hast du zu Abend gegessen?"></div>
       <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Alkohol</div>
       <div style="display:flex;gap:8px;margin-bottom:4px">
         <button type="button" id="blAlcFreeBtn" onclick="setBacklogAlc(true)" style="flex:1;padding:8px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);font-size:12px;cursor:pointer">Alkoholfrei ✓</button>
         <button type="button" id="blAlcSlipBtn" onclick="setBacklogAlc(false)" style="flex:1;padding:8px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);font-size:12px;cursor:pointer">Doch Alkohol</button>
       </div>
       <div id="blAlcStatus" style="font-size:12px;color:var(--muted);margin-bottom:4px"></div>
-      <input type="text" id="bl-alc-note" class="meal-log-input" style="width:100%;box-sizing:border-box;margin-bottom:14px" placeholder="Was hast du getrunken? (optional)">
-
-      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">🌙 Schlafen</div>
-      <div style="margin-bottom:14px"><input type="time" id="bl-sleep" class="meal-time-inp"></div>
-
+      <input type="text" id="bl-alc-note" class="meal-log-input" style="width:100%;box-sizing:border-box;margin-bottom:8px" placeholder="Was hast du getrunken? (optional)">
       <button onclick="saveBacklog()" style="margin-top:4px;padding:8px 16px;border:none;border-radius:8px;background:var(--terra,#C4503A);color:#fff;font-size:13px;cursor:pointer">Speichern</button>
       <div id="blStatus" style="display:none;font-size:12px;color:var(--muted);margin-top:6px">Gespeichert ✓</div>
     </div>
@@ -481,8 +463,8 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   <div class="card dw" id="dw-3" style="display: none;">
     <div class="card-title" style="font-size:14px">Kraft B - Unterkörper + Glutes</div>
     <div class="card-sub">Mi · 35 Min · 4 Sätze</div>
-    <div class="ci has-sets" id="ci-d3-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex0" data-set="0"></div><div class="set-chk" data-ex="d3-ex0" data-set="1"></div><div class="set-chk" data-ex="d3-ex0" data-set="2"></div></div><div class="cl">Kniebeugen (tief, Fersen am Boden)<span class="sets">3 x 20-25</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+proper+form+beginner" target="_blank">▶ YT</a></span></div></div>
-    <div class="ci has-sets" id="ci-d3-ex1"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex1" data-set="0"></div><div class="set-chk" data-ex="d3-ex1" data-set="1"></div><div class="set-chk" data-ex="d3-ex1" data-set="2"></div></div><div class="cl">Ausfallschritte abwechselnd<span class="sets">3 x 15/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=lunges+proper+form+tutorial" target="_blank">▶ YT</a></span></div></div>
+    <div class="ci has-sets" id="ci-d3-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex0" data-set="0"></div><div class="set-chk" data-ex="d3-ex0" data-set="1"></div><div class="set-chk" data-ex="d3-ex0" data-set="2"></div></div><div class="cl">Rumänisches Kreuzheben mit Kurzhanteln<span class="sets">3 x 15-20</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=romanian+deadlift+dumbbell+knee+friendly" target="_blank">▶ YT</a></span></div></div>
+    <div class="ci has-sets" id="ci-d3-ex1"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex1" data-set="0"></div><div class="set-chk" data-ex="d3-ex1" data-set="1"></div><div class="set-chk" data-ex="d3-ex1" data-set="2"></div></div><div class="cl">Muschelübung (Clamshells)<span class="sets">3 x 15/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=clamshell+exercise+glutes+knee+friendly" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d3-ex2"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex2" data-set="0"></div><div class="set-chk" data-ex="d3-ex2" data-set="1"></div><div class="set-chk" data-ex="d3-ex2" data-set="2"></div></div><div class="cl">Glute Bridge / Hüftheben<span class="sets">3 x 25-30</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=glute+bridge+exercise+tutorial" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d3-ex3"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex3" data-set="0"></div><div class="set-chk" data-ex="d3-ex3" data-set="1"></div><div class="set-chk" data-ex="d3-ex3" data-set="2"></div></div><div class="cl">Fire Hydrant (Vierfüßler)<span class="sets">3 x 20/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=fire+hydrant+exercise+glutes" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d3-ex4"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex4" data-set="0"></div><div class="set-chk" data-ex="d3-ex4" data-set="1"></div><div class="set-chk" data-ex="d3-ex4" data-set="2"></div></div><div class="cl">Seitliches Beinheben liegend<span class="sets">3 x 20/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=side+lying+leg+raise+exercise" target="_blank">▶ YT</a></span></div></div>
@@ -506,10 +488,10 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   <div class="card dw" id="dw-5" style="display: block;" data-bound="1">
     <div class="card-title" style="font-size:14px">Kraft C - Ganzkörper-Power</div>
     <div class="card-sub">Fr · 35 Min · 3-4 Sätze</div>
-    <div class="ci has-sets" id="ci-d5-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d5-ex0" data-set="0"></div><div class="set-chk" data-ex="d5-ex0" data-set="1"></div><div class="set-chk" data-ex="d5-ex0" data-set="2"></div></div><div class="cl">Squat to Overhead Press<span class="sets">3 x 20</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+to+overhead+press+band" target="_blank">▶ YT</a></span></div></div>
+    <div class="ci has-sets" id="ci-d5-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d5-ex0" data-set="0"></div><div class="set-chk" data-ex="d5-ex0" data-set="1"></div><div class="set-chk" data-ex="d5-ex0" data-set="2"></div></div><div class="cl">Kreuzheben zu Schulterdrücken<span class="sets">3 x 15-20</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=deadlift+to+overhead+press+dumbbell" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d5-ex1"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d5-ex1" data-set="0"></div><div class="set-chk" data-ex="d5-ex1" data-set="1"></div><div class="set-chk" data-ex="d5-ex1" data-set="2"></div></div><div class="cl">Romanian Deadlift einbeinig<span class="sets">3 x 15/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=single+leg+romanian+deadlift" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d5-ex2"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d5-ex2" data-set="0"></div><div class="set-chk" data-ex="d5-ex2" data-set="1"></div><div class="set-chk" data-ex="d5-ex2" data-set="2"></div></div><div class="cl">Push-up + T-Rotation<span class="sets">3 x 10/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=push+up+t+rotation+exercise" target="_blank">▶ YT</a></span></div></div>
-    <div class="ci has-sets" id="ci-d5-ex3"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d5-ex3" data-set="0"></div><div class="set-chk" data-ex="d5-ex3" data-set="1"></div><div class="set-chk" data-ex="d5-ex3" data-set="2"></div></div><div class="cl">Reverse Lunge + Knieheben<span class="sets">3 x 15/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=reverse+lunge+knee+raise" target="_blank">▶ YT</a></span></div></div>
+    <div class="ci has-sets" id="ci-d5-ex3"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d5-ex3" data-set="0"></div><div class="set-chk" data-ex="d5-ex3" data-set="1"></div><div class="set-chk" data-ex="d5-ex3" data-set="2"></div></div><div class="cl">Beinheben rückwärts im Stehen<span class="sets">3 x 15/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=standing+glute+kickback+knee+friendly" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d5-ex4"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d5-ex4" data-set="0"></div><div class="set-chk" data-ex="d5-ex4" data-set="1"></div><div class="set-chk" data-ex="d5-ex4" data-set="2"></div></div><div class="cl">Superman / Rückenstrecker<span class="sets">3 x 20</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=superman+back+exercise+tutorial" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d5-ex5"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d5-ex5" data-set="0"></div><div class="set-chk" data-ex="d5-ex5" data-set="1"></div><div class="set-chk" data-ex="d5-ex5" data-set="2"></div></div><div class="cl">Mountain Climbers langsam<span class="sets">3 x 20/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=slow+mountain+climbers+core" target="_blank">▶ YT</a></span></div></div>
     <div class="dw-move" id="dwmove-5" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)">
@@ -665,8 +647,8 @@ Was habe ich gelernt?"></textarea>
   </div>
   <div class="wb">
     <div class="wb-day">Mittwoch - Kraft B</div><div class="wb-name">Unterkörper + Glutes - 35 Min</div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Kniebeugen (tief, Fersen am Boden)</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+proper+form+beginner" target="_blank">▶ YT</a></div><span class="ei-sets">3x20-25</span></div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Ausfallschritte abwechselnd</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=lunges+proper+form+tutorial" target="_blank">▶ YT</a></div><span class="ei-sets">3x15/Seite</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Rumänisches Kreuzheben mit Kurzhanteln</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=romanian+deadlift+dumbbell+knee+friendly" target="_blank">▶ YT</a></div><span class="ei-sets">3x15-20</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Muschelübung (Clamshells)</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=clamshell+exercise+glutes+knee+friendly" target="_blank">▶ YT</a></div><span class="ei-sets">3x15/Seite</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Glute Bridge / Hüftheben</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=glute+bridge+exercise+tutorial" target="_blank">▶ YT</a></div><span class="ei-sets">3x25-30</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Fire Hydrant (Vierfüßler)</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=fire+hydrant+exercise+glutes" target="_blank">▶ YT</a></div><span class="ei-sets">3x20/Seite</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Seitliches Beinheben liegend</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=side+lying+leg+raise+exercise" target="_blank">▶ YT</a></div><span class="ei-sets">3x20/Seite</span></div>
@@ -675,10 +657,10 @@ Was habe ich gelernt?"></textarea>
   </div>
   <div class="wb">
     <div class="wb-day">Freitag - Kraft C</div><div class="wb-name">Ganzkörper-Power - 35 Min</div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Squat to Overhead Press</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=squat+to+overhead+press+band" target="_blank">▶ YT</a></div><span class="ei-sets">3x20</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Kreuzheben zu Schulterdrücken</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=deadlift+to+overhead+press+dumbbell" target="_blank">▶ YT</a></div><span class="ei-sets">3x15-20</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Romanian Deadlift einbeinig</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=single+leg+romanian+deadlift" target="_blank">▶ YT</a></div><span class="ei-sets">3x15/Seite</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Push-up plus T-Rotation</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=push+up+t+rotation+exercise" target="_blank">▶ YT</a></div><span class="ei-sets">3x10/Seite</span></div>
-    <div class="ei"><div class="ei-info"><div class="ei-name">Reverse Lunge plus Knieheben</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=reverse+lunge+knee+raise" target="_blank">▶ YT</a></div><span class="ei-sets">3x15/Seite</span></div>
+    <div class="ei"><div class="ei-info"><div class="ei-name">Beinheben rückwärts im Stehen</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=standing+glute+kickback+knee+friendly" target="_blank">▶ YT</a></div><span class="ei-sets">3x15/Seite</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Superman / Rückenstrecker</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=superman+back+exercise+tutorial" target="_blank">▶ YT</a></div><span class="ei-sets">3x20</span></div>
     <div class="ei"><div class="ei-info"><div class="ei-name">Mountain Climbers langsam</div><a class="yt-sm" href="https://www.youtube.com/results?search_query=slow+mountain+climbers+core" target="_blank">▶ YT</a></div><span class="ei-sets">3x20/Seite</span></div>
   </div>
@@ -1157,22 +1139,13 @@ function toggle(key){
 function updateRing(){
   var fixed=['w1','w3','w2','s1','f1','f2','f4','s2','stille'];
   var done=0,total=0;
-  var shownId=getShownDwId();
-  var activeId=getActiveDwId();
-  // Zähle jedes Training mit, das heute angezeigt wird, planmäßig für heute ist,
-  // ODER bei dem bereits Übungen nachgeholt/abgehakt wurden (Catch-up)
-  ['1','3','5'].forEach(function(dwId){
-    var dw=document.getElementById('dw-'+dwId);
-    if(!dw)return;
+  var activeDw=getShownDwId();
+  var dw=activeDw?document.getElementById('dw-'+activeDw):null;
+  if(dw){
     var cis=dw.querySelectorAll('.ci');
-    var dwDone=0;
-    for(var i=0;i<cis.length;i++){if(cis[i].classList.contains('done'))dwDone++;}
-    var include=(dwId===shownId)||(dwId===activeId)||(dwDone>0);
-    if(include){
-      total+=cis.length;
-      done+=dwDone;
-    }
-  });
+    total+=cis.length;
+    for(var i=0;i<cis.length;i++){if(cis[i].classList.contains('done'))done++;}
+  }
   total+=fixed.length;
   // Use date-prefixed keys for fixed daily items
   for(var i=0;i<fixed.length;i++){if(S.checks[TK+'_'+fixed[i]])done++;}
@@ -1571,19 +1544,21 @@ function saveWeight(){
     if(!isNaN(val)){entry[key]=val;any=true;}
   });
   if(!any)return;
-  if(!S.weights)S.weights={};
-  S.weights[TK]=entry;
-  saveS();
+  var S2=lstore();
+  if(!S2.weights)S2.weights={};
+  S2.weights[TK]=entry;
+  sstore(S2);
   var st=document.getElementById('weightStatus');
   if(st){st.style.display='block';setTimeout(function(){st.style.display='none';},2000);}
 }
 function loadWeight(){
   var fields={kg:'weightInput',fat:'weightFat',muscle:'weightMuscle',water:'weightWater',bone:'weightBone'};
-  var w=(S.weights&&S.weights[TK])||null;
+  var S2=lstore();
+  var w=(S2.weights&&S2.weights[TK])||null;
   if(!w){
     // Kein Eintrag für heute: letzten bekannten Tag als Startwert vorschlagen
-    var dates=S.weights?Object.keys(S.weights).filter(function(d){return d<TK;}).sort():[];
-    if(dates.length)w=S.weights[dates[dates.length-1]];
+    var dates=S2.weights?Object.keys(S2.weights).filter(function(d){return d<TK;}).sort():[];
+    if(dates.length)w=S2.weights[dates[dates.length-1]];
   }
   if(!w)return;
   if(typeof w==='number')w={kg:w}; // alte Einträge (nur Gewicht)
