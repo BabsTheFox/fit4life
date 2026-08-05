@@ -539,7 +539,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
       <div style="font-size:16px">🍷</div>
       <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:11px;font-family:'Jost',sans-serif;font-weight:700;color:var(--gd)">Alkoholfreie Tage</div>
     </div>
-    <div style="font-size:11px;color:var(--muted);margin-bottom:14px">Gestartet am <span id="alcStartDate">–</span></div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:14px">Gestartet am <span id="alcStartDate">–</span> · jeder Tag ohne Eintrag zählt als alkoholfrei</div>
     <div style="display:flex;gap:10px;margin-bottom:14px">
       <div style="flex:1;text-align:center;background:rgba(201,169,110,.12);border-radius:10px;padding:10px 4px">
         <div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:22px;color:var(--gd)" id="alcFreeNum">0</div>
@@ -550,10 +550,13 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
         <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)">Tage betrachtet</div>
       </div>
     </div>
-    <button class="btn" id="alcTodayBtn" onclick="toggleAlcFree()" style="width: 100%; justify-content: center; background: linear-gradient(135deg,var(--gd),var(--g)); opacity: 1;">Heute alkoholfrei ✓</button>
-    <div id="alcNoteWrap" style="display:none;margin-top:10px">
-      <div class="meal-log"><input class="meal-log-input" id="alcNoteInput" type="text" placeholder="Was hast du getrunken?" oninput="onAlcNoteInput()" onblur="saveAlcNote()"><button class="meal-log-mic" onclick="startVoiceInput('alcNoteInput',this)" title="Spracheingabe">🎤</button></div>
+    <div id="alcSlipList" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px"></div>
+    <div style="display:flex;gap:6px;margin-bottom:8px">
+      <input type="date" id="alcSlipDate" style="border:1.5px solid var(--border);border-radius:8px;padding:6px 8px;font-size:12px;color:var(--mid);font-family:inherit">
+      <input type="text" id="alcSlipNote" placeholder="Was hast du getrunken?" class="meal-log-input" style="flex:1">
+      <button type="button" class="meal-log-mic" onclick="startVoiceInput('alcSlipNote',this)" title="Spracheingabe">🎤</button>
     </div>
+    <button class="btn" id="alcTodayBtn" onclick="addAlcSlip()" style="width: 100%; justify-content: center; background: linear-gradient(135deg,var(--gd),var(--g)); opacity: 1;">+ Doch Alkohol getrunken</button>
   </div>
 
   <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
@@ -1893,11 +1896,9 @@ function computeAlcStreakFrom(S2){
 }
 function getAlcStartDate(S2){
   if(S2.alc.startDate)return S2.alc.startDate;
-  var keys=Object.keys(S2.alc.days||{});
-  var earliest=keys.length?keys.sort()[0]:TK;
-  S2.alc.startDate=earliest;
+  S2.alc.startDate=TK;
   sstore(S2);
-  return earliest;
+  return TK;
 }
 function formatDateDe(k){
   var p=k.split('-');
@@ -1917,67 +1918,66 @@ function renderAlc(){
   if(!btn)return;
   var S2=lstore();
   if(!S2.alc)S2.alc={days:{},best:0};
+  if(!S2.alc.notes)S2.alc.notes={};
   var startKey=getAlcStartDate(S2);
   var startEl=document.getElementById('alcStartDate');
   if(startEl)startEl.textContent=formatDateDe(startKey);
   var total=daysBetweenInclusive(startKey,TK);
-  var free=0;
-  Object.keys(S2.alc.days).forEach(function(k){
-    if(S2.alc.days[k]===true)free++;
-  });
+  var slipKeys=Object.keys(S2.alc.days).filter(function(k){return S2.alc.days[k]===false;});
+  var free=total-slipKeys.length;
   var elF=document.getElementById('alcFreeNum');if(elF)elF.textContent=free;
   var elT=document.getElementById('alcTotalNum');if(elT)elT.textContent=total;
-  var todayStatus=S2.alc.days[TK];
-  var noteWrap=document.getElementById('alcNoteWrap');
-  var noteInp=document.getElementById('alcNoteInput');
-  if(todayStatus===false){
-    if(noteWrap)noteWrap.style.display='block';
-    if(noteInp&&document.activeElement!==noteInp)noteInp.value=(S2.alc.notes&&S2.alc.notes[TK])||'';
-  } else {
-    if(noteWrap)noteWrap.style.display='none';
-  }
-  if(todayStatus===true){
-    btn.innerHTML='✓ Alkoholfrei &ndash; super!';
-    btn.style.opacity='0.75';
-  } else if(todayStatus===false){
-    btn.innerHTML='Heute alkoholfrei ✓';
-    btn.style.opacity='1';
-  } else {
-    btn.innerHTML='Heute alkoholfrei ✓';
-    btn.style.opacity='1';
-  }
+  var dateInp=document.getElementById('alcSlipDate');
+  if(dateInp&&!dateInp.value)dateInp.value=TK;
+  renderAlcSlipList(S2,slipKeys);
 }
-function onAlcNoteInput(){
-  var inp=document.getElementById('alcNoteInput');
-  if(inp)inp.classList.remove('saved');
+function renderAlcSlipList(S2,slipKeys){
+  var c=document.getElementById('alcSlipList');
+  if(!c)return;
+  c.innerHTML='';
+  var keys=(slipKeys||Object.keys(S2.alc.days).filter(function(k){return S2.alc.days[k]===false;})).slice().sort().reverse();
+  if(keys.length===0){
+    var e=document.createElement('div');
+    e.style.cssText='font-size:11px;color:var(--muted)';
+    e.textContent='Bisher kein Alkohol eingetragen.';
+    c.appendChild(e);
+    return;
+  }
+  keys.forEach(function(k){
+    var note=(S2.alc.notes&&S2.alc.notes[k])||'';
+    var chip=document.createElement('span');
+    chip.style.cssText='display:inline-flex;align-items:center;gap:5px;background:rgba(196,122,90,.12);border:1px solid rgba(196,122,90,.3);border-radius:14px;padding:4px 9px;font-size:11px;color:var(--mid);max-width:100%';
+    var txt=document.createElement('span');
+    txt.style.cssText='overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px;';
+    txt.textContent=formatDateDe(k)+(note?(' · '+note):'');
+    chip.appendChild(txt);
+    var del=document.createElement('span');
+    del.textContent='×';
+    del.style.cssText='cursor:pointer;color:var(--muted);font-weight:700;padding:0 2px;flex-shrink:0;';
+    del.onclick=function(){removeAlcSlip(k);};
+    chip.appendChild(del);
+    c.appendChild(chip);
+  });
 }
-function saveAlcNote(){
-  var inp=document.getElementById('alcNoteInput');
-  if(!inp)return;
+function addAlcSlip(){
+  var dateInp=document.getElementById('alcSlipDate');
+  var noteInp=document.getElementById('alcSlipNote');
+  var date=(dateInp&&dateInp.value)?dateInp.value:TK;
   var S2=lstore();
   if(!S2.alc)S2.alc={days:{},best:0};
   if(!S2.alc.notes)S2.alc.notes={};
-  if(inp.value.trim()){
-    S2.alc.notes[TK]=inp.value.trim();
-  } else {
-    delete S2.alc.notes[TK];
-  }
+  S2.alc.days[date]=false;
+  if(noteInp&&noteInp.value.trim())S2.alc.notes[date]=noteInp.value.trim();
+  else delete S2.alc.notes[date];
   sstore(S2);
-  inp.classList.add('saved');
-}
-function toggleAlcFree(){
-  var S2=lstore();
-  if(!S2.alc)S2.alc={days:{},best:0};
-  if(S2.alc.days[TK]===true){delete S2.alc.days[TK];}
-  else {S2.alc.days[TK]=true;}
-  sstore(S2);
+  if(noteInp)noteInp.value='';
+  if(dateInp)dateInp.value=TK;
   renderAlc();
 }
-function markAlcSlip(){
+function removeAlcSlip(dateKey){
   var S2=lstore();
-  if(!S2.alc)S2.alc={days:{},best:0};
-  if(S2.alc.days[TK]===false){delete S2.alc.days[TK];}
-  else {S2.alc.days[TK]=false;}
+  if(S2.alc&&S2.alc.days)delete S2.alc.days[dateKey];
+  if(S2.alc&&S2.alc.notes)delete S2.alc.notes[dateKey];
   sstore(S2);
   renderAlc();
 }
