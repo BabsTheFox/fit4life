@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0060)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm.html -->
+<!-- saved from url=(0062)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_3.html -->
 <html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -244,16 +244,17 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   font-size:12px;font-weight:600;
   color:var(--gd);
   font-family:inherit;
-  width:88px;
+  width:80px;
   cursor:pointer;
   outline:none;
+  flex-shrink:0;
   transition:border-color .2s,background-color .2s;
   min-height:30px;
 }
 .time-icon-btn:focus,.time-icon-btn:hover{border-color:var(--g);background-color:rgba(201,169,110,.22);}
 .time-icon-btn::-webkit-calendar-picker-indicator{opacity:0;width:0;padding:0;margin:0;}
 /* MEAL EXPAND CHEVRON */
-.meal-expand-chevron{font-size:13px;color:var(--muted);margin-left:auto;transition:transform .2s;display:inline-block;}
+.meal-expand-chevron{font-size:13px;color:var(--muted);margin-left:6px;flex-shrink:0;transition:transform .2s;display:inline-block;}
 .meal-expand-chevron.open{transform:rotate(180deg);}
 @keyframes hitzePulse{0%,100%{box-shadow:0 0 0 0 rgba(196,122,90,.5)}50%{box-shadow:0 0 0 6px rgba(196,122,90,.0)}}
 .hitze-pulse{animation:hitzePulse 2s infinite;}
@@ -367,8 +368,8 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
     <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">💪🏻</span><span>Tag für Tag · Schritt für Schritt</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=stoizismus+k%C3%B6rper+disziplin" target="_blank">▶ YT</a></div>
   </div>
 
-  <div class="card" style="padding:14px 16px;margin-bottom:14px">
-    <div class="sec-lbl" style="margin-top:0">🌅 Aufgestanden<span class="time-wrap" style="margin-left:auto"><input class="time-icon-btn" id="ti-wake" type="time" onchange="saveTi(&#39;wake&#39;)" oninput="onTimeInput(&#39;wake&#39;)" onblur="saveTi(&#39;wake&#39;)" placeholder="07:00" title="Uhrzeit Aufgestanden"></span></div>
+  <div class="card" style="padding:14px 16px;margin-bottom:14px;overflow:visible">
+    <div class="sec-lbl" style="margin-top:0;gap:8px"><span style="flex:1">🌅 Aufgestanden</span><span class="time-wrap" style="flex-shrink:0"><input class="time-icon-btn" id="ti-wake" type="time" onchange="saveTi(&#39;wake&#39;)" oninput="onTimeInput(&#39;wake&#39;)" onblur="saveTi(&#39;wake&#39;)" placeholder="07:00" title="Uhrzeit Aufgestanden"></span></div>
   </div>
 
   <div class="quote" style="margin-bottom:14px">
@@ -377,7 +378,6 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   </div>
 
   <div class="card" style="padding:14px 16px;margin-bottom:14px">
-    <div class="sec-lbl" style="margin-top:0">⚖️ Gewicht &amp; Körperanalyse</div>
     <!-- Gewicht oben -->
     <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sand);margin-bottom:8px">
       <span style="font-size:13px;color:var(--mid);min-width:60px;font-weight:600">⚖️ Gewicht</span>
@@ -392,7 +392,6 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
       <!-- LINKS: Fett + Wasser -->
       <div style="background:rgba(201,169,110,.07);border-radius:10px;padding:8px 10px">
-        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gd);margin-bottom:6px">Fett / Wasser</div>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
           <span style="font-size:12px;color:var(--mid);min-width:48px">Fett</span>
           <div style="display:flex;align-items:center;gap:4px">
@@ -414,7 +413,6 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
       </div>
       <!-- RECHTS: Muskel + Knochen -->
       <div style="background:rgba(139,158,123,.1);border-radius:10px;padding:8px 10px">
-        <div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--sage);margin-bottom:6px">Muskel / Knochen</div>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
           <span style="font-size:12px;color:var(--mid);min-width:48px">Muskel</span>
           <div style="display:flex;align-items:center;gap:4px">
@@ -454,7 +452,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   </div>
 
   <div class="card">
-      <div class="sec-lbl" style="margin-top:6px;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f1-detail&#39;,this)">☀️ Frühstück<span class="time-wrap" onclick="event.stopPropagation()"><input class="time-icon-btn" id="ti-frueh" type="time" onchange="saveTi(&#39;frueh&#39;)" oninput="onTimeInput(&#39;frueh&#39;)" onblur="saveTi(&#39;frueh&#39;)" placeholder="08:00" title="Uhrzeit Frühstück"></span><span class="meal-expand-chevron" id="meal-f1-chevron">▾</span></div>
+      <div class="sec-lbl" style="margin-top:6px;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f1-detail&#39;,this)"><span style="flex:1">☀️ Frühstück</span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><input class="time-icon-btn" id="ti-frueh" type="time" onchange="saveTi(&#39;frueh&#39;)" oninput="onTimeInput(&#39;frueh&#39;)" onblur="saveTi(&#39;frueh&#39;)" placeholder="08:00" title="Uhrzeit Frühstück"></span><span class="meal-expand-chevron" id="meal-f1-chevron">▾</span></div>
       <div id="meal-f1-detail" style="display:none">
         <div class="ci" id="ci-f1" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">Weizenkeime + Kollagen</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Zimt Kardamom Nelken Vanille</div></div></div>
       </div>
@@ -476,7 +474,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
 
 
   <div class="card" id="mittagsBox">
-      <div class="sec-lbl" style="margin-top:0;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f2-detail&#39;,this)">🌞 Mittagessen<span class="time-wrap" onclick="event.stopPropagation()"><input class="time-icon-btn" id="ti-noon" type="time" onchange="saveTi(&#39;noon&#39;)" oninput="onTimeInput(&#39;noon&#39;)" onblur="saveTi(&#39;noon&#39;)" placeholder="12:00" title="Uhrzeit Mittagessen"></span><span class="meal-expand-chevron" id="meal-f2-chevron">▾</span></div>
+      <div class="sec-lbl" style="margin-top:0;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f2-detail&#39;,this)"><span style="flex:1">🌞 Mittagessen</span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><input class="time-icon-btn" id="ti-noon" type="time" onchange="saveTi(&#39;noon&#39;)" oninput="onTimeInput(&#39;noon&#39;)" onblur="saveTi(&#39;noon&#39;)" placeholder="12:00" title="Uhrzeit Mittagessen"></span><span class="meal-expand-chevron" id="meal-f2-chevron">▾</span></div>
       <div id="meal-f2-detail" style="display:none">
         <div class="ci" id="ci-f2" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Kurkuma Curry Paprika Pfeffer Salz</div><div class="mx warn"><div class="mx-l" style="font-size:13px;color:#C4503A;font-weight:600">⚠️ Keine Fast Carbs!<br><span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie↓</span></div></div></div></div>
       </div>
@@ -575,7 +573,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   </div>
 
   <div class="card">
-    <div class="sec-lbl" style="margin-top:8px;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f4-detail&#39;,this)">🌙 Abendessen<span class="time-wrap" onclick="event.stopPropagation()"><input class="time-icon-btn" id="ti-eve" type="time" onchange="saveTi(&#39;eve&#39;)" oninput="onTimeInput(&#39;eve&#39;)" onblur="saveTi(&#39;eve&#39;)" placeholder="19:30" title="Uhrzeit Abendessen"></span><span class="meal-expand-chevron" id="meal-f4-chevron">▾</span></div>
+    <div class="sec-lbl" style="margin-top:8px;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f4-detail&#39;,this)"><span style="flex:1">🌙 Abendessen</span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><input class="time-icon-btn" id="ti-eve" type="time" onchange="saveTi(&#39;eve&#39;)" oninput="onTimeInput(&#39;eve&#39;)" onblur="saveTi(&#39;eve&#39;)" placeholder="19:30" title="Uhrzeit Abendessen"></span><span class="meal-expand-chevron" id="meal-f4-chevron">▾</span></div>
     <div id="meal-f4-detail" style="display:none">
       <div class="ci" id="ci-f4" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Protein + viel Gemüse</div><div class="mx-r">Muskelregeneration, Vitamine</div></div><div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Buttermilch oder hartgekochte Eier</div><div class="mx-r">Protein, gesunde Fette</div></div><div class="mx warn"><div class="mx-l" style="font-size:13px;color:#C4503A;font-weight:600">⚠️ Keine Carbs abends! <span style="color:#C4503A;font-size:13px">Fettspeicherung↑, Schlaf↓</span></div></div></div></div>
     </div>
@@ -592,7 +590,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   </div>
 
   <div class="card">
-    <div class="sec-lbl" style="margin-top:0">🍽️ 4. Mahlzeit <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(falls gegessen)</span><span class="time-wrap" onclick="event.stopPropagation()"><input class="time-icon-btn" id="ti-zwischen" type="time" onchange="saveTi(&#39;zwischen&#39;)" oninput="onTimeInput(&#39;zwischen&#39;)" onblur="saveTi(&#39;zwischen&#39;)" placeholder="16:00" title="Uhrzeit 4. Mahlzeit"></span></div>
+    <div class="sec-lbl" style="margin-top:0"><span style="flex:1">🍽️ 4. Mahlzeit <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(falls gegessen)</span></span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><input class="time-icon-btn" id="ti-zwischen" type="time" onchange="saveTi(&#39;zwischen&#39;)" oninput="onTimeInput(&#39;zwischen&#39;)" onblur="saveTi(&#39;zwischen&#39;)" placeholder="16:00" title="Uhrzeit 4. Mahlzeit"></span></div>
     <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f3" placeholder="Was hast du zusätzlich gegessen?" oninput="onMealInput(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)" onblur="saveMealLog(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)"></textarea><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f3&#39;,this)" title="Spracheingabe">🎤</button></div>
   </div>
 
@@ -690,7 +688,7 @@ Was habe ich gelernt?"></textarea>
   </div>
 
   <div class="card" style="padding:14px 16px;margin-top:14px">
-    <div class="sec-lbl" style="margin-top:0">🌙 Schlafen gegangen<span class="time-wrap" style="margin-left:auto"><input class="time-icon-btn" id="ti-sleep" type="time" onchange="saveTi(&#39;sleep&#39;)" oninput="onTimeInput(&#39;sleep&#39;)" onblur="saveTi(&#39;sleep&#39;)" placeholder="22:30" title="Uhrzeit Schlafen"></span></div>
+    <div class="sec-lbl" style="margin-top:0;gap:8px"><span style="flex:1">🌙 Schlafen gegangen</span><span class="time-wrap" style="flex-shrink:0"><input class="time-icon-btn" id="ti-sleep" type="time" onchange="saveTi(&#39;sleep&#39;)" oninput="onTimeInput(&#39;sleep&#39;)" onblur="saveTi(&#39;sleep&#39;)" placeholder="22:30" title="Uhrzeit Schlafen"></span></div>
   </div>
 
   <div style="text-align:center;margin-top:20px">
