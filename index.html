@@ -312,7 +312,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
   <div class="prog">
     <div class="prog-lbl"><span>Start: Mai 2026</span><span id="progPct">30%</span><span>Ziel: Dez 2026</span></div>
     <div class="prog-bar"><div class="prog-fill" id="progFill" style="width: 30%;"></div></div>
-    <div style="text-align:right;font-size:9px;letter-spacing:1px;color:rgba(232,213,176,.45);padding-top:4px">v2026.08.06-B</div>
+    <div style="text-align:right;font-size:9px;letter-spacing:1px;color:rgba(232,213,176,.45);padding-top:4px">v2026.08.06-C</div>
   </div>
 </div>
 
@@ -775,21 +775,7 @@ Was habe ich gelernt?"></textarea>
     <h2 style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:22px;font-weight:400;margin:0 0 14px">Frühere <em style="font-style:italic;color:var(--t)">Einträge</em></h2>
     <div id="pastEntries"></div>
   </div>
-</div>
 
-<!-- ===== ERNAEHRUNG ===== -->
-<div class="panel" id="tab-ernaehrung">
-
-  <div class="sh first"><h2>Ernährung &amp; <em>Grundprinzipien</em></h2><div class="sh-line"></div></div>
-  <div class="alert"><strong>Dein Rhythmus:</strong> 4-5h zwischen Mahlzeiten · Frühstück 1h nach Aufstehen · Kein Essen nach 20:00</div>
-
-  <div class="card" style="text-align:center">
-    <div class="mx-inline" style="margin-bottom:8px"><strong>Ernährungs-Feedback von Claude</strong></div>
-    <div style="font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.5">Kopiert deine dokumentierten Mahlzeiten (Frühstück/Mittag/Abend). Füg den Text einfach in einen Chat mit Claude ein für eine Analyse und Verbesserungsvorschläge.</div>
-    <button class="btn" id="copyNutritionBtn" onclick="copyNutritionLog()" style="width:100%;justify-content:center">📋 Ganzheitlichen Export kopieren</button>
-  </div>
-
-  <!-- SYNC / BACKUP CARD -->
   <div class="sh"><h2>Ger&auml;te-<em>Abgleich</em></h2><div class="sh-line"></div></div>
 
   <div class="card">
@@ -844,39 +830,21 @@ Was habe ich gelernt?"></textarea>
     </div>
     <div id="sync-msg" style="display:none;margin-top:12px;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:600;text-align:center"></div>
   </div>
+</div>
 
-  <div class="card">
-    <div style="font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:14px">
-      📱 <strong>Zwischen Geräten synchronisieren</strong><br>
-      <span style="font-size:12px;color:var(--muted)">Da die App lokal auf deinem Gerät speichert, kannst du deine Daten per Backup-Datei auf andere Geräte übertragen.</span>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <div>
-        <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gd);margin-bottom:6px;font-weight:600">📤 Sichern</div>
-        <button class="btn" onclick="exportDataBackup()" style="width:100%;justify-content:center;font-size:12px">💾 Daten sichern</button>
-        <div style="font-size:10px;color:var(--muted);margin-top:5px;line-height:1.4">Lädt eine JSON-Datei herunter – auf dem Zielgerät importieren.</div>
-      </div>
-      <div>
-        <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);margin-bottom:6px;font-weight:600">📥 Wiederherstellen</div>
-        <label class="btn" style="width:100%;justify-content:center;font-size:12px;cursor:pointer">
-          📂 Daten laden
-          <input type="file" accept=".json" onchange="importDataBackup(event)" style="display:none">
-        </label>
-        <div style="font-size:10px;color:var(--muted);margin-top:5px;line-height:1.4">Wähle eine gesicherte JSON-Datei – alle Daten werden wiederhergestellt.</div>
-      </div>
-    </div>
-    <div id="sync-msg" style="display:none;margin-top:12px;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:600;text-align:center"></div>
-    <div style="margin-top:14px;padding:10px 14px;background:rgba(201,169,110,.07);border-radius:10px;border-left:3px solid var(--g)">
-      <div style="font-size:11px;color:var(--mid);line-height:1.6">
-        <strong>Tipp für mehrere Geräte:</strong><br>
-        1. Auf diesem Gerät <em>„Daten sichern"</em> tippen → Datei speichert sich im Download-Ordner<br>
-        2. Datei per <strong>WhatsApp, E-Mail oder Cloud</strong> (OneDrive/Google Drive) ans Zielgerät schicken<br>
-        3. Dort die fit4life-App öffnen → <em>„Daten laden"</em> → Datei auswählen ✓
-      </div>
-    </div>
+<!-- ===== ERNAEHRUNG ===== -->
+<div class="panel" id="tab-ernaehrung">
+
+  <div class="sh first"><h2>Ernährung &amp; <em>Grundprinzipien</em></h2><div class="sh-line"></div></div>
+  <div class="alert"><strong>Dein Rhythmus:</strong> 4-5h zwischen Mahlzeiten · Frühstück 1h nach Aufstehen · Kein Essen nach 20:00</div>
+
+  <div class="card" style="text-align:center">
+    <div class="mx-inline" style="margin-bottom:8px"><strong>Ernährungs-Feedback von Claude</strong></div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.5">Kopiert deine dokumentierten Mahlzeiten (Frühstück/Mittag/Abend). Füg den Text einfach in einen Chat mit Claude ein für eine Analyse und Verbesserungsvorschläge.</div>
+    <button class="btn" id="copyNutritionBtn" onclick="copyNutritionLog()" style="width:100%;justify-content:center">📋 Ganzheitlichen Export kopieren</button>
   </div>
 
-  <div class="card">
+    <div class="card">
     <div class="mx-inline"><strong>Erlaubte langsame Carbs:</strong></div>
     <div class="mx-inline">Linsen, Hirse, Bulgur, Quinoa, Vollkornreis, Polenta, Amaranth, Kichererbsen<span class="mx-ben">niedrig glykämisch, kein Blutzucker-Spike</span></div>
     <div style="margin-top:10px"><div class="mx-inline"><strong>Histamin-Regeln:</strong></div>
