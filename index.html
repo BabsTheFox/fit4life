@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0062)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_1.html -->
+<!-- saved from url=(0062)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_2.html -->
 <html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -31,7 +31,7 @@ body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);min
 .prog-fill{height:100%;background:linear-gradient(90deg,var(--g),#E8A88A);border-radius:3px;}
 /* NAV */
 .nav{background:#fff;border-bottom:1px solid var(--sand);display:flex;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(44,36,24,.07);}
-.nb{flex:1;padding:14px 2px;border:none;background:transparent;cursor:pointer;font-family:'Jost',sans-serif;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);border-bottom:3px solid transparent;transition:all .2s;}
+.nb{flex:1;padding:13px 1px;min-width:0;border:none;background:transparent;cursor:pointer;font-family:'Jost',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);border-bottom:3px solid transparent;transition:all .2s;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .nb.on{color:var(--deep);font-weight:700;border-bottom-color:var(--g);}
 /* PANELS */
 .panel{display:none;padding:18px 16px 80px;max-width:860px;margin:0 auto;}
@@ -238,6 +238,74 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
 
 
 /* GRAPHICAL TIME INPUT */
+/* ── KACHELN ────────────────────────────────────────────────────── */
+.kgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px;}
+.kachel{position:relative;background:#fff;border-radius:14px;padding:12px 10px;
+  box-shadow:0 4px 14px rgba(44,36,24,.08);border:1px solid rgba(201,169,110,.16);
+  min-height:96px;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:3px;text-align:center;min-width:0;
+  transition:transform .12s,box-shadow .12s,border-color .2s;}
+.kachel.voll{grid-column:1 / -1;}
+.k-tap,.k-mahl,.k-sonne,.k-mond{cursor:pointer;}
+.kachel:active{transform:scale(.97);}
+.k-svg{width:44px;height:44px;flex:none;}
+.k-ico{font-size:23px;line-height:1;}
+.k-lbl{font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--muted);line-height:1.25;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.k-wert{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;
+  color:var(--gd);line-height:1;font-variant-numeric:tabular-nums;}
+.k-wert.leer{color:var(--muted);opacity:.5;font-size:16px;}
+.k-wert.gross{font-size:26px;color:var(--t);}
+.k-text{font-size:10px;color:var(--muted);line-height:1.3;max-width:100%;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.k-inp{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;border:0;
+  padding:0;margin:0;cursor:pointer;-webkit-appearance:none;appearance:none;}
+.k-zeit{position:relative;display:inline-flex;align-items:center;
+  background:rgba(201,169,110,.13);border:1.5px solid rgba(201,169,110,.35);
+  border-radius:16px;padding:3px 12px;}
+.k-inp-zeit{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;border:0;
+  padding:0;margin:0;cursor:pointer;-webkit-appearance:none;appearance:none;}
+.k-zeit .k-wert{font-size:15px;}
+.k-haken{width:22px;height:22px;border-radius:50%;border:2px solid var(--sand);
+  display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;
+  transition:background-color .2s,border-color .2s;}
+.kachel.erledigt{border-color:rgba(139,158,123,.5);background:rgba(139,158,123,.07);}
+.kachel.erledigt .k-haken,.k-klein.erledigt .k-haken{background:var(--sage);border-color:var(--sage);}
+.kachel.erledigt .k-haken::after,.k-klein.erledigt .k-haken::after{content:'\2713';font-weight:700;}
+.k-info{position:absolute;top:6px;right:7px;width:20px;height:20px;border-radius:50%;
+  border:1px solid rgba(201,169,110,.45);background:rgba(201,169,110,.12);
+  color:var(--gd);font-size:11px;font-weight:700;font-family:inherit;cursor:pointer;
+  line-height:1;padding:0;display:flex;align-items:center;justify-content:center;}
+.k-drei{flex-direction:row;gap:6px;padding:9px 8px;min-height:0;}
+.k-klein{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;
+  gap:3px;padding:6px 2px;border-radius:10px;border:1px solid transparent;}
+.k-klein.erledigt{background:rgba(139,158,123,.12);border-color:rgba(139,158,123,.4);}
+.k-hitze .k-wert{color:var(--t);}
+/* Training als breites Band */
+.k-training{flex-direction:row;justify-content:space-between;gap:10px;padding:13px 14px;
+  min-height:0;background:linear-gradient(135deg,#2C2418,#5C3D28 60%,#8B6034);
+  border-color:rgba(201,169,110,.3);}
+.k-tr-links{display:flex;align-items:center;gap:10px;min-width:0;text-align:left;}
+.k-tr-ico{font-size:22px;flex:none;}
+.k-tr-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(232,213,176,.7);}
+.k-tr-name{font-family:'Cormorant Garamond',serif;font-size:17px;color:#fff;line-height:1.15;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.k-tr-rechts{flex:none;text-align:right;min-width:88px;}
+.k-tr-bar{height:4px;background:rgba(255,255,255,.18);border-radius:3px;overflow:hidden;margin-bottom:4px;}
+.k-tr-fill{height:100%;width:0;background:linear-gradient(90deg,var(--g),#E8A88A);border-radius:3px;transition:width .4s;}
+.k-tr-pct{font-size:10px;color:rgba(232,213,176,.75);letter-spacing:.5px;}
+/* ── FENSTER ────────────────────────────────────────────────────── */
+.modal-bg{position:fixed;inset:0;background:rgba(44,36,24,.55);backdrop-filter:blur(2px);
+  z-index:900;display:none;align-items:flex-end;justify-content:center;padding:0;}
+.modal-bg.an{display:flex;}
+.modal-box{position:relative;background:var(--cream);width:100%;max-width:560px;
+  max-height:88vh;overflow-y:auto;border-radius:18px 18px 0 0;padding:34px 14px 20px;
+  box-shadow:0 -6px 30px rgba(44,36,24,.3);animation:hoch .25s ease;}
+@keyframes hoch{from{transform:translateY(40px);opacity:.4}to{transform:translateY(0);opacity:1}}
+.modal-x{position:absolute;top:8px;right:10px;width:32px;height:32px;border-radius:50%;
+  border:1px solid var(--sand);background:#fff;color:var(--mid);font-size:20px;
+  line-height:1;cursor:pointer;font-family:inherit;z-index:2;}
+.modal-body>.card,.modal-body>.j-card,.modal-body>.quote{margin-bottom:10px;}
 /* ROTIERENDE SPRUCH-BOX */
 .spruch-box{position:relative;cursor:pointer;min-height:118px;display:flex;
   flex-direction:column;justify-content:center;padding-bottom:22px;margin-bottom:14px;}
@@ -334,7 +402,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   <div class="prog">
     <div class="prog-lbl"><span>Start: Mai 2026</span><span id="progPct">41%</span><span>Ziel: Dez 2026</span></div>
     <div class="prog-bar"><div class="prog-fill" id="progFill" style="width: 41%;"></div></div>
-    <div style="text-align:right;font-size:9px;letter-spacing:1px;color:rgba(232,213,176,.45);padding-top:4px">v2026.08.07-E</div>
+    <div style="text-align:right;font-size:9px;letter-spacing:1px;color:rgba(232,213,176,.45);padding-top:4px">v2026.08.08-G</div>
   </div>
 </div>
 
@@ -344,6 +412,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   <button class="nb" onclick="showTab(&#39;programm&#39;)">Programm</button>
   <button class="nb" onclick="showTab(&#39;ernaehrung&#39;)">Ernährung</button>
   <button class="nb" onclick="showTab(&#39;woche&#39;)">Bewegung</button>
+  <button class="nb" onclick="showTab(&#39;werte&#39;)">Werte</button>
 </div>
 
 <!-- ===== HEUTE ===== -->
@@ -351,16 +420,15 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
   <!-- ROTIERENDE SPRUCH-BOX -->
   <div class="quote spruch-box" id="spruchBox" onclick="spruchWeiter(1)">
     <div class="spruch-inhalt" id="spruchInhalt">
-      <div class="q-text" id="spruchText">Klarheit statt Verwirrung.</div>
+      <div class="q-text" id="spruchText">Krafttraining ist dein bestes Anti-Aging-Mittel.</div>
       <div class="q-attr" style="display:flex;align-items:center;gap:6px">
-        <span id="spruchIcon" style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🧘</span>
-        <span id="spruchLabel">Stille · 5 Min. täglich</span>
-        <a class="yt-sm" id="spruchYt" href="https://www.youtube.com/results?search_query=stille+meditation+5+minuten" target="_blank" onclick="event.stopPropagation()">▶ YT</a>
+        <span id="spruchIcon" style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">💪🏻</span>
+        <span id="spruchLabel">Tag für Tag · Schritt für Schritt</span>
+        <a class="yt-sm" id="spruchYt" href="https://www.youtube.com/results?search_query=stoizismus+k%C3%B6rper+disziplin" target="_blank" onclick="event.stopPropagation()">▶ YT</a>
       </div>
     </div>
-    <div class="spruch-punkte" id="spruchPunkte"><span class="spruch-punkt"></span><span class="spruch-punkt"></span><span class="spruch-punkt"></span><span class="spruch-punkt an"></span><span class="spruch-punkt"></span><span class="spruch-punkt"></span></div>
+    <div class="spruch-punkte" id="spruchPunkte"><span class="spruch-punkt an"></span><span class="spruch-punkt"></span><span class="spruch-punkt"></span><span class="spruch-punkt"></span><span class="spruch-punkt"></span><span class="spruch-punkt"></span></div>
   </div>
-
 
   <div class="streak">
     <div style="font-size:32px">🔥</div>
@@ -375,7 +443,199 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
     </div>
   </div>
 
-  <div class="card" style="padding:14px 16px;margin-bottom:14px">
+  <!-- KACHELN -->
+  <div class="kgrid" id="kgrid">
+
+    <div class="kachel k-sonne" id="k-wake">
+      <svg class="k-svg" viewBox="0 0 44 44" aria-hidden="true">
+        <g class="sonne-strahlen" stroke="#E8B45F" stroke-width="2.4" stroke-linecap="round" opacity=".85">
+          <line x1="22" y1="2" x2="22" y2="7"></line><line x1="22" y1="37" x2="22" y2="42"></line>
+          <line x1="2" y1="22" x2="7" y2="22"></line><line x1="37" y1="22" x2="42" y2="22"></line>
+          <line x1="8" y1="8" x2="11.5" y2="11.5"></line><line x1="32.5" y1="32.5" x2="36" y2="36"></line>
+          <line x1="8" y1="36" x2="11.5" y2="32.5"></line><line x1="32.5" y1="11.5" x2="36" y2="8"></line>
+        </g>
+        <circle cx="22" cy="22" r="13" fill="#F2C879" stroke="#D9973F" stroke-width="1.2"></circle>
+      </svg>
+      <div class="k-lbl">Aufgestanden</div>
+      <div class="k-wert leer" id="kw-wake">--:--</div>
+      <input id="ti-wake" type="time" class="k-inp" onchange="zfUpd(this);saveTi(&#39;wake&#39;);kachelnAuffrischen()" oninput="zfUpd(this);onTimeInput(&#39;wake&#39;)" onblur="saveTi(&#39;wake&#39;)" title="Uhrzeit Aufgestanden">
+    </div>
+
+    <div class="kachel k-mond" id="k-sleep">
+      <svg class="k-svg" viewBox="0 0 44 44" aria-hidden="true">
+        <circle cx="22" cy="22" r="17" fill="#3B3352" stroke="#6B5E8A" stroke-width="1.2"></circle>
+        <path d="M30 10a8.5 8.5 0 1 0 4.5 8.5 6.9 6.9 0 0 1-4.5-8.5z" fill="#E8D5B0" opacity=".95"></path>
+        <circle class="stern" cx="12" cy="14" r="1.3" fill="#E8D5B0"></circle>
+        <circle class="stern" cx="14" cy="31" r="1" fill="#E8D5B0"></circle>
+      </svg>
+      <div class="k-lbl">Schlafen 🐑</div>
+      <div class="k-wert leer" id="kw-sleep">--:--</div>
+      <input id="ti-sleep" type="time" class="k-inp" onchange="zfUpd(this);saveTi(&#39;sleep&#39;);kachelnAuffrischen()" oninput="zfUpd(this);onTimeInput(&#39;sleep&#39;)" onblur="saveTi(&#39;sleep&#39;)" title="Uhrzeit Schlafen">
+    </div>
+
+    <div class="kachel voll" id="k-gewicht-huelle"><div class="card" style="padding: 0px; margin: 0px; box-shadow: none; border: 0px; background: transparent;" id="c-gewicht">
+    <!-- Gewicht oben -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sand);margin-bottom:8px">
+      <span style="font-size:13px;color:var(--mid);min-width:60px;font-weight:600">⚖️ Gewicht</span>
+      <div style="display:flex;align-items:center;gap:6px">
+        <button type="button" onclick="stepWeight(&#39;weightInput&#39;,-0.1)" style="width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">−</button>
+        <input type="number" inputmode="decimal" step="0.1" min="30" max="200" id="weightInput" class="meal-time-inp" placeholder="54.0" onblur="saveWeight()" style="width:58px;text-align:center;font-weight:700;font-size:15px">
+        <button type="button" onclick="stepWeight(&#39;weightInput&#39;,0.1)" style="width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">+</button>
+        <span style="font-size:13px;color:var(--muted)">kg</span>
+      </div>
+    </div>
+    <!-- 2-Spalten: Fett+Wasser links | Muskel+Knochen rechts -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:start">
+      <div style="background:rgba(201,169,110,.07);border-radius:10px;padding:8px 10px;min-width:0">
+        <div style="display:flex;align-items:center;gap:6px;min-width:0;margin-bottom:8px;">
+          <span style="font-size:12px;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Fett</span>
+          <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightFat" class="meal-time-inp" placeholder="28.5" onblur="saveWeight()" style="width:52px;min-width:0;flex:none;text-align:center;font-weight:600;font-size:13px">
+          <span style="font-size:11px;color:var(--muted);flex:none">%</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;min-width:0;">
+          <span style="font-size:12px;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Wasser</span>
+          <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightWater" class="meal-time-inp" placeholder="50.0" onblur="saveWeight()" style="width:52px;min-width:0;flex:none;text-align:center;font-weight:600;font-size:13px">
+          <span style="font-size:11px;color:var(--muted);flex:none">%</span>
+        </div>
+      </div>
+      <div style="background:rgba(139,158,123,.1);border-radius:10px;padding:8px 10px;min-width:0">
+        <div style="display:flex;align-items:center;gap:6px;min-width:0;margin-bottom:8px;">
+          <span style="font-size:12px;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Muskel</span>
+          <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightMuscle" class="meal-time-inp" placeholder="32.0" onblur="saveWeight()" style="width:52px;min-width:0;flex:none;text-align:center;font-weight:600;font-size:13px">
+          <span style="font-size:11px;color:var(--muted);flex:none">%</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;min-width:0;">
+          <span style="font-size:12px;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Knochen</span>
+          <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightBone" class="meal-time-inp" placeholder="3.2" onblur="saveWeight()" style="width:52px;min-width:0;flex:none;text-align:center;font-weight:600;font-size:13px">
+          <span style="font-size:11px;color:var(--muted);flex:none">%</span>
+        </div>
+      </div>
+    </div>
+    <div id="weightStatus" style="display:none;font-size:12px;color:var(--muted);margin-top:6px">Gespeichert ✓</div>
+  </div></div>
+
+    <div class="kachel k-tap" id="k-s1" onclick="kachelHaken(&#39;s1&#39;)">
+      <div class="k-ico">☀️</div>
+      <div class="k-lbl">Morgen-Supp.</div>
+      <div class="k-haken" id="kh-s1"></div>
+      <button type="button" class="k-info" onclick="event.stopPropagation();modalAuf(&#39;c-s1&#39;)" title="Details">i</button>
+    </div>
+
+    <div class="kachel k-tap" id="k-s2" onclick="kachelHaken(&#39;s2&#39;)">
+      <div class="k-ico">🌛</div>
+      <div class="k-lbl">Abend-Supp.</div>
+      <div class="k-haken" id="kh-s2"></div>
+      <button type="button" class="k-info" onclick="event.stopPropagation();modalAuf(&#39;c-s2&#39;)" title="Details">i</button>
+    </div>
+
+    <div class="kachel k-mahl" id="k-f1" onclick="modalAuf(&#39;c-f1&#39;)">
+      <div class="k-ico">☀️</div>
+      <div class="k-lbl">Frühstück</div>
+      <div class="k-zeit"><span class="k-wert leer" id="kw-frueh">--:--</span>
+        <input id="ti-frueh" type="time" class="k-inp-zeit" onclick="event.stopPropagation()" onchange="zfUpd(this);saveTi(&#39;frueh&#39;);kachelnAuffrischen()" oninput="zfUpd(this);onTimeInput(&#39;frueh&#39;)" onblur="saveTi(&#39;frueh&#39;)" title="Uhrzeit Frühstück"></div>
+      <div class="k-text" id="kt-f1">noch nichts</div>
+    </div>
+
+    <div class="kachel k-mahl" id="k-f2" onclick="modalAuf(&#39;mittagsBox&#39;)">
+      <div class="k-ico">🌞</div>
+      <div class="k-lbl">Mittagessen</div>
+      <div class="k-zeit"><span class="k-wert leer" id="kw-noon">--:--</span>
+        <input id="ti-noon" type="time" class="k-inp-zeit" onclick="event.stopPropagation()" onchange="zfUpd(this);saveTi(&#39;noon&#39;);kachelnAuffrischen()" oninput="zfUpd(this);onTimeInput(&#39;noon&#39;)" onblur="saveTi(&#39;noon&#39;)" title="Uhrzeit Mittagessen"></div>
+      <div class="k-text" id="kt-f2">noch nichts</div>
+    </div>
+
+    <div class="kachel k-mahl" id="k-f4" onclick="modalAuf(&#39;c-f4&#39;)">
+      <div class="k-ico">🌙</div>
+      <div class="k-lbl">Abendessen</div>
+      <div class="k-zeit"><span class="k-wert leer" id="kw-eve">--:--</span>
+        <input id="ti-eve" type="time" class="k-inp-zeit" onclick="event.stopPropagation()" onchange="zfUpd(this);saveTi(&#39;eve&#39;);kachelnAuffrischen()" oninput="zfUpd(this);onTimeInput(&#39;eve&#39;)" onblur="saveTi(&#39;eve&#39;)" title="Uhrzeit Abendessen"></div>
+      <div class="k-text" id="kt-f4">noch nichts</div>
+    </div>
+
+    <div class="kachel k-mahl" id="k-f3" onclick="modalAuf(&#39;c-f3&#39;)">
+      <div class="k-ico">🍽️</div>
+      <div class="k-lbl">Zusatzmahlzeit</div>
+      <div class="k-zeit"><span class="k-wert leer" id="kw-zwischen">--:--</span>
+        <input id="ti-zwischen" type="time" class="k-inp-zeit" onclick="event.stopPropagation()" onchange="zfUpd(this);saveTi(&#39;zwischen&#39;);kachelnAuffrischen()" oninput="zfUpd(this);onTimeInput(&#39;zwischen&#39;)" onblur="saveTi(&#39;zwischen&#39;)" title="Uhrzeit Zusatzmahlzeit"></div>
+      <div class="k-text" id="kt-f3">noch nichts</div>
+    </div>
+
+    <div class="kachel voll k-drei">
+      <div class="k-tap k-klein" id="k-w1" onclick="kachelHaken(&#39;w1&#39;)">
+        <div class="k-ico">🐕</div><div class="k-lbl">Morgen</div><div class="k-haken" id="kh-w1"></div>
+      </div>
+      <div class="k-tap k-klein" id="k-w2" onclick="kachelHaken(&#39;w2&#39;)">
+        <div class="k-ico">🐕</div><div class="k-lbl">Mittag</div><div class="k-haken" id="kh-w2"></div>
+      </div>
+      <div class="k-tap k-klein" id="k-w3" onclick="kachelHaken(&#39;w3&#39;)">
+        <div class="k-ico">🐕</div><div class="k-lbl">Abend</div><div class="k-haken" id="kh-w3"></div>
+      </div>
+    </div>
+
+    <div class="kachel voll k-training" id="k-training" onclick="modalAuf(trainingModalId())">
+      <div class="k-tr-links">
+        <div class="k-tr-ico">🏋️</div>
+        <div>
+          <div class="k-tr-tag" id="ktr-tag">Training heute</div>
+          <div class="k-tr-name" id="ktr-name">Kraft C - Ganzkörper-Power</div>
+        </div>
+      </div>
+      <div class="k-tr-rechts">
+        <div class="k-tr-bar"><div class="k-tr-fill" id="ktr-fill" style="width: 0%;"></div></div>
+        <div class="k-tr-pct" id="ktr-pct">0 / 18 Sätze</div>
+      </div>
+    </div>
+
+    <div class="kachel k-tap" id="k-alk" onclick="modalAuf(&#39;c-alk&#39;)">
+      <div class="k-ico">🍷</div>
+      <div class="k-lbl">Alkoholfrei</div>
+      <div class="k-wert gross" id="kw-alk">34/34</div>
+    </div>
+
+    <div class="kachel k-tap k-hitze" id="k-hitze" onclick="kachelHitze()">
+      <div class="k-ico">🌡️</div>
+      <div class="k-lbl">Hitzewallungen</div>
+      <div class="k-wert gross" id="kw-hitze">0</div>
+      <button type="button" class="k-info" onclick="event.stopPropagation();modalAuf(&#39;c-hitze&#39;)" title="Details">i</button>
+    </div>
+
+    <div class="kachel k-tap" id="k-hist" onclick="modalAuf(&#39;c-hist&#39;)">
+      <div class="k-ico">🤧</div>
+      <div class="k-lbl">Histamin</div>
+      <div class="k-wert gross" id="kw-hist">0</div>
+    </div>
+
+    <div class="kachel k-tap" id="k-stein" onclick="modalAuf(&#39;c-steinbox&#39;)">
+      <div class="k-ico">🪨</div>
+      <div class="k-lbl">Steinrucksack</div>
+      <div class="k-text" id="kt-stein">noch nichts</div>
+    </div>
+
+    <div class="kachel k-tap" id="k-reset" onclick="modalAuf(&#39;c-resetbox&#39;)">
+      <div class="k-ico">🔄</div>
+      <div class="k-lbl">Tagesrückblick</div>
+      <div class="k-text" id="kt-reset">noch nichts</div>
+    </div>
+
+    <div class="kachel k-tap" id="k-nachtrag" onclick="modalAuf(&#39;c-nachtrag&#39;)">
+      <div class="k-ico">🔄</div>
+      <div class="k-lbl">Nachträge</div>
+      <div class="k-text">&amp; Rückblick</div>
+    </div>
+
+  </div>
+
+  <!-- FENSTER -->
+  <div class="modal-bg" id="modalBg" onclick="modalZu(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button type="button" class="modal-x" onclick="modalZu(true)" aria-label="Schliessen">×</button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+
+  
+  <div class="card" style="padding: 14px 16px; margin-bottom: 14px; display: none;" id="c-nachtrag" data-kachel-versteckt="1">
     <div class="sec-lbl" style="margin-top:0;cursor:pointer" onclick="toggleBacklog()">🔄 Nachträge &amp; Rückblick</div>
     <div id="backlogPanel" style="display:none;margin-top:10px">
       <div style="margin-bottom:8px">Datum: <input type="date" id="blDate" onchange="loadBacklogTimes()" style="border:1px solid var(--border);border-radius:8px;padding:4px 8px;font-size:13px"></div>
@@ -432,76 +692,10 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
 
   
 
-  <div class="card" style="padding:14px 16px;margin-bottom:14px">
-    <div class="tag-karte">
-      <div class="tag-kreis">
-        <svg viewBox="0 0 78 78" aria-hidden="true">
-          <defs>
-            <radialgradient id="sonneG" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#FDF0D5"></stop><stop offset="60%" stop-color="#F2C879"></stop>
-              <stop offset="100%" stop-color="#E0A44E"></stop>
-            </radialgradient>
-          </defs>
-          <g class="sonne-strahlen" stroke="#E8B45F" stroke-width="2.6" stroke-linecap="round" opacity=".8">
-            <line x1="39" y1="3" x2="39" y2="11"></line><line x1="39" y1="67" x2="39" y2="75"></line>
-            <line x1="3" y1="39" x2="11" y2="39"></line><line x1="67" y1="39" x2="75" y2="39"></line>
-            <line x1="13" y1="13" x2="19" y2="19"></line><line x1="59" y1="59" x2="65" y2="65"></line>
-            <line x1="13" y1="65" x2="19" y2="59"></line><line x1="59" y1="19" x2="65" y2="13"></line>
-          </g>
-          <circle cx="39" cy="39" r="26" fill="url(#sonneG)" stroke="#D9973F" stroke-width="1.4"></circle>
-        </svg>
-        <div class="tag-zeit leer" id="zt-ti-wake" style="color:#8A5A1E">--:--</div>
-      </div>
-      <div class="tag-txt">
-        <div class="tag-lbl" style="color:#B07A2E">Aufgestanden</div>
-        <div class="tag-sub">Tippe auf die Sonne und trage ein, wann du wach warst.</div>
-      </div>
-      <input id="ti-wake" type="time" onchange="zfUpd(this);saveTi(&#39;wake&#39;)" oninput="zfUpd(this);onTimeInput(&#39;wake&#39;)" onblur="saveTi(&#39;wake&#39;)" title="Uhrzeit Aufgestanden">
-    </div>
-  </div>
-
+  
   
 
-  <div class="card" style="padding:14px 16px;margin-bottom:14px">
-    <!-- Gewicht oben -->
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sand);margin-bottom:8px">
-      <span style="font-size:13px;color:var(--mid);min-width:60px;font-weight:600">⚖️ Gewicht</span>
-      <div style="display:flex;align-items:center;gap:6px">
-        <button type="button" onclick="stepWeight(&#39;weightInput&#39;,-0.1)" style="width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">−</button>
-        <input type="number" inputmode="decimal" step="0.1" min="30" max="200" id="weightInput" class="meal-time-inp" placeholder="54.0" onblur="saveWeight()" style="width:58px;text-align:center;font-weight:700;font-size:15px">
-        <button type="button" onclick="stepWeight(&#39;weightInput&#39;,0.1)" style="width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">+</button>
-        <span style="font-size:13px;color:var(--muted)">kg</span>
-      </div>
-    </div>
-    <!-- 2-Spalten: Fett+Wasser links | Muskel+Knochen rechts -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:start">
-      <div style="background:rgba(201,169,110,.07);border-radius:10px;padding:8px 10px;min-width:0">
-        <div style="display:flex;align-items:center;gap:6px;min-width:0;margin-bottom:8px;">
-          <span style="font-size:12px;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Fett</span>
-          <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightFat" class="meal-time-inp" placeholder="28.5" onblur="saveWeight()" style="width:52px;min-width:0;flex:none;text-align:center;font-weight:600;font-size:13px">
-          <span style="font-size:11px;color:var(--muted);flex:none">%</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:6px;min-width:0;">
-          <span style="font-size:12px;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Wasser</span>
-          <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightWater" class="meal-time-inp" placeholder="50.0" onblur="saveWeight()" style="width:52px;min-width:0;flex:none;text-align:center;font-weight:600;font-size:13px">
-          <span style="font-size:11px;color:var(--muted);flex:none">%</span>
-        </div>
-      </div>
-      <div style="background:rgba(139,158,123,.1);border-radius:10px;padding:8px 10px;min-width:0">
-        <div style="display:flex;align-items:center;gap:6px;min-width:0;margin-bottom:8px;">
-          <span style="font-size:12px;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Muskel</span>
-          <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightMuscle" class="meal-time-inp" placeholder="32.0" onblur="saveWeight()" style="width:52px;min-width:0;flex:none;text-align:center;font-weight:600;font-size:13px">
-          <span style="font-size:11px;color:var(--muted);flex:none">%</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:6px;min-width:0;">
-          <span style="font-size:12px;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Knochen</span>
-          <input type="number" inputmode="decimal" step="0.1" min="0" max="100" id="weightBone" class="meal-time-inp" placeholder="3.2" onblur="saveWeight()" style="width:52px;min-width:0;flex:none;text-align:center;font-weight:600;font-size:13px">
-          <span style="font-size:11px;color:var(--muted);flex:none">%</span>
-        </div>
-      </div>
-    </div>
-    <div id="weightStatus" style="display:none;font-size:12px;color:var(--muted);margin-top:6px">Gespeichert ✓</div>
-  </div>
+  
 
   <div id="milestoneReminder" style="display:none;background:linear-gradient(135deg,#FFF0F8,#FFE8F5);border:2px solid #C9A96E;border-radius:14px;padding:16px 18px;margin-bottom:18px;font-size:15px;color:#5C4B35;line-height:1.6;"></div>
 
@@ -509,17 +703,17 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
 
 
   <!-- 2. ERNÄHRUNG + SUPPLEMENTS CHRONOLOGISCH -->
-  <div class="card">
+  <div class="card" id="c-s1" data-kachel-versteckt="1" style="display: none;">
       <div class="sec-lbl" style="margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer" onclick="toggleSuppDetail(&#39;s1-detail&#39;,this)"><span>☀️ Morgen-Supplements <span id="vitDHint" style="display:inline;font-size:11px;color:#C9A96E;font-weight:600;text-transform:none;letter-spacing:0"></span></span><div style="display:flex;align-items:center;gap:8px"><span id="s1-chevron" style="font-size:13px;color:var(--muted);transition:transform .2s">▾</span><div class="ci" id="ci-s1" onclick="event.stopPropagation();toggle(&#39;s1&#39;)" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div></div></div>
       <div class="cl supp-linked" id="s1-detail" style="display:none;padding-top:6px"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">💧 Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen↓, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol↓, Brain Fog↓</div></div></div>
   </div>
 
-  <div class="card" style="border-left:4px solid var(--g);background:rgba(201,169,110,.06)">
+  <div class="card" style="border-left: 4px solid var(--g); background: rgba(201, 169, 110, 0.06); display: none;" id="c-w1" data-kachel-versteckt="1">
     <div class="ci" id="ci-w1" onclick="toggle(&#39;w1&#39;)" style="border-bottom:none;padding:0"><div class="cl" style="flex:1;font-size:13px">🐕 Morgen-Spaziergang mit Enzo</div><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
   </div>
 
-  <div class="card">
-      <div class="sec-lbl" style="margin-top:6px;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f1-detail&#39;,this)"><span style="flex:1">☀️ Frühstück</span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><span class="zf"><span class="zf-txt leer" id="zt-ti-frueh">--:--</span><input id="ti-frueh" type="time" onchange="zfUpd(this);saveTi(&#39;frueh&#39;)" oninput="zfUpd(this);onTimeInput(&#39;frueh&#39;)" onblur="saveTi(&#39;frueh&#39;)" title="Uhrzeit Frühstück"></span></span><span class="meal-expand-chevron" id="meal-f1-chevron">▾</span></div>
+  <div class="card" id="c-f1" data-kachel-versteckt="1" style="display: none;">
+      <div class="sec-lbl" style="margin-top:6px;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f1-detail&#39;,this)"><span style="flex:1">☀️ Frühstück</span><span class="meal-expand-chevron" id="meal-f1-chevron">▾</span></div>
       <div id="meal-f1-detail" style="display:none">
         <div class="ci" id="ci-f1" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">Weizenkeime + Kollagen</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Zimt Kardamom Nelken Vanille</div></div></div>
       </div>
@@ -530,22 +724,22 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
 
   
 
-  <div class="card" id="mittagsBox">
-      <div class="sec-lbl" style="margin-top:0;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f2-detail&#39;,this)"><span style="flex:1">🌞 Mittagessen</span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><span class="zf"><span class="zf-txt leer" id="zt-ti-noon">--:--</span><input id="ti-noon" type="time" onchange="zfUpd(this);saveTi(&#39;noon&#39;)" oninput="zfUpd(this);onTimeInput(&#39;noon&#39;)" onblur="saveTi(&#39;noon&#39;)" title="Uhrzeit Mittagessen"></span></span><span class="meal-expand-chevron" id="meal-f2-chevron">▾</span></div>
+  <div class="card" id="mittagsBox" data-kachel-versteckt="1" style="display: none;">
+      <div class="sec-lbl" style="margin-top:0;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f2-detail&#39;,this)"><span style="flex:1">🌞 Mittagessen</span><span class="meal-expand-chevron" id="meal-f2-chevron">▾</span></div>
       <div id="meal-f2-detail" style="display:none">
         <div class="ci" id="ci-f2" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Kurkuma Curry Paprika Pfeffer Salz</div><div class="mx warn"><div class="mx-l" style="font-size:13px;color:#C4503A;font-weight:600">⚠️ Keine Fast Carbs!<br><span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie↓</span></div></div></div></div>
       </div>
       <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f2" placeholder="Was hast du zu Mittag gegessen?" oninput="onMealInput(&#39;ci-f2&#39;,&#39;Mittagessen&#39;)" onblur="saveMealLog(&#39;ci-f2&#39;,&#39;Mittagessen&#39;)"></textarea><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f2&#39;,this)" title="Spracheingabe">🎤</button></div>
   </div>
 
-  <div class="card" style="border-left:4px solid var(--g);background:rgba(201,169,110,.06)">
+  <div class="card" style="border-left: 4px solid var(--g); background: rgba(201, 169, 110, 0.06); display: none;" id="c-w3" data-kachel-versteckt="1">
     <div class="ci" id="ci-w3" onclick="toggle(&#39;w3&#39;)" style="border-bottom:none;padding:0"><div class="cl" style="flex:1;font-size:13px">🐕 Mittags-Spaziergang</div><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
   </div>
 
   
 
   <!-- Tagesworkouts Mo/Mi/Fr (hidden, shown by JS) -->
-  <div class="card" style="padding:10px 16px;margin-bottom:10px">
+  <div class="card" style="padding: 10px 16px; margin-bottom: 10px; display: none;" id="c-trainwahl" data-kachel-versteckt="1">
     <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Training anzeigen</div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button type="button" id="dwSwBtn-1" onclick="showDwManual(&#39;1&#39;)" style="flex: 1 1 0%; min-width: 90px; padding: 8px 4px; border-color: var(--border); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 8px; background: var(--bg); font-size: 12px; cursor: pointer; color: var(--t);">Kraft A · Mo</button>
@@ -553,7 +747,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
       <button type="button" id="dwSwBtn-5" onclick="showDwManual(&#39;5&#39;)" style="flex: 1 1 0%; min-width: 90px; padding: 8px 4px; border-color: var(--gd); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 8px; background: var(--gd); font-size: 12px; cursor: pointer; color: rgb(255, 255, 255);">Kraft C · Fr (heute)</button>
     </div>
   </div>
-  <div class="card dw" id="dw-1" style="display: none;">
+  <div class="card dw" id="dw-1" style="display: none;" data-kachel-versteckt="1">
     <div class="card-title" style="font-size:14px">Kraft A - Oberkörper + Core</div>
     <div class="card-sub">Mo · 35 Min · 4 Sätze</div>
     <div class="ci has-sets" id="ci-d1-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d1-ex0" data-set="0"></div><div class="set-chk" data-ex="d1-ex0" data-set="1"></div><div class="set-chk" data-ex="d1-ex0" data-set="2"></div></div><div class="cl">Liegestütze<span class="sets">3 x 10-15</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=push+up+beginner+technique" target="_blank">▶ YT</a></span></div></div>
@@ -577,7 +771,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
     </div>
   </div>
 
-  <div class="card dw" id="dw-3" style="display: none;">
+  <div class="card dw" id="dw-3" style="display: none;" data-kachel-versteckt="1">
     <div class="card-title" style="font-size:14px">Kraft B - Unterkörper + Glutes</div>
     <div class="card-sub">Mi · 35 Min · 4 Sätze</div>
     <div class="ci has-sets" id="ci-d3-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex0" data-set="0"></div><div class="set-chk" data-ex="d3-ex0" data-set="1"></div><div class="set-chk" data-ex="d3-ex0" data-set="2"></div></div><div class="cl">Rumänisches Kreuzheben mit Kurzhanteln<span class="sets">3 x 15-20</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=romanian+deadlift+dumbbell+knee+friendly" target="_blank">▶ YT</a></span></div></div>
@@ -602,7 +796,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
     </div>
   </div>
 
-  <div class="card dw" id="dw-5" style="display: block;" data-bound="1">
+  <div class="card dw" id="dw-5" style="display: none;" data-bound="1" data-kachel-versteckt="1">
     <div class="card-title" style="font-size:14px">Kraft C - Ganzkörper-Power</div>
     <div class="card-sub">Fr · 35 Min · 3-4 Sätze</div>
     <div class="ci has-sets" id="ci-d5-ex0"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d5-ex0" data-set="0"></div><div class="set-chk" data-ex="d5-ex0" data-set="1"></div><div class="set-chk" data-ex="d5-ex0" data-set="2"></div></div><div class="cl">Kreuzheben zu Schulterdrücken<span class="sets">3 x 15-20</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=deadlift+to+overhead+press+dumbbell" target="_blank">▶ YT</a></span></div></div>
@@ -626,31 +820,31 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
     </div>
   </div>
 
-  <div class="card">
-    <div class="sec-lbl" style="margin-top:8px;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f4-detail&#39;,this)"><span style="flex:1">🌙 Abendessen</span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><span class="zf"><span class="zf-txt leer" id="zt-ti-eve">--:--</span><input id="ti-eve" type="time" onchange="zfUpd(this);saveTi(&#39;eve&#39;)" oninput="zfUpd(this);onTimeInput(&#39;eve&#39;)" onblur="saveTi(&#39;eve&#39;)" title="Uhrzeit Abendessen"></span></span><span class="meal-expand-chevron" id="meal-f4-chevron">▾</span></div>
+  <div class="card" id="c-f4" data-kachel-versteckt="1" style="display: none;">
+    <div class="sec-lbl" style="margin-top:8px;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f4-detail&#39;,this)"><span style="flex:1">🌙 Abendessen</span><span class="meal-expand-chevron" id="meal-f4-chevron">▾</span></div>
     <div id="meal-f4-detail" style="display:none">
       <div class="ci" id="ci-f4" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Protein + viel Gemüse</div><div class="mx-r">Muskelregeneration, Vitamine</div></div><div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Buttermilch oder hartgekochte Eier</div><div class="mx-r">Protein, gesunde Fette</div></div><div class="mx warn"><div class="mx-l" style="font-size:13px;color:#C4503A;font-weight:600">⚠️ Keine Carbs abends! <span style="color:#C4503A;font-size:13px">Fettspeicherung↑, Schlaf↓</span></div></div></div></div>
     </div>
     <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f4" placeholder="Was hast du zu Abend gegessen?" oninput="onMealInput(&#39;ci-f4&#39;,&#39;Abendessen&#39;)" onblur="saveMealLog(&#39;ci-f4&#39;,&#39;Abendessen&#39;)"></textarea><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f4&#39;,this)" title="Spracheingabe">🎤</button></div>
   </div>
 
-  <div class="card" style="border-left:4px solid var(--g);background:rgba(201,169,110,.06)">
+  <div class="card" style="border-left: 4px solid var(--g); background: rgba(201, 169, 110, 0.06); display: none;" id="c-w2" data-kachel-versteckt="1">
     <div class="ci" id="ci-w2" onclick="toggle(&#39;w2&#39;)" style="border-bottom:none;padding:0"><div class="cl" style="flex:1;font-size:13px">🐕 Abend-Spaziergang mit Enzo</div><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
   </div>
 
   
 
-  <div class="card">
-    <div class="sec-lbl" style="margin-top:0"><span style="flex:1">🍽️ 4. Mahlzeit <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(falls gegessen)</span></span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><span class="zf"><span class="zf-txt leer" id="zt-ti-zwischen">--:--</span><input id="ti-zwischen" type="time" onchange="zfUpd(this);saveTi(&#39;zwischen&#39;)" oninput="zfUpd(this);onTimeInput(&#39;zwischen&#39;)" onblur="saveTi(&#39;zwischen&#39;)" title="Uhrzeit 4. Mahlzeit"></span></span></div>
+  <div class="card" id="c-f3" data-kachel-versteckt="1" style="display: none;">
+    <div class="sec-lbl" style="margin-top:0"><span style="flex:1">🍽️ Zusatzmahlzeit <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(falls gegessen)</span></span></div>
     <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f3" placeholder="Was hast du zusätzlich gegessen?" oninput="onMealInput(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)" onblur="saveMealLog(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)"></textarea><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f3&#39;,this)" title="Spracheingabe">🎤</button></div>
   </div>
 
-  <div class="card">
+  <div class="card" id="c-s2" data-kachel-versteckt="1" style="display: none;">
     <div class="sec-lbl" style="margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer" onclick="toggleSuppDetail(&#39;s2-detail&#39;,this)"><span>🌛 Abend-Supplements</span><div style="display:flex;align-items:center;gap:8px"><span id="s2-chevron" style="font-size:13px;color:var(--muted);transition:transform .2s">▾</span><div class="ci" id="ci-s2" onclick="event.stopPropagation();toggle(&#39;s2&#39;)" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div></div></div>
     <div class="cl supp-linked" id="s2-detail" style="display:none;padding-top:6px"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">💧 Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität↑</div></div></div>
   </div>
 
-  <div class="card" style="border-left:4px solid var(--g)">
+  <div class="card" id="c-alk" style="border-left: 4px solid var(--g); display: none;" data-kachel-versteckt="1">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
       <div style="font-size:16px">🍷</div>
       <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:11px;font-family:&#39;Jost&#39;,sans-serif;font-weight:700;color:var(--gd)">Alkohol</div>
@@ -674,8 +868,8 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
     <button class="btn" id="alcTodayBtn" onclick="addAlcSlip()" style="width: 100%; justify-content: center; background: linear-gradient(135deg,var(--gd),var(--g)); opacity: 1;">Eintragen</button>
   </div>
 
-  <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
-    <div class="card" style="border-left:4px solid var(--t)">
+  <div id="c-hitzehist" style="display: none; flex-direction: column; gap: 10px; margin-top: 14px;" data-kachel-versteckt="1">
+    <div class="card" id="c-hitze" style="border-left:4px solid var(--t)">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
         <div style="font-size:16px">🌡️</div>
         <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:11px;flex:1;font-family:&#39;Jost&#39;,sans-serif;font-weight:700;color:var(--t)">Hitzewallungen</div>
@@ -688,7 +882,7 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
         <button type="button" onclick="addHitzeManual()" style="padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);font-size:12px;cursor:pointer;font-family:inherit">+ Uhrzeit</button>
       </div>
     </div>
-    <div class="card" style="border-left:4px solid var(--mid)">
+    <div class="card" id="c-hist" style="border-left:4px solid var(--mid)">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
         <div style="font-size:16px">🤧</div>
         <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:11px;flex:1;font-family:&#39;Jost&#39;,sans-serif;font-weight:700;color:var(--mid)">Histamin-Symptome</div>
@@ -704,11 +898,12 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
     </div>
   </div>
 
-  <div class="quote" style="margin-top:14px;margin-bottom:0;border-radius:14px 14px 0 0">
+<div id="c-steinbox" data-kachel-versteckt="1" style="display: none;">
+    <div class="quote" style="margin-top:14px;margin-bottom:0;border-radius:14px 14px 0 0">
     <div class="q-text" id="steinText">Jedes Blatt ist wie ein Stein, den ich in den Fluss werfe.</div>
     <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🪨</span><span>Aufschreiben &amp; Loslassen</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=journaling+loslassen+belastung+aufschreiben" target="_blank">▶ YT</a></div>
   </div>
-  <div class="card" style="padding:14px 16px;border-radius:0 0 14px 14px;margin-top:0">
+  <div class="card" style="padding:14px 16px;border-radius:0 0 14px 14px;margin-top:0" id="c-stein">
     <textarea id="steinInput" placeholder="Steinrucksack leeren..."></textarea>
     <div style="margin-top:10px;display:flex;align-items:center;gap:10px">
       <button class="btn" onclick="saveStein()">Ablegen</button>
@@ -716,14 +911,16 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
       <span id="steinMsg" style="font-size:13px;color:var(--sage);display:none">Abgelegt.</span>
     </div>
   </div>
+  </div>
 
   <!-- JOURNAL -->
   <div style="margin-top:8px"></div>
-  <div class="quote" style="margin-bottom:0;border-radius:14px 14px 0 0">
+<div id="c-resetbox" data-kachel-versteckt="1" style="display: none;">
+    <div class="quote" style="margin-bottom:0;border-radius:14px 14px 0 0">
     <div class="q-text" id="resetText">Der Geist braucht ständige Reinigung, die verhindert, dass meine Fehler von gestern mich morgen verfolgen. Starte den Geist täglich neu.</div>
     <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🔄</span><span>Tagesrückblick | Reset</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=t%C3%A4glicher+reset+reflektion+stoizismus" target="_blank">▶ YT</a></div>
   </div>
-  <div class="j-card" style="border-radius:0 0 14px 14px;margin-top:0">
+  <div class="j-card" style="border-radius:0 0 14px 14px;margin-top:0" id="c-reset">
     <div class="j-body">
       <textarea id="jInput" placeholder="Wie war mein Tag?
 Was habe ich gut oder falsch gemacht?
@@ -737,32 +934,9 @@ Was habe ich gelernt?"></textarea>
       </div>
     </div>
   </div>
-
-  <div class="card" style="padding:14px 16px;margin-top:14px">
-    <div class="tag-karte">
-      <div class="tag-kreis">
-        <svg viewBox="0 0 78 78" aria-hidden="true">
-          <defs>
-            <radialgradient id="nachtG" cx="50%" cy="45%" r="55%">
-              <stop offset="0%" stop-color="#4A4066"></stop><stop offset="100%" stop-color="#2C2418"></stop>
-            </radialgradient>
-          </defs>
-          <circle cx="39" cy="39" r="30" fill="url(#nachtG)" stroke="#6B5E8A" stroke-width="1.2"></circle>
-          <path d="M54 18a9 9 0 1 0 4.8 9 7.3 7.3 0 0 1-4.8-9z" fill="#E8D5B0" opacity=".95"></path>
-          <circle class="stern" cx="19" cy="20" r="1.7" fill="#E8D5B0"></circle>
-          <circle class="stern" cx="24" cy="60" r="1.3" fill="#E8D5B0"></circle>
-          <circle class="stern" cx="57" cy="59" r="1.1" fill="#E8D5B0"></circle>
-        </svg>
-        <div class="tag-zeit leer" id="zt-ti-sleep" style="color:#F0E4C8;text-shadow:0 1px 3px rgba(0,0,0,.6)">--:--</div>
-      </div>
-      <div class="tag-txt">
-        <div class="tag-lbl" style="color:#6B5E8A">Schlafen gegangen 🐑</div>
-        <div class="tag-sub">Tippe auf den Mond und trage ein, wann du im Bett warst.</div>
-      </div>
-      <input id="ti-sleep" type="time" onchange="zfUpd(this);saveTi(&#39;sleep&#39;)" oninput="zfUpd(this);onTimeInput(&#39;sleep&#39;)" onblur="saveTi(&#39;sleep&#39;)" title="Uhrzeit Schlafen">
-    </div>
   </div>
 
+  
   <div style="text-align:center;margin-top:20px">
     <button class="btn" onclick="saveDay()">Tag abschließen</button>
   </div>
@@ -884,7 +1058,7 @@ Was habe ich gelernt?"></textarea>
       <button class="btn" onclick="syncNow(true)" style="flex:1;justify-content:center;font-size:12px;background:linear-gradient(135deg,var(--sage),#A6B896)">Jetzt abgleichen</button>
     </div>
 
-    <div id="syncState" style="margin-top: 10px; font-size: 11px; color: var(--sage); text-align: center; line-height: 1.5;">Aktuell · 07.08. 17:23</div>
+    <div id="syncState" style="margin-top: 10px; font-size: 11px; color: var(--sage); text-align: center; line-height: 1.5;">Aktuell · 07.08. 18:49</div>
 
     <div style="margin-top:10px;text-align:center">
       <button type="button" onclick="syncTrennen()" style="background:none;border:none;color:var(--muted);font-size:11px;text-decoration:underline;cursor:pointer;font-family:inherit">Verbindung trennen</button>
@@ -909,6 +1083,32 @@ Was habe ich gelernt?"></textarea>
     </div>
     <div id="sync-msg" style="display:none;margin-top:12px;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:600;text-align:center"></div>
   </div>
+</div>
+
+
+<!-- ===== WERTE ===== -->
+<div class="panel" id="tab-werte">
+  <div class="sh first"><h2>Labor­<em>werte</em></h2><div class="sh-line"></div></div>
+  <div class="alert" style="font-size:12px;line-height:1.6">
+    <strong>Verlauf deiner Werte.</strong> Das grüne Band ist der Referenzbereich.
+    Neue Befunde trägst du unten ein. Die Auswahl richtet sich nach dem, was deine
+    eigenen Befunde auffällig gezeigt haben — sie ersetzt kein ärztliches Gespräch.
+  </div>
+
+  <div class="card" style="padding:12px 14px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gd);margin-bottom:8px">Wert nachtragen</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <select id="labParam" class="meal-log-input" style="width:100%;font-size:12px"><optgroup label="Schilddrüse"><option value="tsh">TSH basal (µU/ml)</option><option value="ft4">freies Thyroxin fT4 (ng/dl)</option><option value="ft3">freies Trijodthyronin fT3 (pg/ml)</option></optgroup><optgroup label="Sexualhormone"><option value="fsh">FSH basal (mIE/ml)</option><option value="e2">Östradiol 17β (pg/ml)</option><option value="prog">Progesteron (ng/ml)</option><option value="test">Testosteron (ng/ml)</option><option value="lh">LH basal (U/l)</option><option value="dheas">DHEA-S (µmol/l)</option><option value="shbg">SHBG (nmol/l)</option><option value="andro">Androstendion (ng/ml)</option><option value="prol">Prolaktin (ng/ml)</option><option value="cort">Cortisol (µg/dl)</option><option value="amh">AMH (ng/ml)</option></optgroup><optgroup label="Eisen – wegen Ferretab beobachten"><option value="ferr">Ferritin (ng/ml)</option><option value="eisen">Eisen (µg/dl)</option><option value="tsaet">Transferrinsättigung (%)</option><option value="tebk">Eisenbindungskapazität (µg/dl)</option></optgroup><optgroup label="Vitamine &amp; Knochen"><option value="vitd">Vitamin D (ng/ml)</option><option value="b12">Vitamin B12 (pg/ml)</option><option value="fols">Folsäure (ng/ml)</option><option value="kalz">Kalzium (mmol/l)</option><option value="magn">Magnesium (mmol/l)</option><option value="zink">Zink (µg/dl)</option></optgroup><optgroup label="Blutbild"><option value="lymph">Lymphozyten (%)</option><option value="segm">Segmentkernige (%)</option><option value="leuko">Leukozyten (/mm³)</option><option value="hb">Hämoglobin (g/dl)</option></optgroup><optgroup label="Fettwerte &amp; Herz"><option value="chol">Gesamtcholesterin (mg/dl)</option><option value="hdl">HDL (mg/dl)</option><option value="ldl">LDL (mg/dl)</option><option value="quot">Cholesterin/HDL ()</option><option value="trig">Triglyzeride (mg/dl)</option><option value="homo">Homocystein (µmol/l)</option></optgroup><optgroup label="Entzündung, Leber, Niere, Zucker"><option value="crp">CRP (mg/dl)</option><option value="ggt">Gamma-GT (U/l)</option><option value="gpt">GPT (ALT) (U/l)</option><option value="krea">Kreatinin (mg/dl)</option><option value="hba1c">HbA1c (%)</option></optgroup><optgroup label="Tumormarker (aus 2024)"><option value="ca125">CA 125 (U/ml)</option><option value="he4">HE4 (pmol/l)</option><option value="roma">ROMA postmenopausal (%)</option></optgroup></select>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input type="date" id="labDatum" class="meal-log-input" style="flex:1;min-width:0;font-size:12px">
+        <input type="text" inputmode="decimal" id="labWert" class="meal-log-input" style="width:88px;flex:none;font-size:12px;text-align:center" placeholder="Wert">
+      </div>
+      <button class="btn" onclick="labSpeichern()" style="width:100%;justify-content:center;font-size:12px">Eintragen</button>
+      <div id="labMsg" style="font-size:11px;text-align:center;color:var(--muted);min-height:14px"></div>
+    </div>
+  </div>
+
+  <div id="labGruppen"><div class="sh"><h2 style="font-size:20px">Schilddrüse</h2><div class="sh-line"></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">TSH basal</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">1,66</div><div style="font-size:10px;color:var(--muted)">µU/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0,35–4 · Plakolm 0,5–1,5</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="61.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,19.9 62.4,30.0 120.8,62.1 179.2,46.5 237.6,41.4 296.0,46.6" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="19.9" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="62.4" cy="30.0" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="120.8" cy="62.1" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="179.2" cy="46.5" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="237.6" cy="41.4" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="46.6" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">08.07.2022 <strong>3,25</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.10.2022 <strong>2,65</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">20.03.2023 <strong>0,74</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">06.02.2024 <strong>1,67</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>1,97</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">03.09.2024 <strong>1,66</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">freies Thyroxin fT4</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">1,01</div><div style="font-size:10px;color:var(--muted)">ng/dl</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0,7–2 · soll über 0,9 sein</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="61.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,62.5 77.0,56.9 150.0,50.7 223.0,52.6 296.0,54.0" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="62.5" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="77.0" cy="56.9" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="150.0" cy="50.7" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="223.0" cy="52.6" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="54.0" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">08.07.2022 <strong>0,83</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.10.2022 <strong>0,95</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">20.03.2023 <strong>1,08</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">06.02.2024 <strong>1,04</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>1,01</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">freies Trijodthyronin fT3</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">2,81</div><div style="font-size:10px;color:var(--muted)">pg/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 1,71–3,71 · Plakolm 3–4</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="61.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,31.3 101.3,53.0 198.7,47.5 296.0,34.9" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="31.3" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="101.3" cy="53.0" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="198.7" cy="47.5" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="34.9" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">08.07.2022 <strong>2,93</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.10.2022 <strong>2,22</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">20.03.2023 <strong>2,4</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>2,81</strong></span></div></div><div class="sh"><h2 style="font-size:20px">Sexualhormone</h2><div class="sh-line"></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">FSH basal</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">127</div><div style="font-size:10px;color:var(--muted)">mIE/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 18–155 · Menopause 18–155</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="56.2" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="63.6" x2="300" y2="63.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,65.0 62.4,58.1 120.8,68.6 179.2,66.0 237.6,65.2 296.0,18.8" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="65.0" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="62.4" cy="58.1" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="120.8" cy="68.6" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="179.2" cy="66.0" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="237.6" cy="65.2" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="18.8" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.10.2022 <strong>14,4</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">20.03.2023 <strong>31,2</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">06.02.2024 <strong>5,6</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>12,1</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">03.09.2024 <strong>14</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>127</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Östradiol 17β</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">5</div><div style="font-size:10px;color:var(--muted)">pg/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–60 · Menopause 0–60</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="62.2" width="300" height="6.4" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="62.2" x2="300" y2="62.2" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,28.8 62.4,48.2 120.8,20.6 179.2,7.4 237.6,67.0 296.0,68.1" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="28.8" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="62.4" cy="48.2" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="120.8" cy="20.6" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="179.2" cy="7.4" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="237.6" cy="67.0" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="68.1" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.10.2022 <strong>374</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">20.03.2023 <strong>192</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">06.02.2024 <strong>451</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>575</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">03.09.2024 <strong>15</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>5</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Progesteron</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">0,8</div><div style="font-size:10px;color:var(--muted)">ng/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–1 · Menopause 0–1</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="12.9" width="300" height="55.7" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="12.9" x2="300" y2="12.9" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,57.5 62.4,24.1 120.8,7.4 179.2,51.9 237.6,63.1 296.0,24.1" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="57.5" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="62.4" cy="24.1" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="120.8" cy="7.4" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="179.2" cy="51.9" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="237.6" cy="63.1" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="24.1" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.10.2022 <strong>0,2</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">20.03.2023 <strong>0,8</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">06.02.2024 <strong>1,1</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>0,3</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">03.09.2024 <strong>0,1</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>0,8</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Testosteron</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--t)">0,1</div><div style="font-size:10px;color:var(--muted)">ng/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0,15–0,8 · Libido ab 0,4</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="51.7" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="59.1" x2="300" y2="59.1" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,52.7 62.4,55.1 120.8,26.5 179.2,43.2 237.6,68.6 296.0,63.1" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="52.7" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="62.4" cy="55.1" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="120.8" cy="26.5" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="179.2" cy="43.2" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="237.6" cy="68.6" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="63.1" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.10.2022 <strong>0,23</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">20.03.2023 <strong>0,2</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">06.02.2024 <strong>0,56</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>0,35</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">03.09.2024 <strong>0,03</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>0,1</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">LH basal</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">37,8</div><div style="font-size:10px;color:var(--muted)">U/l</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 16–64 · Menopause 16–64</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="52.6" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="60.0" x2="300" y2="60.0" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,65.0 77.0,68.6 150.0,64.1 223.0,13.8 296.0,36.1" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="65.0" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="77.0" cy="68.6" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="150.0" cy="64.1" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="223.0" cy="13.8" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="36.1" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">20.03.2023 <strong>11,41</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">06.02.2024 <strong>8,1</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>12,2</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">03.09.2024 <strong>58,1</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>37,8</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">DHEA-S</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--t)">0,89</div><div style="font-size:10px;color:var(--muted)">µmol/l</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 1,5–7,7 · Powerhormon, Energie</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="55.8" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="63.2" x2="300" y2="63.2" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,54.8 77.0,47.7 150.0,51.0 223.0,43.4 296.0,68.6" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="54.8" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="77.0" cy="47.7" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="150.0" cy="51.0" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="223.0" cy="43.4" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="68.6" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.10.2022 <strong>2,43</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">20.03.2023 <strong>3,22</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">06.02.2024 <strong>2,85</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>3,69</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">03.09.2024 <strong>0,89</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SHBG</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">107</div><div style="font-size:10px;color:var(--muted)">nmol/l</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 21–139</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="21.1" width="300" height="47.6" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="21.1" x2="300" y2="21.1" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,7.4 296.0,34.0" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="7.4" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="34.0" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">06.02.2024 <strong>173</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>107</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Androstendion</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">1</div><div style="font-size:10px;color:var(--muted)">ng/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0,3–1,8 · postmenopausal 0,3–1,8</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="61.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,23.7 296.0,40.0" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="23.7" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="40.0" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">06.02.2024 <strong>1,4</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>1</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Prolaktin</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">10,4</div><div style="font-size:10px;color:var(--muted)">ng/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 2–20</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="9.3" width="300" height="59.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="9.3" x2="300" y2="9.3" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,7.4 101.3,13.9 198.7,23.5 296.0,41.0" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="7.4" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="101.3" cy="13.9" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="198.7" cy="23.5" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="41.0" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">20.03.2023 <strong>20,6</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">06.02.2024 <strong>18,6</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>15,7</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">03.09.2024 <strong>10,4</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Cortisol</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">11,9</div><div style="font-size:10px;color:var(--muted)">µg/dl</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 6–28 · vormittags 6–28</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="61.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,57.5 296.0,52.2" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="57.5" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="52.2" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">06.02.2024 <strong>10</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>11,9</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">AMH</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--t)">0</div><div style="font-size:10px;color:var(--muted)">ng/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0,01–1,79 · Eierstockreserve</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="60.9" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.3" x2="300" y2="68.3" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,68.0 296.0,68.6" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="68.0" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="68.6" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">25.03.2024 <strong>0,02</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">03.09.2024 <strong>0</strong></span></div></div><div class="sh"><h2 style="font-size:20px">Eisen – wegen Ferretab beobachten</h2><div class="sh-line"></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Ferritin</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--t)">226</div><div style="font-size:10px;color:var(--muted)">ng/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 20–200 · Kontrolle 3–6 Monate (5.2.2026: 226)</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="15.1" width="300" height="53.6" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="15.1" x2="300" y2="15.1" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><circle cx="150.0" cy="7.4" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>226</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Eisen</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">94</div><div style="font-size:10px;color:var(--muted)">µg/dl</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 37–145</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="61.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><circle cx="150.0" cy="36.3" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>94</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Transferrinsättigung</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">25,3</div><div style="font-size:10px;color:var(--muted)">%</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 16–45</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="61.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><circle cx="150.0" cy="49.0" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>25,3</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Eisenbindungskapazität</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">372</div><div style="font-size:10px;color:var(--muted)">µg/dl</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 250–425</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="61.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><circle cx="150.0" cy="25.9" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>372</strong></span></div></div><div class="sh"><h2 style="font-size:20px">Vitamine &amp; Knochen</h2><div class="sh-line"></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Vitamin D</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">66,2</div><div style="font-size:10px;color:var(--muted)">ng/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 50–80 · bei Osteoporose 30–40 anstreben</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="33.4" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="40.8" x2="300" y2="40.8" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,68.6 150.0,8.5 296.0,22.7" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="68.6" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle><circle cx="150.0" cy="8.5" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="22.7" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.10.2022 <strong>25</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">30.04.2024 <strong>79</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">03.09.2024 <strong>66,2</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Vitamin B12</div><div style="font-size:10px;color:var(--muted)">pg/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 300–900 · Energie, Nerven</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Folsäure</div><div style="font-size:10px;color:var(--muted)">ng/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 4,6–18,7</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Kalzium</div><div style="font-size:10px;color:var(--muted)">mmol/l</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 2,2–2,65 · Knochen postmenopausal</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Magnesium</div><div style="font-size:10px;color:var(--muted)">mmol/l</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0,75–1,05 · Muskeln, Schlaf</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Zink</div><div style="font-size:10px;color:var(--muted)">µg/dl</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 70–120 · Haut, Immunsystem</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="sh"><h2 style="font-size:20px">Blutbild</h2><div class="sh-line"></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Lymphozyten</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--t)">17</div><div style="font-size:10px;color:var(--muted)">%</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 25–40 · 5.2.2026: 17 % – beobachten</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="40.0" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="47.3" x2="300" y2="47.3" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><circle cx="150.0" cy="68.6" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>17</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Segmentkernige</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--t)">73</div><div style="font-size:10px;color:var(--muted)">%</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 50–70 · 5.2.2026: 73 % – beobachten</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="15.3" width="300" height="53.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="15.3" x2="300" y2="15.3" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><circle cx="150.0" cy="7.4" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>73</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Leukozyten</div><div style="font-size:10px;color:var(--muted)">/mm³</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 4000–10000</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Hämoglobin</div><div style="font-size:10px;color:var(--muted)">g/dl</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 12–16</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="sh"><h2 style="font-size:20px">Fettwerte &amp; Herz</h2><div class="sh-line"></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Gesamtcholesterin</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--t)">203</div><div style="font-size:10px;color:var(--muted)">mg/dl</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–200 · 5.2.2026: 203</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="8.3" width="300" height="60.4" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="8.3" x2="300" y2="8.3" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><circle cx="150.0" cy="7.4" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>203</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">HDL</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--t)">86</div><div style="font-size:10px;color:var(--muted)">mg/dl</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 40–80 · hoch ist gut (5.2.2026: 86)</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="15.3" width="300" height="53.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="15.3" x2="300" y2="15.3" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><circle cx="150.0" cy="7.4" r="3.4" fill="#C47A5A" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(196,122,90,.14);border:1px solid rgba(196,122,90,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>86</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">LDL</div><div style="font-size:10px;color:var(--muted)">mg/dl</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–130</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Cholesterin/HDL</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">2,4</div><div style="font-size:10px;color:var(--muted)"></div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–4 · 5.2.2026: 2,4</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="61.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><circle cx="150.0" cy="31.9" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">05.02.2026 <strong>2,4</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Triglyzeride</div><div style="font-size:10px;color:var(--muted)">mg/dl</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–150</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Homocystein</div><div style="font-size:10px;color:var(--muted)">µmol/l</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–12 · Gefässe</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="sh"><h2 style="font-size:20px">Entzündung, Leber, Niere, Zucker</h2><div class="sh-line"></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CRP</div><div style="font-size:10px;color:var(--muted)">mg/dl</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–0,5 · 5.2.2026 unauffällig</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Gamma-GT</div><div style="font-size:10px;color:var(--muted)">U/l</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–38 · reagiert auf Alkohol</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">GPT (ALT)</div><div style="font-size:10px;color:var(--muted)">U/l</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–35</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Kreatinin</div><div style="font-size:10px;color:var(--muted)">mg/dl</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0,5–0,9 · Niere</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">HbA1c</div><div style="font-size:10px;color:var(--muted)">%</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–5,7 · Langzeitzucker</div><div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div></div><div class="sh"><h2 style="font-size:20px">Tumormarker (aus 2024)</h2><div class="sh-line"></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">CA 125</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">12,2</div><div style="font-size:10px;color:var(--muted)">U/ml</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–35</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="61.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><polyline points="4.0,43.8 296.0,47.3" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline><circle cx="4.0" cy="43.8" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle><circle cx="296.0" cy="47.3" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">25.03.2024 <strong>14,2</strong></span> <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">03.09.2024 <strong>12,2</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">HE4</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">38</div><div style="font-size:10px;color:var(--muted)">pmol/l</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–70</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="61.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><circle cx="150.0" cy="35.4" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">25.03.2024 <strong>38</strong></span></div></div><div class="card" style="padding:12px 13px;margin-bottom:10px"><div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px"><div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">ROMA postmenopausal</div><div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:20px;font-weight:600;color:var(--sage)">8,59</div><div style="font-size:10px;color:var(--muted)">%</div></div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz 0–25,3 · low risk &lt; 25,3</div><svg viewBox="0 0 300 76" preserveAspectRatio="none" style="width:100%;height:76px;display:block"><rect x="0" y="7.4" width="300" height="61.3" fill="rgba(139,158,123,.20)"></rect><line x1="0" y1="7.4" x2="300" y2="7.4" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><line x1="0" y1="68.6" x2="300" y2="68.6" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"></line><circle cx="150.0" cy="47.8" r="3.4" fill="#8B9E7B" stroke="#fff" stroke-width="1.4"></circle></svg><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px"><span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;background:rgba(139,158,123,.14);border:1px solid rgba(139,158,123,.35);border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">25.03.2024 <strong>8,59</strong></span></div></div></div>
 </div>
 
 <!-- ===== ERNAEHRUNG ===== -->
@@ -1273,6 +1473,352 @@ function renderBlAlles(){
   renderBlHitze(); renderBlHist(); renderBlChecks(); loadBlNotizen(); zfAlle();
 }
 
+
+/* ── KACHELN & FENSTER ──────────────────────────────────────────── */
+var MODAL_IDS=['c-nachtrag','c-s1','c-s2','c-f1','mittagsBox','c-f4','c-f3','c-alk',
+               'c-hitzehist','c-steinbox','c-resetbox','c-w1','c-w2','c-w3',
+               'c-trainwahl','dw-1','dw-3','dw-5','c-gewicht'];
+var _mEl=null,_mPlatz=null;
+
+function kachelnVorbereiten(){
+  /* Gewichtskarte wandert fest in ihre Kachel */
+  var g=document.getElementById('c-gewicht'), h=document.getElementById('k-gewicht-huelle');
+  if(g&&h){ g.style.boxShadow='none'; g.style.border='0'; g.style.margin='0';
+            g.style.padding='0'; g.style.background='transparent';
+            h.appendChild(g); }
+  /* alle uebrigen Originalkarten ausblenden - sie erscheinen im Fenster */
+  MODAL_IDS.forEach(function(id){
+    if(id==='c-gewicht')return;
+    var e=document.getElementById(id);
+    if(e){ e.dataset.kachelVersteckt='1'; e.style.display='none'; }
+  });
+  /* Trainingsauswahl und die drei Trainingskarten aus dem Fluss nehmen */
+  ['c-trainwahl','dw-1','dw-3','dw-5'].forEach(function(id){
+    var e=document.getElementById(id); if(e)e.style.display='none';
+  });
+}
+
+function trainingModalId(){
+  var id=(typeof getShownDwId==='function')?getShownDwId():null;
+  return id?('dw-'+id):'c-trainwahl';
+}
+
+function modalAuf(id){
+  var el=document.getElementById(id); if(!el)return;
+  if(_mEl)modalZu(true);
+  _mEl=el;
+  _mPlatz=document.createComment('kachel');
+  el.parentNode.insertBefore(_mPlatz,el);
+  el.style.display='block';
+  document.getElementById('modalBody').appendChild(el);
+  document.getElementById('modalBg').classList.add('an');
+  document.body.style.overflow='hidden';
+  if(typeof zfAlle==='function')zfAlle();
+}
+
+function modalZu(ev){
+  if(ev!==true && ev && ev.target && ev.target.id!=='modalBg')return;
+  var bg=document.getElementById('modalBg');
+  if(bg)bg.classList.remove('an');
+  document.body.style.overflow='';
+  if(_mEl&&_mPlatz&&_mPlatz.parentNode){
+    if(_mEl.dataset.kachelVersteckt==='1')_mEl.style.display='none';
+    _mPlatz.parentNode.replaceChild(_mEl,_mPlatz);
+  }
+  _mEl=null;_mPlatz=null;
+  kachelnAuffrischen();
+}
+
+function kachelHaken(key){
+  if(typeof toggle==='function')toggle(key);
+  kachelnAuffrischen();
+}
+
+function kachelHitze(){
+  if(typeof addHitzeNow==='function')addHitzeNow();
+  kachelnAuffrischen();
+}
+
+function _kText(el,txt){ if(el)el.textContent=txt; }
+
+function kachelnAuffrischen(){
+  var S2=lstore();
+  var ch=S2.checks||{};
+  /* Haken-Kacheln */
+  [['s1','k-s1'],['s2','k-s2'],['w1','k-w1'],['w2','k-w2'],['w3','k-w3']].forEach(function(x){
+    var el=document.getElementById(x[1]);
+    if(el)el.classList.toggle('erledigt',!!ch[TK+'_'+x[0]]);
+  });
+  /* Uhrzeiten */
+  var t=(S2.times&&S2.times[TK])||{};
+  [['wake','kw-wake'],['sleep','kw-sleep'],['frueh','kw-frueh'],['noon','kw-noon'],
+   ['eve','kw-eve'],['zwischen','kw-zwischen']].forEach(function(x){
+    var el=document.getElementById(x[1]);
+    if(!el)return;
+    el.textContent=t[x[0]]||'--:--';
+    el.classList.toggle('leer',!t[x[0]]);
+  });
+  /* Mahlzeiten-Text als Vorschau */
+  var fd=S2.fd||[];
+  [['ci-f1','kt-f1','Fr\u00fchst\u00fcck'],['ci-f2','kt-f2','Mittagessen'],
+   ['ci-f4','kt-f4','Abendessen'],['ci-f3','kt-f3','Zusatzmahlzeit']].forEach(function(x){
+    var e=fd.find(function(a){return a.date===TK&&a.meal===x[2];});
+    _kText(document.getElementById(x[1]), e?e.foods:'noch nichts');
+  });
+  /* Alkohol */
+  var alkEl=document.getElementById('kw-alk');
+  if(alkEl){
+    try{
+      if(!S2.alc)S2.alc={days:{},best:0};
+      var start=getAlcStartDate(S2);
+      var ges=daysBetweenInclusive(start,TK);
+      var mit=Object.keys(S2.alc.days||{}).filter(function(k){return S2.alc.days[k]===false;}).length;
+      alkEl.textContent=(ges-mit)+'/'+ges;
+    }catch(e){ alkEl.textContent='--'; }
+  }
+  /* Hitze & Histamin */
+  _kText(document.getElementById('kw-hitze'), String((((S2.hitze||{})[TK])||[]).length));
+  _kText(document.getElementById('kw-hist'),  String((((S2.hist ||{})[TK])||[]).length));
+  /* Notizen */
+  var st=((S2.stein||{})[TK]||'').trim();
+  _kText(document.getElementById('kt-stein'), st?(st.length>26?st.slice(0,26)+'\u2026':st):'noch nichts');
+  var jo=((S2.journals||{})[TK]||'').trim();
+  _kText(document.getElementById('kt-reset'), jo?(jo.length>26?jo.slice(0,26)+'\u2026':jo):'noch nichts');
+  /* Training */
+  kachelTraining(S2,ch);
+}
+
+function kachelTraining(S2,ch){
+  var nameEl=document.getElementById('ktr-name'), tagEl=document.getElementById('ktr-tag'),
+      fill=document.getElementById('ktr-fill'), pct=document.getElementById('ktr-pct');
+  if(!nameEl)return;
+  var id=(typeof getShownDwId==='function')?getShownDwId():null;
+  var tag=(typeof WTYPES!=='undefined')?WTYPES[new Date().getDay()]:'';
+  if(tagEl)tagEl.textContent='Training heute';
+  if(!id){
+    nameEl.textContent='Ruhetag \u00b7 Bewegung nach Lust';
+    if(fill)fill.style.width='0%';
+    if(pct)pct.textContent='';
+    return;
+  }
+  var karte=document.getElementById('dw-'+id);
+  var titel=karte?(karte.querySelector('.card-title')||{}).textContent:'';
+  nameEl.textContent=titel||('Training '+id);
+  var saetze=karte?karte.querySelectorAll('.set-chk'):[];
+  var ges=saetze.length, fertig=0;
+  for(var i=0;i<saetze.length;i++){
+    var ex=saetze[i].getAttribute('data-ex'), st=saetze[i].getAttribute('data-set');
+    if(ch[TK+'_'+ex+'-set'+st])fertig++;
+  }
+  if(fill)fill.style.width=(ges?Math.round(fertig/ges*100):0)+'%';
+  if(pct)pct.textContent=fertig+' / '+ges+' S\u00e4tze';
+}
+
+
+/* ── LABORWERTE ─────────────────────────────────────────────────────
+   LAB_BASIS sind die Werte aus Barbaras Hormonhistorie-Excel und aus
+   der Gesundenuntersuchung vom 5.2.2026. Sie stehen fest im Programm.
+   Selbst nachgetragene Werte liegen in S.labor und ueberschreiben die
+   Basis beim gleichen Datum.
+   Referenzbereiche: wo es geschlechts- und phasenabhaengige Bereiche
+   gibt, ist der Menopause-Bereich hinterlegt - Barbara ist laut
+   Befund vom 5.2.2026 postmenopausal.
+------------------------------------------------------------------- */
+var LAB_GRUPPEN=[
+ {name:'Schilddrüse', werte:[
+  {k:'tsh',  n:'TSH basal', e:'µU/ml', ref:[0.35,4],   ideal:'Plakolm 0,5–1,5',
+   basis:{'2022-07-08':3.25,'2022-10-05':2.65,'2023-03-20':0.74,'2024-02-06':1.67,'2024-04-30':1.97,'2024-09-03':1.66}},
+  {k:'ft4',  n:'freies Thyroxin fT4', e:'ng/dl', ref:[0.7,2], ideal:'soll über 0,9 sein',
+   basis:{'2022-07-08':0.83,'2022-10-05':0.95,'2023-03-20':1.08,'2024-02-06':1.04,'2024-04-30':1.01}},
+  {k:'ft3',  n:'freies Trijodthyronin fT3', e:'pg/ml', ref:[1.71,3.71], ideal:'Plakolm 3–4',
+   basis:{'2022-07-08':2.93,'2022-10-05':2.22,'2023-03-20':2.4,'2024-04-30':2.81}}
+ ]},
+ {name:'Sexualhormone', werte:[
+  {k:'fsh',  n:'FSH basal', e:'mIE/ml', ref:[18,155], ideal:'Menopause 18–155',
+   basis:{'2022-10-05':14.4,'2023-03-20':31.2,'2024-02-06':5.6,'2024-04-30':12.1,'2024-09-03':14.0,'2026-02-05':127}},
+  {k:'e2',   n:'Östradiol 17β', e:'pg/ml', ref:[0,60], ideal:'Menopause 0–60',
+   basis:{'2022-10-05':374,'2023-03-20':192,'2024-02-06':451,'2024-04-30':575,'2024-09-03':15,'2026-02-05':5}},
+  {k:'prog', n:'Progesteron', e:'ng/ml', ref:[0,1], ideal:'Menopause 0–1',
+   basis:{'2022-10-05':0.2,'2023-03-20':0.8,'2024-02-06':1.1,'2024-04-30':0.3,'2024-09-03':0.1,'2026-02-05':0.8}},
+  {k:'test', n:'Testosteron', e:'ng/ml', ref:[0.15,0.8], ideal:'Libido ab 0,4',
+   basis:{'2022-10-05':0.23,'2023-03-20':0.20,'2024-02-06':0.56,'2024-04-30':0.35,'2024-09-03':0.03,'2026-02-05':0.1}},
+  {k:'lh',   n:'LH basal', e:'U/l', ref:[16,64], ideal:'Menopause 16–64',
+   basis:{'2023-03-20':11.41,'2024-02-06':8.1,'2024-04-30':12.2,'2024-09-03':58.1,'2026-02-05':37.8}},
+  {k:'dheas',n:'DHEA-S', e:'µmol/l', ref:[1.5,7.7], ideal:'Powerhormon, Energie',
+   basis:{'2022-10-05':2.43,'2023-03-20':3.22,'2024-02-06':2.85,'2024-04-30':3.69,'2024-09-03':0.89}},
+  {k:'shbg', n:'SHBG', e:'nmol/l', ref:[21,139], ideal:'',
+   basis:{'2024-02-06':173,'2024-04-30':107}},
+  {k:'andro',n:'Androstendion', e:'ng/ml', ref:[0.3,1.8], ideal:'postmenopausal 0,3–1,8',
+   basis:{'2024-02-06':1.4,'2024-04-30':1}},
+  {k:'prol', n:'Prolaktin', e:'ng/ml', ref:[2,20], ideal:'',
+   basis:{'2023-03-20':20.6,'2024-02-06':18.6,'2024-04-30':15.7,'2024-09-03':10.4}},
+  {k:'cort', n:'Cortisol', e:'µg/dl', ref:[6,28], ideal:'vormittags 6–28',
+   basis:{'2024-02-06':10,'2024-04-30':11.90}},
+  {k:'amh',  n:'AMH', e:'ng/ml', ref:[0.01,1.79], ideal:'Eierstockreserve',
+   basis:{'2024-03-25':0.02,'2024-09-03':0.0}}
+ ]},
+ {name:'Eisen – wegen Ferretab beobachten', werte:[
+  {k:'ferr', n:'Ferritin', e:'ng/ml', ref:[20,200], ideal:'Kontrolle 3–6 Monate (5.2.2026: 226)',
+   basis:{'2026-02-05':226}},
+  {k:'eisen',n:'Eisen', e:'µg/dl', ref:[37,145], ideal:'',
+   basis:{'2026-02-05':94}},
+  {k:'tsaet',n:'Transferrinsättigung', e:'%', ref:[16,45], ideal:'',
+   basis:{'2026-02-05':25.3}},
+  {k:'tebk', n:'Eisenbindungskapazität', e:'µg/dl', ref:[250,425], ideal:'',
+   basis:{'2026-02-05':372}}
+ ]},
+ {name:'Vitamine & Knochen', werte:[
+  {k:'vitd', n:'Vitamin D', e:'ng/ml', ref:[50,80], ideal:'bei Osteoporose 30–40 anstreben',
+   basis:{'2022-10-05':25,'2024-04-30':79,'2024-09-03':66.2}},
+  {k:'b12',  n:'Vitamin B12', e:'pg/ml', ref:[300,900], ideal:'Energie, Nerven', basis:{}},
+  {k:'fols', n:'Folsäure', e:'ng/ml', ref:[4.6,18.7], ideal:'', basis:{}},
+  {k:'kalz', n:'Kalzium', e:'mmol/l', ref:[2.2,2.65], ideal:'Knochen postmenopausal', basis:{}},
+  {k:'magn', n:'Magnesium', e:'mmol/l', ref:[0.75,1.05], ideal:'Muskeln, Schlaf', basis:{}},
+  {k:'zink', n:'Zink', e:'µg/dl', ref:[70,120], ideal:'Haut, Immunsystem', basis:{}}
+ ]},
+ {name:'Blutbild', werte:[
+  {k:'lymph',n:'Lymphozyten', e:'%', ref:[25,40], ideal:'5.2.2026: 17 % – beobachten',
+   basis:{'2026-02-05':17}},
+  {k:'segm', n:'Segmentkernige', e:'%', ref:[50,70], ideal:'5.2.2026: 73 % – beobachten',
+   basis:{'2026-02-05':73}},
+  {k:'leuko',n:'Leukozyten', e:'/mm³', ref:[4000,10000], ideal:'', basis:{}},
+  {k:'hb',   n:'Hämoglobin', e:'g/dl', ref:[12,16], ideal:'', basis:{}}
+ ]},
+ {name:'Fettwerte & Herz', werte:[
+  {k:'chol', n:'Gesamtcholesterin', e:'mg/dl', ref:[0,200], ideal:'5.2.2026: 203',
+   basis:{'2026-02-05':203}},
+  {k:'hdl',  n:'HDL', e:'mg/dl', ref:[40,80], ideal:'hoch ist gut (5.2.2026: 86)',
+   basis:{'2026-02-05':86}},
+  {k:'ldl',  n:'LDL', e:'mg/dl', ref:[0,130], ideal:'', basis:{}},
+  {k:'quot', n:'Cholesterin/HDL', e:'', ref:[0,4], ideal:'5.2.2026: 2,4',
+   basis:{'2026-02-05':2.4}},
+  {k:'trig', n:'Triglyzeride', e:'mg/dl', ref:[0,150], ideal:'', basis:{}},
+  {k:'homo', n:'Homocystein', e:'µmol/l', ref:[0,12], ideal:'Gefässe', basis:{}}
+ ]},
+ {name:'Entzündung, Leber, Niere, Zucker', werte:[
+  {k:'crp',  n:'CRP', e:'mg/dl', ref:[0,0.5], ideal:'5.2.2026 unauffällig', basis:{}},
+  {k:'ggt',  n:'Gamma-GT', e:'U/l', ref:[0,38], ideal:'reagiert auf Alkohol', basis:{}},
+  {k:'gpt',  n:'GPT (ALT)', e:'U/l', ref:[0,35], ideal:'', basis:{}},
+  {k:'krea', n:'Kreatinin', e:'mg/dl', ref:[0.5,0.9], ideal:'Niere', basis:{}},
+  {k:'hba1c',n:'HbA1c', e:'%', ref:[0,5.7], ideal:'Langzeitzucker', basis:{}}
+ ]},
+ {name:'Tumormarker (aus 2024)', werte:[
+  {k:'ca125',n:'CA 125', e:'U/ml', ref:[0,35], ideal:'',
+   basis:{'2024-03-25':14.2,'2024-09-03':12.2}},
+  {k:'he4',  n:'HE4', e:'pmol/l', ref:[0,70], ideal:'',
+   basis:{'2024-03-25':38}},
+  {k:'roma', n:'ROMA postmenopausal', e:'%', ref:[0,25.3], ideal:'low risk < 25,3',
+   basis:{'2024-03-25':8.59}}
+ ]}
+];
+
+function labAlle(k){
+  var def=null;
+  LAB_GRUPPEN.forEach(function(g){g.werte.forEach(function(w){if(w.k===k)def=w;});});
+  if(!def)return {};
+  var aus={};
+  Object.keys(def.basis||{}).forEach(function(d){aus[d]=def.basis[d];});
+  var S2=lstore();
+  var eig=(S2.labor||{})[k]||{};
+  Object.keys(eig).forEach(function(d){
+    if(eig[d]===null||eig[d]==='')delete aus[d]; else aus[d]=eig[d];
+  });
+  return aus;
+}
+
+function labDatumDe(d){var t=d.split('-');return t[2]+'.'+t[1]+'.'+t[0];}
+
+function labKurve(w){
+  var daten=labAlle(w.k);
+  var tage=Object.keys(daten).sort();
+  if(!tage.length)return '<div style="font-size:11px;color:var(--muted);padding:6px 0">Noch kein Wert eingetragen.</div>';
+  var werte=tage.map(function(d){return parseFloat(daten[d]);});
+  var lo=w.ref[0], hi=w.ref[1];
+  var min=Math.min.apply(null,werte.concat([lo])), max=Math.max.apply(null,werte.concat([hi]));
+  var spanne=(max-min)||1; min-=spanne*0.12; max+=spanne*0.12; spanne=max-min;
+  var B=300,H=76,pl=4,pr=4;
+  var x=function(i){return pl+(tage.length<2?(B-pl-pr)/2:i*(B-pl-pr)/(tage.length-1));};
+  var y=function(v){return H-((v-min)/spanne)*H;};
+  var s='<svg viewBox="0 0 '+B+' '+H+'" preserveAspectRatio="none" style="width:100%;height:76px;display:block">';
+  s+='<rect x="0" y="'+y(hi).toFixed(1)+'" width="'+B+'" height="'+Math.max(0,(y(lo)-y(hi))).toFixed(1)+'" fill="rgba(139,158,123,.20)"/>';
+  s+='<line x1="0" y1="'+y(hi).toFixed(1)+'" x2="'+B+'" y2="'+y(hi).toFixed(1)+'" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"/>';
+  s+='<line x1="0" y1="'+y(lo).toFixed(1)+'" x2="'+B+'" y2="'+y(lo).toFixed(1)+'" stroke="rgba(139,158,123,.55)" stroke-width="1" stroke-dasharray="3 3"/>';
+  var pts=tage.map(function(d,i){return x(i).toFixed(1)+','+y(werte[i]).toFixed(1);}).join(' ');
+  if(tage.length>1)s+='<polyline points="'+pts+'" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+  tage.forEach(function(d,i){
+    var drin=werte[i]>=lo&&werte[i]<=hi;
+    s+='<circle cx="'+x(i).toFixed(1)+'" cy="'+y(werte[i]).toFixed(1)+'" r="3.4" fill="'+(drin?'#8B9E7B':'#C47A5A')+'" stroke="#fff" stroke-width="1.4"/>';
+  });
+  s+='</svg>';
+  var liste=tage.map(function(d,i){
+    var drin=werte[i]>=lo&&werte[i]<=hi;
+    return '<span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;'+
+      'background:'+(drin?'rgba(139,158,123,.14)':'rgba(196,122,90,.14)')+';'+
+      'border:1px solid '+(drin?'rgba(139,158,123,.35)':'rgba(196,122,90,.35)')+';'+
+      'border-radius:12px;padding:2px 7px;color:var(--mid);white-space:nowrap">'+
+      labDatumDe(d)+' <strong>'+String(daten[d]).replace('.',',')+'</strong></span>';
+  }).join(' ');
+  return s+'<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:7px">'+liste+'</div>';
+}
+
+function labZeichnen(){
+  var c=document.getElementById('labGruppen'); if(!c)return;
+  var html='';
+  LAB_GRUPPEN.forEach(function(g){
+    html+='<div class="sh"><h2 style="font-size:20px">'+g.name+'</h2><div class="sh-line"></div></div>';
+    g.werte.forEach(function(w){
+      var daten=labAlle(w.k), tage=Object.keys(daten).sort();
+      var letzt=tage.length?parseFloat(daten[tage[tage.length-1]]):null;
+      var drin=(letzt!==null)&&letzt>=w.ref[0]&&letzt<=w.ref[1];
+      html+='<div class="card" style="padding:12px 13px;margin-bottom:10px">'+
+        '<div style="display:flex;align-items:baseline;gap:8px;margin-bottom:2px">'+
+          '<div style="font-size:13px;font-weight:600;color:var(--mid);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+w.n+'</div>'+
+          (letzt!==null?('<div style="font-family:\'Cormorant Garamond\',serif;font-size:20px;font-weight:600;color:'+(drin?'var(--sage)':'var(--t)')+'">'+String(daten[tage[tage.length-1]]).replace('.',',')+'</div>'):'')+
+          '<div style="font-size:10px;color:var(--muted)">'+w.e+'</div>'+
+        '</div>'+
+        '<div style="font-size:10px;color:var(--muted);margin-bottom:6px">Referenz '+
+          String(w.ref[0]).replace('.',',')+'–'+String(w.ref[1]).replace('.',',')+
+          (w.ideal?(' · '+w.ideal):'')+'</div>'+
+        labKurve(w)+
+      '</div>';
+    });
+  });
+  c.innerHTML=html;
+}
+
+function labAuswahlFuellen(){
+  var s=document.getElementById('labParam'); if(!s||s.options.length)return;
+  LAB_GRUPPEN.forEach(function(g){
+    var og=document.createElement('optgroup'); og.label=g.name;
+    g.werte.forEach(function(w){
+      var o=document.createElement('option'); o.value=w.k; o.textContent=w.n+' ('+w.e+')';
+      og.appendChild(o);
+    });
+    s.appendChild(og);
+  });
+  var d=document.getElementById('labDatum');
+  if(d&&!d.value)d.value=TK;
+}
+
+function labSpeichern(){
+  var k=(document.getElementById('labParam')||{}).value;
+  var d=(document.getElementById('labDatum')||{}).value;
+  var v=((document.getElementById('labWert')||{}).value||'').trim().replace(',','.');
+  var msg=document.getElementById('labMsg');
+  function sag(t,f){ if(msg){msg.textContent=t;msg.style.color=f||'var(--muted)';} }
+  if(!k||!d){ sag('Bitte Wert und Datum wählen.','#C47A5A'); return; }
+  if(v===''||isNaN(parseFloat(v))){ sag('Bitte eine Zahl eintragen.','#C47A5A'); return; }
+  var S2=lstore();
+  if(!S2.labor)S2.labor={};
+  if(!S2.labor[k])S2.labor[k]={};
+  S2.labor[k][d]=parseFloat(v);
+  sstore(S2);
+  document.getElementById('labWert').value='';
+  labZeichnen();
+  sag('Gespeichert ✓','var(--sage)');
+  setTimeout(function(){sag('');},2500);
+}
+
 function renderMantras(){
   /* die sechs rotierenden Sprueche laufen jetzt ueber spruchZeichnen() */
   setText('steinText',pickDaily(STEIN_QUOTES,5));
@@ -1284,13 +1830,26 @@ function tkey(){var d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1<10?'
 var TK=tkey();
 
 function lstore(){try{var r=localStorage.getItem('bfv6');return r?JSON.parse(r):{}}catch(e){return{};}}
-function sstore(d){try{localStorage.setItem('bfv6',JSON.stringify(d));}catch(e){}}
+function sstore(d){
+  try{localStorage.setItem('bfv6',JSON.stringify(d));}catch(e){}
+  /* S ist der Stand im Arbeitsspeicher und muss dem gespeicherten folgen */
+  try{ if(d&&typeof d==='object')S=d; }catch(e){}
+  /* Abgleich anstossen. Muss hier stehen und nicht in einer Huelle:
+     Funktionen innerhalb des try-Blocks sehen eine eigene Bindung von
+     sstore und wuerden eine spaeter zugewiesene Huelle nie aufrufen. */
+  try{ if(typeof syncSoon==='function')syncSoon(); }catch(e){}
+}
 function saveS(){
+  /* Der gespeicherte Stand ist die Grundlage. Nur die Bereiche, die S
+     selbst verwaltet, werden darueber gelegt. Sonst wuerden Eintraege
+     verlorengehen, die woanders direkt gespeichert wurden - etwa in den
+     Nachtraegen oder beim Geraeteabgleich. */
   var fresh=lstore();
-  ['dwMove','alc','fd','hist','hitze','times','weights'].forEach(function(k){
-    if(fresh[k]!==undefined)S[k]=fresh[k];
+  ['checks','journals','moods','stein','days'].forEach(function(k){
+    if(S[k]!==undefined)fresh[k]=S[k];
   });
-  sstore(S);
+  sstore(fresh);
+  S=fresh;
 }
 
 var S=lstore();
@@ -1353,6 +1912,10 @@ function init(){
   loadTimes();
   zfAlle();
   loadWeight();
+  kachelnVorbereiten();
+  kachelnAuffrischen();
+  labAuswahlFuellen();
+  labZeichnen();
   loadChecks();
   updateRing();
   buildGrid();
@@ -1545,6 +2108,7 @@ function toggleSet(exId,setIdx){
   }
   saveS();
   updateRing();
+  if(typeof kachelnAuffrischen==='function')kachelnAuffrischen();
 }
 
 function toggle(key){
@@ -1701,13 +2265,14 @@ function saveDay(){
 
 function showTab(n){
   flushInputs();
-  var tabs=['heute','programm','ernaehrung','woche'];
+  var tabs=['heute','programm','ernaehrung','woche','werte'];
   for(var i=0;i<tabs.length;i++){
     document.getElementById('tab-'+tabs[i]).classList.remove('on');
     document.querySelectorAll('.nb')[i].classList.remove('on');
   }
   document.getElementById('tab-'+n).classList.add('on');
   document.querySelectorAll('.nb')[tabs.indexOf(n)].classList.add('on');
+  if(n==='werte'&&typeof labZeichnen==='function')labZeichnen();
   window.scrollTo(0,0);
 }
 
@@ -1815,9 +2380,14 @@ function onTimeInput(id){
 }
 function flushInputs(){
   // Sichert alle offenen Uhrzeit- und Mahlzeit-Felder sofort, egal ob getippt oder nicht
-  var mealMap={'ci-f1':'Frühstück','ci-f2':'Mittagessen','ci-f3':'Zwischenmahlzeit','ci-f4':'Abendessen'};
+  var mealMap={'ci-f1':'Frühstück','ci-f2':'Mittagessen','ci-f3':'Zusatzmahlzeit','ci-f4':'Abendessen'};
   Object.keys(mealMap).forEach(function(ciId){saveMealLog(ciId,mealMap[ciId]);});
-  ['suppl','frueh','noon','zwischen','eve','wake','sleep'].forEach(function(id){saveTi(id);});
+  /* nur gefuellte Felder sichern - ein leeres Feld darf einen gespeicherten
+     Wert niemals ueberschreiben (z.B. beim Wechsel in den Hintergrund) */
+  ['suppl','frueh','noon','zwischen','eve','wake','sleep'].forEach(function(id){
+    var inp=document.getElementById('ti-'+id);
+    if(inp&&inp.value)saveTi(id);
+  });
 }
 document.addEventListener('visibilitychange',function(){if(document.hidden)flushInputs();});
 window.addEventListener('pagehide',flushInputs);
@@ -2050,7 +2620,7 @@ function saveMealLog(ciId, label){
 function loadMealLogs(){
   var S2=lstore();
   var entries=S2.fd||[];
-  var meals={'ci-f1':'Fr\u00FChst\u00FCck','ci-f2':'Mittagessen','ci-f3':'Zwischenmahlzeit','ci-f4':'Abendessen'};
+  var meals={'ci-f1':'Fr\u00FChst\u00FCck','ci-f2':'Mittagessen','ci-f3':'Zusatzmahlzeit','ci-f4':'Abendessen'};
   Object.keys(meals).forEach(function(ciId){
     var inp=document.getElementById('log-'+ciId);
     if(!inp)return;
@@ -2708,7 +3278,7 @@ function syTippt(){var a=document.activeElement;
 function syRefreshUI(){
   if(syTippt()){ clearTimeout(_applyTimer); _applyTimer=setTimeout(syRefreshUI,3000); return; }
   ['initFd','loadMealLogs','loadTimes','loadWeight','loadChecks','updateRing',
-   'buildGrid','loadJournal','renderAlc','renderHitze','renderHist','loadStein','zfAlle']
+   'buildGrid','loadJournal','renderAlc','renderHitze','renderHist','loadStein','zfAlle','kachelnAuffrischen','labZeichnen']
    .forEach(function(f){ try{ if(typeof window[f]==='function') window[f](); }catch(e){} });
 }
 
@@ -2785,7 +3355,7 @@ function syWatch(){
 }
 
 /* jede Speicherung loest einen verzoegerten Abgleich aus */
-sstore=function(d){ _sstoreRaw(d); syncSoon(); };
+/* sstore ruft syncSoon selbst auf - keine Huelle noetig */
 
 function syncVerbinden(){
   var url =(document.getElementById('syncUrl') ||{}).value||'';
@@ -2796,6 +3366,7 @@ function syncVerbinden(){
     syStatus('Sync-Code: mindestens 12 Zeichen, nur Buchstaben, Ziffern, - und _','#C47A5A'); return; }
   var c=syCfg(); c.url=url; c.code=code; c.rev=c.rev||0; syCfgSave(c);
   syncNow(true);
+  syncUeberwachung();   /* ab jetzt laufend abgleichen, auch ohne Neuladen */
 }
 
 function syncTrennen(){
@@ -2815,6 +3386,16 @@ function syncCodeVorschlag(){
   syStatus('Code erzeugt. Auf allen Geräten denselben Code eintragen.','var(--gd)');
 }
 
+var _ueberwachungLaeuft=false;
+function syncUeberwachung(){
+  if(_ueberwachungLaeuft)return;
+  _ueberwachungLaeuft=true;
+  setInterval(syWatch,3000);
+  document.addEventListener('visibilitychange',function(){
+    if(document.visibilityState==='visible') syncNow(false); });
+  setInterval(function(){ if(document.visibilityState==='visible') syncNow(false); },60000);
+}
+
 function syncInit(){
   var c=syCfg();
   var u=document.getElementById('syncUrl'), k=document.getElementById('syncCode');
@@ -2824,10 +3405,7 @@ function syncInit(){
   if(c.url&&c.code){
     syStatus(c.last?('Zuletzt abgeglichen: '+c.last):'Verbunden.','var(--sage)');
     syncNow(false);
-    setInterval(syWatch,3000);
-    document.addEventListener('visibilitychange',function(){
-      if(document.visibilityState==='visible') syncNow(false); });
-    setInterval(function(){ if(document.visibilityState==='visible') syncNow(false); },60000);
+    syncUeberwachung();
   } else {
     syStatus('Nicht verbunden — die Daten bleiben nur auf diesem Gerät.','var(--muted)');
   }
