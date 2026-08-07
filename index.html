@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0063)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_13.html -->
+<!-- saved from url=(0062)file:///C:/Users/Babs/Downloads/Barbara_FitnessProgramm_1.html -->
 <html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -9,10 +9,10 @@
 <meta name="theme-color" content="#2C2418">
 <title>fit4life</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 100 100&#39;%3E%3Crect width=&#39;100&#39; height=&#39;100&#39; rx=&#39;20&#39; fill=&#39;%232C2418&#39;/%3E%3Ctext x=&#39;50&#39; y=&#39;68&#39; font-size=&#39;50&#39; text-anchor=&#39;middle&#39; fill=&#39;%23C9A96E&#39;%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
 <link href="./index_files/css2" rel="stylesheet">
+<link href="file:///C:/Users/Babs/Downloads/index_files/css2" rel="stylesheet">
 <style>
 :root{--g:#C9A96E;--gl:#E8D5B0;--gd:#9A7A45;--cream:#FAF7F2;--sand:#E8DFD0;--t:#C47A5A;--sage:#8B9E7B;--deep:#2C2418;--mid:#5C4B35;--muted:#8A7A65;}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -238,27 +238,51 @@ textarea.meal-log-input{min-height:44px;resize:vertical;line-height:1.4;}
 
 
 /* GRAPHICAL TIME INPUT */
-.time-icon-btn{
-  appearance:none;-webkit-appearance:none;
-  background:rgba(201,169,110,.12) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23C9A96E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E") no-repeat 7px center;
-  border:1.5px solid rgba(201,169,110,.35);
-  border-radius:20px;
-  padding:5px 8px 5px 26px;
-  font-size:12px;font-weight:600;
-  color:var(--gd);
-  font-family:inherit;
-  width:96px;
-  cursor:pointer;
-  outline:none;
-  flex-shrink:0;
-  transition:border-color .2s,background-color .2s;
-  min-height:30px;
-}
-/* Zahlenfelder: Spinner-Pfeile ausblenden (fressen ~15px Breite) */
-input[type=number]{-moz-appearance:textfield;appearance:textfield;}
-input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0;}
-.time-icon-btn:focus,.time-icon-btn:hover{border-color:var(--g);background-color:rgba(201,169,110,.22);}
-.time-icon-btn::-webkit-calendar-picker-indicator{opacity:0;width:0;padding:0;margin:0;}
+/* ROTIERENDE SPRUCH-BOX */
+.spruch-box{position:relative;cursor:pointer;min-height:118px;display:flex;
+  flex-direction:column;justify-content:center;padding-bottom:22px;margin-bottom:14px;}
+.spruch-inhalt{transition:opacity .45s ease;}
+.spruch-inhalt.weg{opacity:0;}
+.spruch-punkte{position:absolute;left:0;right:0;bottom:11px;display:flex;
+  justify-content:center;gap:6px;}
+.spruch-punkt{width:6px;height:6px;border-radius:50%;background:rgba(232,213,176,.28);
+  transition:background-color .3s,width .3s;}
+.spruch-punkt.an{background:var(--g);width:16px;border-radius:3px;}
+/* SONNE & MOND: grosse Zeiteingabe */
+.tag-karte{position:relative;display:flex;align-items:center;gap:14px;cursor:pointer;}
+.tag-kreis{position:relative;width:78px;height:78px;flex:none;}
+.tag-kreis svg{position:absolute;inset:0;width:78px;height:78px;}
+.tag-zeit{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);
+  text-align:center;font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;
+  letter-spacing:.5px;font-variant-numeric:tabular-nums;pointer-events:none;}
+.tag-zeit.leer{font-size:15px;opacity:.55;}
+.tag-txt{flex:1;min-width:0;}
+.tag-lbl{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;}
+.tag-sub{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4;}
+.tag-karte input{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;
+  border:0;padding:0;margin:0;cursor:pointer;-webkit-appearance:none;appearance:none;}
+@keyframes strahlen{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+.sonne-strahlen{transform-origin:39px 39px;animation:strahlen 4s ease-in-out infinite;}
+@keyframes blinken{0%,100%{opacity:.35}50%{opacity:1}}
+.stern{animation:blinken 3s ease-in-out infinite;}
+.stern:nth-of-type(2){animation-delay:1s}
+.stern:nth-of-type(3){animation-delay:2s}
+/* ZEITFELD: die Uhrzeit wird von uns selbst gezeichnet, nicht vom Browser.
+   Dadurch kann nichts mehr abgeschnitten werden. Das echte Eingabefeld
+   liegt unsichtbar darueber und oeffnet beim Antippen die Uhr. */
+.zf{position:relative;display:inline-flex;align-items:center;gap:6px;
+  background:rgba(201,169,110,.12);border:1.5px solid rgba(201,169,110,.35);
+  border-radius:20px;padding:5px 13px;min-height:32px;flex:none;cursor:pointer;
+  transition:border-color .2s,background-color .2s;}
+.zf:hover,.zf:focus-within{border-color:var(--g);background-color:rgba(201,169,110,.22);}
+.zf::before{content:'';width:15px;height:15px;flex:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A96E' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E") no-repeat center/contain;}
+.zf-txt{font-size:12.5px;font-weight:700;color:var(--gd);font-family:inherit;
+  letter-spacing:.6px;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.zf-txt.leer{color:var(--muted);font-weight:500;}
+.zf input{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;
+  border:0;padding:0;margin:0;cursor:pointer;-webkit-appearance:none;appearance:none;}
+
 /* MEAL EXPAND CHEVRON */
 .meal-expand-chevron{font-size:13px;color:var(--muted);margin-left:6px;flex-shrink:0;transition:transform .2s;display:inline-block;}
 .meal-expand-chevron.open{transform:rotate(180deg);}
@@ -288,31 +312,29 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
     <div style="text-align:right;flex-shrink:0;display:flex;align-items:center;gap:14px">
       <div style="position:relative;width:64px;height:64px;flex-shrink:0">
         <svg viewBox="0 0 64 64" style="width:64px;height:64px;transform:rotate(-90deg)">
-          <circle cx="32" cy="32" r="27" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="5"/>
-          <circle cx="32" cy="32" r="27" fill="none" stroke="url(#ringGrad)" stroke-width="5"
-            stroke-dasharray="169.6" stroke-dashoffset="169.6"
-            stroke-linecap="round" id="dailyRingCircle" style="transition:stroke-dashoffset .6s ease"/>
+          <circle cx="32" cy="32" r="27" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="5"></circle>
+          <circle cx="32" cy="32" r="27" fill="none" stroke="url(#ringGrad)" stroke-width="5" stroke-dasharray="169.6" stroke-dashoffset="169.6" stroke-linecap="round" id="dailyRingCircle" style="transition: stroke-dashoffset 0.6s; stroke-dashoffset: 169.646;"></circle>
           <defs>
-            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#C9A96E"/>
-              <stop offset="100%" stop-color="#E8A88A"/>
-            </linearGradient>
+            <lineargradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#C9A96E"></stop>
+              <stop offset="100%" stop-color="#E8A88A"></stop>
+            </lineargradient>
           </defs>
         </svg>
         <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;transform:rotate(0deg)">
-          <div id="dailyRingPct" style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#fff;line-height:1;margin-top:20px;margin-left:-1px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">0%</div>
+          <div id="dailyRingPct" style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:17px;font-weight:600;color:#fff;line-height:1;margin-top:20px;margin-left:-1px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)">0%</div>
         </div>
       </div>
       <div style="text-align:right">
-        <span class="hero-day" id="heroDay">10</span>
-        <span class="hero-month" id="heroMonth">Juli 2026</span>
+        <span class="hero-day" id="heroDay">7</span>
+        <span class="hero-month" id="heroMonth">August 2026</span>
       </div>
     </div>
   </div>
   <div class="prog">
-    <div class="prog-lbl"><span>Start: Mai 2026</span><span id="progPct">30%</span><span>Ziel: Dez 2026</span></div>
-    <div class="prog-bar"><div class="prog-fill" id="progFill" style="width: 30%;"></div></div>
-    <div style="text-align:right;font-size:9px;letter-spacing:1px;color:rgba(232,213,176,.45);padding-top:4px">v2026.08.06-C</div>
+    <div class="prog-lbl"><span>Start: Mai 2026</span><span id="progPct">41%</span><span>Ziel: Dez 2026</span></div>
+    <div class="prog-bar"><div class="prog-fill" id="progFill" style="width: 41%;"></div></div>
+    <div style="text-align:right;font-size:9px;letter-spacing:1px;color:rgba(232,213,176,.45);padding-top:4px">v2026.08.07-E</div>
   </div>
 </div>
 
@@ -326,6 +348,19 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 
 <!-- ===== HEUTE ===== -->
 <div class="panel on" id="tab-heute">
+  <!-- ROTIERENDE SPRUCH-BOX -->
+  <div class="quote spruch-box" id="spruchBox" onclick="spruchWeiter(1)">
+    <div class="spruch-inhalt" id="spruchInhalt">
+      <div class="q-text" id="spruchText">Klarheit statt Verwirrung.</div>
+      <div class="q-attr" style="display:flex;align-items:center;gap:6px">
+        <span id="spruchIcon" style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🧘</span>
+        <span id="spruchLabel">Stille · 5 Min. täglich</span>
+        <a class="yt-sm" id="spruchYt" href="https://www.youtube.com/results?search_query=stille+meditation+5+minuten" target="_blank" onclick="event.stopPropagation()">▶ YT</a>
+      </div>
+    </div>
+    <div class="spruch-punkte" id="spruchPunkte"><span class="spruch-punkt"></span><span class="spruch-punkt"></span><span class="spruch-punkt"></span><span class="spruch-punkt an"></span><span class="spruch-punkt"></span><span class="spruch-punkt"></span></div>
+  </div>
+
 
   <div class="streak">
     <div style="font-size:32px">🔥</div>
@@ -345,11 +380,11 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
     <div id="backlogPanel" style="display:none;margin-top:10px">
       <div style="margin-bottom:8px">Datum: <input type="date" id="blDate" onchange="loadBacklogTimes()" style="border:1px solid var(--border);border-radius:8px;padding:4px 8px;font-size:13px"></div>
       <div style="display:flex;flex-wrap:wrap;gap:10px;font-size:13px;margin-bottom:10px">
-        <div>🌅 Aufgestanden<br><input type="time" id="bl-wake" class="meal-time-inp"></div>
-        <div>☀️ Frühstück<br><input type="time" id="bl-frueh" class="meal-time-inp"></div>
-        <div>🌞 Mittag<br><input type="time" id="bl-noon" class="meal-time-inp"></div>
-        <div>🌙 Abend<br><input type="time" id="bl-eve" class="meal-time-inp"></div>
-        <div>🌙 Schlafen<br><input type="time" id="bl-sleep" class="meal-time-inp"></div>
+        <div>🌅 Aufgestanden<br><span class="zf"><span class="zf-txt leer" id="zt-bl-wake">--:--</span><input type="time" id="bl-wake" oninput="zfUpd(this)" onchange="zfUpd(this)"></span></div>
+        <div>☀️ Frühstück<br><span class="zf"><span class="zf-txt leer" id="zt-bl-frueh">--:--</span><input type="time" id="bl-frueh" oninput="zfUpd(this)" onchange="zfUpd(this)"></span></div>
+        <div>🌞 Mittag<br><span class="zf"><span class="zf-txt leer" id="zt-bl-noon">--:--</span><input type="time" id="bl-noon" oninput="zfUpd(this)" onchange="zfUpd(this)"></span></div>
+        <div>🌙 Abend<br><span class="zf"><span class="zf-txt leer" id="zt-bl-eve">--:--</span><input type="time" id="bl-eve" oninput="zfUpd(this)" onchange="zfUpd(this)"></span></div>
+        <div>🌙 Schlafen<br><span class="zf"><span class="zf-txt leer" id="zt-bl-sleep">--:--</span><input type="time" id="bl-sleep" oninput="zfUpd(this)" onchange="zfUpd(this)"></span></div>
         <div>⚖️ Gewicht<br><input type="number" step="0.1" min="30" max="200" id="bl-weight" class="meal-time-inp" style="width:70px" placeholder="kg"></div>
         <div>Fett %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-fat" class="meal-time-inp" style="width:70px" placeholder="%"></div>
         <div>Wasser %<br><input type="number" step="0.1" min="0" max="100" id="bl-weight-water" class="meal-time-inp" style="width:70px" placeholder="%"></div>
@@ -367,33 +402,74 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
       </div>
       <div id="blAlcStatus" style="font-size:12px;color:var(--muted);margin-bottom:4px"></div>
       <input type="text" id="bl-alc-note" class="meal-log-input" style="width:100%;box-sizing:border-box;margin-bottom:8px" placeholder="Was hast du getrunken? (optional)">
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:14px 0 6px">Hitzewallungen</div>
+      <div id="blHitzeList" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px"></div>
+      <div style="display:flex;gap:6px;align-items:center;margin-bottom:4px">
+        <span class="zf"><span class="zf-txt leer" id="zt-bl-hitze-time">--:--</span><input type="time" id="bl-hitze-time" oninput="zfUpd(this)" onchange="zfUpd(this)"></span>
+        <button type="button" onclick="addBlHitze()" style="padding:8px 14px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);font-size:12px;cursor:pointer;font-family:inherit">Hinzufügen</button>
+      </div>
+
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:14px 0 6px">Histamin-Symptome</div>
+      <div id="blHistList" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px"></div>
+      <div style="display:flex;gap:6px;align-items:center;margin-bottom:4px">
+        <span class="zf"><span class="zf-txt leer" id="zt-bl-hist-time">--:--</span><input type="time" id="bl-hist-time" oninput="zfUpd(this)" onchange="zfUpd(this)"></span>
+        <input type="text" id="bl-hist-txt" class="meal-log-input" style="flex:1;min-width:0" placeholder="z.B. Kopfhautjucken">
+        <button type="button" onclick="addBlHist()" style="padding:8px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);font-size:12px;cursor:pointer;font-family:inherit;flex:none">+</button>
+      </div>
+
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:14px 0 6px">Erledigt an diesem Tag</div>
+      <div id="blChecks" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px"></div>
+
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:14px 0 6px">Notizen</div>
+      <div style="margin-bottom:8px">🪨 Steinrucksack<br><textarea id="bl-stein" class="meal-log-input" style="width:100%;box-sizing:border-box;min-height:52px" placeholder="Was hat belastet?" onblur="saveBlNotiz(&#39;stein&#39;)"></textarea></div>
+      <div style="margin-bottom:8px">🔄 Tagesrückblick<br><textarea id="bl-journal" class="meal-log-input" style="width:100%;box-sizing:border-box;min-height:52px" placeholder="Wie war der Tag?" onblur="saveBlNotiz(&#39;journal&#39;)"></textarea></div>
+
+      <div style="font-size:10px;color:var(--muted);margin:8px 0 6px;line-height:1.4">Hitzewallungen, Symptome, Haken und Notizen werden sofort gespeichert. Uhrzeiten, Gewicht und Mahlzeiten mit dem Knopf unten.</div>
       <button onclick="saveBacklog()" style="margin-top:4px;padding:8px 16px;border:none;border-radius:8px;background:var(--terra,#C4503A);color:#fff;font-size:13px;cursor:pointer">Speichern</button>
       <div id="blStatus" style="display:none;font-size:12px;color:var(--muted);margin-top:6px">Gespeichert ✓</div>
     </div>
   </div>
 
-  <div class="quote">
-    <div class="q-text" id="quoteText">Der Spaziergang mit Enzo ist auch deine Medizin.</div>
-    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">💪🏻</span><span>Tag für Tag · Schritt für Schritt</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=stoizismus+k%C3%B6rper+disziplin" target="_blank">▶ YT</a></div>
+  
+
+  <div class="card" style="padding:14px 16px;margin-bottom:14px">
+    <div class="tag-karte">
+      <div class="tag-kreis">
+        <svg viewBox="0 0 78 78" aria-hidden="true">
+          <defs>
+            <radialgradient id="sonneG" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#FDF0D5"></stop><stop offset="60%" stop-color="#F2C879"></stop>
+              <stop offset="100%" stop-color="#E0A44E"></stop>
+            </radialgradient>
+          </defs>
+          <g class="sonne-strahlen" stroke="#E8B45F" stroke-width="2.6" stroke-linecap="round" opacity=".8">
+            <line x1="39" y1="3" x2="39" y2="11"></line><line x1="39" y1="67" x2="39" y2="75"></line>
+            <line x1="3" y1="39" x2="11" y2="39"></line><line x1="67" y1="39" x2="75" y2="39"></line>
+            <line x1="13" y1="13" x2="19" y2="19"></line><line x1="59" y1="59" x2="65" y2="65"></line>
+            <line x1="13" y1="65" x2="19" y2="59"></line><line x1="59" y1="19" x2="65" y2="13"></line>
+          </g>
+          <circle cx="39" cy="39" r="26" fill="url(#sonneG)" stroke="#D9973F" stroke-width="1.4"></circle>
+        </svg>
+        <div class="tag-zeit leer" id="zt-ti-wake" style="color:#8A5A1E">--:--</div>
+      </div>
+      <div class="tag-txt">
+        <div class="tag-lbl" style="color:#B07A2E">Aufgestanden</div>
+        <div class="tag-sub">Tippe auf die Sonne und trage ein, wann du wach warst.</div>
+      </div>
+      <input id="ti-wake" type="time" onchange="zfUpd(this);saveTi(&#39;wake&#39;)" oninput="zfUpd(this);onTimeInput(&#39;wake&#39;)" onblur="saveTi(&#39;wake&#39;)" title="Uhrzeit Aufgestanden">
+    </div>
   </div>
 
-  <div class="card" style="padding:12px 14px;margin-bottom:14px">
-    <div class="sec-lbl" style="margin-top:0;gap:8px"><span style="flex:1">🌅 Aufgestanden</span><span class="time-wrap" style="flex-shrink:0"><input class="time-icon-btn" id="ti-wake" type="time" onchange="saveTi('wake')" oninput="onTimeInput('wake')" onblur="saveTi('wake')" placeholder="07:00" title="Uhrzeit Aufgestanden"></span></div>
-  </div>
-
-  <div class="quote" style="margin-bottom:14px">
-    <div class="q-text" id="amorfatiText"></div>
-    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">☀️</span><span>Amor Fati</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=amor+fati+stoizismus" target="_blank">▶ YT</a></div>
-  </div>
+  
 
   <div class="card" style="padding:14px 16px;margin-bottom:14px">
     <!-- Gewicht oben -->
     <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--sand);margin-bottom:8px">
       <span style="font-size:13px;color:var(--mid);min-width:60px;font-weight:600">⚖️ Gewicht</span>
       <div style="display:flex;align-items:center;gap:6px">
-        <button type="button" onclick="stepWeight('weightInput',-0.1)" style="width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">−</button>
+        <button type="button" onclick="stepWeight(&#39;weightInput&#39;,-0.1)" style="width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">−</button>
         <input type="number" inputmode="decimal" step="0.1" min="30" max="200" id="weightInput" class="meal-time-inp" placeholder="54.0" onblur="saveWeight()" style="width:58px;text-align:center;font-weight:700;font-size:15px">
-        <button type="button" onclick="stepWeight('weightInput',0.1)" style="width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">+</button>
+        <button type="button" onclick="stepWeight(&#39;weightInput&#39;,0.1)" style="width:28px;height:28px;border-radius:7px;border:1px solid var(--border);background:var(--bg);font-size:16px;line-height:1;cursor:pointer">+</button>
         <span style="font-size:13px;color:var(--muted)">kg</span>
       </div>
     </div>
@@ -434,7 +510,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
 
   <!-- 2. ERNÄHRUNG + SUPPLEMENTS CHRONOLOGISCH -->
   <div class="card">
-      <div class="sec-lbl" style="margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer" onclick="toggleSuppDetail('s1-detail',this)"><span>☀️ Morgen-Supplements <span id="vitDHint" style="display:inline;font-size:11px;color:#C9A96E;font-weight:600;text-transform:none;letter-spacing:0"></span></span><div style="display:flex;align-items:center;gap:8px"><span id="s1-chevron" style="font-size:13px;color:var(--muted);transition:transform .2s">▾</span><div class="ci" id="ci-s1" onclick="event.stopPropagation();toggle(&#39;s1&#39;)" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div></div></div>
+      <div class="sec-lbl" style="margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer" onclick="toggleSuppDetail(&#39;s1-detail&#39;,this)"><span>☀️ Morgen-Supplements <span id="vitDHint" style="display:inline;font-size:11px;color:#C9A96E;font-weight:600;text-transform:none;letter-spacing:0"></span></span><div style="display:flex;align-items:center;gap:8px"><span id="s1-chevron" style="font-size:13px;color:var(--muted);transition:transform .2s">▾</span><div class="ci" id="ci-s1" onclick="event.stopPropagation();toggle(&#39;s1&#39;)" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div></div></div>
       <div class="cl supp-linked" id="s1-detail" style="display:none;padding-top:6px"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">💧 Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Natriumascorbat</div><div class="mx-r">Immunsystem, Kollagen-Bildung, Antioxidans</div></div><div class="mx"><div class="mx-l">Omega-3</div><div class="mx-r">Entzündungen↓, Herz, Gehirn, Haut</div></div><div class="mx"><div class="mx-l">Vit B-Komplex</div><div class="mx-r">Energie, Nerven — B12 genetisch niedrig!</div></div><div class="mx"><div class="mx-l">L-Lysin</div><div class="mx-r">Kollagen-Synthese, Immunsystem</div></div><div class="mx"><div class="mx-l">L-Glutamin</div><div class="mx-r">Darmschleimhaut, Muskeln, Immunsystem</div></div><div class="mx"><div class="mx-l">CoQ10 200mg</div><div class="mx-r">Zellenergie, Herz, Anti-Aging</div></div><div class="mx"><div class="mx-l">Selen 200mcg</div><div class="mx-r">Schilddrüse, Immunsystem, Antioxidans</div></div><div class="mx"><div class="mx-l">Phosphatidylserin 1 Kapsel</div><div class="mx-r">Gehirn, Gedächtnis, Cortisol↓, Brain Fog↓</div></div></div>
   </div>
 
@@ -443,51 +519,38 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
   </div>
 
   <div class="card">
-      <div class="sec-lbl" style="margin-top:6px;cursor:pointer" onclick="toggleMealDetail('meal-f1-detail',this)"><span style="flex:1">☀️ Frühstück</span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><input class="time-icon-btn" id="ti-frueh" type="time" onchange="saveTi('frueh')" oninput="onTimeInput('frueh')" onblur="saveTi('frueh')" placeholder="08:00" title="Uhrzeit Frühstück"></span><span class="meal-expand-chevron" id="meal-f1-chevron">▾</span></div>
+      <div class="sec-lbl" style="margin-top:6px;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f1-detail&#39;,this)"><span style="flex:1">☀️ Frühstück</span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><span class="zf"><span class="zf-txt leer" id="zt-ti-frueh">--:--</span><input id="ti-frueh" type="time" onchange="zfUpd(this);saveTi(&#39;frueh&#39;)" oninput="zfUpd(this);onTimeInput(&#39;frueh&#39;)" onblur="saveTi(&#39;frueh&#39;)" title="Uhrzeit Frühstück"></span></span><span class="meal-expand-chevron" id="meal-f1-chevron">▾</span></div>
       <div id="meal-f1-detail" style="display:none">
         <div class="ci" id="ci-f1" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Müsli-Mix + Walnüsse + Hanfsamen</div><div class="mx-r">Ballaststoffe, Protein, Omega-3</div></div><div class="mx"><div class="mx-l">Weizenkeime + Kollagen</div><div class="mx-r">Vit E, Zink, Kollagen-Bausteine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Zimt Kardamom Nelken Vanille</div></div></div>
       </div>
-      <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f1" placeholder="Was hast du gefrühstückt?" oninput="onMealInput('ci-f1','Frühstück')" onblur="saveMealLog('ci-f1','Frühstück')"></textarea><button class="meal-log-mic" onclick="startVoiceInput('log-ci-f1',this)" title="Spracheingabe">🎤</button></div>
+      <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f1" placeholder="Was hast du gefrühstückt?" oninput="onMealInput(&#39;ci-f1&#39;,&#39;Frühstück&#39;)" onblur="saveMealLog(&#39;ci-f1&#39;,&#39;Frühstück&#39;)"></textarea><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f1&#39;,this)" title="Spracheingabe">🎤</button></div>
   </div>
 
-  <div class="quote" style="margin-bottom:10px">
-    <div class="q-text" id="pauseText"></div>
-    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">⏸️</span><span>Pause</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=stoizismus+pause+vor+reaktion" target="_blank">▶ YT</a></div>
-  </div>
+  
 
-  <div class="quote" style="margin-bottom:14px">
-    <div class="q-text" id="stilleText"></div>
-    <div class="q-attr" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:0">
-      <span style="display:inline-flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🧘</span><span>Stille · 5 Min. täglich</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=stille+meditation+5+minuten" target="_blank">▶ YT</a></span>
-      <div class="ci" id="ci-stille" onclick="toggle('stille')" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
-    </div>
-  </div>
-
+  
 
   <div class="card" id="mittagsBox">
-      <div class="sec-lbl" style="margin-top:0;cursor:pointer" onclick="toggleMealDetail('meal-f2-detail',this)"><span style="flex:1">🌞 Mittagessen</span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><input class="time-icon-btn" id="ti-noon" type="time" onchange="saveTi('noon')" oninput="onTimeInput('noon')" onblur="saveTi('noon')" placeholder="12:00" title="Uhrzeit Mittagessen"></span><span class="meal-expand-chevron" id="meal-f2-chevron">▾</span></div>
+      <div class="sec-lbl" style="margin-top:0;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f2-detail&#39;,this)"><span style="flex:1">🌞 Mittagessen</span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><span class="zf"><span class="zf-txt leer" id="zt-ti-noon">--:--</span><input id="ti-noon" type="time" onchange="zfUpd(this);saveTi(&#39;noon&#39;)" oninput="zfUpd(this);onTimeInput(&#39;noon&#39;)" onblur="saveTi(&#39;noon&#39;)" title="Uhrzeit Mittagessen"></span></span><span class="meal-expand-chevron" id="meal-f2-chevron">▾</span></div>
       <div id="meal-f2-detail" style="display:none">
         <div class="ci" id="ci-f2" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Protein + 2 Hände Gemüse + 1 TL Leinöl</div><div class="mx-r">Muskelaufbau, Omega-3, Vitamine</div></div><div class="mx-r" style="color:#8B7355;display:block;padding:3px 0">🌿 Kurkuma Curry Paprika Pfeffer Salz</div><div class="mx warn"><div class="mx-l" style="font-size:13px;color:#C4503A;font-weight:600">⚠️ Keine Fast Carbs!<br><span style="color:#C4503A;font-size:13px">Glycation: zerstört Kollagen, Energie↓</span></div></div></div></div>
       </div>
-      <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f2" placeholder="Was hast du zu Mittag gegessen?" oninput="onMealInput('ci-f2','Mittagessen')" onblur="saveMealLog('ci-f2','Mittagessen')"></textarea><button class="meal-log-mic" onclick="startVoiceInput('log-ci-f2',this)" title="Spracheingabe">🎤</button></div>
+      <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f2" placeholder="Was hast du zu Mittag gegessen?" oninput="onMealInput(&#39;ci-f2&#39;,&#39;Mittagessen&#39;)" onblur="saveMealLog(&#39;ci-f2&#39;,&#39;Mittagessen&#39;)"></textarea><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f2&#39;,this)" title="Spracheingabe">🎤</button></div>
   </div>
 
   <div class="card" style="border-left:4px solid var(--g);background:rgba(201,169,110,.06)">
     <div class="ci" id="ci-w3" onclick="toggle(&#39;w3&#39;)" style="border-bottom:none;padding:0"><div class="cl" style="flex:1;font-size:13px">🐕 Mittags-Spaziergang</div><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
   </div>
 
-  <div class="quote" style="margin-bottom:14px">
-    <div class="q-text" id="energieText"></div>
-    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🔥</span><span>Energie</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=energie+sch%C3%BCtzen+grenzen+setzen" target="_blank">▶ YT</a></div>
-  </div>
+  
 
   <!-- Tagesworkouts Mo/Mi/Fr (hidden, shown by JS) -->
   <div class="card" style="padding:10px 16px;margin-bottom:10px">
     <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Training anzeigen</div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button type="button" id="dwSwBtn-1" onclick="showDwManual('1')" style="flex:1;min-width:90px;padding:8px 4px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);font-size:12px;cursor:pointer">Kraft A · Mo</button>
-      <button type="button" id="dwSwBtn-3" onclick="showDwManual('3')" style="flex:1;min-width:90px;padding:8px 4px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);font-size:12px;cursor:pointer">Kraft B · Mi</button>
-      <button type="button" id="dwSwBtn-5" onclick="showDwManual('5')" style="flex:1;min-width:90px;padding:8px 4px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);font-size:12px;cursor:pointer">Kraft C · Fr</button>
+      <button type="button" id="dwSwBtn-1" onclick="showDwManual(&#39;1&#39;)" style="flex: 1 1 0%; min-width: 90px; padding: 8px 4px; border-color: var(--border); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 8px; background: var(--bg); font-size: 12px; cursor: pointer; color: var(--t);">Kraft A · Mo</button>
+      <button type="button" id="dwSwBtn-3" onclick="showDwManual(&#39;3&#39;)" style="flex: 1 1 0%; min-width: 90px; padding: 8px 4px; border-color: var(--border); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 8px; background: var(--bg); font-size: 12px; cursor: pointer; color: var(--t);">Kraft B · Mi</button>
+      <button type="button" id="dwSwBtn-5" onclick="showDwManual(&#39;5&#39;)" style="flex: 1 1 0%; min-width: 90px; padding: 8px 4px; border-color: var(--gd); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 8px; background: var(--gd); font-size: 12px; cursor: pointer; color: rgb(255, 255, 255);">Kraft C · Fr (heute)</button>
     </div>
   </div>
   <div class="card dw" id="dw-1" style="display: none;">
@@ -497,7 +560,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
     <div class="ci has-sets" id="ci-d1-ex1"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d1-ex1" data-set="0"></div><div class="set-chk" data-ex="d1-ex1" data-set="1"></div><div class="set-chk" data-ex="d1-ex1" data-set="2"></div></div><div class="cl">Rudern vorgebeugt mit Kurzhanteln<span class="sets">3 x 15-18</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=bent+over+row+dumbbell+exercise" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d1-ex2"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d1-ex2" data-set="0"></div><div class="set-chk" data-ex="d1-ex2" data-set="1"></div><div class="set-chk" data-ex="d1-ex2" data-set="2"></div></div><div class="cl">Schulterpress mit Kurzhanteln<span class="sets">3 x 15</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=dumbbell+shoulder+press+seated" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d1-ex3"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d1-ex3" data-set="0"></div><div class="set-chk" data-ex="d1-ex3" data-set="1"></div><div class="set-chk" data-ex="d1-ex3" data-set="2"></div></div><div class="cl">Trizeps-Dips am Stuhl<span class="sets">3 x 15</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=tricep+dips+chair+exercise" target="_blank">▶ YT</a></span></div></div>
-    <div class="ci has-sets" id="ci-d1-ex4"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d1-ex4" data-set="0"></div><div class="set-chk" data-ex="d1-ex4" data-set="1"></div><div class="set-chk" data-ex="d1-ex4" data-set="2"></div></div><div class="cl">Plank halten<span class="ex-timer-line"><button type="button" class="ex-timer-btn" id="timer-d1ex4" onclick="startExTimer('d1ex4',50)">⏱ 50s</button></span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=plank+core+exercise+tutorial" target="_blank">▶ YT</a></span></div></div>
+    <div class="ci has-sets" id="ci-d1-ex4"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d1-ex4" data-set="0"></div><div class="set-chk" data-ex="d1-ex4" data-set="1"></div><div class="set-chk" data-ex="d1-ex4" data-set="2"></div></div><div class="cl">Plank halten<span class="ex-timer-line"><button type="button" class="ex-timer-btn" id="timer-d1ex4" onclick="startExTimer(&#39;d1ex4&#39;,50)">⏱ 50s</button></span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=plank+core+exercise+tutorial" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d1-ex5"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d1-ex5" data-set="0"></div><div class="set-chk" data-ex="d1-ex5" data-set="1"></div><div class="set-chk" data-ex="d1-ex5" data-set="2"></div></div><div class="cl">Dead Bug<span class="sets">3 x 20/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=dead+bug+exercise+core+back" target="_blank">▶ YT</a></span></div></div>
     <div class="dw-move" id="dwmove-1" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)">
       <div class="dw-move-toggle" onclick="toggleMovePicker(&#39;1&#39;)" style="font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;display:inline-block">📅 Auf anderen Tag verschieben</div>
@@ -523,7 +586,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
     <div class="ci has-sets" id="ci-d3-ex3"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex3" data-set="0"></div><div class="set-chk" data-ex="d3-ex3" data-set="1"></div><div class="set-chk" data-ex="d3-ex3" data-set="2"></div></div><div class="cl">Fire Hydrant (Vierfüßler)<span class="sets">3 x 20/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=fire+hydrant+exercise+glutes" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d3-ex4"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex4" data-set="0"></div><div class="set-chk" data-ex="d3-ex4" data-set="1"></div><div class="set-chk" data-ex="d3-ex4" data-set="2"></div></div><div class="cl">Seitliches Beinheben liegend<span class="sets">3 x 20/Seite</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=side+lying+leg+raise+exercise" target="_blank">▶ YT</a></span></div></div>
     <div class="ci has-sets" id="ci-d3-ex5"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex5" data-set="0"></div><div class="set-chk" data-ex="d3-ex5" data-set="1"></div><div class="set-chk" data-ex="d3-ex5" data-set="2"></div></div><div class="cl">Wadenheben an Treppenstufe<span class="sets">3 x 30</span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=calf+raise+exercise+tutorial" target="_blank">▶ YT</a></span></div></div>
-    <div class="ci has-sets" id="ci-d3-ex6"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex6" data-set="0"></div><div class="set-chk" data-ex="d3-ex6" data-set="1"></div><div class="set-chk" data-ex="d3-ex6" data-set="2"></div></div><div class="cl">Side Plank<span class="ex-timer-line"><button type="button" class="ex-timer-btn" id="timer-d3ex6" onclick="startExTimer('d3ex6',40)">⏱ 40s</button></span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=side+plank+exercise+tutorial" target="_blank">▶ YT</a></span></div></div>
+    <div class="ci has-sets" id="ci-d3-ex6"><div class="cb"><svg class="ck" width="13" height="10" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><div class="set-checks"><div class="set-chk" data-ex="d3-ex6" data-set="0"></div><div class="set-chk" data-ex="d3-ex6" data-set="1"></div><div class="set-chk" data-ex="d3-ex6" data-set="2"></div></div><div class="cl">Side Plank<span class="ex-timer-line"><button type="button" class="ex-timer-btn" id="timer-d3ex6" onclick="startExTimer(&#39;d3ex6&#39;,40)">⏱ 40s</button></span><span class="ex-yt-line"><a class="yt-sm" href="https://www.youtube.com/results?search_query=side+plank+exercise+tutorial" target="_blank">▶ YT</a></span></div></div>
     <div class="dw-move" id="dwmove-3" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)">
       <div class="dw-move-toggle" onclick="toggleMovePicker(&#39;3&#39;)" style="font-size:12px;color:var(--muted);text-decoration:underline;cursor:pointer;display:inline-block">📅 Auf anderen Tag verschieben</div>
       <div class="dw-move-picker" id="dwpicker-3" style="display:none;gap:6px;margin-top:8px;flex-wrap:wrap">
@@ -564,52 +627,49 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
   </div>
 
   <div class="card">
-    <div class="sec-lbl" style="margin-top:8px;cursor:pointer" onclick="toggleMealDetail('meal-f4-detail',this)"><span style="flex:1">🌙 Abendessen</span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><input class="time-icon-btn" id="ti-eve" type="time" onchange="saveTi('eve')" oninput="onTimeInput('eve')" onblur="saveTi('eve')" placeholder="19:30" title="Uhrzeit Abendessen"></span><span class="meal-expand-chevron" id="meal-f4-chevron">▾</span></div>
+    <div class="sec-lbl" style="margin-top:8px;cursor:pointer" onclick="toggleMealDetail(&#39;meal-f4-detail&#39;,this)"><span style="flex:1">🌙 Abendessen</span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><span class="zf"><span class="zf-txt leer" id="zt-ti-eve">--:--</span><input id="ti-eve" type="time" onchange="zfUpd(this);saveTi(&#39;eve&#39;)" oninput="zfUpd(this);onTimeInput(&#39;eve&#39;)" onblur="saveTi(&#39;eve&#39;)" title="Uhrzeit Abendessen"></span></span><span class="meal-expand-chevron" id="meal-f4-chevron">▾</span></div>
     <div id="meal-f4-detail" style="display:none">
       <div class="ci" id="ci-f4" style="cursor:default"><div class="cl"><div class="mx"><div class="mx-l">Protein + viel Gemüse</div><div class="mx-r">Muskelregeneration, Vitamine</div></div><div class="mx"><div class="mx-l"><em>alternativ:</em> Nüsse + Buttermilch oder hartgekochte Eier</div><div class="mx-r">Protein, gesunde Fette</div></div><div class="mx warn"><div class="mx-l" style="font-size:13px;color:#C4503A;font-weight:600">⚠️ Keine Carbs abends! <span style="color:#C4503A;font-size:13px">Fettspeicherung↑, Schlaf↓</span></div></div></div></div>
     </div>
-    <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f4" placeholder="Was hast du zu Abend gegessen?" oninput="onMealInput('ci-f4','Abendessen')" onblur="saveMealLog('ci-f4','Abendessen')"></textarea><button class="meal-log-mic" onclick="startVoiceInput('log-ci-f4',this)" title="Spracheingabe">🎤</button></div>
+    <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f4" placeholder="Was hast du zu Abend gegessen?" oninput="onMealInput(&#39;ci-f4&#39;,&#39;Abendessen&#39;)" onblur="saveMealLog(&#39;ci-f4&#39;,&#39;Abendessen&#39;)"></textarea><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f4&#39;,this)" title="Spracheingabe">🎤</button></div>
   </div>
 
   <div class="card" style="border-left:4px solid var(--g);background:rgba(201,169,110,.06)">
     <div class="ci" id="ci-w2" onclick="toggle(&#39;w2&#39;)" style="border-bottom:none;padding:0"><div class="cl" style="flex:1;font-size:13px">🐕 Abend-Spaziergang mit Enzo</div><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div>
   </div>
 
-  <div class="quote">
-    <div class="q-text" id="meerText"></div>
-    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🌊</span><span>Meer</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=stoizismus+gelassenheit+gef%C3%BChle+beobachten" target="_blank">▶ YT</a></div>
-  </div>
+  
 
   <div class="card">
-    <div class="sec-lbl" style="margin-top:0"><span style="flex:1">🍽️ 4. Mahlzeit <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(falls gegessen)</span></span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><input class="time-icon-btn" id="ti-zwischen" type="time" onchange="saveTi('zwischen')" oninput="onTimeInput('zwischen')" onblur="saveTi('zwischen')" placeholder="16:00" title="Uhrzeit 4. Mahlzeit"></span></div>
+    <div class="sec-lbl" style="margin-top:0"><span style="flex:1">🍽️ 4. Mahlzeit <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(falls gegessen)</span></span><span class="time-wrap" style="margin-left:0" onclick="event.stopPropagation()"><span class="zf"><span class="zf-txt leer" id="zt-ti-zwischen">--:--</span><input id="ti-zwischen" type="time" onchange="zfUpd(this);saveTi(&#39;zwischen&#39;)" oninput="zfUpd(this);onTimeInput(&#39;zwischen&#39;)" onblur="saveTi(&#39;zwischen&#39;)" title="Uhrzeit 4. Mahlzeit"></span></span></div>
     <div class="meal-log"><textarea class="meal-log-input" id="log-ci-f3" placeholder="Was hast du zusätzlich gegessen?" oninput="onMealInput(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)" onblur="saveMealLog(&#39;ci-f3&#39;,&#39;Zwischenmahlzeit&#39;)"></textarea><button class="meal-log-mic" onclick="startVoiceInput(&#39;log-ci-f3&#39;,this)" title="Spracheingabe">🎤</button></div>
   </div>
 
   <div class="card">
-    <div class="sec-lbl" style="margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer" onclick="toggleSuppDetail('s2-detail',this)"><span>🌛 Abend-Supplements</span><div style="display:flex;align-items:center;gap:8px"><span id="s2-chevron" style="font-size:13px;color:var(--muted);transition:transform .2s">▾</span><div class="ci" id="ci-s2" onclick="event.stopPropagation();toggle(&#39;s2&#39;)" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div></div></div>
+    <div class="sec-lbl" style="margin-top:0;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer" onclick="toggleSuppDetail(&#39;s2-detail&#39;,this)"><span>🌛 Abend-Supplements</span><div style="display:flex;align-items:center;gap:8px"><span id="s2-chevron" style="font-size:13px;color:var(--muted);transition:transform .2s">▾</span><div class="ci" id="ci-s2" onclick="event.stopPropagation();toggle(&#39;s2&#39;)" style="padding:0;border-bottom:none;flex-shrink:0"><div class="cb" style="width:20px;height:20px;margin-top:0"><svg class="ck" width="11" height="8" viewBox="0 0 13 10"><polyline points="1.5,5 5,8.5 11.5,1.5" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div></div></div></div>
     <div class="cl supp-linked" id="s2-detail" style="display:none;padding-top:6px"><div class="mx-l" style="color:#6A7FBF;font-size:13px;font-weight:600">💧 Magensäure+, Nährstoffe+, Kollagen-Synthese, Entgiftung</div><div class="mx"><div class="mx-l">Utrogestan 1 Kapsel</div><div class="mx-r">Hormonhaushalt, Schlaf, Postmenopause</div></div><div class="mx"><div class="mx-l">Magnesium Verla</div><div class="mx-r">Muskelentspannung, Schlaf, Nerven</div></div><div class="mx"><div class="mx-l">Glycin</div><div class="mx-r">Kollagen-Baustein, Schlafqualität↑</div></div></div>
   </div>
 
   <div class="card" style="border-left:4px solid var(--g)">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
       <div style="font-size:16px">🍷</div>
-      <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:11px;font-family:'Jost',sans-serif;font-weight:700;color:var(--gd)">Alkohol</div>
+      <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:11px;font-family:&#39;Jost&#39;,sans-serif;font-weight:700;color:var(--gd)">Alkohol</div>
     </div>
     <div style="font-size:11px;color:var(--muted);margin-bottom:14px">Start 5.7.2026</div>
     <div style="display:flex;gap:10px;margin-bottom:14px">
       <div style="flex:1;text-align:center;background:rgba(201,169,110,.12);border-radius:10px;padding:10px 4px">
-        <div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:22px;color:var(--gd)" id="alcFreeNum">0</div>
+        <div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:22px;color:var(--gd)" id="alcFreeNum">34</div>
         <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)">Alkoholfrei</div>
       </div>
       <div style="flex:1;text-align:center;background:rgba(201,169,110,.12);border-radius:10px;padding:10px 4px">
-        <div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:22px;color:var(--gd)" id="alcTotalNum">0</div>
+        <div style="font-family:&#39;Cormorant Garamond&#39;,serif;font-size:22px;color:var(--gd)" id="alcTotalNum">34</div>
         <div style="font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)">Tage betrachtet</div>
       </div>
     </div>
     <div style="display:flex;gap:6px;margin-bottom:8px">
       <input type="date" id="alcSlipDate" style="border:1.5px solid var(--border);border-radius:8px;padding:6px 8px;font-size:12px;color:var(--mid);font-family:inherit">
       <input type="text" id="alcSlipNote" placeholder="Was hast du getrunken?" class="meal-log-input" style="flex:1">
-      <button type="button" class="meal-log-mic" onclick="startVoiceInput('alcSlipNote',this)" title="Spracheingabe">🎤</button>
+      <button type="button" class="meal-log-mic" onclick="startVoiceInput(&#39;alcSlipNote&#39;,this)" title="Spracheingabe">🎤</button>
     </div>
     <button class="btn" id="alcTodayBtn" onclick="addAlcSlip()" style="width: 100%; justify-content: center; background: linear-gradient(135deg,var(--gd),var(--g)); opacity: 1;">Eintragen</button>
   </div>
@@ -618,41 +678,41 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
     <div class="card" style="border-left:4px solid var(--t)">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
         <div style="font-size:16px">🌡️</div>
-        <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:11px;flex:1;font-family:'Jost',sans-serif;font-weight:700;color:var(--t)">Hitzewallungen</div>
+        <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:11px;flex:1;font-family:&#39;Jost&#39;,sans-serif;font-weight:700;color:var(--t)">Hitzewallungen</div>
         <div style="font-size:11px;color:var(--muted)" id="hitzeCount"></div>
       </div>
-      <div id="hitzeList" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px"></div>
+      <div id="hitzeList" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px"><div class="dualbox-empty">Noch keine erfasst.</div></div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
         <button type="button" onclick="addHitzeNow()" class="btn hitze-pulse" style="padding:12px 22px;font-size:13px;font-weight:700;background:linear-gradient(135deg,var(--t),#D89478)">🌡️ Jetzt</button>
-        <input class="time-icon-btn" type="time" id="hitzeManualTime" title="Uhrzeit Hitzewallung">
+        <span class="zf"><span class="zf-txt leer" id="zt-hitzeManualTime">--:--</span><input type="time" id="hitzeManualTime" title="Uhrzeit Hitzewallung" onchange="zfUpd(this)" oninput="zfUpd(this)"></span>
         <button type="button" onclick="addHitzeManual()" style="padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);font-size:12px;cursor:pointer;font-family:inherit">+ Uhrzeit</button>
       </div>
     </div>
     <div class="card" style="border-left:4px solid var(--mid)">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
         <div style="font-size:16px">🤧</div>
-        <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:11px;flex:1;font-family:'Jost',sans-serif;font-weight:700;color:var(--mid)">Histamin-Symptome</div>
+        <div class="card-title" style="margin-bottom:0;text-transform:uppercase;letter-spacing:1px;font-size:11px;flex:1;font-family:&#39;Jost&#39;,sans-serif;font-weight:700;color:var(--mid)">Histamin-Symptome</div>
         <div style="font-size:11px;color:var(--muted)" id="histCount"></div>
       </div>
-      <div id="histList" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px"></div>
+      <div id="histList" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px"><div class="dualbox-empty">Noch keine erfasst.</div></div>
       <div style="display:flex;gap:5px;margin-bottom:8px">
-        <input class="time-icon-btn" type="time" id="histManualTime" title="Uhrzeit Symptom">
+        <span class="zf"><span class="zf-txt leer" id="zt-histManualTime">--:--</span><input type="time" id="histManualTime" title="Uhrzeit Symptom" onchange="zfUpd(this)" oninput="zfUpd(this)"></span>
         <input type="text" id="histSymptomInput" placeholder="z.B. Kopfhautjucken" class="meal-log-input" style="flex:1">
-        <button type="button" class="meal-log-mic" onclick="startVoiceInput('histSymptomInput',this)">🎤</button>
+        <button type="button" class="meal-log-mic" onclick="startVoiceInput(&#39;histSymptomInput&#39;,this)">🎤</button>
       </div>
       <button type="button" onclick="addHistEntry()" class="btn" style="width:100%;justify-content:center;padding:9px 14px;font-size:11px;background:linear-gradient(135deg,var(--mid),var(--muted))">🤧 Eintragen</button>
     </div>
   </div>
 
   <div class="quote" style="margin-top:14px;margin-bottom:0;border-radius:14px 14px 0 0">
-    <div class="q-text" id="steinText"></div>
-    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🪨</span><span>Aufschreiben & Loslassen</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=journaling+loslassen+belastung+aufschreiben" target="_blank">▶ YT</a></div>
+    <div class="q-text" id="steinText">Jedes Blatt ist wie ein Stein, den ich in den Fluss werfe.</div>
+    <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🪨</span><span>Aufschreiben &amp; Loslassen</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=journaling+loslassen+belastung+aufschreiben" target="_blank">▶ YT</a></div>
   </div>
   <div class="card" style="padding:14px 16px;border-radius:0 0 14px 14px;margin-top:0">
     <textarea id="steinInput" placeholder="Steinrucksack leeren..."></textarea>
     <div style="margin-top:10px;display:flex;align-items:center;gap:10px">
       <button class="btn" onclick="saveStein()">Ablegen</button>
-      <button type="button" class="meal-log-mic" onclick="startVoiceInput('steinInput',this)" title="Spracheingabe">🎤</button>
+      <button type="button" class="meal-log-mic" onclick="startVoiceInput(&#39;steinInput&#39;,this)" title="Spracheingabe">🎤</button>
       <span id="steinMsg" style="font-size:13px;color:var(--sage);display:none">Abgelegt.</span>
     </div>
   </div>
@@ -660,7 +720,7 @@ input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-
   <!-- JOURNAL -->
   <div style="margin-top:8px"></div>
   <div class="quote" style="margin-bottom:0;border-radius:14px 14px 0 0">
-    <div class="q-text" id="resetText"></div>
+    <div class="q-text" id="resetText">Der Geist braucht ständige Reinigung, die verhindert, dass meine Fehler von gestern mich morgen verfolgen. Starte den Geist täglich neu.</div>
     <div class="q-attr" style="display:flex;align-items:center;gap:6px"><span style="font-size:15px;opacity:1;letter-spacing:0;text-transform:none">🔄</span><span>Tagesrückblick | Reset</span><a class="yt-sm" href="https://www.youtube.com/results?search_query=t%C3%A4glicher+reset+reflektion+stoizismus" target="_blank">▶ YT</a></div>
   </div>
   <div class="j-card" style="border-radius:0 0 14px 14px;margin-top:0">
@@ -672,14 +732,35 @@ Habe ich gewonnen oder verloren?
 Was habe ich gelernt?"></textarea>
       <div style="margin-top:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
         <button class="btn" onclick="saveJ()">Eintrag speichern</button>
-        <button type="button" class="meal-log-mic" onclick="startVoiceInput('jInput',this)" title="Spracheingabe">🎤</button>
+        <button type="button" class="meal-log-mic" onclick="startVoiceInput(&#39;jInput&#39;,this)" title="Spracheingabe">🎤</button>
         <span id="jMsg" style="font-size:13px;color:var(--sage);display:none">Gespeichert!</span>
       </div>
     </div>
   </div>
 
   <div class="card" style="padding:14px 16px;margin-top:14px">
-    <div class="sec-lbl" style="margin-top:0;gap:8px"><span style="flex:1">🌙 Schlafen gegangen</span><span class="time-wrap" style="flex-shrink:0"><input class="time-icon-btn" id="ti-sleep" type="time" onchange="saveTi('sleep')" oninput="onTimeInput('sleep')" onblur="saveTi('sleep')" placeholder="22:30" title="Uhrzeit Schlafen"></span></div>
+    <div class="tag-karte">
+      <div class="tag-kreis">
+        <svg viewBox="0 0 78 78" aria-hidden="true">
+          <defs>
+            <radialgradient id="nachtG" cx="50%" cy="45%" r="55%">
+              <stop offset="0%" stop-color="#4A4066"></stop><stop offset="100%" stop-color="#2C2418"></stop>
+            </radialgradient>
+          </defs>
+          <circle cx="39" cy="39" r="30" fill="url(#nachtG)" stroke="#6B5E8A" stroke-width="1.2"></circle>
+          <path d="M54 18a9 9 0 1 0 4.8 9 7.3 7.3 0 0 1-4.8-9z" fill="#E8D5B0" opacity=".95"></path>
+          <circle class="stern" cx="19" cy="20" r="1.7" fill="#E8D5B0"></circle>
+          <circle class="stern" cx="24" cy="60" r="1.3" fill="#E8D5B0"></circle>
+          <circle class="stern" cx="57" cy="59" r="1.1" fill="#E8D5B0"></circle>
+        </svg>
+        <div class="tag-zeit leer" id="zt-ti-sleep" style="color:#F0E4C8;text-shadow:0 1px 3px rgba(0,0,0,.6)">--:--</div>
+      </div>
+      <div class="tag-txt">
+        <div class="tag-lbl" style="color:#6B5E8A">Schlafen gegangen 🐑</div>
+        <div class="tag-sub">Tippe auf den Mond und trage ein, wann du im Bett warst.</div>
+      </div>
+      <input id="ti-sleep" type="time" onchange="zfUpd(this);saveTi(&#39;sleep&#39;)" oninput="zfUpd(this);onTimeInput(&#39;sleep&#39;)" onblur="saveTi(&#39;sleep&#39;)" title="Uhrzeit Schlafen">
+    </div>
   </div>
 
   <div style="text-align:center;margin-top:20px">
@@ -691,7 +772,7 @@ Was habe ich gelernt?"></textarea>
 <!-- ===== WOCHE ===== -->
 <div class="panel" id="tab-woche">
   <div class="sh first"><h2>Deine <em>Woche</em></h2><div class="sh-line"></div></div>
-  <div class="wg" id="weekGrid"><div class="wd"><div class="wd-l">So</div><div class="wd-n">5</div><div class="wd-t">Ruhe</div></div><div class="wd"><div class="wd-l">Mo</div><div class="wd-n">6</div><div class="wd-t">Kraft A</div></div><div class="wd"><div class="wd-l">Di</div><div class="wd-n">7</div><div class="wd-t">Aktiv</div></div><div class="wd"><div class="wd-l">Mi</div><div class="wd-n">8</div><div class="wd-t">Kraft B</div></div><div class="wd"><div class="wd-l">Do</div><div class="wd-n">9</div><div class="wd-t">Aktiv</div></div><div class="wd today"><div class="wd-l">Fr</div><div class="wd-n">10</div><div class="wd-t">Kraft C</div></div><div class="wd"><div class="wd-l">Sa</div><div class="wd-n">11</div><div class="wd-t">VitD+Aktiv</div></div></div>
+  <div class="wg" id="weekGrid"><div class="wd"><div class="wd-l">So</div><div class="wd-n">2</div><div class="wd-t">Ruhe</div></div><div class="wd"><div class="wd-l">Mo</div><div class="wd-n">3</div><div class="wd-t">Kraft A</div></div><div class="wd"><div class="wd-l">Di</div><div class="wd-n">4</div><div class="wd-t">Aktiv</div></div><div class="wd"><div class="wd-l">Mi</div><div class="wd-n">5</div><div class="wd-t">Kraft B</div></div><div class="wd"><div class="wd-l">Do</div><div class="wd-n">6</div><div class="wd-t">Aktiv</div></div><div class="wd today"><div class="wd-l">Fr</div><div class="wd-n">7</div><div class="wd-t">Kraft C</div></div><div class="wd"><div class="wd-l">Sa</div><div class="wd-n">8</div><div class="wd-t">VitD+Aktiv</div></div></div>
   <div class="alert">Dein Prinzip: 3x Krafttraining a 30-40 Min - die Hundespaziergänge sind deine Regeneration!</div>
   <div class="sh"><h2>Trainingsplan <em>kompakt</em></h2><div class="sh-line"></div></div>
   <div class="wb">
@@ -776,28 +857,26 @@ Was habe ich gelernt?"></textarea>
     <div id="pastEntries"></div>
   </div>
 
-  <div class="sh"><h2>Ger&auml;te-<em>Abgleich</em></h2><div class="sh-line"></div></div>
+  <div class="sh"><h2>Geräte-<em>Abgleich</em></h2><div class="sh-line"></div></div>
 
   <div class="card">
     <div style="font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:12px">
-      <strong>Automatisch auf allen Ger&auml;ten</strong><br>
-      <span style="font-size:12px;color:var(--muted)">Handy, Tablet und Computer gleichen &uuml;ber deinen eigenen Webspace ab. Auf jedem Ger&auml;t einmal dieselbe Adresse und denselben Code eintragen &mdash; danach l&auml;uft es von selbst.</span>
+      <strong>Automatisch auf allen Geräten</strong><br>
+      <span style="font-size:12px;color:var(--muted)">Handy, Tablet und Computer gleichen über deinen eigenen Webspace ab. Auf jedem Gerät einmal dieselbe Adresse und denselben Code eintragen — danach läuft es von selbst.</span>
     </div>
 
     <div style="margin-bottom:10px">
       <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gd);margin-bottom:4px">Adresse der Sync-Datei</div>
-      <input type="url" id="syncUrl" class="meal-log-input" style="width:100%;font-size:12px"
-             placeholder="https://www.fmconsult.at/fit4life/fit4life_sync.php">
+      <input type="url" id="syncUrl" class="meal-log-input" style="width:100%;font-size:12px" placeholder="https://www.fmconsult.at/fit4life/fit4life_sync.php">
     </div>
 
     <div style="margin-bottom:10px">
       <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gd);margin-bottom:4px">Sync-Code</div>
       <div style="display:flex;gap:6px;align-items:center">
-        <input type="text" id="syncCode" class="meal-log-input" style="flex:1;min-width:0;font-size:12px"
-               placeholder="mindestens 12 Zeichen" autocomplete="off" spellcheck="false">
-        <button type="button" onclick="syncCodeVorschlag()" class="meal-log-mic" title="Code erzeugen">&#127922;</button>
+        <input type="text" id="syncCode" class="meal-log-input" style="flex:1;min-width:0;font-size:12px" placeholder="mindestens 12 Zeichen" autocomplete="off" spellcheck="false">
+        <button type="button" onclick="syncCodeVorschlag()" class="meal-log-mic" title="Code erzeugen">🎲</button>
       </div>
-      <div style="font-size:10px;color:var(--muted);margin-top:4px;line-height:1.4">Der Code ist gleichzeitig dein Passwort. Auf allen drei Ger&auml;ten identisch eintragen.</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:4px;line-height:1.4">Der Code ist gleichzeitig dein Passwort. Auf allen drei Geräten identisch eintragen.</div>
     </div>
 
     <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -805,7 +884,7 @@ Was habe ich gelernt?"></textarea>
       <button class="btn" onclick="syncNow(true)" style="flex:1;justify-content:center;font-size:12px;background:linear-gradient(135deg,var(--sage),#A6B896)">Jetzt abgleichen</button>
     </div>
 
-    <div id="syncState" style="margin-top:10px;font-size:11px;color:var(--muted);text-align:center;line-height:1.5">&nbsp;</div>
+    <div id="syncState" style="margin-top: 10px; font-size: 11px; color: var(--sage); text-align: center; line-height: 1.5;">Aktuell · 07.08. 17:23</div>
 
     <div style="margin-top:10px;text-align:center">
       <button type="button" onclick="syncTrennen()" style="background:none;border:none;color:var(--muted);font-size:11px;text-decoration:underline;cursor:pointer;font-family:inherit">Verbindung trennen</button>
@@ -815,7 +894,7 @@ Was habe ich gelernt?"></textarea>
   <div class="card">
     <div style="font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:12px">
       <strong>Sicherungskopie</strong><br>
-      <span style="font-size:12px;color:var(--muted)">Unabh&auml;ngig vom Abgleich &mdash; f&uuml;r ein Backup auf der Festplatte oder zum Umzug auf ein neues Ger&auml;t.</span>
+      <span style="font-size:12px;color:var(--muted)">Unabhängig vom Abgleich — für ein Backup auf der Festplatte oder zum Umzug auf ein neues Gerät.</span>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
       <div style="min-width:0">
@@ -957,12 +1036,245 @@ var RESET_QUOTES=[
   'Wer den Tag mit Klarheit abschließen kann, wacht mit Macht auf! Diese Macht unterscheidet zwischen dem, der frei vorankommt, und dem, der in der gleichen endlosen Schleife von Lasten im Geist gefangen bleibt.'
 ];
 
+/* ── ZEITFELD: sichtbaren Text setzen ───────────────────────────── */
+function zfUpd(inp){
+  if(typeof inp==='string')inp=document.getElementById(inp);
+  if(!inp)return;
+  var t=document.getElementById('zt-'+inp.id);
+  if(!t)return;
+  if(inp.value){ t.textContent=inp.value; t.classList.remove('leer'); }
+  else { t.textContent='--:--'; t.classList.add('leer'); }
+}
+function zfAlle(){
+  var l=document.querySelectorAll('.zf input, .tag-karte input');
+  for(var i=0;i<l.length;i++) zfUpd(l[i]);
+}
+
+/* ── ROTIERENDE SPRUCH-BOX ──────────────────────────────────────── */
+var SPRUECHE=[
+  {icon:'\uD83D\uDCAA\uD83C\uDFFB', label:'Tag f\u00fcr Tag \u00b7 Schritt f\u00fcr Schritt', pool:QUOTES,          off:0,
+   yt:'https://www.youtube.com/results?search_query=stoizismus+k%C3%B6rper+disziplin'},
+  {icon:'\u2600\uFE0F', label:'Amor Fati', pool:AMORFATI_QUOTES, off:0,
+   yt:'https://www.youtube.com/results?search_query=amor+fati+stoizismus'},
+  {icon:'\u23F8\uFE0F', label:'Pause', pool:PAUSE_QUOTES, off:1,
+   yt:'https://www.youtube.com/results?search_query=stoizismus+pause+vor+reaktion'},
+  {icon:'\uD83E\uDDD8', label:'Stille \u00b7 5 Min. t\u00e4glich', pool:STILLE_QUOTES, off:4,
+   yt:'https://www.youtube.com/results?search_query=stille+meditation+5+minuten'},
+  {icon:'\uD83D\uDD25', label:'Energie', pool:ENERGIE_QUOTES, off:3,
+   yt:'https://www.youtube.com/results?search_query=energie+sch%C3%BCtzen+grenzen+setzen'},
+  {icon:'\uD83C\uDF0A', label:'Meer', pool:MEER_QUOTES, off:2,
+   yt:'https://www.youtube.com/results?search_query=stoizismus+gelassenheit+gef%C3%BChle+beobachten'}
+];
+var _spruchNr=0, _spruchTimer=null;
+
+function spruchZeichnen(){
+  var s=SPRUECHE[_spruchNr]; if(!s)return;
+  setText('spruchText', pickDaily(s.pool, s.off));
+  setText('spruchIcon', s.icon);
+  setText('spruchLabel', s.label);
+  var a=document.getElementById('spruchYt'); if(a)a.href=s.yt;
+  var p=document.getElementById('spruchPunkte');
+  if(p){
+    p.innerHTML='';
+    for(var i=0;i<SPRUECHE.length;i++){
+      var d=document.createElement('span');
+      d.className='spruch-punkt'+(i===_spruchNr?' an':'');
+      p.appendChild(d);
+    }
+  }
+}
+
+function spruchWeiter(schritt){
+  var box=document.getElementById('spruchInhalt'); if(!box)return;
+  _spruchNr=(_spruchNr+(schritt||1)+SPRUECHE.length)%SPRUECHE.length;
+  box.classList.add('weg');
+  setTimeout(function(){ spruchZeichnen(); box.classList.remove('weg'); },450);
+  spruchUhrNeu();
+}
+
+function spruchUhrNeu(){
+  clearInterval(_spruchTimer);
+  _spruchTimer=setInterval(function(){
+    if(document.visibilityState==='visible') spruchWeiter(1);
+  },11000);
+}
+
+function spruchStart(){
+  if(!document.getElementById('spruchText'))return;
+  _spruchNr=dayOfYear(new Date())%SPRUECHE.length;   /* jeden Tag ein anderer Einstieg */
+  spruchZeichnen();
+  spruchUhrNeu();
+}
+
+
+/* ── NACHTRAEGE: Hitze, Histamin, Haken, Notizen ────────────────── */
+function blDatum(){
+  var d=document.getElementById('blDate');
+  return (d&&d.value)?d.value:'';
+}
+var BL_HAKEN=[
+  {k:'w1', t:'\uD83D\uDC15 Morgen-Spaziergang'},
+  {k:'w2', t:'\uD83D\uDC15 Mittags-Spaziergang'},
+  {k:'w3', t:'\uD83D\uDC15 Abend-Spaziergang'},
+  {k:'s1', t:'\u2600\uFE0F Morgen-Supplements'},
+  {k:'s2', t:'\uD83C\uDF1B Abend-Supplements'},
+  {k:'f1', t:'\u2600\uFE0F Fr\u00fchst\u00fcck'},
+  {k:'f2', t:'\uD83C\uDF1E Mittagessen'},
+  {k:'f4', t:'\uD83C\uDF19 Abendessen'}
+];
+
+function blChip(text, aufKlick, farbe){
+  var chip=document.createElement('span');
+  chip.style.cssText='display:inline-flex;align-items:center;gap:6px;border-radius:14px;'+
+    'padding:4px 10px;font-size:11px;color:var(--mid);max-width:100%;'+farbe;
+  var t=document.createElement('span');
+  t.style.cssText='overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:190px';
+  t.textContent=text; chip.appendChild(t);
+  var x=document.createElement('span');
+  x.textContent='\u00d7';
+  x.style.cssText='cursor:pointer;font-weight:700;opacity:.6;flex:none';
+  x.onclick=aufKlick; chip.appendChild(x);
+  return chip;
+}
+
+function renderBlHitze(){
+  var c=document.getElementById('blHitzeList'); if(!c)return;
+  var d=blDatum(); c.innerHTML='';
+  if(!d){c.textContent='Bitte zuerst ein Datum w\u00e4hlen.';c.style.fontSize='11px';c.style.color='var(--muted)';return;}
+  c.style.fontSize='';c.style.color='';
+  var S2=lstore();
+  var arr=((S2.hitze||{})[d])||[];
+  if(!arr.length){
+    var e=document.createElement('span');
+    e.style.cssText='font-size:11px;color:var(--muted)';
+    e.textContent='Keine erfasst.'; c.appendChild(e); return;
+  }
+  arr.slice().sort().forEach(function(t){
+    c.appendChild(blChip(t,function(){removeBlHitze(t);},
+      'background:rgba(196,122,90,.12);border:1px solid rgba(196,122,90,.35);'));
+  });
+}
+function addBlHitze(){
+  var d=blDatum(), inp=document.getElementById('bl-hitze-time');
+  if(!d||!inp||!inp.value)return;
+  var S2=lstore();
+  if(!S2.hitze)S2.hitze={};
+  if(!S2.hitze[d])S2.hitze[d]=[];
+  if(S2.hitze[d].indexOf(inp.value)<0)S2.hitze[d].push(inp.value);
+  sstore(S2); inp.value=''; zfUpd(inp);
+  renderBlHitze(); if(d===TK&&typeof renderHitze==='function')renderHitze();
+}
+function removeBlHitze(t){
+  var d=blDatum(); if(!d)return;
+  var S2=lstore();
+  var arr=(S2.hitze||{})[d]||[];
+  var i=arr.indexOf(t); if(i>-1)arr.splice(i,1);
+  sstore(S2); renderBlHitze(); if(d===TK&&typeof renderHitze==='function')renderHitze();
+}
+
+function renderBlHist(){
+  var c=document.getElementById('blHistList'); if(!c)return;
+  var d=blDatum(); c.innerHTML='';
+  if(!d){c.textContent='Bitte zuerst ein Datum w\u00e4hlen.';c.style.fontSize='11px';c.style.color='var(--muted)';return;}
+  c.style.fontSize='';c.style.color='';
+  var S2=lstore();
+  var arr=((S2.hist||{})[d])||[];
+  if(!arr.length){
+    var e=document.createElement('span');
+    e.style.cssText='font-size:11px;color:var(--muted)';
+    e.textContent='Keine erfasst.'; c.appendChild(e); return;
+  }
+  arr.slice().sort(function(a,b){return a.t<b.t?-1:(a.t>b.t?1:0);}).forEach(function(en){
+    c.appendChild(blChip(en.t+' \u00b7 '+en.s,function(){removeBlHist(en.id);},
+      'background:rgba(92,75,53,.10);border:1px solid rgba(92,75,53,.3);'));
+  });
+}
+function addBlHist(){
+  var d=blDatum(), ti=document.getElementById('bl-hist-time'), tx=document.getElementById('bl-hist-txt');
+  if(!d||!tx||!tx.value.trim())return;
+  var S2=lstore();
+  if(!S2.hist)S2.hist={};
+  if(!S2.hist[d])S2.hist[d]=[];
+  S2.hist[d].push({id:Date.now()+'-'+Math.random(), t:(ti&&ti.value)?ti.value:'--:--', s:tx.value.trim()});
+  sstore(S2); tx.value=''; if(ti){ti.value='';zfUpd(ti);}
+  renderBlHist(); if(d===TK&&typeof renderHist==='function')renderHist();
+}
+function removeBlHist(id){
+  var d=blDatum(); if(!d)return;
+  var S2=lstore();
+  var arr=(S2.hist||{})[d]||[];
+  for(var i=0;i<arr.length;i++){ if(arr[i].id===id){arr.splice(i,1);break;} }
+  sstore(S2); renderBlHist(); if(d===TK&&typeof renderHist==='function')renderHist();
+}
+
+function renderBlChecks(){
+  var c=document.getElementById('blChecks'); if(!c)return;
+  var d=blDatum(); c.innerHTML='';
+  if(!d){c.textContent='Bitte zuerst ein Datum w\u00e4hlen.';c.style.fontSize='11px';c.style.color='var(--muted)';return;}
+  c.style.fontSize='';c.style.color='';
+  var S2=lstore(); var ch=S2.checks||{};
+  BL_HAKEN.forEach(function(e){
+    var an=!!ch[d+'_'+e.k];
+    var b=document.createElement('button');
+    b.type='button';
+    b.textContent=(an?'\u2713 ':'')+e.t;
+    b.style.cssText='border-radius:14px;padding:5px 11px;font-size:11px;cursor:pointer;'+
+      'font-family:inherit;border:1.5px solid '+(an?'var(--sage)':'var(--border)')+';'+
+      'background:'+(an?'rgba(139,158,123,.18)':'var(--bg)')+';color:var(--mid);';
+    b.onclick=function(){ toggleBlCheck(e.k); };
+    c.appendChild(b);
+  });
+}
+function toggleBlCheck(key){
+  var d=blDatum(); if(!d)return;
+  var S2=lstore();
+  if(!S2.checks)S2.checks={};
+  var k=d+'_'+key;
+  if(S2.checks[k]) delete S2.checks[k]; else S2.checks[k]=true;
+  if(!S2.days)S2.days={}; S2.days[d]=true;
+  sstore(S2);
+  if(typeof S!=='undefined'){ S=lstore(); if(!S.checks)S.checks={}; }
+  renderBlChecks();
+  if(d===TK){
+    var el=document.getElementById('ci-'+key);
+    if(el)el.classList.toggle('done',!!lstore().checks[k]);
+    var lk=document.getElementById('content-'+key);
+    if(lk)lk.classList.toggle('done',!!lstore().checks[k]);
+    if(typeof updateRing==='function')updateRing();
+  }
+}
+
+function loadBlNotizen(){
+  var d=blDatum(); var S2=lstore();
+  var st=document.getElementById('bl-stein'), jo=document.getElementById('bl-journal');
+  if(st)st.value=d?(((S2.stein||{})[d])||''):'';
+  if(jo)jo.value=d?(((S2.journals||{})[d])||''):'';
+}
+function saveBlNotiz(welche){
+  var d=blDatum(); if(!d)return;
+  var S2=lstore();
+  if(welche==='stein'){
+    if(!S2.stein)S2.stein={};
+    var st=document.getElementById('bl-stein'); if(st)S2.stein[d]=st.value;
+  } else {
+    if(!S2.journals)S2.journals={};
+    var jo=document.getElementById('bl-journal'); if(jo)S2.journals[d]=jo.value;
+  }
+  sstore(S2);
+  if(typeof S!=='undefined')S=lstore();
+  if(d===TK){
+    if(welche==='stein'&&typeof loadStein==='function')loadStein();
+    if(welche==='journal'&&typeof loadJournal==='function')loadJournal();
+  }
+  if(typeof renderPast==='function'){try{renderPast();}catch(e){}}
+}
+
+function renderBlAlles(){
+  renderBlHitze(); renderBlHist(); renderBlChecks(); loadBlNotizen(); zfAlle();
+}
+
 function renderMantras(){
-  setText('amorfatiText',pickDaily(AMORFATI_QUOTES));
-  setText('pauseText',pickDaily(PAUSE_QUOTES,1));
-  setText('meerText',pickDaily(MEER_QUOTES,2));
-  setText('energieText',pickDaily(ENERGIE_QUOTES,3));
-  setText('stilleText',pickDaily(STILLE_QUOTES,4));
+  /* die sechs rotierenden Sprueche laufen jetzt ueber spruchZeichnen() */
   setText('steinText',pickDaily(STEIN_QUOTES,5));
   setText('resetText',pickDaily(RESET_QUOTES,6));
 }
@@ -1010,7 +1322,7 @@ function init(){
   document.getElementById('heroMonth').textContent=MONTHS[now.getMonth()]+' '+now.getFullYear();
   var jDateEl=document.getElementById('jDate');
   if(jDateEl)jDateEl.textContent=now.getDate()+'. '+MONTHS[now.getMonth()]+' '+now.getFullYear();
-  document.getElementById('quoteText').textContent=pickDaily(QUOTES);
+  spruchStart();
   if(now.getDay()===6){document.getElementById('vitDHint').textContent='Vitamin D Dekristol 20.000 I.E.';}
   // Milestone reminders bei exakt 3, 6, 9 Kalendermonaten ab Start (nur ein paar Tage sichtbar)
   var startDate=new Date(2026,3,27);
@@ -1039,6 +1351,7 @@ function init(){
   initFd();
   loadMealLogs();
   loadTimes();
+  zfAlle();
   loadWeight();
   loadChecks();
   updateRing();
@@ -1250,7 +1563,7 @@ function toggle(key){
 }
 
 function updateRing(){
-  var fixed=['w1','w3','w2','s1','f1','f2','f4','s2','stille'];
+  var fixed=['w1','w3','w2','s1','f1','f2','f4','s2'];
   var done=0,total=0;
   var activeDw=getShownDwId();
   var dw=activeDw?document.getElementById('dw-'+activeDw):null;
@@ -1847,6 +2160,7 @@ function toggleBacklog(){
   }
 }
 function loadBacklogTimes(){
+  if(typeof renderBlAlles==='function')renderBlAlles();
   var dateInp=document.getElementById('blDate');
   if(!dateInp||!dateInp.value)return;
   var S2=lstore();
@@ -1873,6 +2187,7 @@ function loadBacklogTimes(){
   updateBacklogAlcUI();
   var noteInp=document.getElementById('bl-alc-note');
   if(noteInp)noteInp.value=(S2.alc&&S2.alc.notes&&S2.alc.notes[dateInp.value])||'';
+  if(typeof zfAlle==='function')zfAlle();   /* erst jetzt sind die Werte gesetzt */
 }
 function setBacklogAlc(val){
   var dateInp=document.getElementById('blDate');
@@ -2140,10 +2455,12 @@ function computeAlcStreakFrom(S2){
   return streak;
 }
 function getAlcStartDate(S2){
-  if(S2.alc.startDate)return S2.alc.startDate;
-  S2.alc.startDate=TK;
-  sstore(S2);
-  return TK;
+  var ALC_START='2026-07-05';   /* fester Beginn der Zaehlung */
+  /* ein gespeicherter Beginn gilt nur, wenn er FRUEHER ist.
+     Ein spaeterer Wert ist ein Zuruecksetzen und wird korrigiert. */
+  if(S2.alc.startDate && S2.alc.startDate < ALC_START) return S2.alc.startDate;
+  if(S2.alc.startDate !== ALC_START){ S2.alc.startDate=ALC_START; sstore(S2); }
+  return ALC_START;
 }
 function formatDateDe(k){
   var p=k.split('-');
@@ -2316,7 +2633,7 @@ function showSyncMsg(text, color){
    anderen Geraet zwischendurch etwas anderes eingetragen wurde.
    =================================================================== */
 var SY_CFG='bfv6_sync', SY_BASE='bfv6_base';
-var _lastSeen=null, _dirtySince=0;
+var _lastSeen=null, _dirtySince=0, _erstAbgleich=false;
 var _sstoreRaw=sstore, _syncBusy=false, _syncTimer=null, _syncApplying=false;
 
 function syCfg(){try{return JSON.parse(localStorage.getItem(SY_CFG)||'{}');}catch(e){return{};}}
@@ -2328,6 +2645,9 @@ function syNow(){var d=new Date(),p=function(n){return(n<10?'0':'')+n;};
 
 function syEq(a,b){try{return JSON.stringify(a)===JSON.stringify(b);}catch(e){return false;}}
 function syIsObj(v){return v&&typeof v==='object'&&!Array.isArray(v);}
+/* leer = nichts eingetragen. Beim ersten Abgleich darf ein leeres Feld
+   niemals einen gefuellten Wert des anderen Geraets ueberschreiben. */
+function syLeer(v){return v===''||v===null||v===undefined||v===false||v===0;}
 function syKey(e){return (e&&e.id!==undefined)?('id:'+e.id):('j:'+JSON.stringify(e));}
 
 /* Listen (z.B. Ernaehrungstagebuch) ueber die id zusammenfuehren */
@@ -2365,6 +2685,7 @@ function syMerge(base,mine,theirs){
     });
     return out;
   }
+  if(_erstAbgleich && syLeer(mine) && !syLeer(theirs)) return theirs;
   return mine; /* echter Konflikt: das Geraet, an dem gerade gearbeitet wird, gewinnt */
 }
 
@@ -2387,7 +2708,7 @@ function syTippt(){var a=document.activeElement;
 function syRefreshUI(){
   if(syTippt()){ clearTimeout(_applyTimer); _applyTimer=setTimeout(syRefreshUI,3000); return; }
   ['initFd','loadMealLogs','loadTimes','loadWeight','loadChecks','updateRing',
-   'buildGrid','loadJournal','renderAlc','renderHitze','renderHist','loadStein']
+   'buildGrid','loadJournal','renderAlc','renderHitze','renderHist','loadStein','zfAlle']
    .forEach(function(f){ try{ if(typeof window[f]==='function') window[f](); }catch(e){} });
 }
 
@@ -2418,6 +2739,7 @@ function syncNow(manuell){
   return syPost(c,{action:'get'}).then(function(r){
     if(!r.ok) throw new Error(r.fehler||'Server meldet einen Fehler');
     var local=lstore(), basis=syBase(), fern=r.data||{};
+    _erstAbgleich=(basis===null);          /* noch nie abgeglichen: kein gemeinsamer Ausgangsstand */
     if(basis===null) basis={};
     var merged=syMerge(basis,local,fern);
     if(syEq(merged,fern)){
@@ -2441,7 +2763,7 @@ function syncNow(manuell){
     });
   }).catch(function(e){
     syStatus('Kein Abgleich: '+e.message,'#C47A5A');
-  }).then(function(){ _syncBusy=false; });
+  }).then(function(){ _syncBusy=false; _erstAbgleich=false; });
 }
 
 function syncSoon(){
@@ -2512,6 +2834,10 @@ function syncInit(){
 }
 if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',syncInit);
 else setTimeout(syncInit,300);
+
+
+
+
 
 </script>
 
